@@ -61,6 +61,8 @@ public class Client implements Serializable{
 	
 	@Column(name="password")
 	private String password;
+	
+//	private List<Commande> commandes;
 
 	public Client() {
 		super();
