@@ -22,7 +22,7 @@ import fr.afcepf.al33.projet1.idao.ClientIdao;
 public class ClientDao extends GenericDao<Client> implements ClientIdao {
 	
 	
-	@PersistenceContext(unitName="Projet3DS")
+	@PersistenceContext(unitName="Projet1DS")
 	private EntityManager em;
 
 

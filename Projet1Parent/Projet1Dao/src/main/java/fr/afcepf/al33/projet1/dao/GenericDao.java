@@ -15,7 +15,7 @@ import fr.afcepf.al33.projet1.idao.GenericIdao;
 
 public abstract class GenericDao<T> implements GenericIdao<T> {
 	
-	@PersistenceContext(unitName="Projet3DS")
+	@PersistenceContext(unitName="Projet1DS")
 	private EntityManager em;
 	
 	
