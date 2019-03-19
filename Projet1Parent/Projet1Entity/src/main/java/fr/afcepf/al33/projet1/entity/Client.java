@@ -65,7 +65,6 @@ public class Client implements Serializable{
 	@Column(name="salt")
 	private String salt;
 
-
 	public Client() {
 		super();
 	}
