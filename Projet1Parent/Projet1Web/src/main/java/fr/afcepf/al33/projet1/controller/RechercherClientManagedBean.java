@@ -27,7 +27,6 @@ public class RechercherClientManagedBean implements Serializable {
 	@EJB
 	private ClientIBusiness proxyClientBu;
 	
-	private Client client;
 	private Client foundClient;
 	private List<Client> clients;
 
@@ -36,8 +35,8 @@ public class RechercherClientManagedBean implements Serializable {
 	
 	public void onSelect(Client cl, String typeOfSelection, String indexes) {
 	
-		client=clients.get(Integer.parseInt(indexes));
-		foundClient = client;
+		foundClient=clients.get(Integer.parseInt(indexes));
+	  
 		System.out.println(cl.getNom());
 		System.out.println(cl.getId());
 		
@@ -47,10 +46,6 @@ public class RechercherClientManagedBean implements Serializable {
 		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/ficheClient.xhtml?faces-redirect=true");
 	}
 	
-//	public String selectClient(Client client) {
-//		client = proxyClientBu.searchById(client.getId());
-//		return "/ficheClient.xhtml";
-//	}
 	
 	@PostConstruct
 	public void init() {
@@ -67,15 +62,6 @@ public class RechercherClientManagedBean implements Serializable {
 	}
 	
 	
-	
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 
 	public Client getFoundClient() {
 		return foundClient;
