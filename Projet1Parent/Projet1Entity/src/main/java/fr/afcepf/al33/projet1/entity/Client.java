@@ -61,6 +61,10 @@ public class Client implements Serializable{
 	
 	@Column(name="password")
 	private String password;
+	
+	@Column(name="salt")
+	private String salt;
+
 
 	public Client() {
 		super();
@@ -177,6 +181,15 @@ public class Client implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 	

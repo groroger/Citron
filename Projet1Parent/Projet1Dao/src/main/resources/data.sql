@@ -1,0 +1,53 @@
+INSERT INTO `ville`(id, codePostal, nom) VALUES (1, '75001', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (2, '75002', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (3, '75003', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (4, '75004', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (5, '75005', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (6, '75006', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (7, '75007', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (8, '75008', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (9, '75009', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (10, '75010', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (11, '75011', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (12, '75012', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (13, '75013', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (14, '75014', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (15, '75015', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (16, '75016', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (17, '75017', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (18, '75018', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (19, '75019', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (20, '75020', 'PARIS');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (21, '69001', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (22, '69002', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (23, '69003', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (24, '69004', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (25, '69005', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (26, '69006', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (27, '69007', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (28, '69008', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (29, '69009', 'LYON');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (30, '92120', 'MONTROUGE');
+
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (1, 1, 'DE TINGUY', 'Benjamin', '1983-08-15','01.02.05.40.55', '06.08.57.03.09', 'b.detinguy@test.com', '2 Rue Joubert', null, 'bdetinguy', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (2, 2, 'RONDAL', 'Pierre', '1955-10-14','01.38.23.68.74', '06.28.48.37.18', 'p.rondal@test.com', '26 Rue Montparnasse', 'Immeuble Laroche', 'prondal', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (3, 3, 'DUPUIS', 'Sébastien', '1987-11-29','01.85.85.58.23', '06.85.85.58.55', 's.dupuis@test.com', '25 Rue du Parc', null, 'sdupuis', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (4, 4, 'MARCHAND', 'Claire', '1977-01-12','01.85.85.58.23', '06.85.85.58.55', 'c.marchand@test.com', '28 Rue de la République', null, 'cmarchand', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (5, 5, 'DUPOND', 'Michel', '1976-09-01','01.85.15.18.23', '06.15.15.28.85', 'm.depond@test.com', '2 Rue du Général Leclerc', 'Résidence du parc', 'mdupond', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (6, 6, 'MARTIN', 'Leo', '1987-01-02','01.85.86.56.63', '06.65.86.28.55', 'l.martin@test.com', '12 Rue Joubert', null, 'lmartin', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (7, 7, 'PETIT', 'Martin', '1978-12-13','01.85.22.28.24', '06.85.65.78.98', 'm.petit@test.com', '28 Allée des Dames', null, 'mpetit', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (8, 8, 'MARTIN', 'Leo', '1987-01-12','01.85.86.56.63', '06.65.86.28.55', 'l.martin@test.com', '12 Rue Joubert', null, 'lmartin', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (9, 9, 'BERNARD', 'Michel', '1976-11-15','01.85.35.53.33', '06.97.75.87.69', 'm.bernard@test.com', '8 Allée des Roseaux', null, 'mbernard', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (10, 10, 'THOMAS', 'Jules', '1974-12-18','01.85.45.48.24', '06.12.23.34.45', 'j.thomas@test.com', '28 Allée Verte', 'Immeuble Lazulli', 'jthomas', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (11, 21, 'MARTIN', 'Martine', '1975-09-03','04.85.55.18.13', '06.45.12.11.95', 'm.martin@test.com', '28 Rue Vivaldi', null, 'mmartin', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (12, 22, 'PREVOST', 'Damien', '1976-12-05','04.85.12.13.33', '06.12.13.14.69', 'm.bernard@test.com', '8 Avenue Mozart', null, 'dprevost', 'password', '1a2b3c');	
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (13, 23, 'CHARPENTIER', 'Jocelyne', '1974-10-04','04.85.12.06.24', '06.06.23.74.45', 'j.charpentier@test.com', '28 Rue Chopin', null, 'jcharpentier', 'password', '1a2b3c');	
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (14, 24, 'GERMAIN', 'Lisa', '1981-09-05','04.85.15.28.13', '06.75.12.01.95', 'l.germain@test.com', '15 Boulevard du Crépuscule', null, 'lgermain', 'password', '1a2b3c');	
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (15, 25, 'BRETON', 'Sophie', '1982-11-06','04.85.19.17.33', '06.77.05.87.09', 's.breton@test.com', '8 Allée Beethoven', null, 'sbreton', 'password', '1a2b3c');	
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (16, 26, 'DUMAS', 'Sonia', '1982-10-07','04.85.45.48.24', '06.12.23.34.45', 's.dumas@test.com', '28 Rue de la Galcière', null, 'sdumas', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (17, 2, 'ZABLOT','Amine','1983-07-20', '01.45.45.48.24', '06.12.23.34.45', 'adminsitrateur@cooperactive.fr', '30 Rue Danielle Casanova', null, 'admin', 'admin', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (18, 13, 'ABIZMIL','Simon','1978-03-21', '01.45.46.47.48', '06.12.23.34.45', 's.abizmil@test.com', '30 Rue des Gobelins', null, 'sabizmil', 'password', '1a2b3c');
+INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (19, 27, 'BOUCHON','Marcel','1974-03-29', '04.41.37.15.36', '06.27.23.34.15', 'm.bouchon@test.com', '10 Rue de la Place Arrais', null, 'mbouchon', 'password', '1a2b3c');
+
+
+
