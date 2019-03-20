@@ -11,6 +11,7 @@
 		<class>fr.afcepf.al33.projet1.entity.Fournisseur</class>
 		<class>fr.afcepf.al33.projet1.entity.FournPersonneMorale</class>
 		<class>fr.afcepf.al33.projet1.entity.FournPersonnePhysique</class>
+		<class>fr.afcepf.al33.projet1.entity.Article</class>
 
 
 	<properties>
@@ -20,8 +21,8 @@
 
 
 
-<!-- 		<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" /> -->
-<!-- 		<property name="javax.persistence.sql-load-script-source" value="data.sql"/> -->
+		<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+		<property name="javax.persistence.sql-load-script-source" value="data.sql"/>
 	</properties>
 	
 	</persistence-unit>

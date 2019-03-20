@@ -43,7 +43,7 @@ public class Ville implements Serializable{
 	
 	public Ville() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 

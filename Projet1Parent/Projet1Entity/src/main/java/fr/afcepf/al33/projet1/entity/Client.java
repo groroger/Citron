@@ -3,6 +3,7 @@ package fr.afcepf.al33.projet1.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -64,13 +66,19 @@ public class Client implements Serializable{
 	
 	@Column(name="salt")
 	private String salt;
+	
+//	@OneToMany(mappedBy="client", cascade=CascadeType.ALL)
+//	private List<Commande> commandes;
 
 	public Client() {
 		super();
 	}
 
+
+
 	public Client(Integer id, String nom, String prenom, Date dateDeNaissance, String adresse, String complementAdresse,
-			Ville ville, String numeroFixe, String numeroPort, String email, String login, String password) {
+			Ville ville, String numeroFixe, String numeroPort, String email, String login, String password,
+			String salt) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -84,7 +92,10 @@ public class Client implements Serializable{
 		this.email = email;
 		this.login = login;
 		this.password = password;
+		this.salt = salt;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -190,6 +201,15 @@ public class Client implements Serializable{
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
+
+//	public List<Commande> getCommandes() {
+//		return commandes;
+//	}
+//
+//	public void setCommandes(List<Commande> commandes) {
+//		this.commandes = commandes;
+//	}
+//	
 	
 	
 }

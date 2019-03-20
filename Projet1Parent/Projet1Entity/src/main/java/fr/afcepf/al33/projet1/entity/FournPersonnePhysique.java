@@ -26,7 +26,7 @@ public class FournPersonnePhysique extends Fournisseur{
 
 	public FournPersonnePhysique() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
