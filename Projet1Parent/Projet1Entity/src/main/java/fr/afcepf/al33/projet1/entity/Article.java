@@ -38,6 +38,12 @@ public class Article implements Serializable{
 	@Column(name="image")
 	private String image;
 	
+	@Column(name="quantiteVendueKg")
+	private double quantiteVendueKg;
+	
+	@Column(name="prix")
+	private double prix;
+	
 //	@ManyToOne
 //	@JoinColumn(referencedColumnName="id")
 //	private Categorie categorie;/	
@@ -60,15 +66,15 @@ public class Article implements Serializable{
 
 
 
-
-	public Article(Integer id, String nom, String descriptif, String image) {
+	public Article(Integer id, String nom, String descriptif, String image, double quantiteVendueKg, double prix) {
 	super();
 	this.id = id;
 	this.nom = nom;
 	this.descriptif = descriptif;
 	this.image = image;
+	this.quantiteVendueKg = quantiteVendueKg;
+	this.prix = prix;
 }
-
 
 
 
@@ -110,6 +116,32 @@ public class Article implements Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+
+
+	public double getQuantiteVendueKg() {
+		return quantiteVendueKg;
+	}
+
+
+
+	public void setQuantiteVendueKg(double quantiteVendueKg) {
+		this.quantiteVendueKg = quantiteVendueKg;
+	}
+
+
+
+	public double getPrix() {
+		return prix;
+	}
+
+
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+	
+	
 
 
 //	public Categorie getCategorie() {
