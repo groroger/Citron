@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.al33.projet1.entity.Article;
+import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.idao.ArticleIdao;
 
 @Remote(ArticleIdao.class)
@@ -30,16 +31,16 @@ public class ArticleDao extends GenericDao<Article> implements ArticleIdao {
 		return articles;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<Article> getByIdCategorie(Categorie c) {
-//		List<Article> articlesParCategorie=null;
-//		String REQ= "SELECT fourniture from Fourniture fourniture WHERE fourniture.categorie= :idf ";
-//		Query queryJPQL = em.createQuery(REQ);
-//		queryJPQL.setParameter("idf", c);
-//		articlesParCategorie = queryJPQL.getResultList();
-//		return articlesParCategorie ;
-//		
-//	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Article> getByIdCategorie(Categorie c) {
+		List<Article> articlesParCategorie=null;
+		String REQ= "SELECT fourniture from Fourniture fourniture WHERE fourniture.categorie= :idf ";
+		Query queryJPQL = em.createQuery(REQ);
+		queryJPQL.setParameter("idf", c);
+		articlesParCategorie = queryJPQL.getResultList();
+		return articlesParCategorie ;
+		
+	}
 
 }

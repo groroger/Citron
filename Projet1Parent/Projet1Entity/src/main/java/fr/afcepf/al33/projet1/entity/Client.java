@@ -2,6 +2,7 @@ package fr.afcepf.al33.projet1.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -67,8 +68,8 @@ public class Client implements Serializable{
 	@Column(name="salt")
 	private String salt;
 	
-//	@OneToMany(mappedBy="client", cascade=CascadeType.ALL)
-//	private List<Commande> commandes;
+	@OneToMany(mappedBy="client", cascade=CascadeType.ALL)
+	private List<Commande> commandes;
 
 	public Client() {
 		super();
@@ -77,8 +78,8 @@ public class Client implements Serializable{
 
 
 	public Client(Integer id, String nom, String prenom, Date dateDeNaissance, String adresse, String complementAdresse,
-			Ville ville, String numeroFixe, String numeroPort, String email, String login, String password,
-			String salt) {
+			Ville ville, String numeroFixe, String numeroPort, String email, String login, String password, String salt,
+			List<Commande> commandes) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -93,7 +94,9 @@ public class Client implements Serializable{
 		this.login = login;
 		this.password = password;
 		this.salt = salt;
+		this.commandes = commandes;
 	}
+
 
 
 
@@ -202,14 +205,14 @@ public class Client implements Serializable{
 		this.salt = salt;
 	}
 
-//	public List<Commande> getCommandes() {
-//		return commandes;
-//	}
-//
-//	public void setCommandes(List<Commande> commandes) {
-//		this.commandes = commandes;
-//	}
-//	
+	public List<Commande> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(List<Commande> commandes) {
+		this.commandes = commandes;
+	}
+	
 	
 	
 }

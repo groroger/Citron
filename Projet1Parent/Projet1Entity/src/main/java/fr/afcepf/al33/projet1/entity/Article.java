@@ -44,19 +44,19 @@ public class Article implements Serializable{
 	@Column(name="prix")
 	private double prix;
 	
-//	@ManyToOne
-//	@JoinColumn(referencedColumnName="id")
-//	private Categorie categorie;/	
-//
-//	@OneToOne
-//	@JoinColumn(referencedColumnName="id")
-//	private Stock stock;
-//	
-//	@OneToMany(mappedBy="article", cascade=CascadeType.ALL)
-//	private List<Commande> commandes;
-//	      
-//	@OneToMany(mappedBy="article", cascade=CascadeType.ALL)
-//	private List<Approvisionnement> approvisionnements;
+	@ManyToOne
+	@JoinColumn(referencedColumnName="id")
+	private Categorie categorie;
+
+	@OneToOne
+	@JoinColumn(referencedColumnName="id")
+	private Stock stock;
+	
+	@OneToMany(mappedBy="article", cascade=CascadeType.ALL)
+	private List<Commande> commandes;
+	      
+	@OneToMany(mappedBy="article", cascade=CascadeType.ALL)
+	private List<Approvisionnement> approvisionnements;
 	
 
 	
@@ -66,15 +66,21 @@ public class Article implements Serializable{
 
 
 
-	public Article(Integer id, String nom, String descriptif, String image, double quantiteVendueKg, double prix) {
-	super();
-	this.id = id;
-	this.nom = nom;
-	this.descriptif = descriptif;
-	this.image = image;
-	this.quantiteVendueKg = quantiteVendueKg;
-	this.prix = prix;
-}
+	public Article(Integer id, String nom, String descriptif, String image, double quantiteVendueKg, double prix,
+			Categorie categorie, Stock stock, List<Commande> commandes, List<Approvisionnement> approvisionnements) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.descriptif = descriptif;
+		this.image = image;
+		this.quantiteVendueKg = quantiteVendueKg;
+		this.prix = prix;
+		this.categorie = categorie;
+		this.stock = stock;
+		this.commandes = commandes;
+		this.approvisionnements = approvisionnements;
+	}
+
 
 
 
@@ -144,43 +150,43 @@ public class Article implements Serializable{
 	
 
 
-//	public Categorie getCategorie() {
-//		return categorie;
-//	}
-//
-//
-//	public void setCategorie(Categorie categorie) {
-//		this.categorie = categorie;
-//	}
-//
-//
-//	public Stock getStock() {
-//		return stock;
-//	}
-//
-//
-//	public void setStock(Stock stock) {
-//		this.stock = stock;
-//	}
-//
-//
-//	public List<Commande> getCommandes() {
-//		return commandes;
-//	}
-//
-//
-//	public void setCommandes(List<Commande> commandes) {
-//		this.commandes = commandes;
-//	}
-//
-//
-//	public List<Approvisionnement> getApprovisionnements() {
-//		return approvisionnements;
-//	}
-//
-//
-//	public void setApprovisionnements(List<Approvisionnement> approvisionnements) {
-//		this.approvisionnements = approvisionnements;
-//	}
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+
+	public Stock getStock() {
+		return stock;
+	}
+
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
+
+
+	public List<Commande> getCommandes() {
+		return commandes;
+	}
+
+
+	public void setCommandes(List<Commande> commandes) {
+		this.commandes = commandes;
+	}
+
+
+	public List<Approvisionnement> getApprovisionnements() {
+		return approvisionnements;
+	}
+
+
+	public void setApprovisionnements(List<Approvisionnement> approvisionnements) {
+		this.approvisionnements = approvisionnements;
+	}
 
 }

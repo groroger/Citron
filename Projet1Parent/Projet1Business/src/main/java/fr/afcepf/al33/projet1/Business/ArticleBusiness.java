@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
 import fr.afcepf.al33.projet1.entity.Article;
+import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.idao.ArticleIdao;
 
 
@@ -24,10 +25,10 @@ public class ArticleBusiness implements ArticleIBusiness{
 		return articles;
 	}
 	
-//	@Override
-//	List<Article> getByIdCategorie(Categorie c) {
-//		List<Article> articles= proxyArticleIDao.getByIdCategorie(c);
-//		return articles;
-//	}
+	@Override
+	public List<Article> getByIdCategorie(Categorie c) {
+		List<Article> articles= proxyArticleIDao.getByIdCategorie(c);
+		return articles;
+	}
 
 }
