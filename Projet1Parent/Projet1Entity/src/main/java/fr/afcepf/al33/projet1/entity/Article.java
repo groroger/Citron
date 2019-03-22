@@ -32,7 +32,7 @@ public class Article implements Serializable{
 	@Column(name="nom")
 	private String nom;
 	
-	@Column(name="descriptif")
+	@Column(name="descriptif", length=1000)
 	private String descriptif;
 	
 	@Column(name="image")
