@@ -29,6 +29,9 @@ public abstract class Fournisseur implements Serializable{
 	@Column(name="id", nullable=false)
 	private Integer id;
 	
+	@Column(name="nom")
+	private String nom;
+	
 	
 	@Column(name="adresse")
 	private String adresse;
@@ -53,10 +56,13 @@ public abstract class Fournisseur implements Serializable{
 		super();
 	}
 
-	public Fournisseur(Integer id, String adresse, String complementAdresse, Ville ville, String numeroFixe,
+
+	
+	public Fournisseur(Integer id, String nom, String adresse, String complementAdresse, Ville ville, String numeroFixe,
 			String numeroPort, String email) {
 		super();
 		this.id = id;
+		this.nom = nom;
 		this.adresse = adresse;
 		this.complementAdresse = complementAdresse;
 		this.ville = ville;
@@ -64,63 +70,87 @@ public abstract class Fournisseur implements Serializable{
 		this.numeroPort = numeroPort;
 		this.email = email;
 	}
+
+
 
 	public Integer getId() {
 		return id;
 	}
 
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 
 	public String getAdresse() {
 		return adresse;
 	}
 
+
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+
 
 	public String getComplementAdresse() {
 		return complementAdresse;
 	}
 
+
 	public void setComplementAdresse(String complementAdresse) {
 		this.complementAdresse = complementAdresse;
 	}
+
 
 	public Ville getVille() {
 		return ville;
 	}
 
+
 	public void setVille(Ville ville) {
 		this.ville = ville;
 	}
+
 
 	public String getNumeroFixe() {
 		return numeroFixe;
 	}
 
+
 	public void setNumeroFixe(String numeroFixe) {
 		this.numeroFixe = numeroFixe;
 	}
+
 
 	public String getNumeroPort() {
 		return numeroPort;
 	}
 
+
 	public void setNumeroPort(String numeroPort) {
 		this.numeroPort = numeroPort;
 	}
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 
 
 }
