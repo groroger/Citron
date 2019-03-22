@@ -38,11 +38,14 @@ public class Article implements Serializable{
 	@Column(name="image")
 	private String image;
 	
-	@Column(name="quantiteVendueKg")
-	private double quantiteVendueKg;
+	@Column(name="quantiteVendue")
+	private double quantiteVendue;
 	
 	@Column(name="prix")
 	private double prix;
+	
+	@Column(name="prixKilo")
+	private double prixKilo;
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName="id")
@@ -52,8 +55,6 @@ public class Article implements Serializable{
 	@JoinColumn(referencedColumnName="id")
 	private Stock stock;
 	
-	@OneToMany(mappedBy="article", cascade=CascadeType.ALL)
-	private List<Commande> commandes;
 	      
 	@OneToMany(mappedBy="article", cascade=CascadeType.ALL)
 	private List<Approvisionnement> approvisionnements;
@@ -66,32 +67,33 @@ public class Article implements Serializable{
 
 
 
-	public Article(Integer id, String nom, String descriptif, String image, double quantiteVendueKg, double prix,
-			Categorie categorie, Stock stock, List<Commande> commandes, List<Approvisionnement> approvisionnements) {
+	public Article(Integer id, String nom, String descriptif, String image, double quantiteVendue, double prix,
+			double prixKilo, Categorie categorie, Stock stock, List<Approvisionnement> approvisionnements) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.descriptif = descriptif;
 		this.image = image;
-		this.quantiteVendueKg = quantiteVendueKg;
+		this.quantiteVendue = quantiteVendue;
 		this.prix = prix;
+		this.prixKilo = prixKilo;
 		this.categorie = categorie;
 		this.stock = stock;
-		this.commandes = commandes;
 		this.approvisionnements = approvisionnements;
 	}
-
 
 
 
 	public Integer getId() {
 		return id;
 	}
-	
+
+
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 
 
 	public String getNom() {
@@ -99,9 +101,11 @@ public class Article implements Serializable{
 	}
 
 
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 
 
 	public String getDescriptif() {
@@ -109,14 +113,17 @@ public class Article implements Serializable{
 	}
 
 
+
 	public void setDescriptif(String descriptif) {
 		this.descriptif = descriptif;
 	}
 
 
+
 	public String getImage() {
 		return image;
 	}
+
 
 
 	public void setImage(String image) {
@@ -125,14 +132,14 @@ public class Article implements Serializable{
 
 
 
-	public double getQuantiteVendueKg() {
-		return quantiteVendueKg;
+	public double getQuantiteVendue() {
+		return quantiteVendue;
 	}
 
 
 
-	public void setQuantiteVendueKg(double quantiteVendueKg) {
-		this.quantiteVendueKg = quantiteVendueKg;
+	public void setQuantiteVendue(double quantiteVendue) {
+		this.quantiteVendue = quantiteVendue;
 	}
 
 
@@ -146,8 +153,19 @@ public class Article implements Serializable{
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-	
-	
+
+
+
+	public double getPrixKilo() {
+		return prixKilo;
+	}
+
+
+
+	public void setPrixKilo(double prixKilo) {
+		this.prixKilo = prixKilo;
+	}
+
 
 
 	public Categorie getCategorie() {
@@ -155,9 +173,11 @@ public class Article implements Serializable{
 	}
 
 
+
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+
 
 
 	public Stock getStock() {
@@ -165,24 +185,18 @@ public class Article implements Serializable{
 	}
 
 
+
 	public void setStock(Stock stock) {
 		this.stock = stock;
 	}
 
 
-	public List<Commande> getCommandes() {
-		return commandes;
-	}
-
-
-	public void setCommandes(List<Commande> commandes) {
-		this.commandes = commandes;
-	}
 
 
 	public List<Approvisionnement> getApprovisionnements() {
 		return approvisionnements;
 	}
+
 
 
 	public void setApprovisionnements(List<Approvisionnement> approvisionnements) {

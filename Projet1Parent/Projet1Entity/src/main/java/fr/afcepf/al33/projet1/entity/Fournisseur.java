@@ -31,8 +31,7 @@ public abstract class Fournisseur implements Serializable{
 	
 	@Column(name="nom")
 	private String nom;
-	
-	
+		
 	@Column(name="adresse")
 	private String adresse;
 	

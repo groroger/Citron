@@ -28,6 +28,10 @@ INSERT INTO `ville`(id, codePostal, nom) VALUES (27, '69007', 'LYON');
 INSERT INTO `ville`(id, codePostal, nom) VALUES (28, '69008', 'LYON');
 INSERT INTO `ville`(id, codePostal, nom) VALUES (29, '69009', 'LYON');
 INSERT INTO `ville`(id, codePostal, nom) VALUES (30, '92120', 'MONTROUGE');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (31, '78720', 'CERNAY LA VILLE');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (32, '78120', 'CLAIREFONTAINE');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (33, '69760', 'LIMONEST');
+INSERT INTO `ville`(id, codePostal, nom) VALUES (34, '69330', 'MEYZIEU');
 
 INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (1, 1, 'DE TINGUY', 'Benjamin', '1983-08-15','01.02.05.40.55', '06.08.57.03.09', 'b.detinguy@test.com', '2 Rue Joubert', null, 'bdetinguy', 'password', '1a2b3c');
 INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (2, 2, 'RONDAL', 'Pierre', '1955-10-14','01.38.23.68.74', '06.28.48.37.18', 'p.rondal@test.com', '26 Rue Montparnasse', 'Immeuble Laroche', 'prondal', 'password', '1a2b3c');
@@ -49,5 +53,33 @@ INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, num
 INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (18, 13, 'ABIZMIL','Simon','1978-03-21', '01.45.46.47.48', '06.12.23.34.45', 's.abizmil@test.com', '30 Rue des Gobelins', null, 'sabizmil', 'password', '1a2b3c');
 INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, numeroPort, email, adresse, complementAdresse, login, password, salt) VALUES (19, 27, 'BOUCHON','Marcel','1974-03-29', '04.41.37.15.36', '06.27.23.34.15', 'm.bouchon@test.com', '10 Rue de la Place Arrais', null, 'mbouchon', 'password', '1a2b3c');
 
+INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (1, 31, 'FERME DES CHARMES', '01.34.85.13.21', '06.80.80.80.80', 'lescharmes@test.fr', '120 Rue de Saint Robert', 'Hameau de Saint Robert');
+INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (2, 32, 'LE VERGER DE SOPHIE', '01.34.85.29.78', '06.90.90.90.90', 'vergerdesophie@test.fr', '10 Route de Clairefontaine', null);
+INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (3, 33, 'LA FERME DU BOUT DES PRES', '04.85.45.48.25', '06.70.70.70.70', 'fermeduboutdespres@test.fr', '18 Chemin de Traverse', null);
+INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (4, 34, 'JOZIACK CLEMENT', '04.89.78.28.15', '06.60.60.60.60', 'cjoziack@test.fr', '28 rue de Prédecelle', 'La Filollière"');
 
+INSERT INTO `categorie`(id, nomCategorie) VALUES (1, 'Toutes les catégories');
+INSERT INTO `categorie`(id, nomCategorie) VALUES (2, 'Fruits');
+INSERT INTO `categorie`(id, nomCategorie) VALUES (3, 'Légumes');
+INSERT INTO `categorie`(id, nomCategorie) VALUES (4, 'Salades');
+INSERT INTO `categorie`(id, nomCategorie) VALUES (5, 'Herbes aromatiques');
+INSERT INTO `categorie`(id, nomCategorie) VALUES (6, 'Condiments');
+
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (1, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (2, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (3, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (4, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (5, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (6, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (7, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (8, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (9, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (10, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (11, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (12, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (13, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (14, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (15, 300, 300);
+
+/*INSERT INTO `article`(id, nom, descriptif, image, categorie_id,stock_id)*/
 
