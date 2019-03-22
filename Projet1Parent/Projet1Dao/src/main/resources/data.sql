@@ -59,8 +59,8 @@ INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adr
 INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (4, 34, 'JOZIACK CLEMENT', '04.89.78.28.15', '06.60.60.60.60', 'cjoziack@test.fr', '28 rue de Prédecelle', 'La Filollière"');
 
 INSERT INTO `categorie`(id, nomCategorie) VALUES (1, 'Toutes les catégories');
-INSERT INTO `categorie`(id, nomCategorie) VALUES (2, 'Fruits');
-INSERT INTO `categorie`(id, nomCategorie) VALUES (3, 'Légumes');
+INSERT INTO `categorie`(id, nomCategorie) VALUES (2, 'Fruits Frais');
+INSERT INTO `categorie`(id, nomCategorie) VALUES (3, 'Légumes Frais');
 INSERT INTO `categorie`(id, nomCategorie) VALUES (4, 'Salades');
 INSERT INTO `categorie`(id, nomCategorie) VALUES (5, 'Herbes aromatiques');
 INSERT INTO `categorie`(id, nomCategorie) VALUES (6, 'Condiments');
@@ -81,5 +81,10 @@ INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES
 INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (14, 300, 300);
 INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (15, 300, 300);
 
-/*INSERT INTO `article`(id, nom, descriptif, image, categorie_id,stock_id)*/
+INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (1, 1, 6, 'Ail', 'Ail blanc avec 3 têtes pour parfumer tous vos plats. Origine / Calibre: 250 gr - France - Cal 50/70 - Catégorie : 1', 'ail.jpg', '0.250', '1.99', '7.96');
+INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (2, 2, 3, 'Carottes', 'La carotte est un légume qui se consomme en toutes saisons. Délicieuse, elle est riche en bêta-carotène, en provitamine A, en minéraux et pauvre en calories.  Origine / Calibre : 1 kg - France - Cal 20/40 - Catégorie : 2', 'carotte.jpg', '1', '2.88', '2.88');
+INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (3, 3, 3, 'Celeri Rave', 'Ingrédient de base du fameux céleri rémoulade, ce légume racine révèle volontiers sa saveur un peu piquante dans des préparations de crudités variées. Sa chair parfumée donne aussi de délicieux gratins, des soupes ou des purées savoureuses. Sa composition en fait un excellent partenaire santé : riche en fibres, il comporte du potassium, du calcium, du fer, des oligoéléments.  Origine / calibre : 750 gr - France - Catégorie : 1', 'carotte.jpg', '0.750', '2.99', '3.99');
+
+
+
 
