@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+
+	<title>Approvisionnement</title>
+
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
+	
+</h:head>
+<h:body>
+
+
+	<h:form id="formApprovisionnement">
+	
+	<h4 id="titre1">Choisissez l'article à ajouter:</h4><br/><br/>
+	
+		<h:outputLabel value="Article" for="article" />
+		<b:selectOneMenu id="article"
+			value="#{mbApprovisionnement.approvisionnement.article}" style="width:400px">
+			<f:selectItems value="#{mbApprovisionnement.articles}" var="article"
+				itemLabel="#{article.nom}"></f:selectItems>
+		</b:selectOneMenu>
+
+		<b:dateTimePicker format="DD.MM.YYYY" fieldSize="lg"
+			margin-bottom="5px" placeholder="Date d'achat"
+			value="#{mbApprovisionnement.approvisionnement.dateApprovisionnement}" iconPosition='left'
+			colMd="10" />
+
+		<b:selectOneMenu id="fournisseur"
+			value="#{mbApprovisionnement.approvisionnement.fournisseur}" style="width:400px">
+			<f:selectItem itemLabel="Fournisseur" itemValue="" />
+			<f:selectItems value="#{mbApprovisionnement.fournisseurs}" var="fournisseur"
+				itemLabel="#{fournisseur.nom}"></f:selectItems>
+		</b:selectOneMenu>		
+
+		<label>Quantité: </label>
+		<h:inputText value="#{mbApprovisionnement.approvisionnement.quantite}" />
+		<br />
+
+
+		<label>Prix: </label>
+		<h:inputText value="#{mbApprovisionnement.approvisionnement.prix}" />
+		<br />
+		
+		<label>Référence du lot: </label>
+		<h:inputText value="#{mbApprovisionnement.approvisionnement.lot}" />
+		<br />
+		
+		<b:dateTimePicker format="DD.MM.YYYY" fieldSize="lg"
+		margin-bottom="5px" placeholder="Date de péremption"
+		value="#{mbApprovisionnement.approvisionnement.datePeremption}" iconPosition='left'
+		colMd="10" />
+		
+		
+
+		<h:commandButton action="#{mbApprovisionnement.addApprovisionnementToStock()}"
+			value="Ajouter" />
+
+	</h:form>
+</h:body>
+</html>

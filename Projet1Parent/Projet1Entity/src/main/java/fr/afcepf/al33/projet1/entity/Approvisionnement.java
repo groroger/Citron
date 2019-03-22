@@ -44,6 +44,9 @@ public class Approvisionnement implements Serializable{
 	@Column(name="dateApprovisionnement")
 	private Date dateApprovisionnement;
 	
+	@Column(name="datePeremption")
+	private Date datePeremption;
+	
 	@Column(name="lot")
 	private String lot;
 	
@@ -51,6 +54,22 @@ public class Approvisionnement implements Serializable{
 	public Approvisionnement() {
 		super();
 	}
+	
+	
+
+	public Approvisionnement(Integer id, Article article, Fournisseur fournisseur, int quantite, double prix,
+			Date dateApprovisionnement, Date datePeremption, String lot) {
+		super();
+		this.id = id;
+		this.article = article;
+		this.fournisseur = fournisseur;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.dateApprovisionnement = dateApprovisionnement;
+		this.datePeremption = datePeremption;
+		this.lot = lot;
+	}
+
 
 
 	public Integer getId() {
@@ -113,6 +132,16 @@ public class Approvisionnement implements Serializable{
 	}
 
 
+	public Date getDatePeremption() {
+		return datePeremption;
+	}
+
+
+	public void setDatePeremption(Date datePeremption) {
+		this.datePeremption = datePeremption;
+	}
+
+
 	public String getLot() {
 		return lot;
 	}
@@ -121,5 +150,7 @@ public class Approvisionnement implements Serializable{
 	public void setLot(String lot) {
 		this.lot = lot;
 	}
+
+
 	
 }
