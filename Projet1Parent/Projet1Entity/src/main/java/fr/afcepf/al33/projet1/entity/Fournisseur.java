@@ -16,8 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "fournisseur")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Fournisseur implements Serializable{
+public class Fournisseur implements Serializable{
 
 	/**
 	 * 

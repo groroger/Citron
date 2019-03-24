@@ -25,7 +25,7 @@ public class ArticleDao extends GenericDao<Article> implements ArticleIdao {
 	@Override
 	public List<Article> getAll() {
 		List<Article> articles=null;
-		String REQ = "SELECT fourniture from Fourniture fourniture ORDER BY fourniture.libelle";
+		String REQ = "SELECT article from Article article ORDER BY article.nom";
 		Query queryJPQL = em.createQuery(REQ);
 		articles = queryJPQL.getResultList();
 		return articles;
@@ -35,9 +35,9 @@ public class ArticleDao extends GenericDao<Article> implements ArticleIdao {
 	@Override
 	public List<Article> getByIdCategorie(Categorie c) {
 		List<Article> articlesParCategorie=null;
-		String REQ= "SELECT fourniture from Fourniture fourniture WHERE fourniture.categorie= :idf ";
+		String REQ= "SELECT article from Article article WHERE article.categorie= :idCat ";
 		Query queryJPQL = em.createQuery(REQ);
-		queryJPQL.setParameter("idf", c);
+		queryJPQL.setParameter("idCat", c);
 		articlesParCategorie = queryJPQL.getResultList();
 		return articlesParCategorie ;
 		
