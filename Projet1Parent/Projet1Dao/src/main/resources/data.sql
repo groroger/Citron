@@ -80,6 +80,21 @@ INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES
 INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (13, 300, 300);
 INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (14, 300, 300);
 INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (15, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (16, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (17, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (18, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (19, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (20, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (21, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (22, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (23, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (24, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (25, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (26, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (27, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (28, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (29, 300, 300);
+INSERT INTO `stock`(id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (30, 300, 300);
 
 INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (1, 1, 6, 'Ail', 'Ail blanc avec 3 têtes pour parfumer tous vos plats. Origine / Calibre: 250 gr - France - Cal 50/70 - Catégorie : 1', 'ail.jpg', '0.250', '1.99', '7.96');
 INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (2, 2, 3, 'Carottes', 'La carotte est un légume qui se consomme en toutes saisons. Délicieuse, elle est riche en bêta-carotène, en provitamine A, en minéraux et pauvre en calories.  Origine / Calibre : 1 kg - France - Cal 20/40 - Catégorie : 2', 'carotte.jpg', '1.00', '2.88', '2.88');
@@ -95,7 +110,8 @@ INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quant
 INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (12, 12, 4, 'Laitue iceberg', 'Laitue iceberg pour une salade croquante. Origine / Calibre : 6 fruits - 500 gr - France - Catégorie : 1', 'laitue.jpg', '0.5', '2.50', '5.00');
 INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (13, 13, 5, 'Laurier sec', 'Le composant indispensable du fameux "bouquet garni". Origine / Calibre : 30 gr - France - Catégorie : 2', 'laurier.jpg', '0.03', '1.57', '52.33');
 INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (14, 14, 3, 'Navet', 'Au même titre que la carotte et le poireau, le navet fait partie de la trilogie des légumes dits basiques. Il est surtout apprécié au printemps pour sa saveur douce de primeur et en hiver pour la préparation de soupes et de pot-au-feu. Origine / Calibre : 500 gr - France - Cal : 40/60 - Catégorie : 1.', 'navet.jpg', '0.50', '2.94', '5.88');
-INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (15, 15, 3, 'Oignon botte', 'L''oignon en botte est un condiment dont l''usage est très répandu en cuisine. Son parfum est plus doux que son cousin l''oignon "blanc". Il est donc conseillé de le déguster cru en salade afin de profiter pleinement de sa saveur. Origine / Calibre : 150 gr - France - Catégorie : 1.', 'oignonBotte.jpg', '0.15', '2.96', '19.73');
+INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (15, 15, 6, 'Oignon botte', 'L''oignon en botte est un condiment dont l''usage est très répandu en cuisine. Son parfum est plus doux que son cousin l''oignon "blanc". Il est donc conseillé de le déguster cru en salade afin de profiter pleinement de sa saveur. Origine / Calibre : 150 gr - France - Catégorie : 1.', 'oignonBotte.jpg', '0.15', '2.96', '19.73');
+INSERT INTO `article`(id, stock_id, categorie_id, nom, descriptif, image , quantiteVendue, prix, prixKilo) VALUES (16, 16, 6, 'Oignon jaune', ' Cultivé depuis plus de 5 000 ans et apprécié pour son goût subtil et ses arômes prononcés, l''oignon jaune est l''un des piliers de la cuisine et de l''alimentation européenne. Origine / Calibre  : 1 kg - France - Cal 40/60 - Catégorie : 1', 'oignonJaune.jpg', '1.00', '2.18', '2.18');
 
 
 
