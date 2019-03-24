@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+
+	<title>Stock</title>
+
+</h:head>
+<h:body>
+
+	<f:metadata>
+		<f:event listener="#{mbStock.init()}" type="preRenderView"></f:event>
+	</f:metadata>
+	
+
+
+	<h:form id="formAfficherStock">
+	
+<h3 style="color: rgb(0,136,143); font-weight: bold; text-align:center;">Stock</h3><br/><br/>
+
+	<b:dataTable value="#{mbStock.stocks}" 
+				 var="ligneStock"
+				 pdf="true"
+				 print="true" 
+				 excel="true"
+				 border="true"
+				 info="false"
+				 page-length="10"
+				 selectionMode="single">
+		
+		<b:dataTableColumn>
+			<f:facet name="header">Image</f:facet>
+			<h:graphicImage value="/pics/articlesImages/#{ligneStock.article.image}" />
+		</b:dataTableColumn> 
+		<b:dataTableColumn>
+			<f:facet name="header">Articles</f:facet>
+			<h:outputLabel value="#{ligneStock.article.nom}" />
+		</b:dataTableColumn>
+		<b:dataTableColumn>
+			<f:facet name="header">Quantités</f:facet>
+			<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+		</b:dataTableColumn>
+		<b:dataTableColumn>
+			<f:facet name="header">Description</f:facet>
+			<h:outputLabel value="#{ligneStock.article.descriptif}" />
+		</b:dataTableColumn>
+
+	</b:dataTable>
+
+</h:form>
+
+
+</h:body>
+
+
+</html>
