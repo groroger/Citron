@@ -56,7 +56,7 @@ INSERT INTO `client`(id, ville_id, nom, prenom, dateDeNaissance, numeroFixe, num
 INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (1, 31, 'FERME DES CHARMES', '01.34.85.13.21', '06.80.80.80.80', 'lescharmes@test.fr', '120 Rue de Saint Robert', 'Hameau de Saint Robert');
 INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (2, 32, 'LE VERGER DE SOPHIE', '01.34.85.29.78', '06.90.90.90.90', 'vergerdesophie@test.fr', '10 Route de Clairefontaine', null);
 INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (3, 33, 'LA FERME DU BOUT DES PRES', '04.85.45.48.25', '06.70.70.70.70', 'fermeduboutdespres@test.fr', '18 Chemin de Traverse', null);
-INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (4, 34, 'JOZIACK CLEMENT', '04.89.78.28.15', '06.60.60.60.60', 'cjoziack@test.fr', '28 rue de Prédecelle', 'La Filollière"');
+INSERT INTO `fournisseur` (id, ville_id, nom, numeroFixe, numeroPort, email, adresse, complementAdresse) VALUES (4, 34, 'JOZIACK CLEMENT', '04.89.78.28.15', '06.60.60.60.60', 'cjoziack@test.fr', '28 rue de Prédecelle', 'La Filollière');
 
 INSERT INTO `categorie`(id, nomCategorie) VALUES (1, 'Toutes les catégories');
 INSERT INTO `categorie`(id, nomCategorie) VALUES (2, 'Fruits Frais');
