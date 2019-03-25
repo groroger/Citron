@@ -43,7 +43,7 @@ public class RechercherClientManagedBean implements Serializable {
 		 FacesContext facesContext = FacesContext.getCurrentInstance();
 		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		 session.setAttribute("foundClient", foundClient);
-		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/ficheClient.xhtml?faces-redirect=true");
+		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/ficheClient.xhtml?faces-redirect=true");
 	}
 	
 	
@@ -78,9 +78,6 @@ public class RechercherClientManagedBean implements Serializable {
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
-
-	
-
 
 	
 }

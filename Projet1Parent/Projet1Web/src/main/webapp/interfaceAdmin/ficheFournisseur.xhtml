@@ -7,7 +7,7 @@
 
 <h:head>
 
-	<title>Recherche d'adherent</title>
+	<title>Fiche du fournisseur</title>
 	
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
 
@@ -16,7 +16,7 @@
 <h:body>
 
 	<f:metadata>
-		<f:event listener="#{mbFicheClient.init()}" type="preRenderView"></f:event>
+		<f:event listener="#{mbFicheFournisseur.init()}" type="preRenderView"></f:event>
 	</f:metadata>
 	
 	
@@ -26,18 +26,18 @@
 
 <b:form id="formFicheClient">
 
-<h4 id="titre1">Contact de l'adhérent</h4><br/><br/>
+<h4 id="titre1">Contact du fournisseur</h4><br/><br/>
 
 		<b:panelGrid columns="2">
 
 			<b:inputText
-				value="#{mbFicheClient.client.prenom} #{mbFicheClient.client.nom}"
+				value="#{mbFicheFournisseur.fournisseur.nom}"
 				disabled="true" fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="user" />
 				</f:facet>
 			</b:inputText>
-			<b:inputText value="#{mbFicheClient.client.email}"
+			<b:inputText value="#{mbFicheFournisseur.fournisseur.email}"
 				disabled="true" fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<h:outputText value="@" />
@@ -45,29 +45,37 @@
 			</b:inputText>
 
 			<b:inputText
-				value="#{mbFicheClient.client.complementAdresse} #{mbFicheClient.client.adresse}"
+				value="#{mbFicheFournisseur.fournisseur.complementAdresse}"
 				disabled="true" fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
-			<b:inputText value="#{mbFicheClient.client.numeroFixe}"
+
+			<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroFixe}"
 				disabled="true" fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone-alt" />
 				</f:facet>
 			</b:inputText>
-
-			<b:inputText value="#{mbFicheClient.client.ville.nom}"
+			<b:inputText
+				value="#{mbFicheFournisseur.fournisseur.adresse}"
 				disabled="true" fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
-			<b:inputText value="#{mbFicheClient.client.numeroPort}"
+
+			<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroPort}"
 				disabled="true" fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone" />
+				</f:facet>
+			</b:inputText>
+			<b:inputText value="#{mbFicheFournisseur.fournisseur.ville.nom}"
+				disabled="true" fieldSize="lg" colMd="8">
+				<f:facet name="prepend">
+					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
 		</b:panelGrid>

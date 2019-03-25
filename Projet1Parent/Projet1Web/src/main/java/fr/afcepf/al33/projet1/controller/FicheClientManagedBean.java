@@ -52,18 +52,6 @@ public class FicheClientManagedBean implements Serializable{
 	}
 	
 
-	
-
-
-
-	public Client getById(int a) {
-		Client client = new Client();
-		client=proxyClient.adherentByIdJPQL(a);
-
-		return client; 
-	}
-
-
 
 	public ClientIBusiness getProxyClient() {
 		return proxyClient;

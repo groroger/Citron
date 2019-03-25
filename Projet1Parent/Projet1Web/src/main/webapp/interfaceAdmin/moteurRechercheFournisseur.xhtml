@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+
+	<title>Recherche du fournisseur</title>
+	
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
+	
+
+
+</h:head>
+<h:body>
+
+
+
+	<h:form id="formRechercheFournisseur">
+
+		<h4 id="titre">Liste des fournisseurs</h4>
+		<br />
+		<br />
+
+		<b:dataTable value="#{mbFindFournisseur.fournisseurs}" var="fourn"
+			excel="false" pdf="false" print="false" border="true" info="false"
+			page-length="10" selectionMode="single"
+			onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindFournisseur.onSelect(fourn, typeOfSelection, indexes);">
+
+			<b:dataTableColumn>
+				<f:facet name="header">Nom</f:facet>
+				<h:outputLabel value="#{fourn.nom}" />
+			</b:dataTableColumn>
+			<b:dataTableColumn>
+				<f:facet name="header">Adresse</f:facet>
+				<h:outputLabel value="#{fourn.adresse}" />
+			</b:dataTableColumn>
+			<b:dataTableColumn>
+				<f:facet name="header">Code Postal</f:facet>
+				<h:outputLabel value="#{fourn.ville.codePostal}" />
+			</b:dataTableColumn>
+			<b:dataTableColumn>
+				<f:facet name="header">Ville</f:facet>
+				<h:outputLabel value="#{fourn.ville.nom}" />
+			</b:dataTableColumn>
+			<b:dataTableColumn>
+				<f:facet name="header">Téléphone</f:facet>
+				<h:outputLabel value="#{fourn.numeroFixe}" />
+			</b:dataTableColumn>
+			<b:dataTableColumn>
+				<f:facet name="header">Portable</f:facet>
+				<h:outputLabel value="#{fournl.numeroPort}" />
+			</b:dataTableColumn>
+			<b:dataTableColumn>
+				<f:facet name="header">Email</f:facet>
+				<h:outputLabel value="#{fourn.email}" />
+			</b:dataTableColumn>
+
+		</b:dataTable>
+	</h:form>
+</h:body>
+</html>
