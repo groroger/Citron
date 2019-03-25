@@ -26,11 +26,11 @@ public class AfficherStockManagedBean implements Serializable{
 
 
 	private List <Stock> stocks;
-	
+
 	
 	@EJB
 	private StockIBusiness proxyStock;
-	
+		
 	
 
 	@PostConstruct
@@ -38,8 +38,8 @@ public class AfficherStockManagedBean implements Serializable{
 		stocks=proxyStock.getAll();
 		
 	}
-
-
+	
+	
 
 
 	public List<Stock> getStocks() {
@@ -67,5 +67,7 @@ public class AfficherStockManagedBean implements Serializable{
 		this.proxyStock = proxyStock;
 	}
 
+	
+	
 
 }
