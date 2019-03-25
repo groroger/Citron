@@ -27,13 +27,13 @@
 		<b:panelGrid columns="2">
 
 			<b:inputText
-				value="#{mbFicheFournisseur.fournisseur.nom}"
+				value="#{mbUpdateFournisseur.fournisseur.nom}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="user" />
 				</f:facet>
 			</b:inputText>
-			<b:inputText value="#{mbFicheFournisseur.fournisseur.email}"
+			<b:inputText value="#{mbUpdateFournisseur.fournisseur.email}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<h:outputText value="@" />
@@ -41,33 +41,38 @@
 			</b:inputText>
 
 			<b:inputText
-				value="#{mbFicheFournisseur.fournisseur.complementAdresse}"
+				value="#{mbUpdateFournisseur.fournisseur.complementAdresse}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
 
-			<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroFixe}"
+			<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroFixe}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone-alt" />
 				</f:facet>
 			</b:inputText>
 			<b:inputText
-				value="#{mbFicheFournisseur.fournisseur.adresse}"
+				value="#{mbUpdateFournisseur.fournisseur.adresse}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
 
-			<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroPort}"
+			<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroPort}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone" />
 				</f:facet>
 			</b:inputText>
+		
+		     <b:selectOneMenu value="#{mbUpdateFournisseur.fournisseur.ville.codePostal}"  colMd="3" required="true"  labelColMd="2" select2="true">
+		
+			      <f:selectItems value="#{mbUpdateFournisseur.villes}" var="ville" itemValue="" itemLabel="#{ville.codePostal}" />
+		     </b:selectOneMenu>
 
 		</b:panelGrid>
 	</b:form>

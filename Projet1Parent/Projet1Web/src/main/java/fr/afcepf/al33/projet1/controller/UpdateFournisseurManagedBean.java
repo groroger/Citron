@@ -1,7 +1,7 @@
 package fr.afcepf.al33.projet1.controller;
 
 import java.io.Serializable;
-
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -13,8 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.FournisseurIBusiness;
-import fr.afcepf.al33.projet1.entity.Client;
+import fr.afcepf.al33.projet1.IBusiness.VilleIBusiness;
 import fr.afcepf.al33.projet1.entity.Fournisseur;
+import fr.afcepf.al33.projet1.entity.Ville;
 
 
 
@@ -30,10 +31,17 @@ public class UpdateFournisseurManagedBean implements Serializable{
 
 	@EJB
 	private FournisseurIBusiness proxyFournisseur;
+	
+	@EJB
+	private VilleIBusiness proxyVille;
+	
+
 
 	
 	@ManagedProperty(value="#{mbFindFournisseur.foundFournisseur}")
 	private Fournisseur fournisseur;
+	
+	private List<Ville> villes;
 
 	@PostConstruct
 	public void init() {
@@ -43,7 +51,7 @@ public class UpdateFournisseurManagedBean implements Serializable{
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		fournisseur = (Fournisseur) session.getAttribute("foundFournisseur");
 		
-	
+		villes = proxyVille.getAll();
 	}
 
 
@@ -65,4 +73,26 @@ public class UpdateFournisseurManagedBean implements Serializable{
 	public void setFournisseur(Fournisseur fournisseur) {
 		this.fournisseur = fournisseur;
 	}
+
+
+	public VilleIBusiness getProxyVille() {
+		return proxyVille;
+	}
+
+
+	public void setProxyVille(VilleIBusiness proxyVille) {
+		this.proxyVille = proxyVille;
+	}
+
+
+	public List<Ville> getVilles() {
+		return villes;
+	}
+
+
+	public void setVilles(List<Ville> villes) {
+		this.villes = villes;
+	}
+	
+	
 }

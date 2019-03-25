@@ -72,12 +72,13 @@
 					<b:icon name="phone" />
 				</f:facet>
 			</b:inputText>
-			<b:inputText value="#{mbFicheFournisseur.fournisseur.ville.nom}"
+			<b:inputText value="#{mbFicheFournisseur.fournisseur.ville.codePostal} #{mbFicheFournisseur.fournisseur.ville.nom}"
 				disabled="true" fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
+			
 		</b:panelGrid>
 		<b:panelGrid columns="3">
 			<b:button href="http://localhost:8080/Projet1Web/interfaceAdmin/updateFournisseur.xhtml"
