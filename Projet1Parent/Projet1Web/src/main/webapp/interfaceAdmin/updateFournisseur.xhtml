@@ -16,15 +16,11 @@
 <h:body>
 
 	<f:metadata>
-		<f:event listener="#{mbFicheFournisseur.init()}" type="preRenderView"></f:event>
+		<f:event listener="#{mbUpdateFournisseur.init()}" type="preRenderView"></f:event>
 	</f:metadata>
 	
 	
-
-
-
-
-<b:form id="formFicheFournisseur">
+<b:form id="formUpdateFournisseur">
 
 <h4 id="titre1">Contact du fournisseur</h4><br/><br/>
 
@@ -32,13 +28,13 @@
 
 			<b:inputText
 				value="#{mbFicheFournisseur.fournisseur.nom}"
-				disabled="true" fieldSize="lg" colMd="8">
+				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="user" />
 				</f:facet>
 			</b:inputText>
 			<b:inputText value="#{mbFicheFournisseur.fournisseur.email}"
-				disabled="true" fieldSize="lg" colMd="8">
+				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<h:outputText value="@" />
 				</f:facet>
@@ -46,44 +42,34 @@
 
 			<b:inputText
 				value="#{mbFicheFournisseur.fournisseur.complementAdresse}"
-				disabled="true" fieldSize="lg" colMd="8">
+				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
 
 			<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroFixe}"
-				disabled="true" fieldSize="lg" colMd="8">
+				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone-alt" />
 				</f:facet>
 			</b:inputText>
 			<b:inputText
 				value="#{mbFicheFournisseur.fournisseur.adresse}"
-				disabled="true" fieldSize="lg" colMd="8">
+				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
 
 			<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroPort}"
-				disabled="true" fieldSize="lg" colMd="8">
+				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone" />
 				</f:facet>
 			</b:inputText>
-			<b:inputText value="#{mbFicheFournisseur.fournisseur.ville.nom}"
-				disabled="true" fieldSize="lg" colMd="8">
-				<f:facet name="prepend">
-					<b:icon name="map-marker" />
-				</f:facet>
-			</b:inputText>
+
 		</b:panelGrid>
-		<b:panelGrid columns="3">
-			<b:button href="http://localhost:8080/Projet1Web/interfaceAdmin/updateFournisseur.xhtml"
-	            value="Mettre à jour" />
-	        <b:commandButton value="Supprimer" action="#{mbFicheFournisseur.delete()}" />
-        </b:panelGrid>
 	</b:form>
 
 </h:body>

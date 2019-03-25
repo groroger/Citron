@@ -29,8 +29,8 @@ public abstract class GenericDao<T> implements GenericIdao<T> {
 
 	@Override
 	public boolean supprimer(T t) {
-
-		em.remove(t);
+		em.remove(em.contains(t) ? t : em.merge(t));
+	//	em.remove(t);
 
 		return true;
 	}
