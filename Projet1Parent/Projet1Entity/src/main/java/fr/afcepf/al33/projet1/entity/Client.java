@@ -50,6 +50,15 @@ public class Client implements Serializable{
 	@JoinColumn(referencedColumnName="id")
 	private Ville ville;
 	
+	@Column(name="adresseFacturation")
+	private String adresseFacturation;
+	
+	@Column(name="complementAdresseFacturation")
+	private String complementAdresseFacturation;
+	@ManyToOne
+	@JoinColumn(referencedColumnName="id")
+	private Ville villeFacturation;
+	
 	@Column(name="numeroFixe")
 	private String numeroFixe;
 	
@@ -76,9 +85,9 @@ public class Client implements Serializable{
 	}
 
 
-
 	public Client(Integer id, String nom, String prenom, Date dateDeNaissance, String adresse, String complementAdresse,
-			Ville ville, String numeroFixe, String numeroPort, String email, String login, String password, String salt,
+			Ville ville, String adresseFacturation, String complementAdresseFacturation, Ville villeFacturation,
+			String numeroFixe, String numeroPort, String email, String login, String password, String salt,
 			List<Commande> commandes) {
 		super();
 		this.id = id;
@@ -88,6 +97,9 @@ public class Client implements Serializable{
 		this.adresse = adresse;
 		this.complementAdresse = complementAdresse;
 		this.ville = ville;
+		this.adresseFacturation = adresseFacturation;
+		this.complementAdresseFacturation = complementAdresseFacturation;
+		this.villeFacturation = villeFacturation;
 		this.numeroFixe = numeroFixe;
 		this.numeroPort = numeroPort;
 		this.email = email;
@@ -96,123 +108,175 @@ public class Client implements Serializable{
 		this.salt = salt;
 		this.commandes = commandes;
 	}
-
-
 
 
 	public Integer getId() {
 		return id;
 	}
 
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 
 	public String getNom() {
 		return nom;
 	}
 
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 
 	public String getPrenom() {
 		return prenom;
 	}
 
+
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
 
 	public Date getDateDeNaissance() {
 		return dateDeNaissance;
 	}
 
+
 	public void setDateDeNaissance(Date dateDeNaissance) {
 		this.dateDeNaissance = dateDeNaissance;
 	}
+
 
 	public String getAdresse() {
 		return adresse;
 	}
 
+
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+
 
 	public String getComplementAdresse() {
 		return complementAdresse;
 	}
 
+
 	public void setComplementAdresse(String complementAdresse) {
 		this.complementAdresse = complementAdresse;
 	}
+
 
 	public Ville getVille() {
 		return ville;
 	}
 
+
 	public void setVille(Ville ville) {
 		this.ville = ville;
 	}
+
+
+	public String getAdresseFacturation() {
+		return adresseFacturation;
+	}
+
+
+	public void setAdresseFacturation(String adresseFacturation) {
+		this.adresseFacturation = adresseFacturation;
+	}
+
+
+	public String getComplementAdresseFacturation() {
+		return complementAdresseFacturation;
+	}
+
+
+	public void setComplementAdresseFacturation(String complementAdresseFacturation) {
+		this.complementAdresseFacturation = complementAdresseFacturation;
+	}
+
+
+	public Ville getVilleFacturation() {
+		return villeFacturation;
+	}
+
+
+	public void setVilleFacturation(Ville villeFacturation) {
+		this.villeFacturation = villeFacturation;
+	}
+
 
 	public String getNumeroFixe() {
 		return numeroFixe;
 	}
 
+
 	public void setNumeroFixe(String numeroFixe) {
 		this.numeroFixe = numeroFixe;
 	}
+
 
 	public String getNumeroPort() {
 		return numeroPort;
 	}
 
+
 	public void setNumeroPort(String numeroPort) {
 		this.numeroPort = numeroPort;
 	}
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getLogin() {
 		return login;
 	}
 
+
 	public void setLogin(String login) {
 		this.login = login;
 	}
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 
 	public String getSalt() {
 		return salt;
 	}
 
+
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
+
 
 	public List<Commande> getCommandes() {
 		return commandes;
 	}
 
+
 	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
-	
-	
-	
+
 }
