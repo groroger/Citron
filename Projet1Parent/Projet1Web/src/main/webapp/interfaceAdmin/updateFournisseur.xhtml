@@ -68,11 +68,29 @@
 					<b:icon name="phone" />
 				</f:facet>
 			</b:inputText>
+			
+			<b:inputText value="#{mbUpdateFournisseur.fournisseur.ville.codePostal}"
+				fieldSize="lg" colMd="8">
+				<f:facet name="prepend">
+					<b:icon name="map-marker" />
+				</f:facet>
+			</b:inputText>
+			
+			<b:inputText value="#{mbUpdateFournisseur.fournisseur.ville.nom}"
+				fieldSize="lg" colMd="8">
+				<f:facet name="prepend">
+					<b:icon name="map-marker" />
+				</f:facet>
+			</b:inputText>
+			
+			<b:panelGrid columns="3">
+		        <b:commandButton value="Enregistrer" action="#{mbUpdateFournisseur.update()}" />
+        	</b:panelGrid>
 		
-		     <b:selectOneMenu value="#{mbUpdateFournisseur.fournisseur.ville.codePostal}"  colMd="3" required="true"  labelColMd="2" select="true">
+<!-- 		     <b:selectOneMenu value="#{mbUpdateFournisseur.fournisseur.ville.codePostal}"  colMd="3" required="true"  labelColMd="2" select="true"> -->
 		
-			      <f:selectItems value="#{mbUpdateFournisseur.villes}" var="ville" itemValue="" itemLabel="#{ville.codePostal}" />
-		     </b:selectOneMenu>
+<!-- 			      <f:selectItems value="#{mbUpdateFournisseur.villes}" var="ville" itemValue="" itemLabel="#{ville.codePostal}" /> -->
+<!-- 		     </b:selectOneMenu> -->
 
 		</b:panelGrid>
 	</b:form>

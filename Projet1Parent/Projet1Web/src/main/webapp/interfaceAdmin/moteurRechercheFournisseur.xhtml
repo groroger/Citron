@@ -31,8 +31,8 @@
 		<b:dataTable value="#{mbFindFournisseur.fournisseurs}" var="fourn"
 			excel="false" pdf="false" print="false" border="true" info="false"
 			page-length="10" selectionMode="single"
-			onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindFournisseur.onSelect(fourn, typeOfSelection, indexes);">
-
+			onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindFournisseur.onSelect(fourn, typeOfSelection, indexes);"
+			paginated="false">
 			<b:dataTableColumn>
 				<f:facet name="header">Nom</f:facet>
 				<h:outputLabel value="#{fourn.nom}" />
@@ -55,7 +55,7 @@
 			</b:dataTableColumn>
 			<b:dataTableColumn>
 				<f:facet name="header">Portable</f:facet>
-				<h:outputLabel value="#{fournl.numeroPort}" />
+				<h:outputLabel value="#{fourn.numeroPort}" />
 			</b:dataTableColumn>
 			<b:dataTableColumn>
 				<f:facet name="header">Email</f:facet>

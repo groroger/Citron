@@ -53,6 +53,14 @@ public class UpdateFournisseurManagedBean implements Serializable{
 		
 		villes = proxyVille.getAll();
 	}
+	
+	public void update() {
+		
+		proxyFournisseur.update(fournisseur);
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/ficheFournisseur.xhtml?faces-redirect=true");
+	}
 
 
 	public FournisseurIBusiness getProxyFournisseur() {
