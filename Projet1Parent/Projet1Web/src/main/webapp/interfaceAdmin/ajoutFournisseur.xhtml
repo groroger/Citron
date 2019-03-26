@@ -15,25 +15,23 @@
 </h:head>
 <h:body>
 
-	<f:metadata>
-		<f:event listener="#{mbUpdateFournisseur.init()}" type="preRenderView"></f:event>
-	</f:metadata>
-	
-	
-<b:form id="formUpdateFournisseur">
 
-<h4 id="titre1">Contact du fournisseur</h4><br/><br/>
+	
+	
+<b:form id="formAjoutFournisseur">
+
+<h4 id="titre1">Nouveau fournisseur</h4><br/><br/>
 
 		<b:panelGrid columns="2">
 
 			<b:inputText
-				value="#{mbUpdateFournisseur.fournisseur.nom}"
+				value="#{mbAjoutFournisseur.fournisseur.nom}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="user" />
 				</f:facet>
 			</b:inputText>
-			<b:inputText value="#{mbUpdateFournisseur.fournisseur.email}"
+			<b:inputText value="#{mbAjoutFournisseur.fournisseur.email}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<h:outputText value="@" />
@@ -41,44 +39,43 @@
 			</b:inputText>
 
 			<b:inputText
-				value="#{mbUpdateFournisseur.fournisseur.complementAdresse}"
+				value="#{mbAjoutFournisseur.fournisseur.complementAdresse}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
 
-			<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroFixe}"
+			<b:inputText value="#{mbAjoutFournisseur.fournisseur.numeroFixe}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone-alt" />
 				</f:facet>
 			</b:inputText>
 			<b:inputText
-				value="#{mbUpdateFournisseur.fournisseur.adresse}"
+				value="#{mbAjoutFournisseur.fournisseur.adresse}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="map-marker" />
 				</f:facet>
 			</b:inputText>
 
-			<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroPort}"
+			<b:inputText value="#{mbAjoutFournisseur.fournisseur.numeroPort}"
 				fieldSize="lg" colMd="8">
 				<f:facet name="prepend">
 					<b:icon name="phone" />
 				</f:facet>
 			</b:inputText>
 			
-		     <b:selectOneMenu value="#{mbUpdateFournisseur.fournisseur.ville}" colMd="3" required="true"  labelColMd="2" select="true">
+			
+		     <b:selectOneMenu value="#{mbAjoutFournisseur.fournisseur.ville}" colMd="3" required="true"  labelColMd="2" select="true">
 				  <f:selectItem itemLabel="Ville" itemValue="" noSelectionOption="true" />
-			      <f:selectItems value="#{mbUpdateFournisseur.villes}" var="ville"  itemLabel="#{ville.codePostal} #{ville.nom}" />
+			      <f:selectItems value="#{mbAjoutFournisseur.villes}" var="ville"  itemLabel="#{ville.codePostal} #{ville.nom}" />
 		     </b:selectOneMenu>
 			
 			<b:panelGrid columns="3">
-		        <b:commandButton value="Enregistrer" action="#{mbUpdateFournisseur.update()}" />
+		        <b:commandButton value="Enregistrer" action="#{mbAjoutFournisseur.ajout()}" />
         	</b:panelGrid>
-		
-
 
 		</b:panelGrid>
 	</b:form>

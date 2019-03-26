@@ -8,9 +8,11 @@
 <h:head>
 
 	<title>Recherche du fournisseur</title>
-	
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
-	
+
+	<link
+		href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+		rel="stylesheet" />
+
 
 
 </h:head>
@@ -61,8 +63,12 @@
 				<f:facet name="header">Email</f:facet>
 				<h:outputLabel value="#{fourn.email}" />
 			</b:dataTableColumn>
-
 		</b:dataTable>
+		<b:panelGrid columns="2">
+			<b:button
+				href="http://localhost:8080/Projet1Web/interfaceAdmin/ajoutFournisseur.xhtml"
+				value="Ajouter un nouveau fournisseur" />
+		</b:panelGrid>
 	</h:form>
 </h:body>
 </html>

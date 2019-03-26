@@ -49,7 +49,6 @@ public class FicheFournisseurManagedBean implements Serializable{
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		fournisseur = (Fournisseur) session.getAttribute("foundFournisseur");
 		
-	
 	}
 
 	public void delete() {
@@ -80,10 +79,5 @@ public class FicheFournisseurManagedBean implements Serializable{
 	public void setFournisseur(Fournisseur fournisseur) {
 		this.fournisseur = fournisseur;
 	}
-
-
-
-	
-
 	
 }
