@@ -69,12 +69,8 @@ public class ApprovisionnementManagedBean implements Serializable{
 	
 	stock = proxyStock.searchById(approvisionnement.getArticle().getId());
 	approvisionnement.setStock(stock);
+	approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteCommandee());
 	proxyApprovisionnement.addApprovisionnement(approvisionnement);
-		
-	
-	stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() + approvisionnement.getQuantite());
-	stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() + approvisionnement.getQuantite());
-	proxyStock.update(stock);
 		
 		
 	 FacesContext facesContext = FacesContext.getCurrentInstance();

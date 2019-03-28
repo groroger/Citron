@@ -35,8 +35,11 @@ public class Approvisionnement implements Serializable{
 	@JoinColumn(referencedColumnName="id")
 	private Fournisseur fournisseur;
 	
-	@Column(name="quantite")
-	private int quantite;
+	@Column(name="quantiteCommandee")
+	private int quantiteCommandee;
+	
+	@Column(name="quantiteRestante")
+	private int quantiteRestante;
 	
 	@Column(name="prix")
 	private double prix;
@@ -63,19 +66,7 @@ public class Approvisionnement implements Serializable{
 	
 	//Constructeur chargé
 
-	public Approvisionnement(Integer id, Article article, Fournisseur fournisseur, int quantite, double prix,
-			Date dateApprovisionnement, Date datePeremption, String lot, Stock stock) {
-		super();
-		this.id = id;
-		this.article = article;
-		this.fournisseur = fournisseur;
-		this.quantite = quantite;
-		this.prix = prix;
-		this.dateApprovisionnement = dateApprovisionnement;
-		this.datePeremption = datePeremption;
-		this.lot = lot;
-		this.stock = stock;
-	}
+
 
 
 	//GETTERS ET SETTERS
@@ -85,55 +76,69 @@ public class Approvisionnement implements Serializable{
 	}
 
 
-	public void setId(Integer id) {
-		this.id = id;
+	public Approvisionnement(Article article, Fournisseur fournisseur, int quantiteCommandee, int quantiteRestante,
+			double prix, Date dateApprovisionnement, Date datePeremption, String lot, Stock stock) {
+		super();
+		this.article = article;
+		this.fournisseur = fournisseur;
+		this.quantiteCommandee = quantiteCommandee;
+		this.quantiteRestante = quantiteRestante;
+		this.prix = prix;
+		this.dateApprovisionnement = dateApprovisionnement;
+		this.datePeremption = datePeremption;
+		this.lot = lot;
+		this.stock = stock;
 	}
+
 
 
 	public Article getArticle() {
 		return article;
 	}
 
-
 	public void setArticle(Article article) {
 		this.article = article;
 	}
-
 
 	public Fournisseur getFournisseur() {
 		return fournisseur;
 	}
 
-
 	public void setFournisseur(Fournisseur fournisseur) {
 		this.fournisseur = fournisseur;
 	}
 
-
-	public int getQuantite() {
-		return quantite;
+	public int getQuantiteCommandee() {
+		return quantiteCommandee;
 	}
 
-
-	public void setQuantite(int quantite) {
-		this.quantite = quantite;
+	public void setQuantiteCommandee(int quantiteCommandee) {
+		this.quantiteCommandee = quantiteCommandee;
 	}
 
+	public int getQuantiteRestante() {
+		return quantiteRestante;
+	}
+
+	public void setQuantiteRestante(int quantiteRestante) {
+		this.quantiteRestante = quantiteRestante;
+	}
 
 	public double getPrix() {
 		return prix;
 	}
 
-
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-
 
 	public Date getDateApprovisionnement() {
 		return dateApprovisionnement;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public void setDateApprovisionnement(Date dateApprovisionnement) {
 		this.dateApprovisionnement = dateApprovisionnement;

@@ -45,12 +45,12 @@
 			<h:outputLabel value="#{approvisionnement.article.nom}" />
 		</b:dataTableColumn>
 		<b:dataTableColumn>
-			<f:facet name="header">Quantités</f:facet>
+			<f:facet name="header">Fournisseur</f:facet>
 			<h:outputLabel value="#{approvisionnement.fournisseur.nom}" />
 		</b:dataTableColumn>
 		<b:dataTableColumn>
-			<f:facet name="header">Quantités</f:facet>
-			<h:outputLabel value="#{approvisionnement.quantite}" />
+			<f:facet name="header">Quantités Commandées</f:facet>
+			<h:outputLabel value="#{approvisionnement.quantiteCommandee}" />
 		</b:dataTableColumn>
 		<b:dataTableColumn>
 			<f:facet name="header">Lot</f:facet>
@@ -63,6 +63,10 @@
 		<b:dataTableColumn>
 			<f:facet name="header">Date de péremption</f:facet>
 			<h:outputLabel value="#{approvisionnement.datePeremption}" />
+		</b:dataTableColumn>
+		<b:dataTableColumn>
+			<f:facet name="header">Quantités restantes</f:facet>
+			<h:outputLabel value="#{approvisionnement.quantiteRestante}" />
 		</b:dataTableColumn>
 	</b:dataTable>
 
