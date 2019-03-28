@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
 import fr.afcepf.al33.projet1.entity.Stock;
@@ -26,6 +28,8 @@ public class AfficherStockManagedBean implements Serializable{
 
 
 	private List <Stock> stocks;
+	
+	private Stock selectedStock;
 
 	
 	@EJB
@@ -37,6 +41,17 @@ public class AfficherStockManagedBean implements Serializable{
 	public void init() {
 		stocks=proxyStock.getAll();
 		
+	}
+	
+	public void afficherApprovisionnements(Stock stock) {
+		 selectedStock = stock;
+
+		 System.out.println(selectedStock.getId());
+		 
+		 FacesContext facesContext = FacesContext.getCurrentInstance();
+		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		 session.setAttribute("selectedStock", selectedStock);
+		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherApprovisionnements.xhtml?faces-redirect=true");
 	}
 	
 	
@@ -65,6 +80,14 @@ public class AfficherStockManagedBean implements Serializable{
 
 	public void setProxyStock(StockIBusiness proxyStock) {
 		this.proxyStock = proxyStock;
+	}
+
+	public Stock getSelectedStock() {
+		return selectedStock;
+	}
+
+	public void setSelectedStock(Stock selectedStock) {
+		this.selectedStock = selectedStock;
 	}
 
 	

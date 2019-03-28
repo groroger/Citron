@@ -22,9 +22,9 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Approvisionnement> getAllApproByIdArticle(Stock stock) {
+	public List<Approvisionnement> getAllApproByStock(Stock stock) {
 		List<Approvisionnement> approvisionnements = null;
-		String REQ = "SELECT approvisionnement from Approvisionnement approvisionnement WHERE approvisionnement.stock_id = :id";
+		String REQ = "SELECT approvisionnement from Approvisionnement approvisionnement WHERE approvisionnement.stock.id = :id";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("id", stock.getId());
 		approvisionnements = queryJPQL.getResultList();

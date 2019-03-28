@@ -44,12 +44,16 @@
 			<h:outputLabel value="#{ligneStock.article.nom}" />
 		</b:dataTableColumn>
 		<b:dataTableColumn>
-			<f:facet name="header">Quantités</f:facet>
+			<f:facet name="header">Disponibilité site internet</f:facet>
 			<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
 		</b:dataTableColumn>
 		<b:dataTableColumn>
-			<f:facet name="header">Description</f:facet>
-			<h:outputLabel value="#{ligneStock.article.descriptif}" />
+			<f:facet name="header">Quantités en stock</f:facet>
+			<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+		</b:dataTableColumn>
+		<b:dataTableColumn>
+			<f:facet name="header">Approvisionnement</f:facet>
+			<b:commandButton  value="Voir les approvisionnements" action="#{mbStock.afficherApprovisionnements(ligneStock)}"/>
 		</b:dataTableColumn>
 
 	</b:dataTable>

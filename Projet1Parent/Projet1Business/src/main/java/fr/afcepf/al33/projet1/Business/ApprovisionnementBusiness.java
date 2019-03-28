@@ -26,9 +26,9 @@ public class ApprovisionnementBusiness implements ApprovisionnementIBusiness{
 	}
 
 	@Override
-	public List<Approvisionnement> getAllApproByIdArticle(Stock stock) {
+	public List<Approvisionnement> getAllApproByStock(Stock stock) {
 		List<Approvisionnement> approvisionnements=null;
-		approvisionnements= proxyApprovisionnement.getAllApproByIdArticle(stock);
+		approvisionnements= proxyApprovisionnement.getAllApproByStock(stock);
 		return approvisionnements;
 	}
 	

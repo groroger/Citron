@@ -9,6 +9,6 @@ public interface ApprovisionnementIBusiness {
 	
 	public Approvisionnement addApprovisionnement(Approvisionnement a);
 	
-	List<Approvisionnement> getAllApproByIdArticle (Stock stock);
+	List<Approvisionnement> getAllApproByStock (Stock stock);
 
 }
