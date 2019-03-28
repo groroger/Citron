@@ -21,7 +21,7 @@ public class StockBusiness implements StockIBusiness{
 	
 	@Override
 	public Stock add(Stock stock) {
-		Stock st = proxyStockIDao.ajouter(stock);
+		proxyStockIDao.ajouter(stock);
 		return stock;
 	}
 
@@ -33,14 +33,14 @@ public class StockBusiness implements StockIBusiness{
 
 	@Override
 	public Stock update(Stock stock) {
-		Stock st = proxyStockIDao.modifier(stock);
+		proxyStockIDao.modifier(stock);
 		return stock;
 	}
 
 	@Override
 	public Stock searchById(Integer id) {
-		Stock st = proxyStockIDao.rechercherParId(id);
-		return st;
+		Stock stock = proxyStockIDao.rechercherParId(id);
+		return stock;
 	}
 
 	@Override

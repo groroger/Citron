@@ -6,12 +6,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.FournisseurIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.VilleIBusiness;
 import fr.afcepf.al33.projet1.entity.Fournisseur;

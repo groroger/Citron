@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 
 
 import fr.afcepf.al33.projet1.IBusiness.VilleIBusiness;
-import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.entity.Ville;
 import fr.afcepf.al33.projet1.idao.VilleIdao;
 
