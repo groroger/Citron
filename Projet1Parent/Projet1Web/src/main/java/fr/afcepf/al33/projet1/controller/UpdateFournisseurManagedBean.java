@@ -57,7 +57,6 @@ public class UpdateFournisseurManagedBean implements Serializable{
 		
 		proxyFournisseur.update(fournisseur);
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/ficheFournisseur.xhtml?faces-redirect=true");
 	}
 

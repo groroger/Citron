@@ -55,7 +55,6 @@ public class FicheFournisseurManagedBean implements Serializable{
 		proxyFournisseur.delete(fournisseur);
 		
 		 FacesContext facesContext = FacesContext.getCurrentInstance();
-		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/moteurRechercheFournisseur.xhtml?faces-redirect=true");
 	}
 	

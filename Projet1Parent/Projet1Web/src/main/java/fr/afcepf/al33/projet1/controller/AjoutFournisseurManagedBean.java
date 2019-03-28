@@ -8,7 +8,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.FournisseurIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.VilleIBusiness;
@@ -50,7 +49,6 @@ public class AjoutFournisseurManagedBean implements Serializable{
 	
 		proxyFournisseur.add(fournisseur);
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/moteurRechercheFournisseur.xhtml?faces-redirect=true");
 
 	}

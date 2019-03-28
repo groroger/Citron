@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
+import javax.faces.context.FacesContext;
 
 import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
@@ -60,10 +60,12 @@ public class ApprovisionnementManagedBean implements Serializable{
 	private Stock stock;
 	
 	@SuppressWarnings("deprecation")
-	public String addApprovisionnementToStock() {
+	public void addApprovisionnementToStock() {
 	
+	//astuce pour corriger le problème d'enregistrement de date dans la BDD. Il y'a un décallage d1 jour entre la date vraiment saisie par l'utilisateur et la date enregsitrée en BDD.
 		
 	approvisionnement.getDateApprovisionnement().setTime(approvisionnement.getDateApprovisionnement().getTime() -  approvisionnement.getDateApprovisionnement().getTimezoneOffset()*60*1000 );
+	approvisionnement.getDatePeremption().setTime(approvisionnement.getDatePeremption().getTime() -  approvisionnement.getDatePeremption().getTimezoneOffset()*60*1000 );
 	
 	stock = proxyStock.searchById(approvisionnement.getArticle().getId());
 	approvisionnement.setStock(stock);
@@ -75,7 +77,8 @@ public class ApprovisionnementManagedBean implements Serializable{
 	proxyStock.update(stock);
 		
 		
-	return "/afficherStock.xhtml";
+	 FacesContext facesContext = FacesContext.getCurrentInstance();
+	 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherStock.xhtml?faces-redirect=true");
 		
 	}
 	
