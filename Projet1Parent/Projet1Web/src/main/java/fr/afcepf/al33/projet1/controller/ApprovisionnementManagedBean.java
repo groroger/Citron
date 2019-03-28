@@ -64,21 +64,18 @@ public class ApprovisionnementManagedBean implements Serializable{
 	
 		
 	approvisionnement.getDateApprovisionnement().setTime(approvisionnement.getDateApprovisionnement().getTime() -  approvisionnement.getDateApprovisionnement().getTimezoneOffset()*60*1000 );
-	proxyApprovisionnement.addApprovisionnement(approvisionnement);
 	
 	stock = proxyStock.searchById(approvisionnement.getArticle().getId());
-	
+	approvisionnement.setStock(stock);
+	proxyApprovisionnement.addApprovisionnement(approvisionnement);
+		
 	
 	stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() + approvisionnement.getQuantite());
 	stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() + approvisionnement.getQuantite());
-	
-		
 	proxyStock.update(stock);
-	
-
-	
 		
-		return "/afficherStock.xhtml";
+		
+	return "/afficherStock.xhtml";
 		
 	}
 	
