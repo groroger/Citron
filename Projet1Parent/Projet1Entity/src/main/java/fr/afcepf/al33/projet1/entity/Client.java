@@ -80,10 +80,14 @@ public class Client implements Serializable{
 	@OneToMany(mappedBy="client", cascade=CascadeType.ALL)
 	private List<Commande> commandes;
 
+	
+	//Constructeur vide
+	
 	public Client() {
 		super();
 	}
 
+	//Constructeur chargé
 
 	public Client(Integer id, String nom, String prenom, Date dateDeNaissance, String adresse, String complementAdresse,
 			Ville ville, String adresseFacturation, String complementAdresseFacturation, Ville villeFacturation,
@@ -109,6 +113,7 @@ public class Client implements Serializable{
 		this.commandes = commandes;
 	}
 
+	//GETTERS ET SETTERS
 
 	public Integer getId() {
 		return id;

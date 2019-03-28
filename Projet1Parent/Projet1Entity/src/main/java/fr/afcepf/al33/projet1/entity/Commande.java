@@ -53,10 +53,16 @@ public class Commande implements Serializable {
 		@OneToMany(fetch=FetchType.EAGER, mappedBy="commande", cascade=CascadeType.ALL)
 		private List<ArticleCommande> articlesCommandes;
 
+		
+		//Constructeur vide
+		
 		public Commande() {
 			super();
 			
 		}
+		
+		
+		//Constructeur chargé
 
 		public Commande(Integer id, Date dateCreation, Date dateAnnulation, Date dateRemboursement, Date dateExpedition,
 				Date dateLivraison, Client client, List<ArticleCommande> articlesCommandes) {
@@ -71,6 +77,8 @@ public class Commande implements Serializable {
 			this.articlesCommandes = articlesCommandes;
 		}
 
+		//GETTERS ET SETTERS
+		
 		public Integer getId() {
 			return id;
 		}

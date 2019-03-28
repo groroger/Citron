@@ -50,11 +50,14 @@ public class Fournisseur implements Serializable{
 	@Column(name="email")
 	private String email;
 
+	
+	//Constructeur vide
+	
 	public Fournisseur() {
 		super();
 	}
 
-
+	//Constructeur chargé
 	
 	public Fournisseur(Integer id, String nom, String adresse, String complementAdresse, Ville ville, String numeroFixe,
 			String numeroPort, String email) {
@@ -69,7 +72,7 @@ public class Fournisseur implements Serializable{
 		this.email = email;
 	}
 
-
+	//GETTERS ET SETTERS
 
 	public Integer getId() {
 		return id;

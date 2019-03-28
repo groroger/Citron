@@ -60,12 +60,13 @@ public class Article implements Serializable{
 	private List<Approvisionnement> approvisionnements;
 	
 
+	//Constructeur vide
 	
 	public Article() {
 		super();
 	}
 
-
+	//Constructeur chargé
 
 	public Article(Integer id, String nom, String descriptif, String image, double quantiteVendue, double prix,
 			double prixKilo, Categorie categorie, Stock stock, List<Approvisionnement> approvisionnements) {
@@ -82,7 +83,7 @@ public class Article implements Serializable{
 		this.approvisionnements = approvisionnements;
 	}
 
-
+	//GETTERS ET SETTERS
 
 	public Integer getId() {
 		return id;

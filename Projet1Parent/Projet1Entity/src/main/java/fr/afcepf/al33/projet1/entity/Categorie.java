@@ -34,10 +34,13 @@ public class Categorie implements Serializable{
 	private List<Article> articles;
 
 
+	//Constructeur vide
+	
 	public Categorie() {
 		super();
 	}
 
+	//Constructeur chargé
 
 	public Categorie(Integer id, String nomCategorie, List<Article> articles) {
 		super();
@@ -47,6 +50,8 @@ public class Categorie implements Serializable{
 	}
 
 
+	//GETTERS ET SETTERS
+	
 	public Integer getId() {
 		return id;
 	}

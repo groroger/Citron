@@ -50,15 +50,21 @@ public class Approvisionnement implements Serializable{
 	@Column(name="lot")
 	private String lot;
 	
+	@ManyToOne
+	@JoinColumn(referencedColumnName="id")
+	private Stock stock;
+	
 
+	//Constructeur vide
+	
 	public Approvisionnement() {
 		super();
 	}
 	
-	
+	//Constructeur chargé
 
 	public Approvisionnement(Integer id, Article article, Fournisseur fournisseur, int quantite, double prix,
-			Date dateApprovisionnement, Date datePeremption, String lot) {
+			Date dateApprovisionnement, Date datePeremption, String lot, Stock stock) {
 		super();
 		this.id = id;
 		this.article = article;
@@ -68,10 +74,12 @@ public class Approvisionnement implements Serializable{
 		this.dateApprovisionnement = dateApprovisionnement;
 		this.datePeremption = datePeremption;
 		this.lot = lot;
+		this.stock = stock;
 	}
 
 
-
+	//GETTERS ET SETTERS
+	
 	public Integer getId() {
 		return id;
 	}
@@ -152,5 +160,13 @@ public class Approvisionnement implements Serializable{
 	}
 
 
+	public Stock getStock() {
+		return stock;
+	}
+
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
 	
 }

@@ -38,16 +38,15 @@ public class Ville implements Serializable{
 	@OneToMany(mappedBy="ville", cascade=CascadeType.ALL)
 	private List<Fournisseur> fournisseurs;
 
-	
-	
-	
+	//Constructeur vide
+		
 	public Ville() {
 		super();
 		
 	}
 
 
-
+	//Constructeur chargé
 
 	public Ville(Integer id, String nom, String codePostal, List<Client> clients, List<Fournisseur> fournisseurs) {
 		super();
@@ -59,7 +58,7 @@ public class Ville implements Serializable{
 	}
 
 
-
+	//GETTERS ET SETTERS
 
 	public Integer getId() {
 		return id;

@@ -36,10 +36,15 @@ public class ArticleCommande implements Serializable{
 		@JoinColumn(referencedColumnName="id")
 		private Commande commande;
 
+		
+		//Constructeur vide
+		
 		public ArticleCommande() {
 			super();
 			
 		}
+		
+		//Constructeur chargé
 
 		public ArticleCommande(Integer id, int quantite, Article article, Commande commande) {
 			super();
@@ -48,6 +53,9 @@ public class ArticleCommande implements Serializable{
 			this.article = article;
 			this.commande = commande;
 		}
+		
+		
+		//GETTERS ET SETTERS
 
 		public Integer getId() {
 			return id;
