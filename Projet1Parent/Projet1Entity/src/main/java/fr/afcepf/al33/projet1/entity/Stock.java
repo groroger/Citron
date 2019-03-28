@@ -36,7 +36,7 @@ public class Stock implements Serializable {
 	@Column(name="quantiteDispoPhysique")
 	private int quantiteDispoPhysique;
 	
-	@OneToMany(mappedBy="Stock", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="stock", cascade=CascadeType.ALL)
 	private List<Approvisionnement> approvisionnement;
 
 	
