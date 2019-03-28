@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -38,6 +40,7 @@ public class Client implements Serializable{
 	private String prenom;
 	
 	@Column(name="dateDeNaissance")
+	@Temporal(TemporalType.DATE)
 	private Date dateDeNaissance;
 	
 	@Column(name="adresse")
