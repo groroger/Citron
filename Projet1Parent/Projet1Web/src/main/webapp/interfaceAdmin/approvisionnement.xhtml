@@ -5,78 +5,95 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<h:head>
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<!-- 	<ui:define name="CSS"> -->
+	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
+	<!-- 	</ui:define> -->
+	<ui:define name="content">
 
-	<title>Approvisionnement</title>
+		<h:head>
 
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
-	
-</h:head>
-<h:body>
+			<title>Approvisionnement</title>
+
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
+
+		</h:head>
+		<h:body>
 
 
-	<h:form id="formApprovisionnement">
-	
-	<h4 id="titre1">Choisissez l'article à ajouter:</h4><br/><br/>
-	
-		<h:outputLabel value="Article :" for="article" />
-		<br />
-		<b:selectOneMenu id="article"
-			value="#{mbApprovisionnement.approvisionnement.article}" style="width:400px">
-			<f:selectItems value="#{mbApprovisionnement.articles}" var="article"
-				itemLabel="#{article.nom}"></f:selectItems>
-		</b:selectOneMenu>
-		<br />
-		<h:outputLabel value="Date de l'achat :" for="dateAchat" />
-		<br />
-		<b:formGroup>
-			<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
-				margin-bottom="5px" placeholder="Date d'achat"
-				value="#{mbApprovisionnement.approvisionnement.dateApprovisionnement}" iconPosition='left'
-				colMd="10" />
-			</b:formGroup>
-		<br />
-		<br />
-		<h:outputLabel value="Fournisseur :" for="fournisseur" />
-		<br />
-		<b:selectOneMenu id="fournisseur"
-			value="#{mbApprovisionnement.approvisionnement.fournisseur}" style="width:400px">
-			<f:selectItem itemLabel="Fournisseur" itemValue="" />
-			<f:selectItems value="#{mbApprovisionnement.fournisseurs}" var="fournisseur"
-				itemLabel="#{fournisseur.nom}"></f:selectItems>
-		</b:selectOneMenu>		
+			<h:form id="formApprovisionnement">
 
-		<br />
-		<h:outputLabel value="Quantité achetée en Kilos :" for="quantite" />
-		<br />
-		<h:inputText value="#{mbApprovisionnement.approvisionnement.quantiteCommandee}" />
-		<br />
+				<h4 id="titre1">Choisissez l'article à ajouter:</h4>
+				<br />
+				<br />
 
-		<br />
-		<h:outputLabel value="Prix :" for="prix" />
-		<br />
-		<h:inputText value="#{mbApprovisionnement.approvisionnement.prix}" />
-		<br />
-		
-		<br />
-		<h:outputLabel value="Référence du lot :" for="reference" />
-		<br />
-		<h:inputText value="#{mbApprovisionnement.approvisionnement.lot}" />
-		<br />
-		<br />
-		<h:outputLabel value="Date de péremption :" for="datePeremption" />
-		<br />
-		<b:formGroup>
-			<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
-			margin-bottom="5px" placeholder="Date de péremption"
-			value="#{mbApprovisionnement.approvisionnement.datePeremption}" iconPosition='left'
-			colMd="10" />
-		</b:formGroup>
-		<br />
-		<br />
-		<h:commandButton action="#{mbApprovisionnement.addApprovisionnementToStock()}"
-			value="Ajouter" />
+				<h:outputLabel value="Article :" for="article" />
+				<br />
+				<b:selectOneMenu id="article"
+					value="#{mbApprovisionnement.approvisionnement.article}"
+					style="width:400px">
+					<f:selectItems value="#{mbApprovisionnement.articles}"
+						var="article" itemLabel="#{article.nom}"></f:selectItems>
+				</b:selectOneMenu>
+				<br />
+				<h:outputLabel value="Date de l'achat :" for="dateAchat" />
+				<br />
+				<b:formGroup>
+					<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
+						margin-bottom="5px" placeholder="Date d'achat"
+						value="#{mbApprovisionnement.approvisionnement.dateApprovisionnement}"
+						iconPosition='left' colMd="10" />
+				</b:formGroup>
+				<br />
+				<br />
+				<h:outputLabel value="Fournisseur :" for="fournisseur" />
+				<br />
+				<b:selectOneMenu id="fournisseur"
+					value="#{mbApprovisionnement.approvisionnement.fournisseur}"
+					style="width:400px">
+					<f:selectItem itemLabel="Fournisseur" itemValue="" />
+					<f:selectItems value="#{mbApprovisionnement.fournisseurs}"
+						var="fournisseur" itemLabel="#{fournisseur.nom}"></f:selectItems>
+				</b:selectOneMenu>
 
-	</h:form>
-</h:body>
+				<br />
+				<h:outputLabel value="Quantité achetée en Kilos :" for="quantite" />
+				<br />
+				<h:inputText
+					value="#{mbApprovisionnement.approvisionnement.quantiteCommandee}" />
+				<br />
+
+				<br />
+				<h:outputLabel value="Prix :" for="prix" />
+				<br />
+				<h:inputText value="#{mbApprovisionnement.approvisionnement.prix}" />
+				<br />
+
+				<br />
+				<h:outputLabel value="Référence du lot :" for="reference" />
+				<br />
+				<h:inputText value="#{mbApprovisionnement.approvisionnement.lot}" />
+				<br />
+				<br />
+				<h:outputLabel value="Date de péremption :" for="datePeremption" />
+				<br />
+				<b:formGroup>
+					<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
+						margin-bottom="5px" placeholder="Date de péremption"
+						value="#{mbApprovisionnement.approvisionnement.datePeremption}"
+						iconPosition='left' colMd="10" />
+				</b:formGroup>
+				<br />
+				<br />
+				<h:commandButton
+					action="#{mbApprovisionnement.addApprovisionnementToStock()}"
+					value="Ajouter" />
+
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
 </html>

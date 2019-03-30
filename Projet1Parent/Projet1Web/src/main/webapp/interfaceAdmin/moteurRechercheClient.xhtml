@@ -5,64 +5,69 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<h:head>
-
-	<title>Recherche de client</title>
-	
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
-	
 
 
-</h:head>
-<h:body>
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<!-- 	<ui:define name="CSS"> -->
+	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
+	<!-- 	</ui:define> -->
+	<ui:define name="content">
 
+		<h:head>
+			<title>Rechercher un fournisseur</title>
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
+		</h:head>
+		<h:body>
 
+			<h:form id="formRechercheClient">
 
-	<h:form id="formRechercheClient">
+				<h4 id="titre">Liste des clients</h4>
+				<br />
+				<br />
 
-		<h4 id="titre">Liste des clients</h4>
-		<br />
-		<br />
+				<b:dataTable value="#{mbFindClient.clients}" var="cl" excel="false"
+					pdf="false" print="false" border="true" info="false"
+					page-length="10" selectionMode="single"
+					onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindClient.onSelect(cl, typeOfSelection, indexes);">
 
-		<b:dataTable value="#{mbFindClient.clients}" var="cl"
-			excel="false" pdf="false" print="false" border="true" info="false"
-			page-length="10" selectionMode="single"
-			onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindClient.onSelect(cl, typeOfSelection, indexes);">
-
-			<b:dataTableColumn>
-				<f:facet name="header">Nom</f:facet>
-				<h:outputLabel value="#{cl.nom}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Prénom</f:facet>
-				<h:outputLabel value="#{cl.prenom}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Adresse</f:facet>
-				<h:outputLabel value="#{cl.adresse}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Code Postal</f:facet>
-				<h:outputLabel value="#{cl.ville.codePostal}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Ville</f:facet>
-				<h:outputLabel value="#{cl.ville.nom}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Téléphone</f:facet>
-				<h:outputLabel value="#{cl.numeroFixe}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Portable</f:facet>
-				<h:outputLabel value="#{cl.numeroPort}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Email</f:facet>
-				<h:outputLabel value="#{cl.email}" />
-			</b:dataTableColumn>
-
-		</b:dataTable>
-	</h:form>
-</h:body>
+					<b:dataTableColumn>
+						<f:facet name="header">Nom</f:facet>
+						<h:outputLabel value="#{cl.nom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Prénom</f:facet>
+						<h:outputLabel value="#{cl.prenom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Adresse</f:facet>
+						<h:outputLabel value="#{cl.adresse}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Code Postal</f:facet>
+						<h:outputLabel value="#{cl.ville.codePostal}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Ville</f:facet>
+						<h:outputLabel value="#{cl.ville.nom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Téléphone</f:facet>
+						<h:outputLabel value="#{cl.numeroFixe}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Portable</f:facet>
+						<h:outputLabel value="#{cl.numeroPort}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Email</f:facet>
+						<h:outputLabel value="#{cl.email}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
 </html>

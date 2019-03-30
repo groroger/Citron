@@ -5,75 +5,77 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<h:head>
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<!-- 	<ui:define name="CSS"> -->
+	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
+	<!-- 	</ui:define> -->
+	<ui:define name="content">
 
-	<title>Approvisionnements</title>
+		<h:head>
 
-</h:head>
-<h:body>
+			<title>Approvisionnements</title>
 
-	<f:metadata>
-		<f:event listener="#{mbListeApprovisionnements.init()}" type="preRenderView"></f:event>
-	</f:metadata>
-	
+		</h:head>
+		<h:body>
 
-
-	<h:form id="formAfficherApprovisionnement">
-	
-<h3 style="color: rgb(0,136,143); font-weight: bold; text-align:center;">Stock</h3><br/><br/>
-
-
-	
-
-	<b:dataTable value="#{mbListeApprovisionnements.approvisionnements}" 
-				 var="approvisionnement"
-				 pdf="true"
-				 print="true" 
-				 excel="true"
-				 border="true"
-				 info="false"
-				 page-length="10"
-				 selectionMode="single">
-		
-
-		<b:dataTableColumn>
-			<f:facet name="header">Date de l'achat</f:facet>
-			<h:outputLabel value="#{approvisionnement.dateApprovisionnement}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Article</f:facet>
-			<h:outputLabel value="#{approvisionnement.article.nom}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Fournisseur</f:facet>
-			<h:outputLabel value="#{approvisionnement.fournisseur.nom}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Quantités Commandées</f:facet>
-			<h:outputLabel value="#{approvisionnement.quantiteCommandee}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Lot</f:facet>
-			<h:outputLabel value="#{approvisionnement.lot}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Prix</f:facet>
-			<h:outputLabel value="#{approvisionnement.prix}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Date de péremption</f:facet>
-			<h:outputLabel value="#{approvisionnement.datePeremption}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Quantités restantes</f:facet>
-			<h:outputLabel value="#{approvisionnement.quantiteRestante}" />
-		</b:dataTableColumn>
-	</b:dataTable>
-
-</h:form>
+			<f:metadata>
+				<f:event listener="#{mbListeApprovisionnements.init()}"
+					type="preRenderView"></f:event>
+			</f:metadata>
 
 
-</h:body>
+
+			<h:form id="formAfficherApprovisionnement">
+
+				<h3
+					style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
+				<br />
+				<br />
 
 
+
+
+				<b:dataTable value="#{mbListeApprovisionnements.approvisionnements}"
+					var="approvisionnement" pdf="true" print="true" excel="true"
+					border="true" info="false" page-length="10" selectionMode="single">
+
+
+					<b:dataTableColumn>
+						<f:facet name="header">Date de l'achat</f:facet>
+						<h:outputLabel value="#{approvisionnement.dateApprovisionnement}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Article</f:facet>
+						<h:outputLabel value="#{approvisionnement.article.nom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Fournisseur</f:facet>
+						<h:outputLabel value="#{approvisionnement.fournisseur.nom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Quantités Commandées</f:facet>
+						<h:outputLabel value="#{approvisionnement.quantiteCommandee}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Lot</f:facet>
+						<h:outputLabel value="#{approvisionnement.lot}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Prix</f:facet>
+						<h:outputLabel value="#{approvisionnement.prix}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Date de péremption</f:facet>
+						<h:outputLabel value="#{approvisionnement.datePeremption}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Quantités restantes</f:facet>
+						<h:outputLabel value="#{approvisionnement.quantiteRestante}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
 </html>

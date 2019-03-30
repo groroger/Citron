@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content_Type" />
+	<!-- 	<h:outputStylesheet name="CSS/masterStyle.css"/> -->
+	<!-- 	<ui:insert name="CSS"></ui:insert> -->
+	<title><ui:insert name="title"></ui:insert></title>
+</h:head>
+<body>
+	<div id="header">
+		<b:navBar brand="" brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml" inverse="true" fluid="true" brand-img="pics/website/citronLogo.png"
+		id="navbar-brand">
+			<b:navbarLinks>
+				<b:navLink value="Clients" href="/Projet1Web/interfaceAdmin/moteurRechercheClient.xhtml"></b:navLink>
+				<b:navLink value="Fournisseurs" href="/Projet1Web/interfaceAdmin/moteurRechercheFournisseur.xhtml"></b:navLink>
+				<b:navLink value="Stock" href="/Projet1Web/interfaceAdmin/afficherStock.xhtml"></b:navLink>
+				<b:navLink value="Approvisionnements" href="/Projet1Web/interfaceAdmin/approvisionnement.xhtml"></b:navLink>
+			</b:navbarLinks>
+		</b:navBar>
+	</div>
+	<div id="centre">
+		<ui:insert name="content"></ui:insert>
+	</div>
+<!-- 	<div id="footer"> -->
+<!-- 		<h1>Footer</h1> -->
+<!-- 	</div> -->
+</body>
+</html>
