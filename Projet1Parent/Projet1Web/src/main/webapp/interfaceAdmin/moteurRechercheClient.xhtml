@@ -30,7 +30,7 @@
 
 				<b:dataTable value="#{mbFindClient.clients}" var="cl" excel="false"
 					pdf="false" print="false" border="true" info="false"
-					page-length="10" selectionMode="single"
+					page-length="10" selectionMode="single" responsive="true"
 					onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindClient.onSelect(cl, typeOfSelection, indexes);">
 
 					<b:dataTableColumn>

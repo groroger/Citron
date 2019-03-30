@@ -34,7 +34,7 @@
 
 				<b:dataTable value="#{mbFindFournisseur.fournisseurs}" var="fourn"
 					excel="false" pdf="false" print="false" border="true" info="false"
-					page-length="10" selectionMode="single"
+					page-length="10" selectionMode="single" responsive="true"
 					onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindFournisseur.onSelect(fourn, typeOfSelection, indexes);"
 					paginated="false">
 					<b:dataTableColumn>

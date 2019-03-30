@@ -35,7 +35,8 @@
 				 info="false"
 				 page-length="10"
 				 selectionMode="single"
-				 responsive="true">
+				 responsive="true"
+				 row-highlight="true">
 		
 		<b:dataTableColumn>
 			<f:facet name="header">Image</f:facet>
@@ -55,7 +56,8 @@
 		</b:dataTableColumn>
 		<b:dataTableColumn>
 			<f:facet name="header">Approvisionnement</f:facet>
-			<b:commandButton  value="Voir les approvisionnements" action="#{mbStock.afficherApprovisionnements(ligneStock)}"/>
+			<b:commandButton  value="Voir les approvisionnements" 
+				action="#{mbStock.afficherApprovisionnements(ligneStock)}" look="success"/>
 		</b:dataTableColumn>
 
 	</b:dataTable>
