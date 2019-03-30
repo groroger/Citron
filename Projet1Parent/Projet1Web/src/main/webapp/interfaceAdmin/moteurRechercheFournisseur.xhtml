@@ -5,70 +5,73 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<h:head>
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<!-- 	<ui:define name="CSS"> -->
+	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
+	<!-- 	</ui:define> -->
+	<ui:define name="content">
 
-	<title>Recherche du fournisseur</title>
+		<h:head>
+			<title>Rechercher un client</title>
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
 
-	<link
-		href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-		rel="stylesheet" />
+		</h:head>
+		<h:body>
 
-
-
-</h:head>
-<h:body>
-
-	<f:metadata>
-		<f:event listener="#{mbFindFournisseur.init()}" type="preRenderView"></f:event>
-	</f:metadata>
+			<f:metadata>
+				<f:event listener="#{mbFindFournisseur.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 
 
+			<h:form id="formRechercheFournisseur">
 
-	<h:form id="formRechercheFournisseur">
+				<h4 id="titre">Liste des fournisseurs</h4>
+				<br />
+				<br />
 
-		<h4 id="titre">Liste des fournisseurs</h4>
-		<br />
-		<br />
-
-		<b:dataTable value="#{mbFindFournisseur.fournisseurs}" var="fourn"
-			excel="false" pdf="false" print="false" border="true" info="false"
-			page-length="10" selectionMode="single"
-			onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindFournisseur.onSelect(fourn, typeOfSelection, indexes);"
-			paginated="false">
-			<b:dataTableColumn>
-				<f:facet name="header">Nom</f:facet>
-				<h:outputLabel value="#{fourn.nom}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Adresse</f:facet>
-				<h:outputLabel value="#{fourn.adresse}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Code Postal</f:facet>
-				<h:outputLabel value="#{fourn.ville.codePostal}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Ville</f:facet>
-				<h:outputLabel value="#{fourn.ville.nom}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Téléphone</f:facet>
-				<h:outputLabel value="#{fourn.numeroFixe}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Portable</f:facet>
-				<h:outputLabel value="#{fourn.numeroPort}" />
-			</b:dataTableColumn>
-			<b:dataTableColumn>
-				<f:facet name="header">Email</f:facet>
-				<h:outputLabel value="#{fourn.email}" />
-			</b:dataTableColumn>
-		</b:dataTable>
-		<b:panelGrid columns="2">
-			<b:button
-				href="/Projet1Web/interfaceAdmin/ajoutFournisseur.xhtml"
-				value="Ajouter un nouveau fournisseur" />
-		</b:panelGrid>
-	</h:form>
-</h:body>
+				<b:dataTable value="#{mbFindFournisseur.fournisseurs}" var="fourn"
+					excel="false" pdf="false" print="false" border="true" info="false"
+					page-length="10" selectionMode="single"
+					onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindFournisseur.onSelect(fourn, typeOfSelection, indexes);"
+					paginated="false">
+					<b:dataTableColumn>
+						<f:facet name="header">Nom</f:facet>
+						<h:outputLabel value="#{fourn.nom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Adresse</f:facet>
+						<h:outputLabel value="#{fourn.adresse}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Code Postal</f:facet>
+						<h:outputLabel value="#{fourn.ville.codePostal}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Ville</f:facet>
+						<h:outputLabel value="#{fourn.ville.nom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Téléphone</f:facet>
+						<h:outputLabel value="#{fourn.numeroFixe}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Portable</f:facet>
+						<h:outputLabel value="#{fourn.numeroPort}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Email</f:facet>
+						<h:outputLabel value="#{fourn.email}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+				<b:panelGrid columns="2">
+					<b:button href="/Projet1Web/interfaceAdmin/ajoutFournisseur.xhtml"
+						value="Ajouter un nouveau fournisseur" />
+				</b:panelGrid>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
 </html>

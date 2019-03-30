@@ -5,83 +5,95 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<h:head>
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<!-- 	<ui:define name="CSS"> -->
+	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
+	<!-- 	</ui:define> -->
+	<ui:define name="content">
 
-	<title>Fiche du fournisseur</title>
-	
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
+		<h:head>
 
+			<title>Fiche du fournisseur</title>
 
-</h:head>
-<h:body>
-
-	<f:metadata>
-		<f:event listener="#{mbUpdateFournisseur.init()}" type="preRenderView"></f:event>
-	</f:metadata>
-	
-	
-<b:form id="formUpdateFournisseur">
-
-<h4 id="titre1">Contact du fournisseur</h4><br/><br/>
-
-		<b:panelGrid columns="2">
-
-			<b:inputText
-				value="#{mbUpdateFournisseur.fournisseur.nom}"
-				fieldSize="lg" colMd="8">
-				<f:facet name="prepend">
-					<b:icon name="user" />
-				</f:facet>
-			</b:inputText>
-			<b:inputText value="#{mbUpdateFournisseur.fournisseur.email}"
-				fieldSize="lg" colMd="8">
-				<f:facet name="prepend">
-					<h:outputText value="@" />
-				</f:facet>
-			</b:inputText>
-
-			<b:inputText
-				value="#{mbUpdateFournisseur.fournisseur.complementAdresse}"
-				fieldSize="lg" colMd="8">
-				<f:facet name="prepend">
-					<b:icon name="map-marker" />
-				</f:facet>
-			</b:inputText>
-
-			<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroFixe}"
-				fieldSize="lg" colMd="8">
-				<f:facet name="prepend">
-					<b:icon name="phone-alt" />
-				</f:facet>
-			</b:inputText>
-			<b:inputText
-				value="#{mbUpdateFournisseur.fournisseur.adresse}"
-				fieldSize="lg" colMd="8">
-				<f:facet name="prepend">
-					<b:icon name="map-marker" />
-				</f:facet>
-			</b:inputText>
-
-			<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroPort}"
-				fieldSize="lg" colMd="8">
-				<f:facet name="prepend">
-					<b:icon name="phone" />
-				</f:facet>
-			</b:inputText>
-			
-		     <b:selectOneMenu value="#{mbUpdateFournisseur.fournisseur.ville}" colMd="3" required="true"  labelColMd="2" select="true">
-				  <f:selectItem itemLabel="Ville" itemValue="" noSelectionOption="true" />
-			      <f:selectItems value="#{mbUpdateFournisseur.villes}" var="ville"  itemLabel="#{ville.codePostal} #{ville.nom}" />
-		     </b:selectOneMenu>
-			
-			<b:panelGrid columns="3">
-		        <b:commandButton value="Enregistrer" action="#{mbUpdateFournisseur.update()}" />
-        	</b:panelGrid>
-		
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
 
 
-		</b:panelGrid>
-	</b:form>
+		</h:head>
+		<h:body>
 
-</h:body>
+			<f:metadata>
+				<f:event listener="#{mbUpdateFournisseur.init()}"
+					type="preRenderView"></f:event>
+			</f:metadata>
+
+
+			<b:form id="formUpdateFournisseur">
+
+				<h4 id="titre1">Contact du fournisseur</h4>
+				<br />
+				<br />
+
+				<b:panelGrid columns="2">
+
+					<b:inputText value="#{mbUpdateFournisseur.fournisseur.nom}"
+						fieldSize="lg" colMd="8">
+						<f:facet name="prepend">
+							<b:icon name="user" />
+						</f:facet>
+					</b:inputText>
+					<b:inputText value="#{mbUpdateFournisseur.fournisseur.email}"
+						fieldSize="lg" colMd="8">
+						<f:facet name="prepend">
+							<h:outputText value="@" />
+						</f:facet>
+					</b:inputText>
+
+					<b:inputText
+						value="#{mbUpdateFournisseur.fournisseur.complementAdresse}"
+						fieldSize="lg" colMd="8">
+						<f:facet name="prepend">
+							<b:icon name="map-marker" />
+						</f:facet>
+					</b:inputText>
+
+					<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroFixe}"
+						fieldSize="lg" colMd="8">
+						<f:facet name="prepend">
+							<b:icon name="phone-alt" />
+						</f:facet>
+					</b:inputText>
+					<b:inputText value="#{mbUpdateFournisseur.fournisseur.adresse}"
+						fieldSize="lg" colMd="8">
+						<f:facet name="prepend">
+							<b:icon name="map-marker" />
+						</f:facet>
+					</b:inputText>
+
+					<b:inputText value="#{mbUpdateFournisseur.fournisseur.numeroPort}"
+						fieldSize="lg" colMd="8">
+						<f:facet name="prepend">
+							<b:icon name="phone" />
+						</f:facet>
+					</b:inputText>
+
+					<b:selectOneMenu value="#{mbUpdateFournisseur.fournisseur.ville}"
+						colMd="3" required="true" labelColMd="2" select="true">
+						<f:selectItem itemLabel="Ville" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{mbUpdateFournisseur.villes}" var="ville"
+							itemLabel="#{ville.codePostal} #{ville.nom}" />
+					</b:selectOneMenu>
+
+					<b:panelGrid columns="3">
+						<b:commandButton value="Enregistrer"
+							action="#{mbUpdateFournisseur.update()}" />
+					</b:panelGrid>
+				</b:panelGrid>
+			</b:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
 </html>

@@ -5,63 +5,63 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<h:head>
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<!-- 	<ui:define name="CSS"> -->
+	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
+	<!-- 	</ui:define> -->
+	<ui:define name="content">
 
-	<title>Stock</title>
+		<h:head>
 
-</h:head>
-<h:body>
+			<title>Stock</title>
 
-	<f:metadata>
-		<f:event listener="#{mbStock.init()}" type="preRenderView"></f:event>
-	</f:metadata>
-	
+		</h:head>
 
+		<h:body>
 
-	<h:form id="formAfficherStock">
-	
-<h3 style="color: rgb(0,136,143); font-weight: bold; text-align:center;">Stock</h3><br/><br/>
-
-
-	
-
-	<b:dataTable value="#{mbStock.stocks}" 
-				 var="ligneStock"
-				 pdf="true"
-				 print="true" 
-				 excel="true"
-				 border="true"
-				 info="false"
-				 page-length="10"
-				 selectionMode="single">
-		
-		<b:dataTableColumn>
-			<f:facet name="header">Image</f:facet>
-			<h:graphicImage value="/pics/articlesImages/#{ligneStock.article.image}" />
-		</b:dataTableColumn> 
-		<b:dataTableColumn>
-			<f:facet name="header">Articles</f:facet>
-			<h:outputLabel value="#{ligneStock.article.nom}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Disponibilité site internet</f:facet>
-			<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Quantités en stock</f:facet>
-			<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
-		</b:dataTableColumn>
-		<b:dataTableColumn>
-			<f:facet name="header">Approvisionnement</f:facet>
-			<b:commandButton  value="Voir les approvisionnements" action="#{mbStock.afficherApprovisionnements(ligneStock)}"/>
-		</b:dataTableColumn>
-
-	</b:dataTable>
-
-</h:form>
+			<f:metadata>
+				<f:event listener="#{mbStock.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 
 
-</h:body>
+			<h:form id="formAfficherStock">
+
+				<h3
+					style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
+				<br />
+				<br />
 
 
+				<b:dataTable value="#{mbStock.stocks}" var="ligneStock" pdf="true"
+					print="true" excel="true" border="true" info="false"
+					page-length="10" selectionMode="single">
+
+					<b:dataTableColumn>
+						<f:facet name="header">Image</f:facet>
+						<h:graphicImage
+							value="/pics/articlesImages/#{ligneStock.article.image}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Articles</f:facet>
+						<h:outputLabel value="#{ligneStock.article.nom}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Disponibilité site internet</f:facet>
+						<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Quantités en stock</f:facet>
+						<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Approvisionnement</f:facet>
+						<b:commandButton value="Voir les approvisionnements"
+							action="#{mbStock.afficherApprovisionnements(ligneStock)}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
 </html>
