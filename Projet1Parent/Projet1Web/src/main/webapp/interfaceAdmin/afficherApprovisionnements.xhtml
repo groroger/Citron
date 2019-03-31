@@ -24,56 +24,68 @@
 					type="preRenderView"></f:event>
 			</f:metadata>
 
-
-
 			<h:form id="formAfficherApprovisionnement">
+				<b:container layout="fluid">
 
-				<h3
-					style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
-				<br />
-				<br />
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3	style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Liste
+								des achats de ce produit:</h3>
+							<br />
+						</b:column>
+					</b:row>
+					<br />
+					<br />
 
 
 
 
-				<b:dataTable value="#{mbListeApprovisionnements.approvisionnements}"
-					var="approvisionnement" pdf="true" print="true" excel="true"
-					border="true" info="false" page-length="10" selectionMode="single" responsive="true">
+					<b:dataTable
+						value="#{mbListeApprovisionnements.approvisionnements}"
+						var="approvisionnement" pdf="false" print="false" excel="false"
+						border="true" info="false" page-length="10" selectionMode="single"
+						tiny-screen="12" medium-screen="12"  large-screen="12"
+						responsive="true" >
 
 
-					<b:dataTableColumn>
-						<f:facet name="header">Date de l'achat</f:facet>
-						<h:outputLabel value="#{approvisionnement.dateApprovisionnement}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Article</f:facet>
-						<h:outputLabel value="#{approvisionnement.article.nom}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Fournisseur</f:facet>
-						<h:outputLabel value="#{approvisionnement.fournisseur.nom}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Quantités Commandées</f:facet>
-						<h:outputLabel value="#{approvisionnement.quantiteCommandee}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Lot</f:facet>
-						<h:outputLabel value="#{approvisionnement.lot}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Prix</f:facet>
-						<h:outputLabel value="#{approvisionnement.prix}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Date de péremption</f:facet>
-						<h:outputLabel value="#{approvisionnement.datePeremption}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Quantités restantes</f:facet>
-						<h:outputLabel value="#{approvisionnement.quantiteRestante}" />
-					</b:dataTableColumn>
-				</b:dataTable>
+						<b:dataTableColumn>
+							<f:facet name="header">Date de<br />l'achat</f:facet>
+							<h:outputLabel value="#{approvisionnement.dateApprovisionnement}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Article</f:facet>
+							<h:outputLabel value="#{approvisionnement.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Fournisseur</f:facet>
+							<h:outputLabel value="#{approvisionnement.fournisseur.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité<br />Achetée</f:facet>
+							<h:outputLabel value="#{approvisionnement.quantiteCommandee}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Lot</f:facet>
+							<h:outputLabel value="#{approvisionnement.lot}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{approvisionnement.prix}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date de<br />péremption</f:facet>
+							<h:outputLabel value="#{approvisionnement.datePeremption}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité<br />restante</f:facet>
+							<h:outputLabel value="#{approvisionnement.quantiteRestante}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+				</b:container>
 			</h:form>
 		</h:body>
 	</ui:define>
