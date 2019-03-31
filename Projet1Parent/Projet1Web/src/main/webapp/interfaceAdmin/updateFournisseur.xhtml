@@ -79,11 +79,12 @@
 						</f:facet>
 					</b:inputText>
 
-					<b:selectOneMenu value="#{mbUpdateFournisseur.fournisseur.ville}"
+					<b:selectOneMenu  value="#{mbUpdateFournisseur.fournisseur.ville}"
 						colMd="3" required="true" labelColMd="2" select="true">
-						<f:selectItem itemLabel="Ville" itemValue=""
-							noSelectionOption="true" />
+<!-- 						<f:selectItem itemLabel="Ville" itemValue="" -->
+<!-- 							noSelectionOption="true" /> -->
 						<f:selectItems value="#{mbUpdateFournisseur.villes}" var="ville"
+							itemValue="#{ville}"
 							itemLabel="#{ville.codePostal} #{ville.nom}" />
 					</b:selectOneMenu>
 

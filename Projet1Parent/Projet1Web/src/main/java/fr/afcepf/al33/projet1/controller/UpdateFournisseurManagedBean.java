@@ -41,6 +41,8 @@ public class UpdateFournisseurManagedBean implements Serializable{
 	private Fournisseur fournisseur;
 	
 	private List<Ville> villes;
+	
+	private Ville ville;
 
 	@PostConstruct
 	public void init() {
@@ -49,7 +51,7 @@ public class UpdateFournisseurManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		fournisseur = (Fournisseur) session.getAttribute("foundFournisseur");
-		
+		ville= fournisseur.getVille();
 		villes = proxyVille.getAll();
 	}
 	
@@ -98,6 +100,14 @@ public class UpdateFournisseurManagedBean implements Serializable{
 
 	public void setVilles(List<Ville> villes) {
 		this.villes = villes;
+	}
+
+	public Ville getVille() {
+		return ville;
+	}
+
+	public void setVille(Ville ville) {
+		this.ville = ville;
 	}
 	
 	

@@ -151,5 +151,85 @@ public class Fournisseur implements Serializable{
 		this.email = email;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((complementAdresse == null) ? 0 : complementAdresse.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((numeroFixe == null) ? 0 : numeroFixe.hashCode());
+		result = prime * result + ((numeroPort == null) ? 0 : numeroPort.hashCode());
+		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
+		return result;
+	}
 
+	//Hashcode and equals
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fournisseur other = (Fournisseur) obj;
+		if (adresse == null) {
+			if (other.adresse != null)
+				return false;
+		} else if (!adresse.equals(other.adresse))
+			return false;
+		if (complementAdresse == null) {
+			if (other.complementAdresse != null)
+				return false;
+		} else if (!complementAdresse.equals(other.complementAdresse))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		if (numeroFixe == null) {
+			if (other.numeroFixe != null)
+				return false;
+		} else if (!numeroFixe.equals(other.numeroFixe))
+			return false;
+		if (numeroPort == null) {
+			if (other.numeroPort != null)
+				return false;
+		} else if (!numeroPort.equals(other.numeroPort))
+			return false;
+		if (ville == null) {
+			if (other.ville != null)
+				return false;
+		} else if (!ville.equals(other.ville))
+			return false;
+		return true;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "Fournisseur [id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", complementAdresse="
+				+ complementAdresse + ", ville=" + ville + ", numeroFixe=" + numeroFixe + ", numeroPort=" + numeroPort
+				+ ", email=" + email + "]";
+	}
+
+
+	
+	
 }

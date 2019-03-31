@@ -37,12 +37,13 @@
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
-							<h:outputLabel value="Article :" for="article" />
+							<h:outputLabel value="Article :" for="article" style="padding-top:5px"/>
 						</b:column>
 
 						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
 							<b:selectOneMenu id="article"
-								value="#{mbApprovisionnement.approvisionnement.article}">
+								value="#{mbApprovisionnement.approvisionnement.article}"
+								style="width:30%">
 								<f:selectItems value="#{mbApprovisionnement.articles}"
 									var="article" itemLabel="#{article.nom}"></f:selectItems>
 							</b:selectOneMenu>
@@ -52,15 +53,16 @@
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
-							<h:outputLabel value="Date de l'achat :" for="dateAchat" />
+							<h:outputLabel value="Date de l'achat :" for="dateAchat" style="padding-top:10px"/>
 						</b:column>
 
-						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
+						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
 							<b:formGroup>
 								<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
 									margin-bottom="5px" placeholder="Date d'achat"
 									value="#{mbApprovisionnement.approvisionnement.dateApprovisionnement}"
-									iconPosition='left' />
+									iconPosition='left'
+									style="width:30%"/>
 							</b:formGroup>
 						</b:column>
 					</b:row>
@@ -68,12 +70,13 @@
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
-							<h:outputLabel value="Fournisseur :" for="fournisseur" />
+							<h:outputLabel value="Fournisseur :" for="fournisseur" style="padding-top:5px"/>
 						</b:column>
 
 						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
 							<b:selectOneMenu id="fournisseur"
-								value="#{mbApprovisionnement.approvisionnement.fournisseur}">
+								value="#{mbApprovisionnement.approvisionnement.fournisseur}"
+								style="width:30%">
 								<f:selectItem itemLabel="Fournisseur" itemValue="" />
 								<f:selectItems value="#{mbApprovisionnement.fournisseurs}"
 									var="fournisseur" itemLabel="#{fournisseur.nom}"></f:selectItems>
@@ -84,7 +87,7 @@
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
-							<h:outputLabel value="Quantité achetée en Kilos :" for="quantite" />
+							<h:outputLabel value="Quantité achetée :" for="quantite" style="padding-top:5px"/>
 						</b:column>
 
 						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
@@ -96,7 +99,7 @@
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
-							<h:outputLabel value="Prix :" for="prix" />
+							<h:outputLabel value="Prix :" for="prix" style="padding-top:5px"/>
 						</b:column>
 
 						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
@@ -108,7 +111,7 @@
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
-							<h:outputLabel value="Référence du lot :" for="reference" />
+							<h:outputLabel value="Référence du lot :" for="reference" style="padding-top:5px"/>
 						</b:column>
 
 						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
@@ -119,15 +122,16 @@
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
-							<h:outputLabel value="Date de péremption :" for="datePeremption" />
+							<h:outputLabel value="Date de péremption :" for="datePeremption" style="padding-top:10px"/>
 						</b:column>
 
-						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
+						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
 							<b:formGroup>
 								<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
-									margin-bottom="5px" placeholder="Date de péremption"
+									margin-bottom="5px" placeholder="Date péremption"
 									value="#{mbApprovisionnement.approvisionnement.datePeremption}"
-									iconPosition='left' />
+									iconPosition='left' 
+									style="width:30%"/>
 							</b:formGroup>
 						</b:column>
 					</b:row>
@@ -135,8 +139,7 @@
 					<br />
 
 					<b:row>
-						<b:column offset="10" tiny-screen="2" medium-screen="2"
-							large-screen="2">
+						<b:column offset="11" tiny-screen="2" medium-screen="2"	large-screen="2">
 							<b:commandButton
 								href="#{mbApprovisionnement.addApprovisionnementToStock()}"
 								value="Ajouter" look="success" />
