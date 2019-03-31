@@ -27,39 +27,45 @@
 
 			<h:form id="formAfficherStock">
 
-				<h3
-					style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
-				<br />
-				<br />
+				<b:container layout="fluid">
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3
+								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
+							<br />
+						</b:column>
+					</b:row>
 
 
-				<b:dataTable value="#{mbStock.stocks}" var="ligneStock" pdf="true"
-					print="true" excel="true" border="true" info="false"
-					page-length="10" selectionMode="single" responsive="true">
+					<b:dataTable value="#{mbStock.stocks}" var="ligneStock" pdf="true"
+						print="true" excel="true" border="true" info="false"
+						page-length="10" selectionMode="single" responsive="true">
 
-					<b:dataTableColumn>
-						<f:facet name="header">Image</f:facet>
-						<h:graphicImage
-							value="/pics/articlesImages/#{ligneStock.article.image}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Articles</f:facet>
-						<h:outputLabel value="#{ligneStock.article.nom}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Disponibilité site internet</f:facet>
-						<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Quantités en stock</f:facet>
-						<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
-					</b:dataTableColumn>
-					<b:dataTableColumn>
-						<f:facet name="header">Approvisionnement</f:facet>
-						<b:commandButton value="Voir les approvisionnements"
-							action="#{mbStock.afficherApprovisionnements(ligneStock)}" />
-					</b:dataTableColumn>
-				</b:dataTable>
+						<b:dataTableColumn>
+							<f:facet name="header">Image: </f:facet>
+							<h:graphicImage
+								value="/pics/articlesImages/#{ligneStock.article.image}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles: </f:facet>
+							<h:outputLabel value="#{ligneStock.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Disponibilité site internet: </f:facet>
+							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantités en stock: </f:facet>
+							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Approvisionnement: </f:facet>
+							<b:commandButton value="Voir les approvisionnements"
+								look="primary"
+								action="#{mbStock.afficherApprovisionnements(ligneStock)}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+				</b:container>
 			</h:form>
 		</h:body>
 	</ui:define>
