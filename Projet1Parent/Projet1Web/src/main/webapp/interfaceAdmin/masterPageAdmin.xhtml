@@ -8,18 +8,23 @@
 <h:head>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content_Type" />
 		<link rel="stylesheet" type="text/css" href="css/styleAdmin.css" />
-<!-- 		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css"/> -->
-<!-- 		<ui:insert name="css"></ui:insert> -->
+		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css"/>
+		<ui:insert name="css"></ui:insert>
 	<title><ui:insert name="title"></ui:insert></title>
 
 </h:head>
 <h:body>
 
-	<b:navBar brand="" brand-img="#{request.contextPath}/pics/website/citronLogo.png"
+	<b:navBar 
+		brand=""
+		style="height:90px;margin-bottom: 0px;" 
+		brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
 		brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"
+		brand-style="padding:0px;"
+		brand-img-style="height:90;padding:10px;width:auto;"
 		inverse="true" fluid="true" 
 		id="navbar-brand">
-		<div id="navbar">
+
 
 			<b:navbarLinks>
 				<b:navLink value="Clients"
@@ -31,7 +36,7 @@
 				<b:navLink value="Approvisionnements"
 					href="/Projet1Web/interfaceAdmin/approvisionnement.xhtml"></b:navLink>
 			</b:navbarLinks>
-		</div>
+	
 	</b:navBar>
 
 	<div id="centre">
