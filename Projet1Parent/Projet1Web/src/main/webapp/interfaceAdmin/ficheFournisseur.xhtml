@@ -11,7 +11,7 @@
 	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
 	<!-- 	</ui:define> -->
 	<ui:define name="content">
-		
+
 		<h:head>
 
 			<title>Fiche du fournisseur</title>
@@ -20,6 +20,7 @@
 				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
 				rel="stylesheet" />
 		</h:head>
+
 		<h:body>
 
 			<f:metadata>
@@ -27,70 +28,102 @@
 					type="preRenderView"></f:event>
 			</f:metadata>
 
-
 			<b:form id="formFicheFournisseur">
+				<b:container layout="fluid">
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3 style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Informations du fournisseur:</h3>
+						</b:column>
+					</b:row>
+					<br />
+					<br />
 
-				<h4 id="titre1">Contact du fournisseur</h4>
-				<br />
-				<br />
+					<b:panelGrid columns="1">
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText value="#{mbFicheFournisseur.fournisseur.nom}"
+									disabled="true" fieldSize="lg" >
+									<f:facet name="prepend">
+										<b:icon name="user" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText
+									value="#{mbFicheFournisseur.fournisseur.complementAdresse}"
+									disabled="true" fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="map-marker" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText value="#{mbFicheFournisseur.fournisseur.adresse}"
+									disabled="true" fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="map-marker" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText
+									value="#{mbFicheFournisseur.fournisseur.ville.codePostal} #{mbFicheFournisseur.fournisseur.ville.nom}"
+									disabled="true" fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="map-marker" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText value="#{mbFicheFournisseur.fournisseur.email}"
+									disabled="true" fieldSize="lg">
+									<f:facet name="prepend">
+										<h:outputText value="@" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
 
-				<b:panelGrid columns="2">
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText
+									value="#{mbFicheFournisseur.fournisseur.numeroFixe}"
+									disabled="true" fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="phone-alt" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
 
-					<b:inputText value="#{mbFicheFournisseur.fournisseur.nom}"
-						disabled="true" fieldSize="lg" colMd="8">
-						<f:facet name="prepend">
-							<b:icon name="user" />
-						</f:facet>
-					</b:inputText>
-					<b:inputText value="#{mbFicheFournisseur.fournisseur.email}"
-						disabled="true" fieldSize="lg" colMd="8">
-						<f:facet name="prepend">
-							<h:outputText value="@" />
-						</f:facet>
-					</b:inputText>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText
+									value="#{mbFicheFournisseur.fournisseur.numeroPort}"
+									disabled="true" fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="phone" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
 
-					<b:inputText
-						value="#{mbFicheFournisseur.fournisseur.complementAdresse}"
-						disabled="true" fieldSize="lg" colMd="8">
-						<f:facet name="prepend">
-							<b:icon name="map-marker" />
-						</f:facet>
-					</b:inputText>
+					</b:panelGrid>
+					<b:panelGrid columns="2">
+						<b:button
+							href="/Projet1Web/interfaceAdmin/updateFournisseur.xhtml"
+							value="Mettre à jour" look="primary"/>
+					</b:panelGrid>
 
-					<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroFixe}"
-						disabled="true" fieldSize="lg" colMd="8">
-						<f:facet name="prepend">
-							<b:icon name="phone-alt" />
-						</f:facet>
-					</b:inputText>
-					<b:inputText value="#{mbFicheFournisseur.fournisseur.adresse}"
-						disabled="true" fieldSize="lg" colMd="8">
-						<f:facet name="prepend">
-							<b:icon name="map-marker" />
-						</f:facet>
-					</b:inputText>
-
-					<b:inputText value="#{mbFicheFournisseur.fournisseur.numeroPort}"
-						disabled="true" fieldSize="lg" colMd="8">
-						<f:facet name="prepend">
-							<b:icon name="phone" />
-						</f:facet>
-					</b:inputText>
-					<b:inputText
-						value="#{mbFicheFournisseur.fournisseur.ville.codePostal} #{mbFicheFournisseur.fournisseur.ville.nom}"
-						disabled="true" fieldSize="lg" colMd="8">
-						<f:facet name="prepend">
-							<b:icon name="map-marker" />
-						</f:facet>
-					</b:inputText>
-
-				</b:panelGrid>
-				<b:panelGrid columns="2">
-					<b:button href="/Projet1Web/interfaceAdmin/updateFournisseur.xhtml"
-						value="Mettre à jour" />
-					<b:commandButton value="Supprimer"
-						action="#{mbFicheFournisseur.delete()}" />
-				</b:panelGrid>
+				</b:container>
 			</b:form>
 		</h:body>
 	</ui:define>

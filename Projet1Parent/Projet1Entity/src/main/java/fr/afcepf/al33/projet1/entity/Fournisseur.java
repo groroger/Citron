@@ -1,14 +1,18 @@
 package fr.afcepf.al33.projet1.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -48,6 +52,8 @@ public class Fournisseur implements Serializable{
 	@Column(name="email")
 	private String email;
 
+	@OneToMany(mappedBy="fournisseur", cascade=CascadeType.ALL)
+	private List<Approvisionnement> approvisionnements;
 	
 	//Constructeur vide
 	
@@ -58,7 +64,7 @@ public class Fournisseur implements Serializable{
 	//Constructeur chargé
 	
 	public Fournisseur(Integer id, String nom, String adresse, String complementAdresse, Ville ville, String numeroFixe,
-			String numeroPort, String email) {
+			String numeroPort, String email, List<Approvisionnement> approvisionnements) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -68,13 +74,16 @@ public class Fournisseur implements Serializable{
 		this.numeroFixe = numeroFixe;
 		this.numeroPort = numeroPort;
 		this.email = email;
+		this.approvisionnements = approvisionnements;
 	}
+
 
 	//GETTERS ET SETTERS
 
 	public Integer getId() {
 		return id;
 	}
+
 
 
 	public void setId(Integer id) {
@@ -150,12 +159,25 @@ public class Fournisseur implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+	public List<Approvisionnement> getApprovisionnements() {
+		return approvisionnements;
+	}
 
+	public void setApprovisionnements(List<Approvisionnement> approvisionnements) {
+		this.approvisionnements = approvisionnements;
+	}
+
+
+	//Hashcode and equals
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((approvisionnements == null) ? 0 : approvisionnements.hashCode());
 		result = prime * result + ((complementAdresse == null) ? 0 : complementAdresse.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -166,8 +188,6 @@ public class Fournisseur implements Serializable{
 		return result;
 	}
 
-	//Hashcode and equals
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -181,6 +201,11 @@ public class Fournisseur implements Serializable{
 			if (other.adresse != null)
 				return false;
 		} else if (!adresse.equals(other.adresse))
+			return false;
+		if (approvisionnements == null) {
+			if (other.approvisionnements != null)
+				return false;
+		} else if (!approvisionnements.equals(other.approvisionnements))
 			return false;
 		if (complementAdresse == null) {
 			if (other.complementAdresse != null)
@@ -221,15 +246,12 @@ public class Fournisseur implements Serializable{
 	}
 
 	
-	
 	@Override
 	public String toString() {
 		return "Fournisseur [id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", complementAdresse="
 				+ complementAdresse + ", ville=" + ville + ", numeroFixe=" + numeroFixe + ", numeroPort=" + numeroPort
 				+ ", email=" + email + "]";
 	}
-
-
 	
 	
 }
