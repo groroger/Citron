@@ -53,11 +53,11 @@ public class Client implements Serializable{
 	@JoinColumn(referencedColumnName="id")
 	private Ville ville;
 	
-	@Column(name="adresseFacturation")
-	private String adresseFacturation;
+	@Column(name="adresseLivraison")
+	private String adresseLivraison;
 	
-	@Column(name="complementAdresseFacturation")
-	private String complementAdresseFacturation;
+	@Column(name="complementAdresseLivraison")
+	private String complementAdresseLivraison;
 	@ManyToOne
 	@JoinColumn(referencedColumnName="id")
 	private Ville villeFacturation;
@@ -93,7 +93,7 @@ public class Client implements Serializable{
 	//Constructeur chargé
 
 	public Client(Integer id, String nom, String prenom, Date dateDeNaissance, String adresse, String complementAdresse,
-			Ville ville, String adresseFacturation, String complementAdresseFacturation, Ville villeFacturation,
+			Ville ville, String adresseLivraison, String complementAdresseLivraison, Ville villeFacturation,
 			String numeroFixe, String numeroPort, String email, String login, String password, String salt,
 			List<Commande> commandes) {
 		super();
@@ -104,8 +104,8 @@ public class Client implements Serializable{
 		this.adresse = adresse;
 		this.complementAdresse = complementAdresse;
 		this.ville = ville;
-		this.adresseFacturation = adresseFacturation;
-		this.complementAdresseFacturation = complementAdresseFacturation;
+		this.adresseLivraison = adresseLivraison;
+		this.complementAdresseLivraison = complementAdresseLivraison;
 		this.villeFacturation = villeFacturation;
 		this.numeroFixe = numeroFixe;
 		this.numeroPort = numeroPort;
@@ -121,6 +121,7 @@ public class Client implements Serializable{
 	public Integer getId() {
 		return id;
 	}
+
 
 
 	public void setId(Integer id) {
@@ -188,23 +189,20 @@ public class Client implements Serializable{
 	}
 
 
-	public String getAdresseFacturation() {
-		return adresseFacturation;
+	public String getAdresseLivraison() {
+		return adresseLivraison;
 	}
 
-
-	public void setAdresseFacturation(String adresseFacturation) {
-		this.adresseFacturation = adresseFacturation;
+	public void setAdresseLivraison(String adresseLivraison) {
+		this.adresseLivraison = adresseLivraison;
 	}
 
-
-	public String getComplementAdresseFacturation() {
-		return complementAdresseFacturation;
+	public String getComplementAdresseLivraison() {
+		return complementAdresseLivraison;
 	}
 
-
-	public void setComplementAdresseFacturation(String complementAdresseFacturation) {
-		this.complementAdresseFacturation = complementAdresseFacturation;
+	public void setComplementAdresseLivraison(String complementAdresseLivraison) {
+		this.complementAdresseLivraison = complementAdresseLivraison;
 	}
 
 
