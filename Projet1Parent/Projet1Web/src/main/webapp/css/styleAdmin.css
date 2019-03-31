@@ -1,0 +1,26 @@
+html,
+body
+{
+  height: 100%;
+  width: 100%;
+  color: #222;
+}
+
+#navbar-brand
+{
+	width: 100%;
+
+}
+
+
+#navbarLinks
+{
+	float:right;	
+}
+
+
+
+
+
+
+

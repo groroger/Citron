@@ -7,27 +7,38 @@
 
 <h:head>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content_Type" />
-	<!-- 	<h:outputStylesheet name="CSS/masterStyle.css"/> -->
-	<!-- 	<ui:insert name="CSS"></ui:insert> -->
+		<link rel="stylesheet" type="text/css" href="css/styleAdmin.css" />
+<!-- 		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css"/> -->
+<!-- 		<ui:insert name="css"></ui:insert> -->
 	<title><ui:insert name="title"></ui:insert></title>
+
 </h:head>
-<body>
-	<div id="header">
-		<b:navBar brand="" brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml" inverse="true" fluid="true" brand-img="pics/website/citronLogo.png"
+<h:body>
+
+	<b:navBar brand="" brand-img="#{request.contextPath}/pics/website/citronLogo.png"
+		brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"
+		inverse="true" fluid="true" 
 		id="navbar-brand">
+		<div id="navbar">
+
 			<b:navbarLinks>
-				<b:navLink value="Clients" href="/Projet1Web/interfaceAdmin/moteurRechercheClient.xhtml"></b:navLink>
-				<b:navLink value="Fournisseurs" href="/Projet1Web/interfaceAdmin/moteurRechercheFournisseur.xhtml"></b:navLink>
-				<b:navLink value="Stock" href="/Projet1Web/interfaceAdmin/afficherStock.xhtml"></b:navLink>
-				<b:navLink value="Approvisionnements" href="/Projet1Web/interfaceAdmin/approvisionnement.xhtml"></b:navLink>
+				<b:navLink value="Clients"
+					href="/Projet1Web/interfaceAdmin/moteurRechercheClient.xhtml"></b:navLink>
+				<b:navLink value="Fournisseurs"
+					href="/Projet1Web/interfaceAdmin/moteurRechercheFournisseur.xhtml"></b:navLink>
+				<b:navLink value="Stock"
+					href="/Projet1Web/interfaceAdmin/afficherStock.xhtml"></b:navLink>
+				<b:navLink value="Approvisionnements"
+					href="/Projet1Web/interfaceAdmin/approvisionnement.xhtml"></b:navLink>
 			</b:navbarLinks>
-		</b:navBar>
-	</div>
+		</div>
+	</b:navBar>
+
 	<div id="centre">
 		<ui:insert name="content"></ui:insert>
 	</div>
-<!-- 	<div id="footer"> -->
-<!-- 		<h1>Footer</h1> -->
-<!-- 	</div> -->
-</body>
+	<!-- 	<div id="footer"> -->
+	<!-- 		<h1>Footer</h1> -->
+	<!-- 	</div> -->
+</h:body>
 </html>
