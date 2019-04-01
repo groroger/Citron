@@ -50,6 +50,40 @@ public class HashAndSaltSecurity {
 		return passwordCree;
 
 	}
+	
+	public boolean verifierPassword(String passwordEnregistre,String  passwordAValide, String salt)
+	{
+		boolean passwordVerifie = false;
+		
+		MessageDigest md;
+		try 
+		{
+			md = MessageDigest.getInstance(algoHash);
+	
+			md.update(salt.getBytes());
+			System.out.println("salt client : " + salt);
+			byte [] hash = md.digest(passwordAValide.getBytes());
+			StringBuilder sb = new StringBuilder();
+			for(int i=0; i< hash.length ;i++)
+			{
+				sb.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			//Get complete hashed password in hex format
+			passwordAValide = sb.toString();
+			System.out.println("passwordAValide :" + passwordAValide);
+		} 
+		catch (NoSuchAlgorithmException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if ( passwordAValide.equals(passwordEnregistre))
+		{
+			passwordVerifie = true;
+		}
+		
+		return passwordVerifie;
+	}
 
 //	TEST EN CONSOLE DU HASH AND SALT 
 	
