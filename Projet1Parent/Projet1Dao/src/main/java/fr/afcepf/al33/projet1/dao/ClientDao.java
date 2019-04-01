@@ -1,6 +1,7 @@
 package fr.afcepf.al33.projet1.dao;
 
 
+import java.security.SecureRandom;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -70,6 +71,6 @@ public class ClientDao extends GenericDao<Client> implements ClientIdao {
 		return client;
 	}
 
-
+	
 
 }
