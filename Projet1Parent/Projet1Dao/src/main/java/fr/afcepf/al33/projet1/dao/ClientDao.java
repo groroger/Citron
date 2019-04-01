@@ -26,7 +26,7 @@ public class ClientDao extends GenericDao<Client> implements ClientIdao {
 	private EntityManager em;
 
 	@Override
-	public Client findByLogin(String login) {
+	public Client getByLogin(String login) {
 		String REQ_AUTH = "SELECT client from Client client WHERE client.login = :login ";
 		Client client = null;
 		

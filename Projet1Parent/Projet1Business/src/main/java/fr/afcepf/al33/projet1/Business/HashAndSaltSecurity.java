@@ -3,27 +3,44 @@ package fr.afcepf.al33.projet1.Business;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.Scanner;
 
 public class HashAndSaltSecurity {
 
 
 	private static String algoHash = "SHA-256"; 
-	private static byte [] salt = genererSalt();
+	private static byte [] salt; 
+	//	private static String salt = "123";
 
 
-	public static byte[] genererSalt()
-	{
-		SecureRandom sr = new SecureRandom();
-		byte[] salt = new byte[16];
-		sr.nextBytes(salt);
-		return salt;
-	}
+		
+		public static byte[] genererSalt()
+		{
+			SecureRandom sr = new SecureRandom();
+			byte [] salt = new byte[3];
+			sr.nextBytes(salt);
+			
+			String string = new String(salt);
+			System.out.println(string);
+			
+			return salt;
+		}
+		
+//	public static byte[] genererSalt()
+//	{
+//		SecureRandom sr = new SecureRandom();
+//		byte[] salt = new byte[1];
+//		sr.nextBytes(salt);
+//		return salt;
+//	}
 
 	private static String genererHash(String passwordToHash) 
 
 	{
-
+		salt = genererSalt();
+		String string = new String(salt);
+		System.out.println(string);
 		String passwordCree = null;
 		MessageDigest md;
 		try 
@@ -40,6 +57,15 @@ public class HashAndSaltSecurity {
 			}
 			//Get complete hashed password in hex format
 			passwordCree = sb.toString();
+			
+			StringBuilder sbSalt = new StringBuilder();
+			for(int i=0; i< salt.length ;i++)
+			{
+				sbSalt.append(Integer.toString((salt[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			//Get complete hashed password in hex format
+			String saltString = sbSalt.toString();
+			System.out.println("salt client : " + saltString);
 
 		} 
 		catch (NoSuchAlgorithmException e) 
@@ -89,17 +115,28 @@ public class HashAndSaltSecurity {
 	
 	public static void main(String[] args) {
 
+		String s = "123";
+		byte[] b = s.getBytes();
+		String s2 = new String(b);
+		System.out.println("s:" + s);
+		System.out.println("s2:" + s2);
+		
+		
+//		genererSalt();
+//		
 		System.out.println("entrez un mot de passe");
 		
 		Scanner sc = new Scanner(System.in);
 		
 		String mdp = sc.nextLine();
 
+		
 		System.out.println(genererHash(mdp));
-		System.out.println(salt);
+		
+		String saltFabrique = new String(salt);
+		
+		System.out.println(saltFabrique);
 
-// 
-//		[B@355da254
-//		 8d25bbeda5e87c45535455962d64bd710e99e8d83d558b078dda73bf2cc433cd
+
 	}
 }

@@ -63,9 +63,37 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 		this.password = password;
 	}
 
+//	public void sIdentifier()
+//	{
+//		clientConnecte = proxyClient.rechercheParLoginEtPassword(login, password);
+//		if ( clientConnecte != null)
+//		{
+//			if ( clientConnecte.getLogin().equals(admin))
+//			{
+//				FacesContext facesContext = FacesContext.getCurrentInstance();
+//				HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+//				session.setAttribute("clientConnecte", clientConnecte);
+//				facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/accueilAdmin.xhtml?faces-redirect=true");
+//			}
+//			else
+//			{
+//				 FacesContext facesContext = FacesContext.getCurrentInstance();
+//				 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+//				 session.setAttribute("clientConnecte", clientConnecte);
+//				 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml?faces-redirect=true");
+//			}
+//		
+//		}
+//		else
+//		{
+//			FacesContext facesContext = FacesContext.getCurrentInstance();
+//			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherStockResponsive.xhtml?faces-redirect=true");
+//		}
+//	}
+	
 	public void sIdentifier()
 	{
-		clientConnecte = proxyClient.rechercheParLoginetPassword(login, password);
+		clientConnecte = proxyClient.seConnecter(login, password);
 		if ( clientConnecte != null)
 		{
 			if ( clientConnecte.getLogin().equals(admin))
@@ -87,7 +115,7 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 		else
 		{
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherStockResponsive.xhtml?faces-redirect=true");
+			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/masterPageAdmin.xhtml?faces-redirect=true");
 		}
 	}
 
