@@ -31,6 +31,21 @@ public class VilleDao extends GenericDao<Ville> implements VilleIdao {
 			villes = queryJPQL.getResultList();
 			return villes;
 		}
+
+
+
+		@Override
+		public Ville rechercherParVilleEtCodePostal(String nom, String cp) {
+			Ville ville = null;
+			String REQ_GETBYNAMEANDBYCP =
+					"SELECT ville FROM Ville ville where ville.nom = :nom "
+					+ "AND ville.codePostal = :cp";
+			Query querySQL = em.createQuery(REQ_GETBYNAMEANDBYCP);
+			querySQL.setParameter("nom", nom);
+			querySQL.setParameter("cp", cp);
+			ville = (Ville) querySQL.getSingleResult();
+			return ville;
+		}
 		
 	}
 

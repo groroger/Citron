@@ -10,6 +10,6 @@ public interface VilleIdao extends GenericIdao<Ville> {
 	
 
 	List<Ville> getAll();
-	
+	Ville rechercherParVilleEtCodePostal(String nom, String cp);
 
 }

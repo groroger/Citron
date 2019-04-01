@@ -9,5 +9,6 @@ public interface VilleIBusiness {
 	
 	public List<Ville> getAll();
 	public Ville searchById(Integer id);
+	public Ville rechercherParVilleEtCodePostal(String nom, String cp);
 
 }

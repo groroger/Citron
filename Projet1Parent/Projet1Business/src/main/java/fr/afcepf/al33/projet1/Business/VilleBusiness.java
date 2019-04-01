@@ -32,4 +32,10 @@ public class VilleBusiness implements VilleIBusiness{
 		return ville;
 	}
 
+	@Override
+	public Ville rechercherParVilleEtCodePostal(String nom, String cp) {
+		Ville ville = proxyVille.rechercherParVilleEtCodePostal(nom, cp);
+		return ville;
+	}
+
 }

@@ -26,7 +26,7 @@
 
 				<b:container layout="fluid">
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12"  large-screen="12">
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 							<h3
 								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Liste
 								des clients:</h3>
@@ -38,7 +38,7 @@
 					<b:dataTable value="#{mbFindClient.clients}" var="cl" excel="false"
 						pdf="false" print="false" border="true" info="false"
 						page-length="20" selectionMode="single" responsive="true"
-						tiny-screen="12" medium-screen="12"  large-screen="12"
+						tiny-screen="12" medium-screen="12" large-screen="12"
 						onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindClient.onSelect(cl, typeOfSelection, indexes);">
 
 						<b:dataTableColumn>
