@@ -56,6 +56,7 @@ public class StockBusiness implements StockIBusiness{
 				if (approvisionnement.getDatePeremption().after(aujourdhui))
 					{
 						stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() + approvisionnement.getQuantiteRestante());
+						stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() + approvisionnement.getQuantiteRestante());
 					}
 			}
 		}
