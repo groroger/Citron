@@ -31,6 +31,7 @@ public class HashAndSaltSecurity {
 			md = MessageDigest.getInstance(algoHash);
 	
 			md.update(salt);
+			System.out.println(salt);
 			byte [] hash = md.digest(passwordToHash.getBytes());
 			StringBuilder sb = new StringBuilder();
 			for(int i=0; i< hash.length ;i++)
@@ -52,16 +53,19 @@ public class HashAndSaltSecurity {
 
 //	TEST EN CONSOLE DU HASH AND SALT 
 	
-//	public static void main(String[] args) {
-//
-//		System.out.println("entrez un mot de passe");
-//		
-//		Scanner sc = new Scanner(System.in);
-//		
-//		String mdp = sc.nextLine();
-//
-//		System.out.println(genererHash(mdp));
-//
-//
-//	}
+	public static void main(String[] args) {
+
+		System.out.println("entrez un mot de passe");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String mdp = sc.nextLine();
+
+		System.out.println(genererHash(mdp));
+		System.out.println(salt);
+
+// 
+//		[B@355da254
+//		 8d25bbeda5e87c45535455962d64bd710e99e8d83d558b078dda73bf2cc433cd
+	}
 }
