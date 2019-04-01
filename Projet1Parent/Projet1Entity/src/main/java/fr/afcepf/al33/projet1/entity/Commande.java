@@ -46,6 +46,9 @@ public class Commande implements Serializable {
 		@Column(name="dateLivraison")
 		private Date dateLivraison;
 		
+		@Column(name="PrixTotal")
+		private Double prixTotal;
+		
 		@ManyToOne
 		@JoinColumn(referencedColumnName="id")
 		private Client client;
@@ -65,7 +68,7 @@ public class Commande implements Serializable {
 		//Constructeur chargé
 
 		public Commande(Integer id, Date dateCreation, Date dateAnnulation, Date dateRemboursement, Date dateExpedition,
-				Date dateLivraison, Client client, List<ArticleCommande> articlesCommandes) {
+				Date dateLivraison, Double prixTotal, Client client, List<ArticleCommande> articlesCommandes) {
 			super();
 			this.id = id;
 			this.dateCreation = dateCreation;
@@ -73,9 +76,11 @@ public class Commande implements Serializable {
 			this.dateRemboursement = dateRemboursement;
 			this.dateExpedition = dateExpedition;
 			this.dateLivraison = dateLivraison;
+			this.prixTotal = prixTotal;
 			this.client = client;
 			this.articlesCommandes = articlesCommandes;
 		}
+
 
 		//GETTERS ET SETTERS
 		
@@ -83,65 +88,90 @@ public class Commande implements Serializable {
 			return id;
 		}
 
+
 		public void setId(Integer id) {
 			this.id = id;
 		}
+
 
 		public Date getDateCreation() {
 			return dateCreation;
 		}
 
+
 		public void setDateCreation(Date dateCreation) {
 			this.dateCreation = dateCreation;
 		}
+
 
 		public Date getDateAnnulation() {
 			return dateAnnulation;
 		}
 
+
 		public void setDateAnnulation(Date dateAnnulation) {
 			this.dateAnnulation = dateAnnulation;
 		}
+
 
 		public Date getDateRemboursement() {
 			return dateRemboursement;
 		}
 
+
 		public void setDateRemboursement(Date dateRemboursement) {
 			this.dateRemboursement = dateRemboursement;
 		}
+
 
 		public Date getDateExpedition() {
 			return dateExpedition;
 		}
 
+
 		public void setDateExpedition(Date dateExpedition) {
 			this.dateExpedition = dateExpedition;
 		}
+
 
 		public Date getDateLivraison() {
 			return dateLivraison;
 		}
 
+
 		public void setDateLivraison(Date dateLivraison) {
 			this.dateLivraison = dateLivraison;
 		}
+
+
+		public Double getPrixTotal() {
+			return prixTotal;
+		}
+
+
+		public void setPrixTotal(Double prixTotal) {
+			this.prixTotal = prixTotal;
+		}
+
 
 		public Client getClient() {
 			return client;
 		}
 
+
 		public void setClient(Client client) {
 			this.client = client;
 		}
+
 
 		public List<ArticleCommande> getArticlesCommandes() {
 			return articlesCommandes;
 		}
 
+
 		public void setArticlesCommandes(List<ArticleCommande> articlesCommandes) {
 			this.articlesCommandes = articlesCommandes;
 		}
-	
 
+	
 }

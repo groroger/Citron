@@ -128,6 +128,51 @@
 							href="/Projet1Web/interfaceAdmin/updateClient.xhtml"
 							value="Mettre à jour" look="primary" />
 					</b:panelGrid>
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3
+								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Commandes
+								du client:</h3>
+						</b:column>
+					</b:row>
+					<br />
+					<br />
+					<b:dataTable
+						value="#{mbFicheClient.commandes}"
+						var="commande" pdf="false" print="false" excel="false"
+						border="true" info="false" page-length="10" selectionMode="single"
+						tiny-screen="12" medium-screen="12"  large-screen="12"
+						responsive="true" >
+
+
+						<b:dataTableColumn>
+							<f:facet name="header">Date de<br />la commande :</f:facet>
+							<h:outputLabel value="#{commande.dateCreation}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Expédiée le :</f:facet>
+							<h:outputLabel value="#{commande.dateExpedition}" >
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Annulée le :</f:facet>
+							<h:outputLabel value="#{commande.dateAnnulation}" >
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Remboursée le :</f:facet>
+							<h:outputLabel value="#{commande.dateRemboursement}" />
+						</b:dataTableColumn>
+
+						<b:dataTableColumn>
+							<f:facet name="header">Prix Total</f:facet>
+							<h:outputLabel value="#{commande.prixTotal}" />
+						</b:dataTableColumn>
+					</b:dataTable>
 				</b:container>
 			</b:form>
 		</h:body>
