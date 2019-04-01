@@ -121,7 +121,50 @@
 							href="/Projet1Web/interfaceAdmin/updateFournisseur.xhtml"
 							value="Mettre à jour" look="primary"/>
 					</b:panelGrid>
+					
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3 style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Achats auprès de ce fournisseur :</h3>
+						</b:column>
+					</b:row>
+					<br />
+					<br />
+					
+					<b:dataTable
+						value="#{mbFicheFournisseur.approvisionnements}"
+						var="approvisionnement" pdf="false" print="false" excel="false"
+						border="true" info="false" page-length="10" selectionMode="single"
+						tiny-screen="12" medium-screen="12"  large-screen="12"
+						responsive="true" >
 
+
+						<b:dataTableColumn>
+							<f:facet name="header">Date de<br />l'achat</f:facet>
+							<h:outputLabel value="#{approvisionnement.dateApprovisionnement}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Article</f:facet>
+							<h:outputLabel value="#{approvisionnement.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité<br />Achetée</f:facet>
+							<h:outputLabel value="#{approvisionnement.quantiteCommandee}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité<br />Achetée</f:facet>
+							<h:outputLabel value="#{approvisionnement.quantiteRestante}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Lot</f:facet>
+							<h:outputLabel value="#{approvisionnement.lot}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{approvisionnement.prix}" />
+						</b:dataTableColumn>
+					</b:dataTable>
 				</b:container>
 			</b:form>
 		</h:body>

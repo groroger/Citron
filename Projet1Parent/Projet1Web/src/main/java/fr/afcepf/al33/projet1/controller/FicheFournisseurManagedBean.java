@@ -1,7 +1,8 @@
 package fr.afcepf.al33.projet1.controller;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 
 import fr.afcepf.al33.projet1.IBusiness.FournisseurIBusiness;
+import fr.afcepf.al33.projet1.entity.Approvisionnement;
 import fr.afcepf.al33.projet1.entity.Fournisseur;
 
 
@@ -36,6 +38,8 @@ public class FicheFournisseurManagedBean implements Serializable{
 	
 	@ManagedProperty(value="#{mbFindFournisseur.foundFournisseur}")
 	private Fournisseur fournisseur;
+	
+	List<Approvisionnement> approvisionnements = new ArrayList<Approvisionnement>();
 
 	
 	
@@ -48,6 +52,7 @@ public class FicheFournisseurManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		fournisseur = (Fournisseur) session.getAttribute("foundFournisseur");
+		approvisionnements= fournisseur.getApprovisionnements();
 		
 	}
 
@@ -78,5 +83,15 @@ public class FicheFournisseurManagedBean implements Serializable{
 	public void setFournisseur(Fournisseur fournisseur) {
 		this.fournisseur = fournisseur;
 	}
+
+	public List<Approvisionnement> getApprovisionnements() {
+		return approvisionnements;
+	}
+
+	public void setApprovisionnements(List<Approvisionnement> approvisionnements) {
+		this.approvisionnements = approvisionnements;
+	}
+	
+	
 	
 }

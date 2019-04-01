@@ -44,11 +44,6 @@ public class AfficherCommandeManagedBean implements Serializable{
 	public void init() {
 		articlesCommandes=selectedCommande.getArticlesCommandes();
 		
-		
-		
-		for (ArticleCommande articleCommande : articlesCommandes) {
-			System.out.println(articleCommande.getArticle().getNom());
-		}
 	}
 	
 

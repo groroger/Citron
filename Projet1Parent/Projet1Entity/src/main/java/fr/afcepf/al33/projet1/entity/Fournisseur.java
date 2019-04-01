@@ -52,7 +52,7 @@ public class Fournisseur implements Serializable{
 	@Column(name="email")
 	private String email;
 
-	@OneToMany(mappedBy="fournisseur", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="fournisseur", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Approvisionnement> approvisionnements;
 	
 	//Constructeur vide
