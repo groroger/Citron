@@ -64,6 +64,8 @@ public class HashAndSaltSecurity {
 		System.out.println(genererHash(mdp));
 		System.out.println(salt);
 
-
+// 
+//		[B@355da254
+//		 8d25bbeda5e87c45535455962d64bd710e99e8d83d558b078dda73bf2cc433cd
 	}
 }

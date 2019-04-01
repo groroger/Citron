@@ -60,6 +60,7 @@ public class ClientBusiness implements ClientIBusiness{
 
 	@Override
 	public Client rechercheParLoginetPassword(String l, String p) {
+		
 		Client client = proxyClient.findByLoginAndPassword(l, p);
 		return client;
 	}

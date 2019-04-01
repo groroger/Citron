@@ -1,11 +1,11 @@
 package fr.afcepf.al33.projet1.controller;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
 import fr.afcepf.al33.projet1.entity.Client;
@@ -19,27 +19,16 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private List<Client> clients;
-	
 	private Client clientConnecte;
+	
+	private String login;
+	private String password;
+	private String admin = "admin";
 	
 	@EJB
 	private ClientIBusiness proxyClient;
 	
 	
-	public void init()
-	{
-	}
-	
-
-	public List<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
-
 	public Client getClientConnecte() {
 		return clientConnecte;
 	}
@@ -56,5 +45,50 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 		this.proxyClient = proxyClient;
 	}
 	
+	
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void sIdentifier()
+	{
+		clientConnecte = proxyClient.rechercheParLoginetPassword(login, password);
+		if ( clientConnecte != null)
+		{
+			if ( clientConnecte.getLogin().equals(admin))
+			{
+				FacesContext facesContext = FacesContext.getCurrentInstance();
+				HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+				session.setAttribute("clientConnecte", clientConnecte);
+				facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/accueilAdmin.xhtml?faces-redirect=true");
+			}
+			else
+			{
+				 FacesContext facesContext = FacesContext.getCurrentInstance();
+				 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+				 session.setAttribute("clientConnecte", clientConnecte);
+				 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml?faces-redirect=true");
+			}
+		
+		}
+		else
+		{
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherStockResponsive.xhtml?faces-redirect=true");
+		}
+	}
 
 }
