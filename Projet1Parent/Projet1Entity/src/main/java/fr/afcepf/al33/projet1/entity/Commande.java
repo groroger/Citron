@@ -46,7 +46,7 @@ public class Commande implements Serializable {
 		@Column(name="dateLivraison")
 		private Date dateLivraison;
 		
-		@Column(name="PrixTotal")
+		@Column(name="prixTotal")
 		private Double prixTotal;
 		
 		@ManyToOne

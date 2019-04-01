@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
+import fr.afcepf.al33.projet1.entity.ArticleCommande;
 import fr.afcepf.al33.projet1.entity.Client;
 import fr.afcepf.al33.projet1.entity.Commande;
 
@@ -36,6 +37,25 @@ public class FicheClientManagedBean implements Serializable{
 	private Client client;
 	
 	List<Commande> commandes= new ArrayList<Commande>();
+	
+	private Commande selectedCommande;
+	
+	public void onSelect(Commande commande) {
+		
+		selectedCommande=commande;
+	  
+		System.out.println(commande.getId());
+		
+//		for (ArticleCommande ac : commande.getArticlesCommandes()) {
+//			System.out.println(ac.getArticle().getNom());
+//		}
+
+		
+		 FacesContext facesContext = FacesContext.getCurrentInstance();
+		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		 session.setAttribute("selectedCommande", selectedCommande);
+		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherCommande.xhtml?faces-redirect=true");
+	}
 
 	
 	
@@ -53,7 +73,7 @@ public class FicheClientManagedBean implements Serializable{
 		
 	
 	}
-	
+
 
 
 	public ClientIBusiness getProxyClient() {
@@ -62,12 +82,9 @@ public class FicheClientManagedBean implements Serializable{
 
 
 
-
 	public void setProxyClient(ClientIBusiness proxyClient) {
 		this.proxyClient = proxyClient;
 	}
-
-
 
 
 	public Client getClient() {
@@ -92,8 +109,15 @@ public class FicheClientManagedBean implements Serializable{
 	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
-	
-	
-	
+
+
+	public Commande getSelectedCommande() {
+		return selectedCommande;
+	}
+
+
+	public void setSelectedCommande(Commande selectedCommande) {
+		this.selectedCommande = selectedCommande;
+	}
 	
 }

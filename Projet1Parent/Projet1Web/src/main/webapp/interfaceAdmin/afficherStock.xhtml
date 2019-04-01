@@ -7,9 +7,9 @@
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
 	<ui:define name="title">Recherche de client</ui:define>
-	<!-- 	<ui:define name="CSS"> -->
-	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
-	<!-- 	</ui:define> -->
+		<ui:define name="css">
+			<h:outputStylesheet name= "css/styleAdmin.css"/>
+		</ui:define>
 	<ui:define name="content">
 
 		<h:head>
@@ -40,7 +40,7 @@
 						tiny-screen="12" medium-screen="12"  large-screen="12"
 						page-length="20" selectionMode="single" responsive="true">
 
-						<b:dataTableColumn>
+						<b:dataTableColumn headerStyle="text-align: center;vertical-align: middle;" >
 							<f:facet name="header">Image: </f:facet>
 							<h:graphicImage
 								value="/pics/articlesImages/#{ligneStock.article.image}" />
