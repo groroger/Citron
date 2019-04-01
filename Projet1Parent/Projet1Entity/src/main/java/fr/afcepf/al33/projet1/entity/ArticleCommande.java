@@ -20,18 +20,23 @@ public class ArticleCommande implements Serializable{
 		 */
 		private static final long serialVersionUID = 1L;
 
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		@Column(name="id", nullable=false)
-		private Integer id;
+//		@Id
+//		@GeneratedValue(strategy=GenerationType.IDENTITY)
+//		@Column(name="id", nullable=false)
+//		private Integer id;
+		
+		@Column(name="prixTotal")
+		private double prixTotal;
 		
 		@Column(name="quantite")
 		private int quantite;
 		
+		@Id
 		@ManyToOne
 		@JoinColumn(referencedColumnName="id")
 		private Article article;
 		
+		@Id
 		@ManyToOne
 		@JoinColumn(referencedColumnName="id")
 		private Commande commande;
@@ -46,23 +51,33 @@ public class ArticleCommande implements Serializable{
 		
 		//Constructeur chargé
 
-		public ArticleCommande(Integer id, int quantite, Article article, Commande commande) {
+		public ArticleCommande(/*Integer id,*/ double prixTotal, int quantite, Article article, Commande commande) {
 			super();
-			this.id = id;
+//			this.id = id;
+			this.prixTotal = prixTotal;
 			this.quantite = quantite;
 			this.article = article;
 			this.commande = commande;
 		}
-		
+
+
 		
 		//GETTERS ET SETTERS
 
-		public Integer getId() {
-			return id;
+//		public Integer getId() {
+//			return id;
+//		}
+//
+//		public void setId(Integer id) {
+//			this.id = id;
+//		}
+
+		public double getPrixTotal() {
+			return prixTotal;
 		}
 
-		public void setId(Integer id) {
-			this.id = id;
+		public void setPrixTotal(double prixTotal) {
+			this.prixTotal = prixTotal;
 		}
 
 		public int getQuantite() {
@@ -88,8 +103,6 @@ public class ArticleCommande implements Serializable{
 		public void setCommande(Commande commande) {
 			this.commande = commande;
 		}
-		
-		
 	
 
 }
