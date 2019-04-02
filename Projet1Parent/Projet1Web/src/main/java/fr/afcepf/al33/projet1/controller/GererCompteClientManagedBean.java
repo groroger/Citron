@@ -63,6 +63,14 @@ public class GererCompteClientManagedBean implements Serializable{
 		this.proxyClient = proxyClient;
 	}
 
+	public VilleIBusiness getProxyVille() {
+		return proxyVille;
+	}
+
+	public void setProxyVille(VilleIBusiness proxyVille) {
+		this.proxyVille = proxyVille;
+	}
+
 	public Client getClient() {
 		return client;
 	}
