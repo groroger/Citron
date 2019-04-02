@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.controller;
+package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
 import javax.ejb.EJB;

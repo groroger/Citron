@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.controller;
+package fr.afcepf.al33.projet1.controller.admin;
 
 import java.io.Serializable;
 import java.util.List;
