@@ -40,6 +40,7 @@
 				<version>${mysql.connector.version}</version>
 			</dependency>
 		</dependencies>
+
 	</dependencyManagement>
 	<build>
 		<pluginManagement>

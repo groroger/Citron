@@ -102,12 +102,14 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 				HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 				session.setAttribute("clientConnecte", clientConnecte);
 				facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/accueilAdmin.xhtml?faces-redirect=true");
+				
 			}
 			else
 			{
 				 FacesContext facesContext = FacesContext.getCurrentInstance();
 				 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 				 session.setAttribute("clientConnecte", clientConnecte);
+				 
 				 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml?faces-redirect=true");
 			}
 		
@@ -116,6 +118,8 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 		{
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/masterPageAdmin.xhtml?faces-redirect=true");
+			 
+
 		}
 	}
 
