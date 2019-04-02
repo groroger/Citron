@@ -15,8 +15,6 @@ import fr.afcepf.al33.projet1.idao.ClientIdao;
 
 
 
-
-
 @Remote(ClientIdao.class)
 @Stateless
 public class ClientDao extends GenericDao<Client> implements ClientIdao {

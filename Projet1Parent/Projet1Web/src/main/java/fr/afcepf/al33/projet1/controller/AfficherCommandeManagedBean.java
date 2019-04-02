@@ -5,22 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
-import fr.afcepf.al33.projet1.entity.Approvisionnement;
+
+
 import fr.afcepf.al33.projet1.entity.ArticleCommande;
 import fr.afcepf.al33.projet1.entity.Commande;
-import fr.afcepf.al33.projet1.entity.Stock;
-
-
-
 
 
 @ManagedBean(name="mbAfficherCommande")
