@@ -11,7 +11,8 @@ public interface ClientIBusiness {
 	public Client update(Client client);
 	public Client searchById(Integer id);
 	public Client adherentByIdJPQL(int id);
-	public Client rechercheParLoginetPassword (String l, String p);
+	public Client seConnecter (String login, String password);
+	public Client rechercheParLoginEtPassword (String l, String p);
 	public List<Client> getAllClients();
 
 }

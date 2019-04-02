@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,7 +52,7 @@ public class Fournisseur implements Serializable{
 	@Column(name="email")
 	private String email;
 
-	@OneToMany(mappedBy="fournisseur", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="fournisseur", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Approvisionnement> approvisionnements;
 	
 	//Constructeur vide

@@ -15,8 +15,6 @@ import fr.afcepf.al33.projet1.idao.ClientIdao;
 
 
 
-
-
 @Remote(ClientIdao.class)
 @Stateless
 public class ClientDao extends GenericDao<Client> implements ClientIdao {
@@ -25,6 +23,20 @@ public class ClientDao extends GenericDao<Client> implements ClientIdao {
 	@PersistenceContext(unitName="Projet1DS")
 	private EntityManager em;
 
+	@Override
+	public Client getByLogin(String login) {
+		String REQ_AUTH = "SELECT client from Client client WHERE client.login = :login ";
+		Client client = null;
+		
+		try {
+		Query queryJPQL = em.createQuery(REQ_AUTH);
+		queryJPQL.setParameter("login", login);
+		client = (Client) queryJPQL.getSingleResult();
+		}catch (NoResultException e) {
+			return null;
+		}
+		return client;
+	}
 
 	@Override
 	public Client findByLoginAndPassword(String l, String p) {
@@ -69,7 +81,5 @@ public class ClientDao extends GenericDao<Client> implements ClientIdao {
 		
 		return client;
 	}
-
-	
 
 }

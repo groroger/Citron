@@ -1,14 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>fr.afcepf.al33.projet1</groupId>
-    <artifactId>Projet1Parent</artifactId>
-    <version>1.0</version>
-  </parent>
-  <artifactId>Projet1Business</artifactId>
-  <packaging>ejb</packaging>
-   
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>fr.afcepf.al33.projet1</groupId>
+		<artifactId>Projet1Parent</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>Projet1Business</artifactId>
+	<packaging>ejb</packaging>
+
+	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -27,6 +29,11 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>Projet1InterfaceDao</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
 		</dependency>
 	</dependencies>
 </project>

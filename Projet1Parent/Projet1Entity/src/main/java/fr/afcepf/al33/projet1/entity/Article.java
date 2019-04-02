@@ -38,6 +38,9 @@ public class Article implements Serializable{
 	@Column(name="image")
 	private String image;
 	
+	@Column(name="imageMini")
+	private String imageMini;
+	
 	@Column(name="quantiteVendue")
 	private double quantiteVendue;
 	
@@ -68,13 +71,15 @@ public class Article implements Serializable{
 
 	//Constructeur chargé
 
-	public Article(Integer id, String nom, String descriptif, String image, double quantiteVendue, double prix,
-			double prixKilo, Categorie categorie, Stock stock, List<Approvisionnement> approvisionnements) {
+	public Article(Integer id, String nom, String descriptif, String image, String imageMini, double quantiteVendue,
+			double prix, double prixKilo, Categorie categorie, Stock stock,
+			List<Approvisionnement> approvisionnements) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.descriptif = descriptif;
 		this.image = image;
+		this.imageMini = imageMini;
 		this.quantiteVendue = quantiteVendue;
 		this.prix = prix;
 		this.prixKilo = prixKilo;
@@ -82,6 +87,7 @@ public class Article implements Serializable{
 		this.stock = stock;
 		this.approvisionnements = approvisionnements;
 	}
+	
 
 	//GETTERS ET SETTERS
 
@@ -89,119 +95,90 @@ public class Article implements Serializable{
 		return id;
 	}
 
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 
 	public String getNom() {
 		return nom;
 	}
 
-
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-
 
 	public String getDescriptif() {
 		return descriptif;
 	}
 
-
-
 	public void setDescriptif(String descriptif) {
 		this.descriptif = descriptif;
 	}
-
-
 
 	public String getImage() {
 		return image;
 	}
 
-
-
 	public void setImage(String image) {
 		this.image = image;
 	}
 
+	public String getImageMini() {
+		return imageMini;
+	}
 
+	public void setImageMini(String imageMini) {
+		this.imageMini = imageMini;
+	}
 
 	public double getQuantiteVendue() {
 		return quantiteVendue;
 	}
 
-
-
 	public void setQuantiteVendue(double quantiteVendue) {
 		this.quantiteVendue = quantiteVendue;
 	}
-
-
 
 	public double getPrix() {
 		return prix;
 	}
 
-
-
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-
-
 
 	public double getPrixKilo() {
 		return prixKilo;
 	}
 
-
-
 	public void setPrixKilo(double prixKilo) {
 		this.prixKilo = prixKilo;
 	}
-
-
 
 	public Categorie getCategorie() {
 		return categorie;
 	}
 
-
-
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-
-
 
 	public Stock getStock() {
 		return stock;
 	}
 
-
-
 	public void setStock(Stock stock) {
 		this.stock = stock;
 	}
-
-
-
 
 	public List<Approvisionnement> getApprovisionnements() {
 		return approvisionnements;
 	}
 
-
-
 	public void setApprovisionnements(List<Approvisionnement> approvisionnements) {
 		this.approvisionnements = approvisionnements;
 	}
+
+
 
 }

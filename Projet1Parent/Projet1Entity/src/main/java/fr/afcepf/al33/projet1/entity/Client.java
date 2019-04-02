@@ -75,7 +75,7 @@ public class Client implements Serializable{
 	@Column(name="login")
 	private String login;
 	
-	@Column(name="password")
+	@Column(name="password", length=500)
 	private String password;
 	
 	@Column(name="salt")
