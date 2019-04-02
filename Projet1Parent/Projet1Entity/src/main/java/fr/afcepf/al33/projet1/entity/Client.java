@@ -61,7 +61,7 @@ public class Client implements Serializable{
 	private String complementAdresseLivraison;
 	@ManyToOne
 	@JoinColumn(referencedColumnName="id")
-	private Ville villeFacturation;
+	private Ville villeLivraison;
 	
 	@Column(name="numeroFixe")
 	private String numeroFixe;
@@ -94,7 +94,7 @@ public class Client implements Serializable{
 	//Constructeur chargé
 
 	public Client(Integer id, String nom, String prenom, Date dateDeNaissance, String adresse, String complementAdresse,
-			Ville ville, String adresseLivraison, String complementAdresseLivraison, Ville villeFacturation,
+			Ville ville, String adresseLivraison, String complementAdresseLivraison, Ville villeLivraison,
 			String numeroFixe, String numeroPort, String email, String login, String password, String salt,
 			List<Commande> commandes) {
 		super();
@@ -107,7 +107,7 @@ public class Client implements Serializable{
 		this.ville = ville;
 		this.adresseLivraison = adresseLivraison;
 		this.complementAdresseLivraison = complementAdresseLivraison;
-		this.villeFacturation = villeFacturation;
+		this.villeLivraison = villeLivraison;
 		this.numeroFixe = numeroFixe;
 		this.numeroPort = numeroPort;
 		this.email = email;
@@ -207,13 +207,13 @@ public class Client implements Serializable{
 	}
 
 
-	public Ville getVilleFacturation() {
-		return villeFacturation;
+	public Ville getVilleLivraison() {
+		return villeLivraison;
 	}
 
 
-	public void setVilleFacturation(Ville villeFacturation) {
-		this.villeFacturation = villeFacturation;
+	public void setVilleLivraison(Ville villeLivraison) {
+		this.villeLivraison = villeLivraison;
 	}
 
 
