@@ -14,7 +14,7 @@
 
 		<h:head>
 
-			<title>Catalogue</title>
+			<title>Panier</title>
 
 		</h:head>
 
@@ -32,8 +32,8 @@
 							<br />
 						</b:column>
 					</b:row>
-				
-			
+
+
 					<b:dataTable value="#{mbPanier.articlesCommandes}"
 						var="articleCommande" pdf="false" print="false" excel="false"
 						border="true" info="false" tiny-screen="12" medium-screen="12"
@@ -42,11 +42,16 @@
 
 						<b:dataTableColumn>
 							<f:facet name="header">Image: </f:facet>
-							<h:graphicImage value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
+							<h:graphicImage
+								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Articles: </f:facet>
 							<h:outputLabel value="#{articleCommande.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles: </f:facet>
+							<h:outputLabel value="#{articleCommande.quantite}" />
 						</b:dataTableColumn>
 					</b:dataTable>
 				</b:container>
