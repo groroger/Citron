@@ -60,7 +60,7 @@ public class AfficherStockManagedBean implements Serializable{
 
 		if (selectedCategorie !=null && !selectedCategorie.equals("") && !selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
 			
-			System.out.println("youhouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+		
 			stocks=proxyStock.getByIdCategorie(selectedCategorie);
 			
 		} else if(selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
