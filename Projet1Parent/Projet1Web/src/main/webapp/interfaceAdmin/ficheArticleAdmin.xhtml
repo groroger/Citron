@@ -1,12 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
-	<ui:define name="title">Recherche de client</ui:define>
+
+	<ui:define name="title">
+	Fiche produit
+	</ui:define>
+	<link rel="icon" type="image/png" href="#{request.contextPath}/pics/website/citronLogo16.png" />
 	<!-- 	<ui:define name="CSS"> -->
 	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
 	<!-- 	</ui:define> -->
@@ -27,16 +31,30 @@
 				<b:container layout="fluid">
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3 style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Fiche produit détaillée:</h3>
+							<h3
+								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Fiche
+								produit détaillée:</h3>
 						</b:column>
 					</b:row>
 					<br />
 					<br />
 
-					<h:outputLabel value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
-			
+					<b:accordion expanded-panels="panel1,panel3">
+						<b:panel id="panel1" title="Item 1">
+							<h:graphicImage
+								value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
+						</b:panel>
+						<b:panel id="panel2" title="Item 2">Content 2</b:panel>
+						<b:panel id="panel3" title="Item 3">Content 3</b:panel>
+					</b:accordion>
 
-						
+					<h:graphicImage
+						value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
+
+					<h:outputLabel value="#{mbFicheArticleAdmin.article.descriptif}" />
+
+
+
 				</b:container>
 			</b:form>
 		</h:body>
