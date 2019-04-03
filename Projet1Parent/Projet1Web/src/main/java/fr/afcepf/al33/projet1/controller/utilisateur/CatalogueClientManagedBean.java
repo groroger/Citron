@@ -75,15 +75,13 @@ public class CatalogueClientManagedBean implements Serializable{
 		articleCommande =new ArticleCommande();
 		articleCommande.setArticle(article);
 		articleCommande.setQuantite(quantiteSaisie);
-		List<ArticleCommande> articlesCommandesBis = new ArrayList<ArticleCommande>();
-		
-		
+		boolean isPresent = false;
+
+
 		if (articlesCommandes.isEmpty()){
 			articlesCommandes.add(articleCommande);
 			System.out.println("ajout premier article");
 		} else {
-			
-
 
 			Iterator<ArticleCommande> ite = articlesCommandes.iterator();
 
@@ -93,116 +91,115 @@ public class CatalogueClientManagedBean implements Serializable{
 				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
 					ac.setQuantite(ac.getQuantite()+ quantiteSaisie);
 					System.out.println("nombre ajouté à la ligne existante");
-				
-
-				} else {
-					System.out.println("ajout article autre que le premier");
-					articlesCommandesBis.add(articleCommande);
+					isPresent = true;
 				}
+			} 
+			
+			if (isPresent == false) {
+				articlesCommandes.add(articleCommande);
 			}
-		
 		}
-		
-		articlesCommandes.addAll(articlesCommandesBis);
-		
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-		session.setAttribute("listeArticlesCommandes", articlesCommandes);
+
+
+
+	FacesContext facesContext = FacesContext.getCurrentInstance();
+	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+	session.setAttribute("listeArticlesCommandes", articlesCommandes);
+
+}
+
+
+public void onCategorieChange() {
+
+
+	if (selectedCategorie !=null && !selectedCategorie.equals("") && !selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
+
+		articles=proxyArticle.getByIdCategorie(selectedCategorie);
+
+	} else if(selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
+
+		articles=proxyArticle.getAll();
+
+	} else {
+
+		articles=new ArrayList<>();
 
 	}
+}
 
 
-	public void onCategorieChange() {
+public List<Article> getArticles() {
+	return articles;
+}
+
+public void setArticles(List<Article> articles) {
+	this.articles = articles;
+}
+
+public List<Categorie> getCategories() {
+	return categories;
+}
+
+public void setCategories(List<Categorie> categories) {
+	this.categories = categories;
+}
+
+public Categorie getSelectedCategorie() {
+	return selectedCategorie;
+}
+
+public void setSelectedCategorie(Categorie selectedCategorie) {
+	this.selectedCategorie = selectedCategorie;
+}
+
+public Article getSelectedArticle() {
+	return selectedArticle;
+}
+
+public void setSelectedArticle(Article selectedArticle) {
+	this.selectedArticle = selectedArticle;
+}
+
+public ArticleIBusiness getProxyArticle() {
+	return proxyArticle;
+}
+
+public void setProxyArticle(ArticleIBusiness proxyArticle) {
+	this.proxyArticle = proxyArticle;
+}
+
+public CategorieIBusiness getProxyCategorie() {
+	return proxyCategorie;
+}
+
+public void setProxyCategorie(CategorieIBusiness proxyCategorie) {
+	this.proxyCategorie = proxyCategorie;
+}
+
+public ArticleCommande getArticleCommande() {
+	return articleCommande;
+}
+
+public void setArticleCommande(ArticleCommande articleCommande) {
+	this.articleCommande = articleCommande;
+}
 
 
-		if (selectedCategorie !=null && !selectedCategorie.equals("") && !selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
+public List<ArticleCommande> getArticlesCommandes() {
+	return articlesCommandes;
+}
 
-			articles=proxyArticle.getByIdCategorie(selectedCategorie);
+public void setArticlesCommandes(List<ArticleCommande> articlesCommandes) {
+	this.articlesCommandes = articlesCommandes;
+}
 
-		} else if(selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
+public int getQuantiteSaisie() {
+	return quantiteSaisie;
+}
 
-			articles=proxyArticle.getAll();
-
-		} else {
-
-			articles=new ArrayList<>();
-
-		}
-	}
-
-
-	public List<Article> getArticles() {
-		return articles;
-	}
-
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
-	}
-
-	public List<Categorie> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(List<Categorie> categories) {
-		this.categories = categories;
-	}
-
-	public Categorie getSelectedCategorie() {
-		return selectedCategorie;
-	}
-
-	public void setSelectedCategorie(Categorie selectedCategorie) {
-		this.selectedCategorie = selectedCategorie;
-	}
-
-	public Article getSelectedArticle() {
-		return selectedArticle;
-	}
-
-	public void setSelectedArticle(Article selectedArticle) {
-		this.selectedArticle = selectedArticle;
-	}
-
-	public ArticleIBusiness getProxyArticle() {
-		return proxyArticle;
-	}
-
-	public void setProxyArticle(ArticleIBusiness proxyArticle) {
-		this.proxyArticle = proxyArticle;
-	}
-
-	public CategorieIBusiness getProxyCategorie() {
-		return proxyCategorie;
-	}
-
-	public void setProxyCategorie(CategorieIBusiness proxyCategorie) {
-		this.proxyCategorie = proxyCategorie;
-	}
-
-	public ArticleCommande getArticleCommande() {
-		return articleCommande;
-	}
-
-	public void setArticleCommande(ArticleCommande articleCommande) {
-		this.articleCommande = articleCommande;
-	}
-
-
-	public List<ArticleCommande> getArticlesCommandes() {
-		return articlesCommandes;
-	}
-
-	public void setArticlesCommandes(List<ArticleCommande> articlesCommandes) {
-		this.articlesCommandes = articlesCommandes;
-	}
-
-	public int getQuantiteSaisie() {
-		return quantiteSaisie;
-	}
-
-	public void setQuantiteSaisie(int quantiteSaisie) {
-		this.quantiteSaisie = quantiteSaisie;
-	}
+public void setQuantiteSaisie(int quantiteSaisie) {
+	this.quantiteSaisie = quantiteSaisie;
+}
 
 
 }
