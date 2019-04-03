@@ -10,14 +10,25 @@
 	width: 100% !important;
 }
 
-#formGestionCompteClient{
-	top: 20% !important;
-	background-color: red !important;
-}
-
 .test
 {
 	background-color: red;
 	color: white;
 	font-size: 30px;
+}
+
+#container_carousel{
+	top:15%; 
+	width: 100%;
+	height: 15%;
+}
+
+carouselItem{
+	height: 100%;
+}
+
+carouselItem > img{
+	display: block;
+	width: 100%;
+	height: 100%;
 }
