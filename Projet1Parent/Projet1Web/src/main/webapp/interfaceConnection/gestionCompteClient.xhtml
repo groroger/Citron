@@ -12,11 +12,12 @@
 	<!-- 	</ui:define> -->
 	<ui:define name="content">
 
-		<h:head><br/><br/><br/><br/><br/><br/>
+		<h:head>
 			<title>Compte client</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 		</h:head>
 		<h:body>
+		<b:container id="principal">
 			<h:form id="formGestionCompteClient">
 
 				<b:container layout="fluid">
@@ -107,6 +108,7 @@
 
 
 					<!-- adresse domicile -->
+				<fieldset><legend>domicile</legend>
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 							<h:outputLabel value="Adresse 1 :" for="adresse1" />
@@ -146,10 +148,13 @@
 							</b:selectOneMenu>
 						</b:column>
 					</b:row>
+				</fieldset>
+					<br />
 					
 
 
 					<!-- adresse livraison -->
+				<fieldset><legend>livraison</legend>
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 							<h:outputLabel value="Adresse 1 :" for="adresse1liv" />
@@ -188,7 +193,8 @@
 							</b:selectOneMenu>
 						</b:column>
 					</b:row>
-					<br />							
+				</fieldset>							
+					<br />
 
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="3">
@@ -230,14 +236,13 @@
 							<b:commandButton action="#{mbGererCompteClient.ajouter()}"
 								value="Valider" look="success" />
 						</b:column>
-					</b:row>
-					
-					<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					</b:row>					
 
 				</b:container>
 
 			</h:form>
 
+		</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>

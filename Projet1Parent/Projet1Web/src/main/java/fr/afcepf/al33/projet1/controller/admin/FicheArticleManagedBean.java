@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,7 @@ import fr.afcepf.al33.projet1.entity.Article;
 import fr.afcepf.al33.projet1.entity.Fournisseur;
 
 @ManagedBean(name="mbFicheArticleAdmin")
-@SessionScoped
+@RequestScoped
 public class FicheArticleManagedBean implements Serializable{
 
 	/**

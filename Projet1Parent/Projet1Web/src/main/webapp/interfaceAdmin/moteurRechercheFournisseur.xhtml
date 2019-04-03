@@ -35,7 +35,7 @@
 						excel="false" pdf="false" print="false" border="true" info="false"
 						page-length="20" selectionMode="single" responsive="true"
 						tiny-screen="12" medium-screen="12"  large-screen="12"
-						onselect="console.log(typeOfSelection + ' ' + indexes + ' has been selected');ajax:mbFindFournisseur.onSelect(fourn, typeOfSelection, indexes);"
+						onselect="ajax:mbFindFournisseur.onSelect(fourn);"
 						paginated="false">
 						<b:dataTableColumn>
 							<f:facet name="header">Nom</f:facet>

@@ -69,6 +69,12 @@ public class ClientBusiness implements ClientIBusiness{
 		return client;
 	}
 
+
+	@Override
+	public Client rechercheParLogin(String l) {
+		Client client = proxyClient.getByLogin(l); 
+		return client;
+	}
 	
 
 	@Override
@@ -123,45 +129,7 @@ public class ClientBusiness implements ClientIBusiness{
         
     }
 	
-	
-	
-//	public static byte[] genererSalt()
-//	{
-//		SecureRandom sr = new SecureRandom();
-//		byte[] salt = new byte[3];
-//		sr.nextBytes(salt);
-//		return salt;
-//	}
-//
-//	private static String genererHash(String passwordToHash) 
-//
-//	{
-//
-//		String passwordCree = null;
-//		MessageDigest md;
-//		try 
-//		{
-//			md = MessageDigest.getInstance(algoHash);
-//	
-//			md.update(salt);
-//			byte [] hash = md.digest(passwordToHash.getBytes());
-//			StringBuilder sb = new StringBuilder();
-//			for(int i=0; i< hash.length ;i++)
-//			{
-//				sb.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
-//			}
-//			//Get complete hashed password in hex format
-//			passwordCree = sb.toString();
-//
-//		} 
-//		catch (NoSuchAlgorithmException e) 
-//		{
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return passwordCree;
-//
-//	}
+
 	
 	public boolean verifierPassword(String passwordEnregistre,String  passwordAValide, String salt)
 	{
@@ -175,18 +143,7 @@ public class ClientBusiness implements ClientIBusiness{
 			passwordAValide = bytetoString(hash);
 			
 			System.out.println("mot de passe à vérifier:  " + passwordAValide + "salt: " + salt);
-			
-//			md = MessageDigest.getInstance(algoHash);
-//			
-//			md.update(salt.getBytes());
-//			byte [] hash = md.digest(passwordAValide.getBytes());		
-//			StringBuilder sb = new StringBuilder();
-//			for(int i=0; i< hash.length ;i++)
-//			{
-//				sb.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
-//			}
-//			//Get complete hashed password in hex format
-//			passwordAValide = sb.toString();
+
 		} 
 		catch (NoSuchAlgorithmException e) 
 		{
@@ -200,5 +157,6 @@ public class ClientBusiness implements ClientIBusiness{
 		
 		return passwordVerifie;
 	}
+
 
 }

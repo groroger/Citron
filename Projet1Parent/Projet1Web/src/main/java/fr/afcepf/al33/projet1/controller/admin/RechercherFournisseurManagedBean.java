@@ -33,9 +33,9 @@ public class RechercherFournisseurManagedBean implements Serializable {
 	
 
 	
-	public void onSelect(Fournisseur fourn, String typeOfSelection, String indexes) {
+	public void onSelect(Fournisseur fourn) {
 	
-		foundFournisseur=fournisseurs.get(Integer.parseInt(indexes));
+		foundFournisseur=fourn;
 	  
 		System.out.println(fourn.getNom());
 		System.out.println(fourn.getId());

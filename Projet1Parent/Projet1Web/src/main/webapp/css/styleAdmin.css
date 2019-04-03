@@ -4,6 +4,38 @@ th.sorting {
 }
 
 
+h3
+{
+	color: rgb(0, 136, 143); 
+	font-weight: bold; 
+	text-align: center;"
+}
+
+
+/**************************
+		HEADER
+**************************/
+
+#navbar-brand
+{
+	margin: 0px;
+	padding:0px;
+}
+
+#navbar-brand img
+{
+	height:100%;
+	padding:8px;
+	width:auto;
+}
+
+.navbarLinks
+{
+	padding:20px;
+	pull:"right";
+}
+
+
 
 
 

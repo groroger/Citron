@@ -33,9 +33,9 @@ public class RechercherClientManagedBean implements Serializable {
 	
 
 	
-	public void onSelect(Client cl, String typeOfSelection, String indexes) {
+	public void onSelect(Client cl) {
 	
-		foundClient=clients.get(Integer.parseInt(indexes));
+		foundClient=cl;
 	  
 		System.out.println(cl.getNom());
 		System.out.println(cl.getId());
