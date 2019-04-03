@@ -89,17 +89,10 @@ public class GererCompteClientManagedBean implements Serializable{
 
 	public void ajouter() throws Exception {
 		// controles saisie
-		if (!this.passwordConfirmation.equals(client.getPassword())) {
-			// mot de passe différent entre les 2 input
-			// création d'un message
-			FacesMessage message = new FacesMessage("Le mot de passe a été saisi différemment entre les deux champs");
-			message.setSeverity(FacesMessage.SEVERITY_INFO);
-			// ajout à la liste des messages à afficher
-			FacesContext.getCurrentInstance().addMessage(null, message);			
-		}
-		else {
+		if (verifierMotDePasse()) {
 		
 			try {
+				// enregistrement du client
 				proxyClient.add(client);
 				
 				// création d'un message
@@ -120,7 +113,77 @@ public class GererCompteClientManagedBean implements Serializable{
 		
 		}
 	}
-
 	
+	private boolean verifierMotDePasse() {
+		boolean verification = true;
+		
+		// mot de passe identique entre les 2 input
+		if (!this.passwordConfirmation.equals(client.getPassword())) {
+			// création d'un message
+			FacesMessage message = new FacesMessage("Le mot de passe a été saisi différemment entre les deux champs");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			// ajout à la liste des messages à afficher
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			verification = false;
+		}
+		
+		// verification du pattern mot de passe
+		// n caractère mini
+		int n = 8;
+		if (client.getPassword().length() < n) {
+			// création d'un message
+			FacesMessage message = new FacesMessage("Le mot de passe doit comporter au moins " + n + " caractères");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			// ajout à la liste des messages à afficher
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			verification = false;
+		}
+		
+		// 1 car minuscule au moins
+		int nbCarMin = 1;
+		if (nbMin(client.getPassword()) < nbCarMin) {
+			// création d'un message
+			FacesMessage message = new FacesMessage("Le mot de passe doit comporter au moins " + nbCarMin + " minuscule");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			// ajout à la liste des messages à afficher
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			verification = false;
+		}
+				
+		// 1 car majuscule au moins
+		int nbCarMaj = 1;
+		if (nbMaj(client.getPassword()) < nbCarMaj) {
+			// création d'un message
+			FacesMessage message = new FacesMessage("Le mot de passe doit comporter au moins " + nbCarMaj + " majuscule");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			// ajout à la liste des messages à afficher
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			verification = false;
+		}
+		
+		return verification;
+	}
+	
+	// comptage du nb de minuscules dans une chaine
+	private int nbMin(String chaine) {
+		int compteur = 0;
+		for (int i = 0; i < chaine.length(); i++) {
+			char ch = chaine.charAt(i);
+			if (Character.isLowerCase(ch))
+				compteur++;
+		}
+		return compteur;
+	}
+
+	// comptage du nb de majuscules dans une chaine
+	private int nbMaj(String chaine) {
+		int compteur = 0;
+		for (int i = 0; i < chaine.length(); i++) {
+			char ch = chaine.charAt(i);
+			if (Character.isUpperCase(ch))
+				compteur++;
+		}
+		return compteur;
+	}
 	
 }

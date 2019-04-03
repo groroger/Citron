@@ -19,15 +19,23 @@
 		<body>
 
 			<h:form class="row col-md-8 col-md-offset-1">
-			
-				<b:container>
-<b:label text="nom client :    "/> <b:inputText value="#{mbConnectionUtilisateur.login}" class="row col-md-4"/>
-<b:label text="mdp :    "/> <b:inputSecret value="#{mbConnectionUtilisateur.password}" class="row col-md-4"/>
-					
-				</b:container><br /><br /><br />
 
-<b:commandButton value="S'identifier" 
-action="#{mbConnectionUtilisateur.sIdentifier()}" look="warning" class="row col-md-4 col-centered"/>
+				<b:container>
+					<b:label text="nom client :    " />
+					<b:inputText value="#{mbConnectionUtilisateur.login}"
+						class="row col-md-4" />
+					<b:label text="mdp :    " />
+					<b:inputSecret value="#{mbConnectionUtilisateur.password}"
+						class="row col-md-4" />
+
+				</b:container>
+				<br />
+				<br />
+				<br />
+
+				<b:commandButton value="S'identifier"
+					action="#{mbConnectionUtilisateur.sIdentifier()}" look="warning"
+					class="row col-md-4 col-centered" />
 
 
 			</h:form>
