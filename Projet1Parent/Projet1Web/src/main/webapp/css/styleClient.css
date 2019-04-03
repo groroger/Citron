@@ -3,3 +3,12 @@
 .btn_magasin{
 	background-color: grey;
 }
+
+.errorMessage {
+	color: red;
+}
+
+.required:before { 
+	content:"* ";
+	color: red;
+}
