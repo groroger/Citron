@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<ui:define name="css">
+		<h:outputStylesheet name="css/styleAdmin.css" />
+	</ui:define>
+	<ui:define name="content">
+<link rel="stylesheet" type="text/css"
+				href="#{request.contextPath}/css/styleAdmin.css" />
+		<h:head>
+
+			<title>Catalogue</title>
+
+		</h:head>
+
+		<h:body>
+
+			<h:form id="formCatalogueClient">
+
+				<b:container layout="fluid">
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3>Catalogue de produits</h3>
+							<br />
+						</b:column>
+					</b:row>
+				
+					<b:formGroup>
+						<b:selectOneMenu update="datatableArticles"
+							onchange="ajax:AJAXBean.onChange()"
+							value="#{mbCatalogueClient.selectedCategorie}" colMd="3" labelColMd="3">
+							<f:ajax listener="#{mbCatalogueClient.onCategorieChange()}"
+								update="datatableArticles" />
+							<f:selectItems value="#{mbCatalogueClient.categories}" var="categorie"
+								itemValue="#{categorie}" itemLabel="#{categorie.nomCategorie}" />
+						</b:selectOneMenu>
+					</b:formGroup>
+
+
+
+					<b:dataTable id="datatableArticles" value="#{mbCatalogueClient.articles}"
+						var="article" pdf="false" print="false" excel="false"
+						border="true" info="false" tiny-screen="12" medium-screen="12"
+						large-screen="12" page-length="20" selectionMode="single"
+						responsive="true">
+
+						<b:dataTableColumn>
+							<f:facet name="header">Image: </f:facet>
+							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles: </f:facet>
+							<h:outputLabel value="#{article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Categorie: </f:facet>
+							<h:outputLabel value="#{article.categorie.nomCategorie}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité<br />vendue<br />en kg: </f:facet>
+							<h:outputLabel value="#{article.quantiteVendue}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix<br />au kilo: </f:facet>
+							<h:outputLabel value="#{article.prixKilo}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Ajouter Panier</f:facet>
+							<b:commandButton value="Ajouter" look="primary"
+								action="#{mbCatalogueClient.ajouterArticle(article)}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+				</b:container>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>
