@@ -16,6 +16,9 @@
 
 		</h:head>
 		<h:body>
+		<f:metadata>
+				<f:event listener="#{mbUpdateArticle.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 
 			<b:container id="principal">
 				<b:form id="formFicheProduit">
