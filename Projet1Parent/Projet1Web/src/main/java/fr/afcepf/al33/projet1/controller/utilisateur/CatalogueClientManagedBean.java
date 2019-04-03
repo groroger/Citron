@@ -81,7 +81,7 @@ public class CatalogueClientManagedBean implements Serializable{
 			System.out.println("ajout premier article");
 		} else {
 			
-
+			// ce commentaire pour pouvoir push 
 			Iterator<ArticleCommande> ite = articlesCommandesBis.iterator();
 			while(ite.hasNext()) {
 				ArticleCommande ac = ite.next();
