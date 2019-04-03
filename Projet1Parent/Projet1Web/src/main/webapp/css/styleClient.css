@@ -4,6 +4,15 @@
 	background-color: grey;
 }
 
+.errorMessage {
+	color: red;
+}
+
+.required:before { 
+	content:"* ";
+	color: red;
+}
+
 .vide{
 	display: block !important; 
 	height: 100 !important;
