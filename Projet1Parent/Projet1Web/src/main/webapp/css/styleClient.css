@@ -26,10 +26,21 @@
 #navbar-brand
 {
 	margin: 0px;
+	height:100%;
+	padding:0px;
 }
 
+#navbar-brand img
+{
+	height:100%;
+	padding:8px;
+	width:auto;
+}
 
-
+.navbarLinks
+{
+	padding:20px
+}
 
 /**************************
 	ACCUEILCLIENT
