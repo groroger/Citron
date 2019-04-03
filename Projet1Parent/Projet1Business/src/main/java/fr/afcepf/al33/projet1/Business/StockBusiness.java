@@ -10,6 +10,8 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
+import fr.afcepf.al33.projet1.entity.Article;
+import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.entity.Stock;
 import fr.afcepf.al33.projet1.idao.StockIdao;
 
@@ -60,6 +62,15 @@ public class StockBusiness implements StockIBusiness{
 					}
 			}
 		}
+		return stocks;
+	}
+
+	@Override
+	public List<Stock> getByIdCategorie(Categorie c) {
+		
+		List<Stock> stocks=new ArrayList<Stock>();
+		stocks=proxyStockIDao.getByIdCategorie(c);
+		
 		return stocks;
 	}
 }

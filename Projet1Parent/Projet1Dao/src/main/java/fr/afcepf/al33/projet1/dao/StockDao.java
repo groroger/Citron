@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.entity.Stock;
 import fr.afcepf.al33.projet1.idao.StockIdao;
 
@@ -27,6 +28,19 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 		Query queryJPQL = em.createQuery(REQ_GETALL);
 		stocks = queryJPQL.getResultList();
 		return stocks;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Stock> getByIdCategorie(Categorie c) {
+		List<Stock> stocksParCategorie=null;
+		String REQ= "SELECT s from Stock s JOIN s.article a WHERE a.categorie= :idCat ";
+		Query queryJPQL = em.createQuery(REQ);
+		queryJPQL.setParameter("idCat", c);
+		stocksParCategorie = queryJPQL.getResultList();
+		
+		return stocksParCategorie ;
 		
 	}
 
