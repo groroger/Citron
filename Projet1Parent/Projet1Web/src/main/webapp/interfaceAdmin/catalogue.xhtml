@@ -11,7 +11,8 @@
 		<h:outputStylesheet name="css/styleAdmin.css" />
 	</ui:define>
 	<ui:define name="content">
-
+<link rel="stylesheet" type="text/css"
+				href="#{request.contextPath}/css/styleAdmin.css" />
 		<h:head>
 
 			<title>Catalogue</title>
@@ -25,9 +26,7 @@
 				<b:container layout="fluid">
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3
-								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Catalogue
-								de produits</h3>
+							<h3>Catalogue de produits</h3>
 							<br />
 						</b:column>
 					</b:row>

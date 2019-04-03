@@ -12,7 +12,8 @@
 		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css" />
 	</ui:define>
 	<ui:define name="content">
-
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/css/styleAdmin.css" />
 		<h:head>
 
 			<title>Fiche produit</title>
@@ -20,64 +21,58 @@
 			<link
 				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
 				rel="stylesheet" />
-			<link rel="stylesheet" type="text/css" href="/css/styleAdmin.css" />
 		</h:head>
 
 		<h:body>
 
-			<div>
-				<p class="test">test css</p>
-			</div>
-
-			<b:form id="formFicheProduit">
-				<b:container layout="fluid">
-					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3>Fiche produit détaillée:</h3>
-						</b:column>
-					</b:row>
-					<br />
-					<br />
-
-
-
-					<div>
-						<h:graphicImage
-							value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
-					</div>
-
-					<b:panelGrid columns="1">
+			<b:container id="principal">
+				<b:form id="formFicheProduit">
+					<b:container layout="fluid">
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbFicheArticleAdmin.article.descriptif}"
-									disabled="true" fieldSize="lg">
-									<f:facet name="prepend">
-										<h:outputText value="Description" />
-									</f:facet>
-								</b:inputText>
+								<h3>Fiche produit détaillée</h3>
 							</b:column>
 						</b:row>
-						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText
-									value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"
-									disabled="true" fieldSize="lg">
-									<f:facet name="prepend">
-										<h:outputText value="Catégorie" />
-									</f:facet>
-								</b:inputText>
-							</b:column>
-						</b:row>
+
 						<div>
-							<h:inputText value="#{mbFicheArticleAdmin.article.descriptif}" />
+							<h:graphicImage
+								value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
 						</div>
-						<div>
-							<h:outputLabel
-								value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}" />
-						</div>
+
+						<b:panelGrid columns="1">
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbFicheArticleAdmin.article.descriptif}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Description" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText
+										value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Catégorie" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<div>
+								<h:inputText value="#{mbFicheArticleAdmin.article.descriptif}" />
+							</div>
+							<div>
+								<h:outputLabel
+									value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}" />
+							</div>
+
 						</b:panelGrid>
-				</b:container>
-			</b:form>
+					</b:container>
+				</b:form>
+			</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>

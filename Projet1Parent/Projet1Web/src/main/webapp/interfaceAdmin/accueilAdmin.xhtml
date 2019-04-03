@@ -8,15 +8,17 @@
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
 	<ui:define name="title">Recherche de client</ui:define>
-	<!-- 	<ui:define name="CSS"> -->
-	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
-	<!-- 	</ui:define> -->
+	<ui:define name="CSS">
+		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css" />
+	</ui:define>
 	<ui:define name="content">
 		<h:head>
 			<title>Accueil admin</title>
 			<link
 				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
 				rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"
+				href="#{request.contextPath}/css/styleAdmin.css" />
 		</h:head>
 		<h:body>
 		

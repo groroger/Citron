@@ -6,21 +6,21 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-	<meta content="text/html; charset=UTF-8" http-equiv="Content_Type" />
-	<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css" />
-	<ui:insert name="css"></ui:insert>
-	<title><ui:insert name="title"></ui:insert></title>
+	
 
 	<link rel="stylesheet" type="text/css"
 		href="#{request.contextPath}/css/styleAdmin.css" />
 </h:head>
 <h:body>
-	<b:navBar id="navbar-brand" brand=""
-		brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
-		brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"
-		brand-style="height:100%;padding:0px;"
-		brand-img-style="height:100%;padding:8px;width:auto;" inverse="true"
-		fluid="true" position="top">
+	<b:navBar id="navbar-brand" 
+			brand=""
+			brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
+			brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"
+			brand-style="height:100%;padding:0px;"
+			inverse="true"
+			fluid="true" 
+			position="top"
+			sticky="false">
 
 
 		<b:navbarLinks class="navbarLinks" pull="right">
@@ -47,11 +47,12 @@
 	<!-- 		<h1>Footer</h1> -->
 	<!-- 	</div> -->
 
-	<b:navBar brand="   "
+	<b:navBar id="navbar-footer"
+		brand="   "
 		brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"
 		brand-style="height:100%;padding:0px;"
 		brand-img-style="height:100%;padding:8px;width:auto;" inverse="true"
-		fluid="true" position="bottom" id="navbar-footer">
+		fluid="true" position="bottom">
 
 
 		<b:navbarLinks class="navbarLinks">

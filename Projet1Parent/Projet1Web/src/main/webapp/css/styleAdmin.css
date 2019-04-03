@@ -12,9 +12,21 @@ h3
 }
 
 
+#principal{
+	position: relative;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+
 /**************************
-		HEADER
+		MASTERPAGE
 **************************/
+
+
+
+/*** HEADER ***/
 
 #navbar-brand
 {
@@ -36,7 +48,14 @@ h3
 }
 
 
+/*** FOOTER ***/
 
+#navbar-footer
+{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
 
 
 
