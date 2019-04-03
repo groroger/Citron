@@ -88,23 +88,36 @@ public class GererCompteClientManagedBean implements Serializable{
 	}
 
 	public void ajouter() throws Exception {
-		try {
-			proxyClient.add(client);
-			
+		// controles saisie
+		if (!this.passwordConfirmation.equals(client.getPassword())) {
+			// mot de passe différent entre les 2 input
 			// création d'un message
-			FacesMessage message = new FacesMessage("Création de votre compte réussie");
+			FacesMessage message = new FacesMessage("Le mot de passe a été saisi différemment entre les deux champs");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
 			// ajout à la liste des messages à afficher
-			FacesContext.getCurrentInstance().addMessage(null, message);
-			
-			// redirection depuis un managedBean
-			FacesContext.getCurrentInstance().getExternalContext().redirect("../interfaceClient/accueilClient.xhtml");
+			FacesContext.getCurrentInstance().addMessage(null, message);			
 		}
-		catch (Exception e) {
-			// création d'un message
-			FacesMessage message = new FacesMessage("Erreur lors de la création de votre compte : " + e.getMessage());
-			message.setSeverity(FacesMessage.SEVERITY_ERROR);
-			// ajout à la liste des messages à afficher
-			FacesContext.getCurrentInstance().addMessage(null, message);
+		else {
+		
+			try {
+				proxyClient.add(client);
+				
+				// création d'un message
+				FacesMessage message = new FacesMessage("Création de votre compte réussie");
+				// ajout à la liste des messages à afficher
+				FacesContext.getCurrentInstance().addMessage(null, message);
+				
+				// redirection depuis un managedBean
+				FacesContext.getCurrentInstance().getExternalContext().redirect("../interfaceClient/accueilClient.xhtml");
+			}
+			catch (Exception e) {
+				// création d'un message
+				FacesMessage message = new FacesMessage("Erreur lors de la création de votre compte : " + e.getMessage());
+				message.setSeverity(FacesMessage.SEVERITY_ERROR);
+				// ajout à la liste des messages à afficher
+				FacesContext.getCurrentInstance().addMessage(null, message);
+			}
+		
 		}
 	}
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Recherche de Produit</ui:define>
+	<ui:define name="css">
+		<h:outputStylesheet name="css/styleAdmin.css" />
+	</ui:define>
+	<ui:define name="content">
+
+		<h:head>
+
+			<title>Catalogue</title>
+
+		</h:head>
+
+		<h:body>
+
+
+
+
+			<h:form id="formPanier">
+
+				<b:container layout="fluid">
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3>Panier</h3>
+							<br />
+						</b:column>
+					</b:row>
+				
+			
+					<b:dataTable value="#{mbPanier.articlesCommandes}"
+						var="articleCommande" pdf="false" print="false" excel="false"
+						border="true" info="false" tiny-screen="12" medium-screen="12"
+						large-screen="12" page-length="20" selectionMode="single"
+						responsive="true">
+
+						<b:dataTableColumn>
+							<f:facet name="header">Image: </f:facet>
+							<h:graphicImage value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles: </f:facet>
+							<h:outputLabel value="#{articleCommande.article.nom}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+				</b:container>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>
