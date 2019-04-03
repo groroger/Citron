@@ -11,12 +11,13 @@
 
 </h:head>
 <h:body>
-	<b:navBar brand=""
+	<b:navBar id="navbar-brand"
+	brand=""
 		brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
 		brandHref="/Projet1Web/interfaceClient/accueilClient.xhtml"
-		brand-style="height:100%;padding:0px;"
+		brand-style="height:100%;padding:0px;margin-bottom:0px"
 		brand-img-style="height:100%;padding:8px;width:auto;" inverse="true"
-		fluid="true" position="top" sticky="false" id="navbar-brand">
+		fluid="true" position="top" sticky="false" >
 
 
 		<b:navbarLinks style="padding:20px">
@@ -38,7 +39,8 @@
 		brandHref="/Projet1Web/interfaceClient/masterPageClient.xhtml"
 		brand-style="height:100%;padding:0px;"
 		brand-img-style="height:100%;padding:8px;width:auto;" inverse="true"
-		fluid="true" position="bottom" id="navbar-footer">
+		fluid="true" position="bottom" sticky="false" id="navbar-footer"
+		>
 
 
 		<b:navbarLinks style="padding:20px">

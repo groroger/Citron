@@ -1,8 +1,6 @@
 @charset "ISO-8859-1";
 
-.btn_magasin{
-	background-color: grey;
-}
+
 
 .errorMessage {
 	color: red;
@@ -13,30 +11,37 @@
 	color: red;
 }
 
-.vide{
-	display: block !important; 
-	height: 100 !important;
-	width: 100% !important;
-}
-
-.test
-{
-	background-color: red;
-	color: white;
-	font-size: 30px;
-}
-
 #principal{
-	position: absolute;
-	top: 12.5%;
+	position: relative;
+	
 	width: 100%;
 	padding: 0;
 	margin: 0;
 }
 
+/**************************
+		HEADER
+**************************/
+
+#navbar-brand
+{
+	margin: 0px;
+}
+
+
+
+
+/**************************
+	ACCUEILCLIENT
+**************************/
+
+/*** CAROUSEL ***/
+
 carousel{
 	height: auto;
 	width: auto;
+	padding: 0px;
+	margin: 0px;
 }
 
 carouselItem{
@@ -49,4 +54,48 @@ carouselItem > img{
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+#carousel
+{
+	interval: 2500;
+}
+
+.carousel-inner img
+{
+  width: 100%;
+  height: 100%;
+}
+.carousel-caption
+{
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+}
+
+#carousel-captionStep1
+{
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+}
+.carousel-caption h1
+{
+  font-size: 500%;
+  text-shadow: 1px 1px 10px black;
+}
+.carousel-caption h2
+{
+  font-size: 400%;
+  text-shadow: 1px 1px 10px black;
+}
+#carousel-captionStep2
+{
+  position: absolute;
+  top: 61%;
+  transform: translateY(-50%);
+}
+.lead
+{
+  text-align: justify;
 }
