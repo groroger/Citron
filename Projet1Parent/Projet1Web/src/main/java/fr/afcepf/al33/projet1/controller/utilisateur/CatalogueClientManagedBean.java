@@ -84,7 +84,10 @@ public class CatalogueClientManagedBean implements Serializable{
 		} else {
 			
 
+
 			Iterator<ArticleCommande> ite = articlesCommandes.iterator();
+
+
 			while(ite.hasNext()) {
 				ArticleCommande ac = ite.next();
 				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
