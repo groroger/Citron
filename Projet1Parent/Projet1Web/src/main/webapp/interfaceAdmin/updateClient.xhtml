@@ -18,14 +18,19 @@
 				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
 				rel="stylesheet" />
 		</h:head>
+
+		<f:metadata>
+			<f:event listener="#{mbUpdateClient.init()}" type="preRenderView"></f:event>
+		</f:metadata>
+
 		<h:body>
 			<b:form id="formFicheClient">
 				<b:container layout="fluid">
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 							<h3
-								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Mise à jour
-								du client:</h3>
+								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Mise
+								à jour du client:</h3>
 						</b:column>
 					</b:row>
 					<br />
@@ -33,8 +38,7 @@
 					<b:panelGrid columns="1">
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbUpdateClient.client.nom}"
-									fieldSize="lg">
+								<b:inputText value="#{mbUpdateClient.client.nom}" fieldSize="lg">
 									<f:facet name="prepend">
 										<b:icon name="user" />
 									</f:facet>

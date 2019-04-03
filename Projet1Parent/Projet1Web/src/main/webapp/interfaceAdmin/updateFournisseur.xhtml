@@ -23,11 +23,17 @@
 
 		</h:head>
 		<h:body>
+
+			<f:metadata>
+				<f:event listener="#{mbUpdateFournisseur.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 			<b:form id="formFicheFournisseur">
 				<b:container layout="fluid">
-									<b:row>
+					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3 style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Mise à jour du fournisseur</h3>
+							<h3
+								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Mise
+								à jour du fournisseur</h3>
 						</b:column>
 					</b:row>
 					<br />
@@ -69,9 +75,8 @@
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 								<b:selectOneMenu
-									value="#{mbUpdateFournisseur.fournisseur.ville}" 
-									required="true" labelColMd="5" select="true"
-									field-size="lg" >
+									value="#{mbUpdateFournisseur.fournisseur.ville}"
+									required="true" labelColMd="5" select="true" field-size="lg">
 									<f:selectItem itemLabel="Ville" itemValue=""
 										noSelectionOption="true" />
 									<f:selectItems value="#{mbUpdateFournisseur.villes}"
@@ -118,7 +123,7 @@
 					</b:panelGrid>
 					<b:panelGrid columns="3">
 						<b:commandButton value="Enregistrer"
-							action="#{mbUpdateFournisseur.update()}" look="primary"/>
+							action="#{mbUpdateFournisseur.update()}" look="primary" />
 					</b:panelGrid>
 
 				</b:container>

@@ -38,7 +38,7 @@ public class CatalogueClientManagedBean implements Serializable{
 	private Article selectedArticle;
 	private ArticleCommande articleCommande;
 	private List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
-	private List<ArticleCommande> articlesCommandesBis = new ArrayList<ArticleCommande>();
+
 
 
 
@@ -75,27 +75,33 @@ public class CatalogueClientManagedBean implements Serializable{
 		articleCommande =new ArticleCommande();
 		articleCommande.setArticle(article);
 		articleCommande.setQuantite(quantiteSaisie);
-
+		List<ArticleCommande> articlesCommandesBis = new ArrayList<ArticleCommande>();
+		
+		
 		if (articlesCommandes.isEmpty()){
 			articlesCommandes.add(articleCommande);
 			System.out.println("ajout premier article");
 		} else {
 			
 
-			Iterator<ArticleCommande> ite = articlesCommandesBis.iterator();
+			Iterator<ArticleCommande> ite = articlesCommandes.iterator();
 			while(ite.hasNext()) {
 				ArticleCommande ac = ite.next();
 				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
 					ac.setQuantite(ac.getQuantite()+ quantiteSaisie);
 					System.out.println("nombre ajouté à la ligne existante");
-					articlesCommandes=articlesCommandesBis;
+				
 
 				} else {
 					System.out.println("ajout article autre que le premier");
-					articlesCommandes.add(articleCommande);
+					articlesCommandesBis.add(articleCommande);
 				}
 			}
+		
 		}
+		
+		articlesCommandes.addAll(articlesCommandesBis);
+		
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		session.setAttribute("listeArticlesCommandes", articlesCommandes);
