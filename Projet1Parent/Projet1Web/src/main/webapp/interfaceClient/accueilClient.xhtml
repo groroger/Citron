@@ -19,29 +19,37 @@
 				rel="stylesheet" />
 		</h:head>
 		<h:body>
-<b:carousel id="carousel" style="width:100%; height:20%" disabled="true" col-md="12" col-lg="12" col-sm="12">
+		
+		<b:container id="container_carousel">
+<b:carousel id="carousel" disabled="true" col-md="12" col-lg="12" col-sm="12" interval="3000" style="height: 20%; width: 100%">
   <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/aubergine.jpg" alt="aubergine" />
+    <img src="#{request.contextPath}/pics/carousel/aubergine.jpg" alt="aubergine" style="width: 100%; height: 100%; display:block"/>
   </b:carouselItem>
   <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/citrouille.jpg" alt="citrouille" />
+    <img src="#{request.contextPath}/pics/carousel/citrouille.jpg" alt="citrouille" style="width: 100%; height: 100%; display:block" />
   </b:carouselItem>
   <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/fruits.jpg" alt="fruits" />
+    <img src="#{request.contextPath}/pics/carousel/fruits.jpg" alt="fruits" style="width: 100%; height: 100%; display:block" />
   </b:carouselItem>
   <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/potiron.jpg" alt="potiron" />
+    <img src="#{request.contextPath}/pics/carousel/potiron.jpg" alt="potiron" style="width: 100%; height: 100%; display:block" />
   </b:carouselItem>
   <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/piment.jpg" alt="piment" />
+    <img src="#{request.contextPath}/pics/carousel/piment.jpg" alt="piment" style="width: 100%; height: 100%; display:block"/>
   </b:carouselItem>
   <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/fruits2.jpg" alt="fruits" />
+    <img src="#{request.contextPath}/pics/carousel/fruits2.jpg" alt="fruits" style="width: 100%; height: 100%; display:block"/>
   </b:carouselItem>
   <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/tomate.jpg" alt="tomate" />
+    <img src="#{request.contextPath}/pics/carousel/tomate.jpg" alt="tomate" style="width: 100%; height: 100%; display:block"/>
   </b:carouselItem>
-</b:carousel>		
+</b:carousel>	
+
+</b:container>
+
+<b:container id="container_presentation"></b:container>	
+<b:container id="container_producteurs"></b:container>	
+<b:container id="container_service"></b:container>	
 		
 		
 

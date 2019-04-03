@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="title">Recherche de client</ui:define>
 	<ui:define name="css">
 		<h:outputStylesheet name="css/styleAdmin.css" />
@@ -18,16 +18,16 @@
 		</h:head>
 		<body>
 
-			<h:form>
+			<h:form class="row col-md-8 col-md-offset-1">
 			
 				<b:container>
-nom client : <b:inputText value="#{mbConnectionUtilisateur.login}"/>
-mdp : <b:inputSecret value="#{mbConnectionUtilisateur.password}"/>
+<b:label text="nom client :    "/> <b:inputText value="#{mbConnectionUtilisateur.login}" class="row col-md-4"/>
+<b:label text="mdp :    "/> <b:inputSecret value="#{mbConnectionUtilisateur.password}" class="row col-md-4"/>
 					
-				</b:container>
+				</b:container><br /><br /><br />
 
 <b:commandButton value="S'identifier" 
-action="#{mbConnectionUtilisateur.sIdentifier()}" look="warning"/>
+action="#{mbConnectionUtilisateur.sIdentifier()}" look="warning" class="row col-md-4 col-centered"/>
 
 
 			</h:form>

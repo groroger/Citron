@@ -3,3 +3,14 @@
 .btn_magasin{
 	background-color: grey;
 }
+
+.vide{
+	display: block !important; 
+	height: 100 !important;
+	width: 100% !important;
+}
+
+#formGestionCompteClient{
+	top: 20% !important;
+	background-color: red !important;
+}
