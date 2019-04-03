@@ -54,8 +54,7 @@ public class Article implements Serializable{
 	@JoinColumn(referencedColumnName="id")
 	private Categorie categorie;
 
-	@OneToOne
-	@JoinColumn(referencedColumnName="id")
+	@OneToOne(mappedBy = "article")
 	private Stock stock;
 	
 	      
