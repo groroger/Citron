@@ -8,42 +8,50 @@
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="title">Recherche de client</ui:define>
-	<!-- 	<ui:define name="CSS"> -->
-	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
-	<!-- 	</ui:define> -->
+		<ui:define name="CSS">
+			<h:outputStylesheet name= "#{request.contextPath}/css/styleClient.css"/>
+		</ui:define>
 	<ui:define name="content">
 		<h:head>
 			<title>Accueil client</title>
 			<link
 				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
 				rel="stylesheet" />
+				<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
 		</h:head>
 		<h:body>
-<b:carousel id="carousel" style="width:100%; height:20%" disabled="true" col-md="12" col-lg="12" col-sm="12">
-  <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/aubergine.jpg" alt="aubergine" />
-  </b:carouselItem>
-  <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/citrouille.jpg" alt="citrouille" />
-  </b:carouselItem>
-  <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/fruits.jpg" alt="fruits" />
-  </b:carouselItem>
-  <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/potiron.jpg" alt="potiron" />
-  </b:carouselItem>
-  <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/piment.jpg" alt="piment" />
-  </b:carouselItem>
-  <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/fruits2.jpg" alt="fruits" />
-  </b:carouselItem>
-  <b:carouselItem>
-    <img src="#{request.contextPath}/pics/carousel/tomate.jpg" alt="tomate" />
-  </b:carouselItem>
-</b:carousel>		
 		
-		
+		<b:container id="container_carousel">
+<b:carousel id="carousel" disabled="true" col-md="12" col-lg="12" col-sm="12" interval="3000" style="height: 20%; width: 100%">
+  <b:carouselItem>
+    <img src="#{request.contextPath}/pics/carousel/aubergine.jpg" alt="aubergine" style="width: 100%; height: 100%; display:block"/>
+  </b:carouselItem>
+  <b:carouselItem>
+    <img src="#{request.contextPath}/pics/carousel/citrouille.jpg" alt="citrouille" style="width: 100%; height: 100%; display:block" />
+  </b:carouselItem>
+  <b:carouselItem>
+    <img src="#{request.contextPath}/pics/carousel/fruits.jpg" alt="fruits" style="width: 100%; height: 100%; display:block" />
+  </b:carouselItem>
+  <b:carouselItem>
+    <img src="#{request.contextPath}/pics/carousel/potiron.jpg" alt="potiron" style="width: 100%; height: 100%; display:block" />
+  </b:carouselItem>
+  <b:carouselItem>
+    <img src="#{request.contextPath}/pics/carousel/piment.jpg" alt="piment" style="width: 100%; height: 100%; display:block"/>
+  </b:carouselItem>
+  <b:carouselItem>
+    <img src="#{request.contextPath}/pics/carousel/fruits2.jpg" alt="fruits" style="width: 100%; height: 100%; display:block"/>
+  </b:carouselItem>
+  <b:carouselItem>
+    <img src="#{request.contextPath}/pics/carousel/tomate.jpg" alt="tomate" style="width: 100%; height: 100%; display:block"/>
+  </b:carouselItem>
+</b:carousel>	
+
+</b:container>
+
+<b:container id="container_presentation"></b:container>	
+<b:container id="container_producteurs"></b:container>	
+<b:container id="container_service"></b:container>	
+
 
 Ici c'est côté client
 

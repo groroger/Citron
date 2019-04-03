@@ -1,6 +1,7 @@
 package fr.afcepf.al33.projet1.controller.admin;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +11,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import fr.afcepf.al33.projet1.IBusiness.CategorieIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
+import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.entity.Stock;
 
 
@@ -30,10 +33,17 @@ public class AfficherStockManagedBean implements Serializable{
 	private List <Stock> stocks;
 	
 	private Stock selectedStock;
+	
+	private List <Categorie> categories;
+	private Categorie selectedCategorie;
 
 	
 	@EJB
 	private StockIBusiness proxyStock;
+	
+
+	@EJB
+	private CategorieIBusiness proxyCategorie;
 		
 	
 
@@ -41,6 +51,27 @@ public class AfficherStockManagedBean implements Serializable{
 	public void init() {
 		stocks=proxyStock.getAll();
 		
+		categories =  proxyCategorie.getAll();
+		
+	}
+	
+	public void onCategorieChange() {
+
+
+		if (selectedCategorie !=null && !selectedCategorie.equals("") && !selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
+			
+		
+			stocks=proxyStock.getByIdCategorie(selectedCategorie);
+			
+		} else if(selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
+			
+			stocks=proxyStock.getAll();
+
+		} else {
+			
+			stocks=new ArrayList<>();
+			
+		}
 	}
 	
 	public void afficherApprovisionnements(Stock stock) {
@@ -70,11 +101,19 @@ public class AfficherStockManagedBean implements Serializable{
 
 
 
+	public CategorieIBusiness getProxyCategorie() {
+		return proxyCategorie;
+	}
+
+	public void setProxyCategorie(CategorieIBusiness proxyCategorie) {
+		this.proxyCategorie = proxyCategorie;
+		
+	}
+
 
 	public StockIBusiness getProxyStock() {
 		return proxyStock;
 	}
-
 
 
 
@@ -88,6 +127,22 @@ public class AfficherStockManagedBean implements Serializable{
 
 	public void setSelectedStock(Stock selectedStock) {
 		this.selectedStock = selectedStock;
+	}
+
+	public List<Categorie> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Categorie> categories) {
+		this.categories = categories;
+	}
+
+	public Categorie getSelectedCategorie() {
+		return selectedCategorie;
+	}
+
+	public void setSelectedCategorie(Categorie selectedCategorie) {
+		this.selectedCategorie = selectedCategorie;
 	}
 
 	

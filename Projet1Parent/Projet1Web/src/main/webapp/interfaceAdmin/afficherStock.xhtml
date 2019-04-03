@@ -7,9 +7,9 @@
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
 	<ui:define name="title">Recherche de client</ui:define>
-		<ui:define name="css">
-			<h:outputStylesheet name= "css/styleAdmin.css"/>
-		</ui:define>
+	<ui:define name="css">
+		<h:outputStylesheet name="css/styleAdmin.css" />
+	</ui:define>
 	<ui:define name="content">
 
 		<h:head>
@@ -20,9 +20,7 @@
 
 		<h:body>
 
-			<f:metadata>
-				<f:event listener="#{mbStock.init()}" type="preRenderView"></f:event>
-			</f:metadata>
+
 
 
 			<h:form id="formAfficherStock">
@@ -30,17 +28,31 @@
 				<b:container layout="fluid">
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3	style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
+							<h3
+								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
 							<br />
 						</b:column>
 					</b:row>
 
-					<b:dataTable value="#{mbStock.stocks}" var="ligneStock" pdf="false"
+					<b:formGroup>
+						<b:selectOneMenu update="datatableStocks"
+							onchange="ajax:AJAXBean.onChange()"
+							value="#{mbStock.selectedCategorie}" colMd="3" labelColMd="3">
+							<f:ajax listener="#{mbStock.onCategorieChange()}"
+								update="datatableStocks" />
+							<f:selectItems value="#{mbStock.categories}" var="categorie"
+								itemValue="#{categorie}" itemLabel="#{categorie.nomCategorie}" />
+						</b:selectOneMenu>
+					</b:formGroup>
+
+					<b:dataTable id="datatableStocks" value="#{mbStock.stocks}" 
+						var="ligneStock" pdf="false"
 						print="false" excel="false" border="true" info="false"
-						tiny-screen="12" medium-screen="12"  large-screen="12"
+						tiny-screen="12" medium-screen="12" large-screen="12"
 						page-length="20" selectionMode="single" responsive="true">
 
-						<b:dataTableColumn headerStyle="text-align: center;vertical-align: middle;" >
+						<b:dataTableColumn
+							headerStyle="text-align: center;vertical-align: middle;">
 							<f:facet name="header">Image: </f:facet>
 							<h:graphicImage
 								value="/pics/articlesImages/#{ligneStock.article.imageMini}" />

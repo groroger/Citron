@@ -59,7 +59,7 @@ public class CatalogueManagedBean implements Serializable{
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		session.setAttribute("selectedArticle", selectedArticle);
-		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/updateFicheProduit.xhtml?faces-redirect=true");
+		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/ficheArticleAdmin.xhtml?faces-redirect=true");
 	}
 
 

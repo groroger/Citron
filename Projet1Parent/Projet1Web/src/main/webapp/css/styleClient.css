@@ -12,3 +12,21 @@
 	content:"* ";
 	color: red;
 }
+
+.vide{
+	display: block !important; 
+	height: 100 !important;
+	width: 100% !important;
+}
+
+#formGestionCompteClient{
+	top: 20% !important;
+	background-color: red !important;
+}
+
+.test
+{
+	background-color: red;
+	color: white;
+	font-size: 30px;
+}

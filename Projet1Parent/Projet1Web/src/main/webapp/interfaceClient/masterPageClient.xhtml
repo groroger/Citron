@@ -6,57 +6,50 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-	<meta content="text/html; charset=UTF-8" http-equiv="Content_Type" />
-		<h:outputStylesheet name="#{request.contextPath}/css/styleClient.css"/>
-		<ui:insert name="css"></ui:insert>
-	<title><ui:insert name="title"></ui:insert></title>
+
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/styleClient.css" />
+
 </h:head>
 <h:body>
-	<b:navBar 
-		brand=""
+	<b:navBar brand=""
 		brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
-		brandHref="/Projet1Web/interfaceClient/masterPageClient.xhtml"
+		brandHref="/Projet1Web/interfaceClient/accueilClient.xhtml"
 		brand-style="height:100%;padding:0px;"
-		brand-img-style="height:100%;padding:8px;width:auto;"
-		inverse="true" fluid="true" 
-		id="navbar-brand">
+		brand-img-style="height:100%;padding:8px;width:auto;" inverse="true"
+		fluid="true" sticky="true" id="navbar-brand">
 
 
-			<b:navbarLinks style="padding:20px" >
-				<b:navLink class="btn_magasin" value="Notre Magasin"
-					href="/Projet1Web/interfaceClient/magasin.xhtml"></b:navLink>
-				<b:navLink class="btn_rechercheProduit" value="Rechercher Produits"
-					href="/Projet1Web/interfaceCLient/moteurRechercheProduit.xhtml"></b:navLink>
-			</b:navbarLinks>
-	
+		<b:navbarLinks style="padding:20px">
+			<b:navLink class="btn_magasin" value="Notre Magasin"
+				href="/Projet1Web/interfaceClient/magasin.xhtml"></b:navLink>
+			<b:navLink class="btn_rechercheProduit" value="Rechercher Produits"
+				href="/Projet1Web/interfaceCLient/moteurRechercheProduit.xhtml"></b:navLink>
+		</b:navbarLinks>
+
 	</b:navBar>
-	
-	
+
+
 
 	<div id="centre">
 		<ui:insert name="content"></ui:insert>
 	</div>
-	<!-- 	<div id="footer"> -->
-	<!-- 		<h1>Footer</h1> -->
-	<!-- 	</div> -->
-	
-	<b:navBar 
-		brand="   "
+
+	<b:navBar brand=""
 		brandHref="/Projet1Web/interfaceClient/masterPageClient.xhtml"
 		brand-style="height:100%;padding:0px;"
-		brand-img-style="height:100%;padding:8px;width:auto;"
-		inverse="true" fluid="true" 
-		position="bottom"
-		id="navbar-footer">
+		brand-img-style="height:100%;padding:8px;width:auto;" inverse="true"
+		fluid="true" position="bottom" id="navbar-footer">
 
 
-			<b:navbarLinks style="padding:20px" >
-				<b:navLink class="btn_contact" value="Nous Contacter"
-					href="/Projet1Web/interfaceClient/contact.xhtml"></b:navLink>
-				<b:navLink class="btn_rechercheProduit" value="Mentions Légales"
-					href="/Projet1Web/interfaceCLient/cgv.xhtml"></b:navLink>
-			</b:navbarLinks>
-	
+		<b:navbarLinks style="padding:20px">
+			<b:navLink class="btn_contact" value="Nous Contacter"
+				href="/Projet1Web/interfaceClient/contact.xhtml"></b:navLink>
+			<b:navLink class="btn_rechercheProduit" value="Mentions Légales"
+				href="/Projet1Web/interfaceCLient/cgv.xhtml"></b:navLink>
+		</b:navbarLinks>
+
 	</b:navBar>
+
+	
 </h:body>
 </html>
