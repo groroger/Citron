@@ -7,7 +7,7 @@
 
 <h:head>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content_Type" />
-		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css"/>
+		<h:outputStylesheet name="#{request.contextPath}/css/styleClient.css"/>
 		<ui:insert name="css"></ui:insert>
 	<title><ui:insert name="title"></ui:insert></title>
 </h:head>
@@ -15,7 +15,7 @@
 	<b:navBar 
 		brand=""
 		brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
-		brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"
+		brandHref="/Projet1Web/interfaceClient/masterPageClient.xhtml"
 		brand-style="height:100%;padding:0px;"
 		brand-img-style="height:100%;padding:8px;width:auto;"
 		inverse="true" fluid="true" 
@@ -23,16 +23,10 @@
 
 
 			<b:navbarLinks style="padding:20px" >
-				<b:navLink value="Clients"
-					href="/Projet1Web/interfaceAdmin/moteurRechercheClient.xhtml"></b:navLink>
-				<b:navLink value="Fournisseurs"
-					href="/Projet1Web/interfaceAdmin/moteurRechercheFournisseur.xhtml"></b:navLink>
-				<b:navLink value="Catalogue"
-					href="/Projet1Web/interfaceAdmin/catalogue.xhtml"></b:navLink>
-				<b:navLink value="Stock"
-					href="/Projet1Web/interfaceAdmin/afficherStock.xhtml"></b:navLink>
-				<b:navLink value="Approvisionnements"
-					href="/Projet1Web/interfaceAdmin/approvisionnement.xhtml"></b:navLink>
+				<b:navLink class="btn_magasin" value="Notre Magasin"
+					href="/Projet1Web/interfaceClient/magasin.xhtml"></b:navLink>
+				<b:navLink class="btn_rechercheProduit" value="Rechercher Produits"
+					href="/Projet1Web/interfaceCLient/moteurRechercheProduit.xhtml"></b:navLink>
 			</b:navbarLinks>
 	
 	</b:navBar>
@@ -48,7 +42,7 @@
 	
 	<b:navBar 
 		brand="   "
-		brandHref="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"
+		brandHref="/Projet1Web/interfaceClient/masterPageClient.xhtml"
 		brand-style="height:100%;padding:0px;"
 		brand-img-style="height:100%;padding:8px;width:auto;"
 		inverse="true" fluid="true" 
@@ -57,8 +51,10 @@
 
 
 			<b:navbarLinks style="padding:20px" >
-				<b:navLink class="btn_contact" value="Accueil Administrateur"
-					href="/Projet1Web/interfaceAdmin/masterPageAdmin.xhtml"></b:navLink>
+				<b:navLink class="btn_contact" value="Nous Contacter"
+					href="/Projet1Web/interfaceClient/contact.xhtml"></b:navLink>
+				<b:navLink class="btn_rechercheProduit" value="Mentions Légales"
+					href="/Projet1Web/interfaceCLient/cgv.xhtml"></b:navLink>
 			</b:navbarLinks>
 	
 	</b:navBar>
