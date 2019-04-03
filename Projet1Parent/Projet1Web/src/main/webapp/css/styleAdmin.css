@@ -8,7 +8,7 @@ h3
 {
 	color: rgb(0, 136, 143); 
 	font-weight: bold; 
-	text-align: center;"
+	text-align: center;
 }
 
 
@@ -16,7 +16,6 @@ h3
 	position: relative;
 	width: 100%;
 	padding: 0;
-	margin: 0;
 }
 
 
@@ -54,7 +53,7 @@ h3
 {
 	width: 100%;
 	padding: 0;
-	margin: 0;
+	margin: 20px, 0px, 0px, 0px;
 }
 
 

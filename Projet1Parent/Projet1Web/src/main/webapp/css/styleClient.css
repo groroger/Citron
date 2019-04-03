@@ -15,7 +15,6 @@
 	position: relative;
 	width: 100%;
 	padding: 0;
-	margin: 0;
 }
 
 /**************************
@@ -40,6 +39,11 @@
 .navbarLinks
 {
 	padding:20px
+}
+
+navbar-footer
+{
+	margin-top: 50px;
 }
 
 /**************************

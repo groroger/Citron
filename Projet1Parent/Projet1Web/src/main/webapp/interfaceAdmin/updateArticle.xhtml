@@ -6,23 +6,15 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
-
-	<ui:define name="title">Fiche produit</ui:define>
-	<ui:define name="CSS">
-		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css" />
-	</ui:define>
+	<ui:define name="title">Recherche de client</ui:define>
 	<ui:define name="content">
+
 		<link rel="stylesheet" type="text/css"
 			href="#{request.contextPath}/css/styleAdmin.css" />
 		<h:head>
+			<title>MAJ article</title>
 
-			<title>Fiche produit</title>
-
-			<link
-				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-				rel="stylesheet" />
 		</h:head>
-
 		<h:body>
 
 			<b:container id="principal">
@@ -43,7 +35,7 @@
 							<b:row>
 								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 									<b:inputTextarea value="#{mbFicheArticleAdmin.article.descriptif}"
-										disabled="true" fieldSize="lg">
+										fieldSize="lg">
 										<f:facet name="prepend">
 											<h:outputText value="Description" />
 										</f:facet>
@@ -54,7 +46,7 @@
 								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 									<b:inputText
 										value="#{mbFicheArticleAdmin.article.nom}"
-										disabled="true" fieldSize="lg">
+										fieldSize="lg">
 										<f:facet name="prepend">
 											<h:outputText value="Appellation" />
 										</f:facet>
@@ -65,7 +57,7 @@
 								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 									<b:inputText
 										value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"
-										disabled="true" fieldSize="lg">
+										fieldSize="lg">
 										<f:facet name="prepend">
 											<h:outputText value="Catégorie" />
 										</f:facet>
@@ -76,7 +68,7 @@
 								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 									<b:inputText
 										value="#{mbFicheArticleAdmin.article.prix}"
-										disabled="true" fieldSize="lg">
+										fieldSize="lg">
 										<f:facet name="prepend">
 											<h:outputText value="Prix de vente" />
 										</f:facet>
@@ -87,7 +79,7 @@
 								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 									<b:inputText
 										value="#{mbFicheArticleAdmin.article.prixKilo}"
-										disabled="true" fieldSize="lg">
+										fieldSize="lg">
 										<f:facet name="prepend">
 											<h:outputText value="Prix au kilo" />
 										</f:facet>
@@ -95,16 +87,15 @@
 								</b:column>
 							</b:row>
 						</b:panelGrid>
-						<b:panelGrid columns="2">
-						<b:button
-							href="/Projet1Web/interfaceAdmin/updateArticle.xhtml"
-							value="Mettre à jour" look="primary"/>
+						<b:panelGrid columns="3">
+						<b:commandButton value="Enregistrer"
+							action="#{mbUpdateArticle.update()}" look="primary"/>
 					</b:panelGrid>
 					</b:container>
 				</b:form>
 			</b:container>
 		</h:body>
+
 	</ui:define>
 </ui:composition>
-
 </html>

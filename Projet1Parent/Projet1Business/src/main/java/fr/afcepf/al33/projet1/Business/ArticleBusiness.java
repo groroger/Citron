@@ -31,4 +31,10 @@ public class ArticleBusiness implements ArticleIBusiness{
 		return articles;
 	}
 
+	@Override
+	public Article update(Article article) {
+		proxyArticleIDao.modifier(article);
+		return article;
+	}
+
 }
