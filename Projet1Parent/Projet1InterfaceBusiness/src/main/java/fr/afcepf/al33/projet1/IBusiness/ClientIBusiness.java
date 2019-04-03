@@ -13,6 +13,7 @@ public interface ClientIBusiness {
 	public Client adherentByIdJPQL(int id);
 	public Client seConnecter (String login, String password);
 	public Client rechercheParLoginEtPassword (String l, String p);
+	public Client rechercheParLogin (String l);
 	public List<Client> getAllClients();
 
 }

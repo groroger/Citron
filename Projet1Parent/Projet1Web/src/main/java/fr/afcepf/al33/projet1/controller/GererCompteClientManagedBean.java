@@ -117,6 +117,16 @@ public class GererCompteClientManagedBean implements Serializable{
 	private boolean verifierMotDePasse() {
 		boolean verification = true;
 		
+		// vérification de disponibilité de l'identifiant
+		if (proxyClient.rechercheParLogin(client.getLogin()) != null) {
+			// création d'un message
+			FacesMessage message = new FacesMessage("L'identifiant choisi est déjà utilisé");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			// ajout à la liste des messages à afficher
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			verification = false;
+		}
+		
 		// mot de passe identique entre les 2 input
 		if (!this.passwordConfirmation.equals(client.getPassword())) {
 			// création d'un message

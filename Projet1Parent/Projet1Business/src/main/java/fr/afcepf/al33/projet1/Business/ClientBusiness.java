@@ -69,6 +69,12 @@ public class ClientBusiness implements ClientIBusiness{
 		return client;
 	}
 
+
+	@Override
+	public Client rechercheParLogin(String l) {
+		Client client = proxyClient.getByLogin(l); 
+		return client;
+	}
 	
 
 	@Override
@@ -151,5 +157,6 @@ public class ClientBusiness implements ClientIBusiness{
 		
 		return passwordVerifie;
 	}
+
 
 }
