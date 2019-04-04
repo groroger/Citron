@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
 	<ui:define name="title">Recherche de client</ui:define>
 	<ui:define name="css">
 		<h:outputStylesheet name="css/styleAdmin.css" />
@@ -45,21 +45,11 @@
 
 
 
-					<b:dataTable id="datatableArticles" 
-								 value="#{mbCatalogueClient.articles}"
-								 var="article" 
-								 pdf="false" 
-								 print="false" 
-								 excel="false"
-								 border="true" 
-								 info="false" 
-								 tiny-screen="12" 
-								 medium-screen="12"
-								 large-screen="12" 
-								 page-length="20" 
-								 selectionMode="single"
-								 responsive="true"
-								 onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);">
+					<b:dataTable id="datatableArticles" value="#{mbCatalogueClient.articles}"
+						var="article" pdf="false" print="false" excel="false"
+						border="true" info="false" tiny-screen="12" medium-screen="12"
+						large-screen="12" page-length="20" selectionMode="single"
+						responsive="true">
 
 						<b:dataTableColumn>
 							<f:facet name="header">Image: </f:facet>
@@ -81,11 +71,25 @@
 							<f:facet name="header">Prix<br />au kilo: </f:facet>
 							<h:outputLabel value="#{article.prixKilo}" />
 						</b:dataTableColumn>
+						
 						<b:dataTableColumn>
 							<f:facet name="header">Ajouter Panier</f:facet>
-							<b:commandButton value="Ajouter au panier" look="primary"
-								action="#{mbCatalogueClient.ajouterArticle(article)}" />
-						</b:dataTableColumn>
+							
+							<h:outputLabel value="#{article.quantiteSaisie}" /> 
+							<br />
+							<b:buttonGroup>
+								<b:commandButton id="btn_minus" value="" icon="minus-sign" look="primary" 
+									action="#{mbCatalogueClient.minusQuantiteSaisie(article)}"/>	
+	    						<b:commandButton id="btn_ajouter" value="Ajouter" look="primary"
+									action="#{mbCatalogueClient.ajouterArticle(article)}" />
+									
+	    						<b:commandButton id="btn_plus" value="" icon="plus-sign" look="primary" 
+	    							action="#{mbCatalogueClient.plusQuantiteSaisie(article)}"/>
+    						</b:buttonGroup>   						
+ 						</b:dataTableColumn>
+ 						
+
+						
 					</b:dataTable>
 				</b:container>
 			</h:form>

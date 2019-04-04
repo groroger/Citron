@@ -13,9 +13,6 @@ import fr.afcepf.al33.projet1.idao.CategorieIdao;
 
 
 
-
-
-
 @Remote(CategorieIBusiness.class)
 @Stateless
 public class CategorieBusiness implements CategorieIBusiness{

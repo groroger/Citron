@@ -38,8 +38,8 @@ public class ArticleBusiness implements ArticleIBusiness{
 	}
 
 	@Override
-	public void add(Article article) {
-		proxyArticleIDao.ajouter(article);
+	public Article add(Article article) {
+		return proxyArticleIDao.ajouter(article);
 		
 	}
 
