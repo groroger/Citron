@@ -40,7 +40,7 @@ public class CatalogueClientManagedBean implements Serializable{
 	private List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
 
 
-
+//test pour amin
 
 
 	@EJB
