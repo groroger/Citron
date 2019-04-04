@@ -12,6 +12,7 @@
 
 </h:head>
 <h:body>
+	<h:form>
 	<b:navBar id="navbar-brand"
 	brand=""
 		brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
@@ -20,14 +21,12 @@
 		inverse="true"
 		fluid="true" position="top" sticky="false" >
 
-
-
 		<b:navbarLinks class="navbarLinks" pull="right">
 			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
 				href="/Projet1Web/interfaceConnection/connection.xhtml"></b:navLink>
 
-			<b:navLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
-				action="#{mbConnectionUtilisateur.seDeconnecter()}"></b:navLink>
+			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
+				 action="#{mbConnectionUtilisateur.seDeconnecter()}"></b:navCommandLink>
 
 			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
 				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"></b:navLink>
@@ -39,7 +38,7 @@
 		</b:navbarLinks>
 
 	</b:navBar>
-
+	</h:form>
 
 
 	<div id="centre">
@@ -50,8 +49,6 @@
 
 
 	<footer id="basDePage"> 
-	
-
 	<div id="wrap" class="wrapper">
 		<h2 id="citron">CITRON™</h2>
 		<p id="copyright">Copyright @ 2019. Tous droits réservés</p>
