@@ -20,7 +20,7 @@ $(document).ready(function() {
 	// 	}
 	// });
 
-	$('body').append('<a href="#top" class="top_link" title="Revenir en haut de page"><img src="/pics/website/hautPage48.png" /></a>');
+	$('body').append('<a href="#top" class="top_link" title="Revenir en haut de page"><img src="../pics/website/hautPage48.png" /></a>');
 	$('.top_link').css({
 		'position'				:	'fixed',
 		'right'					:	'20px',

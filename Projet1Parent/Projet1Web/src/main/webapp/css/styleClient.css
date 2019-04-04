@@ -200,5 +200,11 @@ carouselItem > img{
   text-align: justify;
 }
 
+/**************************
+	CATALOGUE CLIENT
+**************************/
 
-
+#formCatalogueClient
+{
+	background-image: url('../pics/carousel/champignon.jpg');
+}
