@@ -2,8 +2,9 @@ package fr.afcepf.al33.projet1.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -88,29 +89,31 @@ public class GererCompteClientManagedBean implements Serializable{
 	}
 
 	public void ajouter() throws Exception {
-		// controles saisie
+		// controles pattern mot de passe saisi
 		if (verifierMotDePasse()) {
-		
-			try {
-				// enregistrement du client
-				proxyClient.add(client);
-				
-				// création d'un message
-				FacesMessage message = new FacesMessage("Création de votre compte réussie");
-				// ajout à la liste des messages à afficher
-				FacesContext.getCurrentInstance().addMessage(null, message);
-				
-				// redirection depuis un managedBean
-				FacesContext.getCurrentInstance().getExternalContext().redirect("../interfaceClient/accueilClient.xhtml");
+			// génération du sel et du mot de passe haché
+			if (genererMotDePasseHache()) {				
+				try {
+					// enregistrement du client
+					proxyClient.add(client);
+					
+					// création d'un message
+					FacesMessage message = new FacesMessage("Création de votre compte réussie");
+					// ajout à la liste des messages à afficher
+					FacesContext.getCurrentInstance().addMessage(null, message);
+					
+					// redirection depuis un managedBean
+					FacesContext.getCurrentInstance().getExternalContext().redirect("../interfaceClient/accueilClient.xhtml");
+				}
+				catch (Exception e) {
+					// création d'un message
+					FacesMessage message = new FacesMessage("Erreur lors de la création de votre compte : " + e.getMessage());
+					message.setSeverity(FacesMessage.SEVERITY_ERROR);
+					// ajout à la liste des messages à afficher
+					FacesContext.getCurrentInstance().addMessage(null, message);
+				}
 			}
-			catch (Exception e) {
-				// création d'un message
-				FacesMessage message = new FacesMessage("Erreur lors de la création de votre compte : " + e.getMessage());
-				message.setSeverity(FacesMessage.SEVERITY_ERROR);
-				// ajout à la liste des messages à afficher
-				FacesContext.getCurrentInstance().addMessage(null, message);
-			}
-		
+					
 		}
 	}
 	
@@ -196,4 +199,21 @@ public class GererCompteClientManagedBean implements Serializable{
 		return compteur;
 	}
 	
+	private boolean genererMotDePasseHache() {
+		boolean result = false;
+		try {
+			Map<String, String> hm = proxyClient.genererHashedPassword(client.getPassword());
+			client.setPassword(hm.get("hashedPassword"));
+			client.setSalt(hm.get("salt"));
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// création d'un message
+			FacesMessage message = new FacesMessage("Erreur lors de la génération de votre mot de passe  : " + e.getMessage());
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			// ajout à la liste des messages à afficher
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+		return result;
+	}
 }

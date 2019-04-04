@@ -1,6 +1,7 @@
 package fr.afcepf.al33.projet1.IBusiness;
 
 import java.util.List;
+import java.util.Map;
 
 import fr.afcepf.al33.projet1.entity.Client;
 
@@ -15,7 +16,7 @@ public interface ClientIBusiness {
 	public Client rechercheParLoginEtPassword (String l, String p);
 	public Client rechercheParLogin (String l);
 	public List<Client> getAllClients();
-
+	public Map<String, String> genererHashedPassword(String passwordToHash) throws Exception;
 }
 
 

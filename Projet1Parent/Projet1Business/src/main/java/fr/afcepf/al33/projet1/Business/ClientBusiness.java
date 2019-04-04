@@ -4,7 +4,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
@@ -156,6 +158,30 @@ public class ClientBusiness implements ClientIBusiness{
 		}
 		
 		return passwordVerifie;
+	}
+
+	@Override
+	public Map<String, String> genererHashedPassword(String passwordToHash) throws Exception
+	{
+		// stockage salt et hashed password
+		Map<String, String> hm = new HashMap<>();
+		
+		// génération salt
+		byte [] salt = generateSalt();
+		hm.put("salt", bytetoString(salt));
+		
+		try 
+		{
+			byte [] hash = getHashWithSalt(passwordToHash, salt);		
+			hm.put("hashedPassword", bytetoString(hash));
+		} 
+		catch (NoSuchAlgorithmException e) 
+		{
+			e.printStackTrace();
+			throw(e);
+		}
+		
+		return hm;
 	}
 
 
