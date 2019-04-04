@@ -6,7 +6,7 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
-	<ui:define name="title">Recherche de client</ui:define>
+<!-- 	<ui:define name="title">Catalogue</ui:define> -->
 	<ui:define name="css">
 		<h:outputStylesheet name="css/styleAdmin.css" />
 	</ui:define>
@@ -40,6 +40,9 @@
 							<f:selectItems value="#{mbCatalogue.categories}" var="categorie"
 								itemValue="#{categorie}" itemLabel="#{categorie.nomCategorie}" />
 						</b:selectOneMenu>
+						<b:button href="/Projet1Web/interfaceAdmin/ajouterArticle.xhtml" 
+									value="Création Nouvel Article" look="primary" size="xs"/>
+						
 					</b:formGroup>
 
 
