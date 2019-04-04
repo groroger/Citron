@@ -187,6 +187,8 @@
 						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
 							<b:selectOneMenu id="villeliv"
 								value="#{mbGererCompteClient.client.villeLivraison}">
+								<f:selectItem itemLabel="Ville" itemValue=""
+									noSelectionOption="true" />
 								<f:selectItems value="#{mbGererCompteClient.villes}"
 									var="villeliv"
 									itemLabel="#{villeliv.codePostal} #{villeliv.nom}"></f:selectItems>
