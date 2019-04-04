@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Recherche de client</ui:define>
+	<!-- 	<ui:define name="CSS"> -->
+	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
+	<!-- 	</ui:define> -->
+	<ui:define name="content">
+
+		<h:head>
+			<title>Rechercher commandes à traiter</title>
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
+
+		</h:head>
+		<h:body>
+		<b:container id="principal">
+			<h:form id="formRechercheCommandesATraiter">
+
+				<b:container layout="fluid">
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<h3	style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Liste des fournisseurs:</h3>
+							<br />
+							<br />
+						</b:column>
+					</b:row>
+
+					<b:dataTable value="#{mbFicheCommandeATraiter.commandes}" 
+								 var="fourn"
+								 excel="false" 
+								 pdf="false" 
+								 print="false" 
+								 border="true" 
+								 info="false"
+								 page-length="20" 
+								 selectionMode="single" 
+								 responsive="true"
+								 tiny-screen="12" 
+								 medium-screen="12"  
+								 large-screen="12"
+								 onselect="ajax:mbFindFournisseur.onSelect(fourn);"
+								 paginated="false">
+								 
+						<b:dataTableColumn>
+							<f:facet name="header">Nom</f:facet>
+							<h:outputLabel value="#{fourn.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Adresse</f:facet>
+							<h:outputLabel value="#{fourn.adresse}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Code Postal</f:facet>
+							<h:outputLabel value="#{fourn.ville.codePostal}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Ville</f:facet>
+							<h:outputLabel value="#{fourn.ville.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Téléphone</f:facet>
+							<h:outputLabel value="#{fourn.numeroFixe}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Portable</f:facet>
+							<h:outputLabel value="#{fourn.numeroPort}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Email</f:facet>
+							<h:outputLabel value="#{fourn.email}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+					<b:row>
+						<b:column offset="10" tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:button
+								href="/Projet1Web/interfaceAdmin/ajoutFournisseur.xhtml"
+								value="Ajouter un fournisseur" look="primary" style="margin-top:10px"/>
+						</b:column>
+					</b:row>
+				</b:container>
+			</h:form>
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>
