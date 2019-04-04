@@ -22,10 +22,12 @@
 
 				<b:container>
 					<b:label text="nom client :    " />
-					<b:inputText value="#{mbConnectionUtilisateur.login}"
+					<b:inputText value="#{mbConnectionUtilisateur.login}" 
+								required="true" requiredMessage="login obligatoire"
 						class="row col-md-4" />
 					<b:label text="mdp :    " />
-					<b:inputSecret value="#{mbConnectionUtilisateur.password}"
+					<b:inputSecret value="#{mbConnectionUtilisateur.password}" 
+								required="true" requiredMessage="mot de passe obligatoire"
 						class="row col-md-4" />
 
 				</b:container>
