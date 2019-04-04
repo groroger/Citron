@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+
+	<ui:define name="title">Fiche produit</ui:define>
+	<ui:define name="CSS">
+		<h:outputStylesheet name="#{request.contextPath}/css/styleAdmin.css" />
+	</ui:define>
+	<ui:define name="content">
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/css/styleAdmin.css" />
+		<h:head>
+
+			<title>Fiche produit</title>
+
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
+		</h:head>
+
+		<h:body>
+			<f:metadata>
+				<f:event listener="#{mbFicheArticleClient.init()}"
+					type="preRenderView"></f:event>
+			</f:metadata>
+			<b:container id="principal">
+				<b:form id="formFicheProduit">
+					<b:container layout="fluid">
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<h3>Fiche produit détaillée</h3>
+							</b:column>
+						</b:row>
+
+						<div>
+							<h:graphicImage
+								value="/pics/articlesImages/#{mbFicheArticleClient.article.image}" />
+						</div>
+
+						<b:panelGrid columns="1">
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputTextarea
+										value="#{mbFicheArticleClient.article.descriptif}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Description" />
+										</f:facet>
+									</b:inputTextarea>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbFicheArticleClient.article.nom}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Appellation" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText
+										value="#{mbFicheArticleClient.article.categorie.nomCategorie}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Catégorie" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbFicheArticleClient.article.prix}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Prix de vente" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbFicheArticleClient.article.prixKilo}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Prix au kilo" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+						</b:panelGrid>
+						<b:panelGrid columns="2">
+							<b:button href="/Projet1Web/interfaceAdmin/updateArticle.xhtml"
+								value="Ajouter au panier" look="primary" />
+						</b:panelGrid>
+					</b:container>
+				</b:form>
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+
+</html>
