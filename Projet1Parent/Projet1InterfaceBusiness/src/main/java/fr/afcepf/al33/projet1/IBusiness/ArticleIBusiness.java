@@ -10,4 +10,5 @@ public interface ArticleIBusiness {
 	List<Article> getAll();
 	List<Article> getByIdCategorie(Categorie c);
 	public Article update(Article article);
+	void add(Article article);
 }
