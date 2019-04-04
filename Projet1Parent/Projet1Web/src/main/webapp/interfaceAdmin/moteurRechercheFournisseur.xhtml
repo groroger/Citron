@@ -31,12 +31,22 @@
 						</b:column>
 					</b:row>
 
-					<b:dataTable value="#{mbFindFournisseur.fournisseurs}" var="fourn"
-						excel="false" pdf="false" print="false" border="true" info="false"
-						page-length="20" selectionMode="single" responsive="true"
-						tiny-screen="12" medium-screen="12"  large-screen="12"
-						onselect="ajax:mbFindFournisseur.onSelect(fourn);"
-						paginated="false">
+					<b:dataTable value="#{mbFindFournisseur.fournisseurs}" 
+								 var="fourn"
+								 excel="false" 
+								 pdf="false" 
+								 print="false" 
+								 border="true" 
+								 info="false"
+								 page-length="20" 
+								 selectionMode="single" 
+								 responsive="true"
+								 tiny-screen="12" 
+								 medium-screen="12"  
+								 large-screen="12"
+								 onselect="ajax:mbFindFournisseur.onSelect(fourn);"
+								 paginated="false">
+								 
 						<b:dataTableColumn>
 							<f:facet name="header">Nom</f:facet>
 							<h:outputLabel value="#{fourn.nom}" />

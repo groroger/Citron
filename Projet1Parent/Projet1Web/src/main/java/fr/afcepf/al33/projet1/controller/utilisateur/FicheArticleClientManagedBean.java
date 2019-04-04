@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.controller.admin;
+package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
 
@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
 import fr.afcepf.al33.projet1.entity.Article;
 
-@ManagedBean(name="mbFicheArticleAdmin")
+@ManagedBean(name="mbFicheArticleClient")
 @SessionScoped
-public class FicheArticleManagedBean implements Serializable{
+public class FicheArticleClientManagedBean implements Serializable{
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class FicheArticleManagedBean implements Serializable{
 	@EJB
 	private ArticleIBusiness proxyArticle;
 	
-	@ManagedProperty(value="#{mbCatalogueClient.selectedArticle}")
+	@ManagedProperty(value="#{mbCatalogue.selectedArticle}")
 	private Article article;
 	
 	
