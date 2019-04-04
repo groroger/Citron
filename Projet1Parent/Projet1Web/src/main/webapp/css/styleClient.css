@@ -26,13 +26,11 @@
 #navbar-brand
 {
 	margin: 0px;
-	padding:0px;
 }
 
 #navbar-brand img
 {
 	height:100%;
-	padding:8px;
 	width:auto;
 }
 
@@ -41,9 +39,12 @@
 	padding:20px
 }
 
+.btn_magasin
+{
+	font-size: 1.2em
+}
 .btn_magasin:hover
 {
-	color: #FFF726;
 	font-weight: bold;
 }
 
@@ -91,7 +92,7 @@ footer
 {
     display: flex;
     justify-content: center;
-    font-size: 0.8em;
+    font-size: 1em;
     padding-bottom: 25px;
     color: #FFF726; 
 }

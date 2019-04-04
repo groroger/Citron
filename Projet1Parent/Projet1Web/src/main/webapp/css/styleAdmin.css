@@ -23,8 +23,6 @@ h3
 		MASTERPAGE
 **************************/
 
-
-
 /*** HEADER ***/
 
 #navbar-brand
@@ -36,16 +34,23 @@ h3
 #navbar-brand img
 {
 	height:100%;
-	padding:8px;
 	width:auto;
 }
 
 .navbarLinks
 {
 	padding:20px;
-	pull:"right";
 }
 
+.btn_magasin
+{
+	font-size: 1.2em
+}
+.btn_magasin:hover
+{
+	color: #FFF726;
+	font-weight: bold;
+}
 
 /****************************************
               FOOTER                  
@@ -90,7 +95,7 @@ footer
 {
     display: flex;
     justify-content: center;
-    font-size: 0.8em;
+    font-size: 1em;
     padding-bottom: 25px;
     color: #FFF726; 
 }

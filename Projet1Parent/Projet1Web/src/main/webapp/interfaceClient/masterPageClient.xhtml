@@ -9,17 +9,19 @@
 <link rel="shortcut icon" href="#{request.contextPath}/pics/website/citronLogo.ico"/>
 <link rel="stylesheet" type="text/css" 
 		href="#{request.contextPath}/css/styleClient.css" />
-
+<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 </h:head>
 <h:body>
 	<h:form>
-	<b:navBar id="navbar-brand"
-	brand=""
-		brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
-		brandHref="/Projet1Web/interfaceClient/accueilClient.xhtml"
-		brand-style="height:100%;padding:0px;margin-bottom:0px"
-		inverse="true"
-		fluid="true" position="top" sticky="false" >
+	<b:navBar id="navbarHeader"
+			  brand=""
+			  brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
+			  brandHref="/Projet1Web/interfaceClient/accueilClient.xhtml"
+			  brand-style="height:100%;padding:8px; margin:0px"
+			  inverse="true"
+			  fluid="true" 
+			  position="top" 
+			  sticky="false" >
 
 		<b:navbarLinks class="navbarLinks" pull="right">
 			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
