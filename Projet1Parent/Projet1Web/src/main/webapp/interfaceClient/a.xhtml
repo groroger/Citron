@@ -14,7 +14,9 @@
 
 </h:head>
 <h:body>
-	<h:form id="navbarMasterPage">
+
+
+	
 	<b:navBar id="navbar-brand"
 			  brand=""
 			  brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
@@ -52,19 +54,18 @@
 					<f:param name="blockui.disabled" value="true"/>
 					<b:modal styleClass="formValidationModalClass" closable="true"
 						closeOnEscape="true">
-						
 						<b:form id="form">
 							<h4>Déjà adhérent :</h4>
 
 							<b:row>
 								<b:column>
 									<b:inputText placeholder="Identifiant"
-										value="#{mbConnect.login}" class="form-control"
+										value="#{mbConnectionUtilisateur.login}" class="form-control"
 										id="exampleDropdownFormEmail1" required="false"
 										requiredMessage="Entrez votre identifiant" />
 
 									<b:inputSecret placeholder="Mot de passe"
-										value="#{mbConnect.password}" class="form-control"
+										value="#{mbConnectionUtilisateur.password}" class="form-control"
 										id="exampleDropdownFormPassword1" required="true"
 										requiredMessage="Entrez votre mot de passel" />
 										<h:message for="exampleDropdownFormPassword1"/>
@@ -78,7 +79,7 @@
 								<b:column>
 									<b:commandButton largeScreen="half" update="@form"
 										dismiss="modal" value="Me connecter" look="info"
-										action="#{mbConnect.connexion()}" />
+										action="#{mbConnectionUtilisateur.sIdentifier()}" />
 									<b:button largeScreen="half" value="Annuler" 
 										dismiss="modal"  href="#navbar-brand"/>
 								</b:column>
@@ -94,7 +95,7 @@
 		</b:navbarLinks>
 
 	</b:navBar>
-	</h:form>
+
 
 
 	<div id="centre">
