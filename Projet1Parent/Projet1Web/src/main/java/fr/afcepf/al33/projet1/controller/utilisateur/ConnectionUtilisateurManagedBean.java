@@ -100,6 +100,7 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 	
 	public void seDeconnecter()
 	{
+		System.out.println("seDeconnecter()");
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		session.removeAttribute("clientConnecte");
