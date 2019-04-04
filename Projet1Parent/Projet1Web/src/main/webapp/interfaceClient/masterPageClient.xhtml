@@ -27,7 +27,7 @@
 				href="/Projet1Web/interfaceConnection/connection.xhtml"></b:navLink>
 
 			<b:navLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/connection.xhtml"></b:navLink>
+				action="#{mbConnectionUtilisateur.seDeconnecter()}"></b:navLink>
 
 			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
 				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"></b:navLink>
