@@ -25,7 +25,7 @@ public class FicheArticleManagedBean implements Serializable{
 	@EJB
 	private ArticleIBusiness proxyArticle;
 	
-	@ManagedProperty(value="#{mbCatalogueClient.selectedArticle}")
+	@ManagedProperty(value="#{mbCatalogue.selectedArticleAdmin}")
 	private Article article;
 	
 	
@@ -35,7 +35,7 @@ public class FicheArticleManagedBean implements Serializable{
 
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-		article =  (Article) session.getAttribute("selectedArticle");
+		article =  (Article) session.getAttribute("selectedArticleAdmin");
 		
 	}
 

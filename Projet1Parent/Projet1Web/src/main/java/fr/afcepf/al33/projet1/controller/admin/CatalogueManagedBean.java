@@ -32,7 +32,7 @@ public class CatalogueManagedBean implements Serializable{
 	private List <Categorie> categories;
 	private Categorie selectedCategorie;
 
-	private Article selectedArticle;
+	private Article selectedArticleAdmin;
 
 
 	@EJB
@@ -51,15 +51,17 @@ public class CatalogueManagedBean implements Serializable{
 
 	}
 
-	public void afficherFichePorduit(Article article) {
-		selectedArticle = article;
+	public void afficherFicheProduit(Article article) {
+		selectedArticleAdmin = article;
 
-		System.out.println(selectedArticle.getId());
+		System.out.println(selectedArticleAdmin.getId());
 
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-		session.setAttribute("selectedArticle", selectedArticle);
-		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/ficheArticleAdmin.xhtml?faces-redirect=true");
+		session.setAttribute("selectedArticleAdmin", selectedArticleAdmin);
+		facesContext.getApplication()
+					.getNavigationHandler()
+					.handleNavigation(facesContext,null,"/interfaceAdmin/ficheArticleAdmin.xhtml?faces-redirect=true");
 	}
 
 
@@ -106,12 +108,14 @@ public class CatalogueManagedBean implements Serializable{
 		this.selectedCategorie = selectedCategorie;
 	}
 
-	public Article getSelectedArticle() {
-		return selectedArticle;
+
+
+	public Article getSelectedArticleAdmin() {
+		return selectedArticleAdmin;
 	}
 
-	public void setSelectedArticle(Article selectedArticle) {
-		this.selectedArticle = selectedArticle;
+	public void setSelectedArticleAdmin(Article selectedArticleAdmin) {
+		this.selectedArticleAdmin = selectedArticleAdmin;
 	}
 
 	public ArticleIBusiness getProxyArticle() {

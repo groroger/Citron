@@ -62,7 +62,7 @@
 								 page-length="20" 
 								 selectionMode="single"
 								 responsive="true"
-								 onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);">
+								 onselect="ajax:mbCatalogue.afficherFicheProduit(article);">
 								 
 						<b:dataTableColumn>
 							<f:facet name="header">Image: </f:facet>
@@ -84,11 +84,7 @@
 							<f:facet name="header">Prix<br />au kilo: </f:facet>
 							<h:outputLabel value="#{article.prixKilo}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Fiche<br />produit</f:facet>
-							<b:commandButton value="Mettre à jour" look="primary"
-								action="#{mbCatalogue.afficherFichePorduit(article)}" />
-						</b:dataTableColumn>
+						
 					</b:dataTable>
 				</b:container>
 			</h:form>
