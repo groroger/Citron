@@ -7,21 +7,16 @@
 
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
-	<ui:define name="title">Recherche de client</ui:define>
-	<ui:define name="CSS">
-		<h:outputStylesheet name="#{request.contextPath}/css/styleClient.css" />
-	</ui:define>
+	<ui:define name="title">Accueil client</ui:define>
+
 	<ui:define name="content">
 		<h:head>
 			<title>Accueil client</title>
-			<link
-				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-				rel="stylesheet" />
+			
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
 		</h:head>
 		<h:body>
-
-
 				<b:carousel id="carousel">
 					<b:carouselItem>
 						<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
