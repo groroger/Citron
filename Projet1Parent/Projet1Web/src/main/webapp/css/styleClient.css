@@ -49,7 +49,7 @@ h3
 
 .btn_magasin
 {
-	font-size: 1.2em
+	font-size: 22px;
 }
 .btn_magasin:hover
 {
@@ -206,5 +206,5 @@ carouselItem > img{
 
 #formCatalogueClient
 {
-	background-image: url('../pics/carousel/champignon.jpg');
+	/* background-image: url('../pics/carousel/champignon.jpg'); */
 }

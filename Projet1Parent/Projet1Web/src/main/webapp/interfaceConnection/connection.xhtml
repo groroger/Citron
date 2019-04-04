@@ -11,14 +11,15 @@
 		<h:outputStylesheet name="css/styleAdmin.css" />
 	</ui:define>
 	<ui:define name="content">
+	
 		<h:head>
-
+<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
 			<title>Page de connection</title>
 
 		</h:head>
 		<h:body>
-
-			<h:form class="row col-md-8 col-md-offset-1">
+<b:container>
+			<b:form class="row col-md-8 col-md-offset-1">
 
 				<b:container>
 					<b:label text="nom client :    " />
@@ -40,8 +41,8 @@
 					class="row col-md-4 col-centered" />
 
 
-			</h:form>
-
+			</b:form>
+</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>
