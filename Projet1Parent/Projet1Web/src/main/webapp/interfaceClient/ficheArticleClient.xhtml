@@ -97,8 +97,9 @@
 							</b:row>
 						</b:panelGrid>
 						<b:panelGrid columns="2">
-							<b:button href="/Projet1Web/interfaceAdmin/updateArticle.xhtml"
-								value="Ajouter au panier" look="primary" />
+						<f:facet name="header">Ajouter Panier</f:facet>
+							<b:commandButton value="Ajouter au panier" look="primary" 
+								action="#{mbFicheArticleClient.ajouterArticle()}"/>
 						</b:panelGrid>
 					</b:container>
 				</b:form>

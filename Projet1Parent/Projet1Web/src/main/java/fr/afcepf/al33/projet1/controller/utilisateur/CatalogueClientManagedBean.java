@@ -105,7 +105,10 @@ public class CatalogueClientManagedBean implements Serializable{
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 	session.setAttribute("listeArticlesCommandes", articlesCommandes);
-
+	facesContext.getApplication()
+				.getNavigationHandler()
+				.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
+	
 }
 
 
