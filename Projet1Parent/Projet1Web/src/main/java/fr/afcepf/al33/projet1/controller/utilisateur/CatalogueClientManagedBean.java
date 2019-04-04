@@ -30,17 +30,16 @@ public class CatalogueClientManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int quantiteSaisie =1;
+	private int quantiteSaisie;
 	private List <Article> articles;
 	private List <Categorie> categories;
 	private Categorie selectedCategorie;
 
 	private Article selectedArticle;
-	private ArticleCommande articleCommande;
+	private ArticleCommande articleCommande = new ArticleCommande();
 	private List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
 
 
-//test pour amin
 
 
 	@EJB
@@ -72,9 +71,9 @@ public class CatalogueClientManagedBean implements Serializable{
 
 	public void ajouterArticle(Article article) {
 
-		articleCommande =new ArticleCommande();
+		articleCommande = new ArticleCommande();
 		articleCommande.setArticle(article);
-		articleCommande.setQuantite(quantiteSaisie);
+		articleCommande.setQuantite(article.getQuantiteSaisie());
 		boolean isPresent = false;
 
 
@@ -89,7 +88,7 @@ public class CatalogueClientManagedBean implements Serializable{
 			while(ite.hasNext()) {
 				ArticleCommande ac = ite.next();
 				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
-					ac.setQuantite(ac.getQuantite()+ quantiteSaisie);
+					ac.setQuantite(ac.getQuantite()+ article.getQuantiteSaisie());
 					System.out.println("nombre ajouté à la ligne existante");
 					isPresent = true;
 				}
@@ -99,18 +98,27 @@ public class CatalogueClientManagedBean implements Serializable{
 				articlesCommandes.add(articleCommande);
 			}
 		}
-
-
-
+		
+		System.out.println("Art Quantite "+articleCommande.getQuantite());
+		
+	
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 	session.setAttribute("listeArticlesCommandes", articlesCommandes);
-	facesContext.getApplication()
-				.getNavigationHandler()
-				.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
+
+}
 	
+	
+	public void plusQuantiteSaisie(Article article){
+			
+		article.setQuantiteSaisie(article.getQuantiteSaisie()+1);
 }
 
+	public void minusQuantiteSaisie(Article article){
+		if (article.getQuantiteSaisie()>0) {
+			article.setQuantiteSaisie(article.getQuantiteSaisie()-1);
+		}		
+}
 
 public void onCategorieChange() {
 
