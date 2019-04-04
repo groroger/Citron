@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="article")
@@ -61,9 +62,19 @@ public class Article implements Serializable{
 	@OneToMany(mappedBy="article", cascade=CascadeType.ALL)
 	private List<Approvisionnement> approvisionnements;
 	
-
+	@Transient
+	private int quantiteSaisie;
+	
 	//Constructeur vide
 	
+	public int getQuantiteSaisie() {
+		return quantiteSaisie;
+	}
+
+	public void setQuantiteSaisie(int quantiteSaisie) {
+		this.quantiteSaisie = quantiteSaisie;
+	}
+
 	public Article() {
 		super();
 	}
