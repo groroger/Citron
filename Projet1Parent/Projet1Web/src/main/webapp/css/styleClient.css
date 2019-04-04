@@ -16,6 +16,14 @@ body
 	color: red;
 }
 
+h3
+{
+	color: rgb(0, 136, 143); 
+	font-weight: bold; 
+	text-align: center;
+}
+
+
 /**************************
 		MASTERPAGE
 **************************/
