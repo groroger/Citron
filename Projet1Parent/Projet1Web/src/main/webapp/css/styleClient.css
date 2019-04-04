@@ -22,9 +22,10 @@ body
 
 /*** HEADER ***/
 
-#navbarHeader
+
+.navbar
 {
-	margin: 0px;
+	margin-bottom: 0px !important;
 }
 
 #navbar-brand img
@@ -56,7 +57,7 @@ navbar-footer
 
 footer
 {
-	padding-top: 20px;
+	padding-top: 5px;
     background-color:#222222;
     color: #FFF726;
 }
