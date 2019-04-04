@@ -45,6 +45,51 @@
 				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
 			<b:navLink class="btn_magasin" value="Rechercher Produits"
 				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
+				
+				<b:navLink value="" href="#connect"
+					onclick="$('.formValidationModalClass').modal('show')"
+					iconAwesome="user" icon-size="2x" id="iconConnect">
+					<f:param name="blockui.disabled" value="true"/>
+					<b:modal styleClass="formValidationModalClass" closable="true"
+						closeOnEscape="true">
+						
+						<b:form id="form">
+							<h4>Déjà adhérent :</h4>
+
+							<b:row>
+								<b:column>
+									<b:inputText placeholder="Identifiant"
+										value="#{mbConnect.login}" class="form-control"
+										id="exampleDropdownFormEmail1" required="false"
+										requiredMessage="Entrez votre identifiant" />
+
+									<b:inputSecret placeholder="Mot de passe"
+										value="#{mbConnect.password}" class="form-control"
+										id="exampleDropdownFormPassword1" required="true"
+										requiredMessage="Entrez votre mot de passel" />
+										<h:message for="exampleDropdownFormPassword1"/>
+
+									<b:button look="link" value="Mot de passe oublié"
+										large-screen="full-width" />
+								</b:column>
+							</b:row>
+
+							<b:row>
+								<b:column>
+									<b:commandButton largeScreen="half" update="@form"
+										dismiss="modal" value="Me connecter" look="info"
+										action="#{mbConnect.connexion()}" />
+									<b:button largeScreen="half" value="Annuler" 
+										dismiss="modal"  href="#navbar-brand"/>
+								</b:column>
+							</b:row>
+
+							<b:fetchBeanInfos />
+							<b:messages />
+						</b:form>
+					</b:modal>
+				</b:navLink>
+				
 	
 		</b:navbarLinks>
 
@@ -55,6 +100,26 @@
 	<div id="centre">
 		<ui:insert name="content"></ui:insert>
 	</div>
+
+<!-- CAROUSEL -->
+
+<b:carousel id="carousel">
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
+							alt="jolisFruits5" />
+					</b:carouselItem>
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits5.jpg"
+							alt="jolisFruits2" />
+					</b:carouselItem>
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg"
+							alt="jolisFruits6" />
+					</b:carouselItem>
+				</b:carousel>
+
+
+
 
 <!-- FOOTER -->
 
