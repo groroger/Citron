@@ -1,7 +1,6 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -98,6 +97,17 @@ public void ajouterArticle() {
 				.getNavigationHandler()
 				.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
 	
+}
+
+public void plusQuantiteSaisie(){	
+	article.setQuantiteSaisie(article.getQuantiteSaisie()+1);
+
+}
+
+public void minusQuantiteSaisie(){
+	if (article.getQuantiteSaisie()>0) {
+		article.setQuantiteSaisie(article.getQuantiteSaisie()-1);
+	}		
 }
 
 	public int getQuantiteSaisie() {

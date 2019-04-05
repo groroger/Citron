@@ -93,9 +93,23 @@
 							</b:row>
 						</b:panelGrid>
 						<b:panelGrid columns="2">
-						<f:facet name="header">Ajouter Panier</f:facet>
+						
+						<b:column >
 							<b:commandButton value="Ajouter au panier" look="primary" 
 								action="#{mbFicheArticleClient.ajouterArticle()}"/>
+								
+							<div class="quantity">
+      <b:commandButton id="btn_minus" value="" icon="minus-sign"
+									look="primary"
+									action="#{mbFicheArticleClient.minusQuantiteSaisie()}" />
+									
+      <input type="text" name="name" value="#{mbFicheArticleClient.quantiteSaisie}"/>
+      
+      <b:commandButton id="btn_plus" value="" icon="plus-sign"
+									look="primary"
+									action="#{mbFicheArticleClient.plusQuantiteSaisie()}" />
+						    </div>
+							</b:column>>
 						</b:panelGrid>
 					</b:container>
 				</b:form>
