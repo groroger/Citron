@@ -248,59 +248,28 @@ carouselItem > img{
 
 /*** JUMBOTRON ***/
 
+.jumbotron
+{
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+}
+
 #nousConnaitre
 {
 	border-bottom: 1px solid black;
 }
 
+
+/*** BOUTON JE M INSCRIS ***/
+
 .inscription
 {
 	text-align:  center;
-	margin-top: 30px;	
-	margin-bottom: 30px;
+	padding-bottom: 30px;
+	background-color: #eeeeee;	
+	z-index: 1;
 }
 
-#jeMInscris1
-{
-	color: rgb(4,66,87) !important;
-	font-size: 20px;
-	padding: 30px 50px;
-	margin: 30px 300px 30px 0px;
-	border: 5px solid rgb(4,66,87);
-	border-radius: 25px;
-	box-shadow: 0 15px 25px rgba(0,0,0,.2);
-	
-}
-
-#jeMInscris1:hover
-{
-	text-decoration: none;
-	transition: .3s ease !important;
-	font-size: 40px;
-	color: #96c001 !important;
-	border: 5px solid #96c001;
-}
-
-
-/**************************
-	CATALOGUE CLIENT
-**************************/
-
-#formCatalogueClient
-{
-	/* background-image: url('../pics/carousel/champignon.jpg'); */
-}
-
-.sorting
-{
-	text-align: center !important;
-	vertical-align: middle !important;
-}
-
-
-/*************************
-	TEST A EFFACER
-*************************/
 
 #jeMInscris
 {
@@ -423,3 +392,46 @@ carouselItem > img{
   }
 }
 }
+
+#jeMInscris1
+{
+	color: rgb(4,66,87) !important;
+	font-size: 20px;
+	padding: 30px 50px;
+	margin: 30px 300px 30px 0px;
+	border: 5px solid rgb(4,66,87);
+	border-radius: 25px;
+	box-shadow: 0 15px 25px rgba(0,0,0,.2);
+	
+}
+
+#jeMInscris1:hover
+{
+	text-decoration: none;
+	transition: .3s ease !important;
+	font-size: 40px;
+	color: #96c001 !important;
+	border: 5px solid #96c001;
+}
+
+
+/**************************
+	CATALOGUE CLIENT
+**************************/
+
+#formCatalogueClient
+{
+	/* background-image: url('../pics/carousel/champignon.jpg'); */
+}
+
+.sorting
+{
+	text-align: center !important;
+	vertical-align: middle !important;
+}
+
+
+/*************************
+	TEST A EFFACER
+*************************/
+
