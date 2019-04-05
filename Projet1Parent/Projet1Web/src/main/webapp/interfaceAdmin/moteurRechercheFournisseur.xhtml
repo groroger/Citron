@@ -15,19 +15,18 @@
 			
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />				
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 
 		</h:head>
 		<h:body>
-		<b:container >
+
 			<h:form id="formRechercheFournisseur">
 
 				<b:container layout="fluid">
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3	style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Liste des fournisseurs:</h3>
-							<br />
-							<br />
-						</b:column>
+	
+							<h3>Liste des fournisseurs:</h3>
+
 					</b:row>
 
 					<b:dataTable value="#{mbFindFournisseur.fournisseurs}" 
@@ -40,9 +39,6 @@
 								 page-length="20" 
 								 selectionMode="single" 
 								 responsive="true"
-								 tiny-screen="12" 
-								 medium-screen="12"  
-								 large-screen="12"
 								 onselect="ajax:mbFindFournisseur.onSelect(fourn);"
 								 paginated="false">
 								 
@@ -84,7 +80,6 @@
 					</b:row>
 				</b:container>
 			</h:form>
-			</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>

@@ -15,30 +15,24 @@
 			<title>Détail de la commande</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
-
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 		<h:body>
 		
-		<b:container>
+
 
 			<h:form id="formAfficherApprovisionnement">
 				<b:container layout="fluid">
 
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3	style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Détail de la commande:</h3>
-							<br />
-						</b:column>
-					</b:row>
-					<br />
-					<br />
 
+							<h3>Détail de la commande:</h3>
+					</b:row>
 
 					<b:dataTable
 						value="#{mbAfficherCommande.articlesCommandes}"
 						var="articleCommande" pdf="false" print="false" excel="false"
 						border="true" info="false" page-length="10" selectionMode="single"
-						tiny-screen="12" medium-screen="12"  large-screen="12"
 						responsive="true" >
 
 
@@ -63,8 +57,7 @@
 					</b:dataTable>
 				</b:container>
 			</h:form>
-			</b:container>
-		</h:body>
+			</h:body>
 	</ui:define>
 </ui:composition>
 </html>

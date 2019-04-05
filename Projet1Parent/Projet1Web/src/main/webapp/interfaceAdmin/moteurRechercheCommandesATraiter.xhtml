@@ -15,6 +15,7 @@
 			
 			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 		<h:body>
 		<b:container id="principal">
@@ -68,7 +69,7 @@
 						<b:dataTableColumn>
 							<f:facet name="header">Traiter</f:facet>
 	    						<b:commandButton id="btn_traiter" value="Traiter" look="primary"
-									href="" />
+									action="#{mbFindCommandeATraiter.traiterCommande(cde)}" />
 						</b:dataTableColumn>
 					</b:dataTable>
 
