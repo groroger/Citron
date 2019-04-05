@@ -35,7 +35,7 @@ public class AfficherStockManagedBean implements Serializable{
 	private Stock selectedStock;
 	
 	private List <Categorie> categories;
-	private Categorie selectedCategorie;
+	private Categorie selectedCategorie = null;
 
 	
 	@EJB
@@ -51,7 +51,8 @@ public class AfficherStockManagedBean implements Serializable{
 	public void init() {
 		
 		categories =  proxyCategorie.getAll();
-		stocks=proxyStock.getAll();
+	
+		onCategorieChange();
 
 		
 	}
@@ -65,8 +66,14 @@ public class AfficherStockManagedBean implements Serializable{
 		
 			stocks=proxyStock.getByIdCategorie(selectedCategorie);
 			
+		} else if (selectedCategorie==null) {
+			
+			
+			stocks=proxyStock.getAll();
+			 
 		} else if(selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
 			
+		
 			stocks=proxyStock.getAll();
 
 		} else {
