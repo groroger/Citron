@@ -66,9 +66,12 @@
 						<f:facet name="header">Retour au Catalogue</f:facet>
 						<b:button value="Retour au Catalogue" look="primary" outcome="catalogueClient"/>
 						
-						<f:facet name="header">Prix Total</f:facet>
-						<b:commandButton value="Payer" look="primary" action="#{mbPanier.payer()}"/>
-						
+						<b:inputText label="Total à payer: ">
+					    <f:facet name="append">
+					        <h:outputText value="#{mbPanier.calculerPanier()}€" />
+					      </f:facet>
+					    </b:inputText>
+											
 						<f:facet name="header">Payer</f:facet>
 						<b:commandButton value="Payer" look="primary" action="#{mbPanier.payer()}"/>
 							
