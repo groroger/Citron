@@ -44,10 +44,19 @@
 					</b:formGroup>
 				</b:container>
 
-					<b:dataTable id="datatableStocks" value="#{mbStock.stocks}" 
-						var="ligneStock" pdf="false"
-						print="false" excel="false" border="true" info="false"
-						page-length="20" selectionMode="single" responsive="true">
+					<b:dataTable 
+						id="datatableStocks" 
+						value="#{mbStock.stocks}" 
+						var="ligneStock" 
+						pdf="false"
+						print="false" 
+						excel="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						selectionMode="single" 
+						responsive="true"
+						paginated="false">
 
 						<b:dataTableColumn
 							headerStyle="text-align: center;vertical-align: middle;">

@@ -33,10 +33,19 @@
 
 
 
-					<b:dataTable value="#{mbFindClient.clients}" var="cl" excel="false"
-						pdf="false" print="false" border="true" info="false"
-						page-length="20" selectionMode="single" responsive="true"
-						onselect="ajax:mbFindClient.onSelect(cl);">
+					<b:dataTable 
+						value="#{mbFindClient.clients}" 
+						var="cl" 
+						excel="false"
+						pdf="false" 
+						print="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						selectionMode="single" 
+						responsive="true"
+						onselect="ajax:mbFindClient.onSelect(cl);"
+						paginated="false">
 
 						<b:dataTableColumn>
 							<f:facet name="header">Nom</f:facet>
