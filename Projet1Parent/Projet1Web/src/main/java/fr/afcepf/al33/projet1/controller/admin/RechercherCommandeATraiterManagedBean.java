@@ -1,6 +1,7 @@
 package fr.afcepf.al33.projet1.controller.admin;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -80,6 +81,8 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 		this.commandes = commandes;
 	}
 
-
-	
+//	// formatage date commande
+//	public String getDateToString(Date date, String pattern) {
+//        return date.toString(pattern);
+//    }
 }
