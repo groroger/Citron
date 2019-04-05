@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Approvisionnement implements Serializable{
 	
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 	

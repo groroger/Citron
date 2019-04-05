@@ -102,18 +102,16 @@ public class CatalogueClientManagedBean implements Serializable{
 		System.out.println("Art Quantite "+articleCommande.getQuantite());
 		
 	
-	FacesContext facesContext = FacesContext.getCurrentInstance();
-	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-	session.setAttribute("listeArticlesCommandes", articlesCommandes);
-	facesContext.getApplication()
-				.getNavigationHandler()
-				.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		session.setAttribute("listeArticlesCommandes", articlesCommandes);
+		facesContext.getApplication()
+					.getNavigationHandler()
+					.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
 
 }
 	
-	
-	public void plusQuantiteSaisie(Article article){
-			
+	public void plusQuantiteSaisie(Article article){	
 		article.setQuantiteSaisie(article.getQuantiteSaisie()+1);
 }
 

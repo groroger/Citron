@@ -1,6 +1,11 @@
 @charset "ISO-8859-1";
 
-
+html,
+body
+{
+	margin: 0px;
+	padding: 0px;
+}
 
 .errorMessage {
 	color: red;
@@ -11,11 +16,13 @@
 	color: red;
 }
 
-#principal{
-	position: relative;
-	width: 100%;
-	padding: 0;
+h3
+{
+	color: rgb(0, 136, 143); 
+	font-weight: bold; 
+	text-align: center;
 }
+
 
 /**************************
 		MASTERPAGE
@@ -23,9 +30,10 @@
 
 /*** HEADER ***/
 
-#navbar-brand
+
+.navbar
 {
-	margin: 0px;
+	margin-bottom: 0px !important;
 }
 
 #navbar-brand img
@@ -39,13 +47,10 @@
 	padding:20px
 }
 
-.btn_magasin
+h4
 {
-	font-size: 1.2em
-}
-.btn_magasin:hover
-{
-	font-weight: bold;
+	color: #96c001 !important; 
+	font-weight: bold; 	
 }
 
 navbar-footer
@@ -53,11 +58,42 @@ navbar-footer
 	margin-top: 50px;
 }
 
+.navbar-inverse .navbar-nav > li > a 
+{
+	color:  #c0c0c0!important ;
+	font-size: 22px;
+}
+	
+.navbar-inverse .navbar-nav > li > a:hover 
+{
+color: #ffffff!important;
+border-bottom: 1px solid #FFF726 !important ;
+}
+
+.modal-header
+{
+	padding: 5px 8px 5px 5px !important;
+	background-color: #96c001 !important;
+}
+
+.btn-warning 
+{
+	
+	background-color: #9dcb01!important;
+	border: 2px solid   #96c001 !important;
+}
+
+.btn-default 
+{
+	border: 2px solid  #9dcb01 !important;
+}
+
+
 /*** FOOTER ***/
 
 footer
 {
-	padding-top: 20px;
+	padding-top: 5px;
     background-color:#222222;
     color: #FFF726;
 }
@@ -192,5 +228,184 @@ carouselItem > img{
   text-align: justify;
 }
 
+/**************************
+	CATALOGUE CLIENT
+**************************/
+
+#formCatalogueClient
+{
+	/* background-image: url('../pics/carousel/champignon.jpg'); */
+}
+
+
+
+
+/*************************
+	TEST A EFFACER
+*************************/
+
+$main-color: #6394F8;
+$light-text: #ABB0BE;
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px/22px "Lato", Arial, sans-serif;
+  background: #6394F8;
+}
+
+.lighter-text {
+  color: #ABB0BE;
+}
+
+.main-color-text {
+  color: $main-color;
+}
+
+nav {
+  padding: 20px 0 40px 0;
+  background: #F8F8F8;
+  font-size: 16px;
+  
+  .navbar-left {
+    float: left;
+  }
+  
+  .navbar-right {
+    float: right;
+  }
+  ul {
+    
+    li {
+      display: inline;
+      padding-left: 20px;
+      a {
+        color: #777777;
+        text-decoration: none;
+        
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  margin: auto;
+  width: 80%;
+}
+
+.badge {
+    background-color: #6394F8;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.shopping-cart {
+  margin: 20px 0;
+  float: right;
+  background: white;
+  width: 320px;
+  position: relative;
+  border-radius: 3px;
+  padding: 20px;
+  
+  
+  .shopping-cart-header {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 15px;
+    
+    .shopping-cart-total {
+      float: right;
+    }
+  }
+  
+  .shopping-cart-items {
+    
+    padding-top: 20px;
+
+      li {
+        margin-bottom: 18px;
+      }
+
+    img {
+      float: left;
+      margin-right: 12px;
+    }
+    
+    .item-name {
+      display: block;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+    
+    .item-price {
+      color: $main-color;
+      margin-right: 8px;
+    }
+    
+    .item-quantity {
+      color: $light-text;
+    }
+  }
+   
+}
+
+.shopping-cart:after {
+	bottom: 100%;
+	left: 89%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color: white;
+	border-width: 8px;
+	margin-left: -8px;
+}
+
+.cart-icon {
+  color: #515783;
+  font-size: 24px;
+  margin-right: 7px;
+  float: left;
+}
+
+.button {
+  background: $main-color;
+  color:white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 3px;
+  font-size: 16px;
+  margin: 25px 0 15px 0;
+  
+  &:hover {
+    background: lighten($main-color, 3%);
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 

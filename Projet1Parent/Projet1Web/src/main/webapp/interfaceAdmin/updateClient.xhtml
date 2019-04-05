@@ -7,16 +7,14 @@
 
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
-	<ui:define name="title">Recherche de client</ui:define>
-	<!-- 	<ui:define name="CSS"> -->
-	<!-- 		<h:outputStylesheet name= "CSS/page.css"/> -->
-	<!-- 	</ui:define> -->
+	<ui:define name="title">Mise à jour du client</ui:define>
+
 	<ui:define name="content">
 		<h:head>
-			<title>Fiche du client</title>
-			<link
-				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-				rel="stylesheet" />
+			<title>Mise à jour du client</title>
+			
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />				
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
 		</h:head>
 
 		<f:metadata>
@@ -24,7 +22,7 @@
 		</f:metadata>
 
 		<h:body>
-		<b:container id="principal">
+		<b:container>
 			<b:form id="formFicheClient">
 				<b:container layout="fluid">
 					<b:row>

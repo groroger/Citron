@@ -7,38 +7,36 @@
 
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
-	<ui:define name="title">Recherche de client</ui:define>
-	<ui:define name="CSS">
-		<h:outputStylesheet name="#{request.contextPath}/css/styleClient.css" />
-	</ui:define>
+	<ui:define name="title">Accueil client</ui:define>
+
 	<ui:define name="content">
 		<h:head>
 			<title>Accueil client</title>
-			<link
-				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-				rel="stylesheet" />
+			
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
 		</h:head>
 		<h:body>
-
-			<b:container id="principal">
 				<b:carousel id="carousel">
 					<b:carouselItem>
-						<img src="#{request.contextPath}/pics/carousel/jolisFruits5.jpg"
-							alt="jolisFruits5" />
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits7.jpg"
+							alt="jolisFruits7" />
 					</b:carouselItem>
 					<b:carouselItem>
 						<img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg"
 							alt="jolisFruits2" />
 					</b:carouselItem>
-					<b:carouselItem>
+								<b:carouselItem>
 						<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
 							alt="jolisFruits6" />
+					</b:carouselItem>
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits5.jpg"
+							alt="jolisFruits5" />
 					</b:carouselItem>
 				</b:carousel>
 
 
-			</b:container>
 
 			<b:container id="container_presentation"></b:container>
 			<b:container id="container_producteurs"></b:container>

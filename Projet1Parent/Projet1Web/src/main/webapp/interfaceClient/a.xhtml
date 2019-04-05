@@ -6,15 +6,16 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-
 <link rel="shortcut icon" href="#{request.contextPath}/pics/website/citronLogo.ico"/>
-<link rel="stylesheet" type="text/css" 	href="#{request.contextPath}/css/styleClient.css" />
+<link rel="stylesheet" type="text/css" 
+		href="#{request.contextPath}/css/styleClient.css" />
 <script src="#{request.contextPath}/js/versLeHaut.js"></script>
 
 
 </h:head>
 <h:body>
-	<h:form>
+
+<h:form>
 	
 	<b:navBar id="navbar-brand"
 			  brand=""
@@ -95,10 +96,29 @@
 
 </h:form>
 
-
 	<div id="centre">
 		<ui:insert name="content"></ui:insert>
 	</div>
+
+<!-- CAROUSEL -->
+
+<b:carousel id="carousel">
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
+							alt="jolisFruits5" />
+					</b:carouselItem>
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits5.jpg"
+							alt="jolisFruits2" />
+					</b:carouselItem>
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg"
+							alt="jolisFruits6" />
+					</b:carouselItem>
+				</b:carousel>
+
+
+
 
 <!-- FOOTER -->
 

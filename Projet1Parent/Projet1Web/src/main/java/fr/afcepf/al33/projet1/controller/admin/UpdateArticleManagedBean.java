@@ -31,7 +31,7 @@ public class UpdateArticleManagedBean implements Serializable{
 	@EJB
 	private CategorieIBusiness proxyCategorie;
 	
-	@ManagedProperty(value="#{mbCatalogue.selectedArticle}")
+	@ManagedProperty(value="#{mbCatalogue.selectedArticleAdmin}")
 	private Article article;
 	
 	private List<Categorie> categories;

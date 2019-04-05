@@ -102,7 +102,8 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 	{
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-		session.removeAttribute("clientConnecte");
+		session.invalidate();
+		//session.removeAttribute("clientConnecte");
 		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml?faces-redirect=true");
 	}
 

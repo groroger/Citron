@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<title>COOPER'Active, bienvevue!</title>
+	<link rel="stylesheet" type="text/css" href="css/styleP3.css" />
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+		crossorigin="anonymous" />
+
+	<script src="js/jquery.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/navbar.js"></script>
+
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</h:head>
+
+
+<h:body>
+
+	<!-- HEADER -->
+
+	<b:navBar brand="" fluid="true" brand-img="pics/website/Logo70.png"
+		id="navbar-brand">
+		<div id="navbar">
+			<b:navbarLinks>
+				<b:navLink value="Nous connaitre" href="#jumbotronNousConnaitre"
+					id="navbarLink1"></b:navLink>
+				<b:navLink value="Nos établissements" href="#nosEtablissements"
+					id="navbarLink2"></b:navLink>
+				<b:navLink value="Contact" href="#basDePage" id="navbarLink3"></b:navLink>
+				<b:navLink value="Aide" href="#" id="navbarLink4"></b:navLink>
+				<b:navLink value="S'inscrire" href="#jumbotronNousConnaitre" id="navbarLink5"></b:navLink>
+
+				<b:navLink value="" href="#connect"
+					onclick="$('.formValidationModalClass').modal('show')"
+					iconAwesome="user" icon-size="2x" id="iconConnect">
+					<b:modal styleClass="formValidationModalClass" closable="false"
+						closeOnEscape="true">
+						<b:form id="form">
+							<h4>Déjà adhérent :</h4>
+
+							<b:row>
+								<b:column>
+									<b:inputText placeholder="Identifiant"
+										value="#{mbConnect.login}" class="form-control"
+										id="exampleDropdownFormEmail1" required="false"
+										requiredMessage="Entrez votre identifiant" />
+
+									<b:inputSecret placeholder="Mot de passe"
+										value="#{mbConnect.password}" class="form-control"
+										id="exampleDropdownFormPassword1" required="true"
+										requiredMessage="Entrez votre mot de passel" />
+										<h:message for="exampleDropdownFormPassword1"/>
+
+									<b:button look="link" value="Mot de passe oublié"
+										large-screen="full-width" />
+								</b:column>
+							</b:row>
+
+							<b:row>
+								<b:column>
+									<b:commandButton largeScreen="half" update="@form"
+										dismiss="modal" value="Me connecter" look="info"
+										action="#{mbConnect.connexion()}" />
+									<b:button largeScreen="half" value="Annuler" 
+										dismiss="modal"  href="#navbar-brand"/>
+								</b:column>
+							</b:row>
+
+							<b:fetchBeanInfos />
+							<b:messages />
+						</b:form>
+					</b:modal>
+				</b:navLink>
+			</b:navbarLinks>
+		</div>
+	</b:navBar>
+
+
+</h:body> 
+</html>

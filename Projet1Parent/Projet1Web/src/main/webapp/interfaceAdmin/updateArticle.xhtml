@@ -6,22 +6,24 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
-	<ui:define name="title">Recherche de client</ui:define>
+	<ui:define name="title">Mise à jour article</ui:define>
 	<ui:define name="content">
 
-		<link rel="stylesheet" type="text/css"
-			href="#{request.contextPath}/css/styleAdmin.css" />
 		<h:head>
-			<title>MAJ article</title>
-
+		
+			<title>Mise à jour article</title>
+			
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+				
 		</h:head>
 		<h:body>
-		<b:container id="principal">
+		<b:container >
 		<f:metadata>
 				<f:event listener="#{mbUpdateArticle.init()}" type="preRenderView"></f:event>
 			</f:metadata>
 
-			<b:container id="principal">
+			<b:container >
 				<b:form id="formFicheProduit">
 					<b:container layout="fluid">
 						<b:row>
