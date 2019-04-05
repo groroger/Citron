@@ -7,15 +7,13 @@
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="content">
-<link rel="stylesheet" type="text/css"
-				href="#{request.contextPath}/css/styleClient.css" />
-				<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+
 		<h:head>
-		<link
-			href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-			rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
 			<title>Catalogue</title>
+		
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 
 		</h:head>
 
@@ -30,35 +28,28 @@
 							<br />
 						</b:column>
 					</b:row>
-				
+
 					<b:formGroup>
 						<b:selectOneMenu update="datatableArticles"
 							onchange="ajax:AJAXBean.onChange()"
-							value="#{mbCatalogueClient.selectedCategorie}" colMd="3" labelColMd="3">
+							value="#{mbCatalogueClient.selectedCategorie}" colMd="3"
+							labelColMd="3">
 							<f:ajax listener="#{mbCatalogueClient.onCategorieChange()}"
 								update="datatableArticles" />
-							<f:selectItems value="#{mbCatalogueClient.categories}" var="categorie"
-								itemValue="#{categorie}" itemLabel="#{categorie.nomCategorie}" />
+							<f:selectItems value="#{mbCatalogueClient.categories}"
+								var="categorie" itemValue="#{categorie}"
+								itemLabel="#{categorie.nomCategorie}" />
 						</b:selectOneMenu>
 					</b:formGroup>
 
 
 
-					<b:dataTable id="datatableArticles" 
-								 value="#{mbCatalogueClient.articles}"
-								 var="article" 
-								 pdf="false" 
-								 print="false" 
-								 excel="false"
-								 border="true" 
-								 info="false" 
-								 tiny-screen="12" 
-								 medium-screen="12"
-								 large-screen="12" 
-								 page-length="20" 
-								 selectionMode="single"
-								 responsive="true"
-								 onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);">
+					<b:dataTable id="datatableArticles"
+						value="#{mbCatalogueClient.articles}" var="article" pdf="false"
+						print="false" excel="false" border="true" info="false"
+						tiny-screen="12" medium-screen="12" large-screen="12"
+						page-length="20" selectionMode="single" responsive="true"
+						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);">
 
 						<b:dataTableColumn>
 							<f:facet name="header">Image: </f:facet>
@@ -80,26 +71,28 @@
 							<f:facet name="header">Prix<br />au kilo: </f:facet>
 							<h:outputLabel value="#{article.prixKilo}" />
 						</b:dataTableColumn>
-						
+
 						<b:dataTableColumn>
 							<f:facet name="header">Ajouter Panier</f:facet>
-							
-							<h:outputLabel value="#{article.quantiteSaisie}" /> 
+
+							<h:outputLabel value="#{article.quantiteSaisie}" />
 							<br />
 							<b:buttonGroup>
-								<b:commandButton id="btn_minus" value="" icon="minus-sign" look="primary" 
-									action="#{mbCatalogueClient.minusQuantiteSaisie(article)}"/>
-										
-	    						<b:commandButton id="btn_ajouter" value="Ajouter" look="primary"
-									action="#{mbCatalogueClient.ajouterArticle(article)}" />
-									
-	    						<b:commandButton id="btn_plus" value="" icon="plus-sign" look="primary" 
-	    							action="#{mbCatalogueClient.plusQuantiteSaisie(article)}"/>
-    						</b:buttonGroup>   						
- 						</b:dataTableColumn>
- 						
+								<b:commandButton id="btn_minus" value="" icon="minus-sign"
+									look="primary"
+									action="#{mbCatalogueClient.minusQuantiteSaisie(article)}" />
 
-						
+								<b:commandButton id="btn_ajouter" value="Ajouter" look="primary"
+									action="#{mbCatalogueClient.ajouterArticle(article)}" />
+
+								<b:commandButton id="btn_plus" value="" icon="plus-sign"
+									look="primary"
+									action="#{mbCatalogueClient.plusQuantiteSaisie(article)}" />
+							</b:buttonGroup>
+						</b:dataTableColumn>
+
+
+
 					</b:dataTable>
 				</b:container>
 			</h:form>

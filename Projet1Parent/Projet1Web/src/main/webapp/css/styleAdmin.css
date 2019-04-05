@@ -41,10 +41,16 @@ h3
 {
 	font-size: 22px;
 }
-.btn_magasin:hover
+
+.navbar-inverse .navbar-nav > li > a 
 {
-	color: #FFF726;
-	font-weight: bold;
+	color:  #c0c0c0!important ;
+}
+	
+.navbar-inverse .navbar-nav > li > a:hover 
+{
+color: #ffffff!important;
+border-bottom: 1px solid #FFF726 !important ;
 }
 
 /****************************************
