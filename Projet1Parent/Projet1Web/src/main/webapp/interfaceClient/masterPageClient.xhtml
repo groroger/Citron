@@ -14,7 +14,8 @@
 
 </h:head>
 <h:body>
-	<h:form id="navbarMasterPage">
+	<h:form>
+	
 	<b:navBar id="navbar-brand"
 			  brand=""
 			  brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
@@ -22,12 +23,51 @@
 			  brand-style="height:100%;padding:8px; margin:0"
 			  inverse="true"
 			  fluid="true" 
-			  position="top" 
-			  sticky="false" >
+			  sticky="false" 
+			  style="color:red;">
 
 		<b:navbarLinks class="navbarLinks" pull="right">
 			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
+					onclick="$('.formValidationModalClass').modal('show')">
+					<f:param name="blockui.disabled" value="true"/>
+					<b:modal styleClass="formValidationModalClass" closable="true"
+						closeOnEscape="true">
+						<b:form id="form">
+							<h4>Déjà adhérent :</h4>
+
+							<b:row>
+								<b:column>
+									<b:inputText placeholder="Identifiant"
+										value="#{mbConnectionUtilisateur.login}" class="form-control"
+										id="exampleDropdownFormEmail1" required="false"
+										requiredMessage="Entrez votre identifiant" />
+
+									<b:inputSecret placeholder="Mot de passe"
+										value="#{mbConnectionUtilisateur.password}" class="form-control"
+										id="exampleDropdownFormPassword1" required="true"
+										requiredMessage="Entrez votre mot de passel" />
+										<h:message for="exampleDropdownFormPassword1"/>
+
+									<b:button look="link" value="Mot de passe oublié"
+										large-screen="full-width" />
+								</b:column>
+							</b:row>
+
+							<b:row>
+								<b:column>
+									<b:commandButton largeScreen="half" update="@form"
+										dismiss="modal" value="Me connecter" look="warning"
+										action="#{mbConnectionUtilisateur.sIdentifier()}" />
+									<b:button largeScreen="half" value="Annuler" 
+										dismiss="modal"  href="#navbar-brand"/>
+								</b:column>
+							</b:row>
+
+							<b:fetchBeanInfos />
+							<b:messages />
+						</b:form>
+					</b:modal>
+				</b:navLink>
 
 			<b:navLink class="btn_magasin" value="#{clientConnecte.prenom} #{clientConnecte.nom}" rendered="#{not empty clientConnecte}"
 				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
@@ -45,11 +85,15 @@
 				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
 			<b:navLink class="btn_magasin" value="Rechercher Produits"
 				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
+				
+				
+				
 	
 		</b:navbarLinks>
 
 	</b:navBar>
-	</h:form>
+
+</h:form>
 
 
 	<div id="centre">
