@@ -56,11 +56,7 @@ public class AfficherStockManagedBean implements Serializable{
 		
 	}
 	
-	@PostConstruct
-	public void initComboBox() {
-	categories =  proxyCategorie.getAll();
-	}
-	
+
 	public void onCategorieChange() {
 
 
