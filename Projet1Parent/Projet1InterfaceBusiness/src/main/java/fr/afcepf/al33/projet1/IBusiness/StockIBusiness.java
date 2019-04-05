@@ -15,5 +15,9 @@ public interface StockIBusiness {
 	public List<Stock> getByIdCategorie(Categorie c);
 	
 	public List<Stock> getAll() ;
+	List<Stock> getByQuantity();
+	List<Stock> getByPeromption();
+	int getTotalQuantity();
+	int getVirtualQuantity();
 
 }

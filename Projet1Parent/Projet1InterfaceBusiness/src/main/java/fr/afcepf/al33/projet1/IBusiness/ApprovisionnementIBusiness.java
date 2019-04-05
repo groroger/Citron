@@ -10,7 +10,7 @@ public interface ApprovisionnementIBusiness {
 	
 	public Approvisionnement addApprovisionnement(Approvisionnement a);				
 	public Boolean delete(Approvisionnement approvisionnement);
-	public Commande update(Approvisionnement approvisionnement);
+	public Approvisionnement update(Approvisionnement approvisionnement);
 	public Approvisionnement searchById(Integer id);
 	List<Approvisionnement> getAllApproByStock (Stock stock);
 

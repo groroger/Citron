@@ -78,4 +78,28 @@ public class StockBusiness implements StockIBusiness{
 		
 		return stocks;
 	}
+	
+	@Override
+	public List<Stock> getByQuantity(){
+		List<Stock> stockQuantite = new ArrayList<>();
+		stockQuantite=proxyStockIDao.getByQuantity();
+		return stockQuantite;
+	}
+
+	@Override
+	public List<Stock> getByPeromption() {
+		List<Stock> stockPeromption = new ArrayList<>();
+		stockPeromption=proxyStockIDao.getByQuantity();
+		return stockPeromption;
+	}
+
+	@Override
+	public int getTotalQuantity() {
+		return proxyStockIDao.getTotalQuantity();
+	}
+
+	@Override
+	public int getVirtualQuantity() {
+		return proxyStockIDao.getVirtualQuantity();
+	}
 }

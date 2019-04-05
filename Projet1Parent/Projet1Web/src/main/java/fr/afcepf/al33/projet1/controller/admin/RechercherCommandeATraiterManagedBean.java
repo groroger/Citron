@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
+import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
@@ -39,6 +40,9 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	@EJB
 	private CommandeIBusiness proxyCommande;
 
+	@EJB
+	private ArticleIBusiness proxyArticle;
+	
 	@EJB
 	private ApprovisionnementIBusiness proxyApprovisionnement;
 
@@ -128,7 +132,8 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 				int quantiteAPrendre = Integer.min(article.getQuantite() - quantitePreparee, approvisionnement.getQuantiteRestante());
 				// décrémenter le stock dans l'approvisionnement
 				approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteRestante() - quantiteAPrendre);
-			//	proxyApprovisionnement.
+				// modifier le stock
+				proxyApprovisionnement.update(approvisionnement);
 				quantitePreparee += quantiteAPrendre;
 				// jusqu'à satisfaire la quantité commandée
 				if (quantitePreparee == article.getQuantite())
@@ -140,6 +145,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 				result = false;
 				// modification de la quantité commandée à la quantité disponible
 				article.setQuantite(quantitePreparee);
+				// update fait par l'update de proxyCommande
 				FacesMessage message = new FacesMessage("Pour la commande " + cde.getId() 
 													+ " seulement " + quantitePreparee
 													+ " sur " + article.getQuantite()
