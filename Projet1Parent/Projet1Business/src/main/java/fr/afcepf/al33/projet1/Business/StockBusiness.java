@@ -53,9 +53,9 @@ public class StockBusiness implements StockIBusiness{
 		List<Stock> stocks=new ArrayList<Stock>();
 		stocks=proxyStockIDao.getAll();
 		Date aujourdhui = new Date();
-		int nbreStock = 0;
+
 		for (Stock stock : stocks) {
-		
+			int nbreStock = 0;
 			for (Approvisionnement approvisionnement : stock.getApprovisionnements()) {
 				if (approvisionnement.getDatePeremption().after(aujourdhui))
 					{
