@@ -27,9 +27,9 @@ public class FicheArticleClientManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int quantiteSaisie =1;
+	private int quantiteSaisie;
 
-
+	//@ManagedProperty(value="#{mbCatalogueClient.articleCommande}")
 	private ArticleCommande articleCommande;
 	
 	@ManagedProperty(value="#{mbCatalogueClient.articlesCommandes}")
@@ -53,14 +53,14 @@ public class FicheArticleClientManagedBean implements Serializable{
 		
 	}
 
-	public void ajouterArticle() {
+public void ajouterArticle() {
 		
 
 		articleCommande =new ArticleCommande();
 
 		articleCommande.setArticle(article);
 
-		articleCommande.setQuantite(quantiteSaisie);
+		articleCommande.setQuantite(article.getQuantiteSaisie());
 		
 		System.out.println(articleCommande.getArticle().getNom());
 		
@@ -78,7 +78,7 @@ public class FicheArticleClientManagedBean implements Serializable{
 			while(ite.hasNext()) {
 				ArticleCommande ac = ite.next();
 				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
-					ac.setQuantite(ac.getQuantite()+ quantiteSaisie);
+					ac.setQuantite(ac.getQuantite()+ 1);
 					System.out.println("nombre ajouté à la ligne existante");
 					isPresent = true;
 				}

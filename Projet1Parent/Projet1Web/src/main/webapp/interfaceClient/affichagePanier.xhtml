@@ -31,11 +31,13 @@
 					</b:row>
 
 
-					<b:dataTable value="#{mbPanier.articlesCommandes}"
+					<b:dataTable id="datatablePanier"
+						value="#{mbPanier.articlesCommandes}"
 						var="articleCommande" pdf="false" print="false" excel="false"
 						border="true" info="false" tiny-screen="12" medium-screen="12"
 						large-screen="12" page-length="20" selectionMode="single"
 						responsive="true">
+
 
 						<b:dataTableColumn>
 							<f:facet name="header">Image: </f:facet>
@@ -47,15 +49,15 @@
 							<h:outputLabel value="#{articleCommande.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Articles: </f:facet>
-							<h:outputLabel value="#{articleCommande.quantite}" />
+							<f:facet name="header">Quantite: </f:facet>
+							<h:outputLabel value="#{articleCommande.article.quantiteSaisie}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 								<b:buttonGroup>
 								<b:commandButton id="btn_minus" value="" icon="minus-sign" look="primary" 
-									action="#{mbPanier.minusQuantiteSaisie(articleCommande)}"/>
+									action="#{mbPanier.minusQuantiteSaisie(articleCommande.article)}"/>
 	    						<b:commandButton id="btn_plus" value="" icon="plus-sign" look="primary" 
-	    							action="#{mbPanier.plusQuantiteSaisie(article)}"/>
+	    							action="#{mbPanier.plusQuantiteSaisie(articleCommande.article)}"/>
     						</b:buttonGroup>   						
  						</b:dataTableColumn>
 					</b:dataTable>
