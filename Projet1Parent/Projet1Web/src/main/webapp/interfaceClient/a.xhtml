@@ -29,28 +29,7 @@
 
 		<b:navbarLinks class="navbarLinks" pull="right">
 			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
-
-			<b:navLink class="btn_magasin" value="#{clientConnecte.prenom} #{clientConnecte.nom}" rendered="#{not empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
-
-			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
-				 action="#{mbConnectionUtilisateur.seDeconnecter()}"/>
-
-			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"/>
-
-			<b:navLink class="btn_magasin" value="Mon compte" rendered="#{not empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/updateCompteClient.xhtml"/>
-
-			<b:navLink class="btn_magasin" value="Notre Magasin"
-				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
-			<b:navLink class="btn_magasin" value="Rechercher Produits"
-				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
-				
-				<b:navLink value="" href="#connect"
-					onclick="$('.formValidationModalClass').modal('show')"
-					iconAwesome="user" icon-size="2x" id="iconConnect">
+					onclick="$('.formValidationModalClass').modal('show')">
 					<f:param name="blockui.disabled" value="true"/>
 					<b:modal styleClass="formValidationModalClass" closable="true"
 						closeOnEscape="true">
@@ -90,6 +69,25 @@
 						</b:form>
 					</b:modal>
 				</b:navLink>
+
+			<b:navLink class="btn_magasin" value="#{clientConnecte.prenom} #{clientConnecte.nom}" rendered="#{not empty clientConnecte}"
+				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
+
+			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
+				 action="#{mbConnectionUtilisateur.seDeconnecter()}"/>
+
+			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
+				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"/>
+
+			<b:navLink class="btn_magasin" value="Mon compte" rendered="#{not empty clientConnecte}"
+				href="/Projet1Web/interfaceConnection/updateCompteClient.xhtml"/>
+
+			<b:navLink class="btn_magasin" value="Notre Magasin"
+				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
+			<b:navLink class="btn_magasin" value="Rechercher Produits"
+				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
+				
+				
 				
 	
 		</b:navbarLinks>

@@ -73,6 +73,7 @@ border-bottom: 1px solid #FFF726 !important ;
 .modal-header
 {
 	padding: 5px 8px 5px 5px !important;
+	background-color: #96c001 !important;
 }
 
 .btn-warning 
