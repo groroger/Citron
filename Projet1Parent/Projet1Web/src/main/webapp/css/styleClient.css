@@ -18,11 +18,29 @@ body
 
 h3
 {
-	color: rgb(0, 136, 143); 
-	font-weight: bold; 
+	color: rgb(0, 136, 143) !important; 
+	font-weight: bold !important; 
 	text-align: center;
 }
 
+	/*** DATA TABLE ***/
+	
+.sorting
+{
+	background-color: rgba(150, 192, 1 , 0.8) !important;
+}
+
+th.sorting {
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+.table td, .table th
+{
+	text-align: center !important;
+	vertical-align: middle !important;
+}
 
 /**************************
 
@@ -424,11 +442,7 @@ carouselItem > img{
 	/* background-image: url('../pics/carousel/champignon.jpg'); */
 }
 
-.sorting
-{
-	text-align: center !important;
-	vertical-align: middle !important;
-}
+
 
 /**************************
 

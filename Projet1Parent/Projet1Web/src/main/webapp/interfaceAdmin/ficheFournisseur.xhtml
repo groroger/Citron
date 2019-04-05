@@ -15,8 +15,8 @@
 			<title>Fiche du fournisseur</title>
 
 			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
-				
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 		
 	<f:metadata>
@@ -129,10 +129,16 @@
 					
 					<b:dataTable
 						value="#{mbFicheFournisseur.approvisionnements}"
-						var="approvisionnement" pdf="false" print="false" excel="false"
-						border="true" info="false" page-length="10" selectionMode="single"
-						tiny-screen="12" medium-screen="12"  large-screen="12"
-						responsive="true" >
+						var="approvisionnement" 
+						pdf="false" 
+						print="false" 
+						excel="false"
+						border="true" 
+						info="false" 
+						page-length="10" 
+						selectionMode="single"
+						responsive="true" 
+						paginated="false">
 
 
 						<b:dataTableColumn>

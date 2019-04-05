@@ -16,6 +16,8 @@ import fr.afcepf.al33.projet1.idao.CommandeIdao;
 @Stateless
 public class CommandeDao extends GenericDao<Commande> implements CommandeIdao {
 
+	//private final Logger slf4jLogger = LoggerFactory.getLogger(this.getClass());
+	
 	@PersistenceContext(unitName="Projet1DS")
 	private EntityManager em;
 
@@ -31,6 +33,7 @@ public class CommandeDao extends GenericDao<Commande> implements CommandeIdao {
 
 	@SuppressWarnings("unchecked")
 	public List<Commande> getAllToProcess() {
+		//slf4jLogger.debug("getAllToProcess");
 		List<Commande> commandes = null;
 		// Commande à traiter si dateExpedition = null
 		String REQ = "SELECT commande from Commande commande WHERE commande.dateExpedition is null ORDER BY commande.dateCreation";

@@ -17,27 +17,35 @@
 			
 			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 		<h:body>
 		
-		<b:container >
 
 			<h:form id="formRechercheClient">
 
 				<b:container layout="fluid">
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+
 							<h3>Liste des clients:</h3>
-							<br />
-							<br />
-						</b:column>
+
 					</b:row>
 
-					<b:dataTable value="#{mbFindClient.clients}" var="cl" excel="false"
-						pdf="false" print="false" border="true" info="false"
-						page-length="20" selectionMode="single" responsive="true"
-						tiny-screen="12" medium-screen="12" large-screen="12"
-						onselect="ajax:mbFindClient.onSelect(cl);">
+
+
+					<b:dataTable 
+						value="#{mbFindClient.clients}" 
+						var="cl" 
+						excel="false"
+						pdf="false" 
+						print="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						selectionMode="single" 
+						responsive="true"
+						onselect="ajax:mbFindClient.onSelect(cl);"
+						paginated="false">
 
 						<b:dataTableColumn>
 							<f:facet name="header">Nom</f:facet>
@@ -74,7 +82,7 @@
 					</b:dataTable>
 				</b:container>
 			</h:form>
-			</b:container>
+
 		</h:body>
 	</ui:define>
 </ui:composition>

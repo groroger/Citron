@@ -16,7 +16,7 @@
 		
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
-
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 
 		<h:body>
@@ -31,12 +31,19 @@
 					</b:row>
 
 
-					<b:dataTable id="datatablePanier"
+					<b:dataTable 
+						id="datatablePanier"
 						value="#{mbPanier.articlesCommandes}"
-						var="articleCommande" pdf="false" print="false" excel="false"
-						border="true" info="false" tiny-screen="12" medium-screen="12"
-						large-screen="12" page-length="20" selectionMode="single"
-						responsive="true">
+						var="articleCommande" 
+						pdf="false" 
+						print="false" 
+						excel="false"
+						border="true" 
+						info="false" 
+						page-length="20" 
+						selectionMode="single"
+						responsive="true"
+						paginated="false">
 
 
 						<b:dataTableColumn>
@@ -61,6 +68,21 @@
     						</b:buttonGroup>   						
  						</b:dataTableColumn>
 					</b:dataTable>
+					
+					<b:panelGrid columns="3">
+						<f:facet name="header">Retour au Catalogue</f:facet>
+						<b:button value="Retour au Catalogue" look="primary" outcome="catalogueClient"/>
+						
+						<b:inputText label="Total à payer: ">
+					    <f:facet name="append">
+					        <h:outputText value="#{mbPanier.calculerPanier()}€" />
+					      </f:facet>
+					    </b:inputText>
+											
+						<f:facet name="header">Payer</f:facet>
+						<b:commandButton value="Payer" look="primary" action="#{mbPanier.payer()}"/>
+							
+						</b:panelGrid>
 				</b:container>
 			</h:form>
 		</h:body>

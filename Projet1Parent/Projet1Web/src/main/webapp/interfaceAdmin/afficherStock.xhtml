@@ -15,7 +15,7 @@
 			<title>Stock</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
-
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 
 		<h:body>
@@ -27,11 +27,9 @@
 
 				<b:container layout="fluid">
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3
-								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Stock</h3>
-							<br />
-						</b:column>
+
+							<h3>Stock</h3>
+
 					</b:row>
 
 					<b:formGroup>
@@ -44,12 +42,21 @@
 								itemValue="#{categorie}" itemLabel="#{categorie.nomCategorie}" />
 						</b:selectOneMenu>
 					</b:formGroup>
+				</b:container>
 
-					<b:dataTable id="datatableStocks" value="#{mbStock.stocks}" 
-						var="ligneStock" pdf="false"
-						print="false" excel="false" border="true" info="false"
-						tiny-screen="12" medium-screen="12" large-screen="12"
-						page-length="20" selectionMode="single" responsive="true">
+					<b:dataTable 
+						id="datatableStocks" 
+						value="#{mbStock.stocks}" 
+						var="ligneStock" 
+						pdf="false"
+						print="false" 
+						excel="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						selectionMode="single" 
+						responsive="true"
+						paginated="false">
 
 						<b:dataTableColumn
 							headerStyle="text-align: center;vertical-align: middle;">
@@ -76,7 +83,7 @@
 								action="#{mbStock.afficherApprovisionnements(ligneStock)}" />
 						</b:dataTableColumn>
 					</b:dataTable>
-				</b:container>
+	
 			</h:form>
 			</b:container>
 		</h:body>
