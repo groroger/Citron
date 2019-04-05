@@ -296,7 +296,11 @@ carouselItem > img{
 	/* background-image: url('../pics/carousel/champignon.jpg'); */
 }
 
-
+.sorting
+{
+	text-align: center !important;
+	vertical-align: middle !important;
+}
 
 
 /*************************

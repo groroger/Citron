@@ -21,6 +21,7 @@ public class StockBusiness implements StockIBusiness{
 
 	@EJB
 	private StockIdao proxyStockIDao;
+
 	
 	
 	@Override
@@ -54,14 +55,18 @@ public class StockBusiness implements StockIBusiness{
 		Date aujourdhui = new Date();
 		
 		for (Stock stock : stocks) {
+			stock.setQuantiteDispoPhysique(0);
 			for (Approvisionnement approvisionnement : stock.getApprovisionnement()) {
 				if (approvisionnement.getDatePeremption().after(aujourdhui))
 					{
 						stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() + approvisionnement.getQuantiteRestante());
-						stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() + approvisionnement.getQuantiteRestante());
+		
 					}
 			}
 		}
+		
+		
+		
 		return stocks;
 	}
 
