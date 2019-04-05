@@ -31,7 +31,7 @@ import fr.afcepf.al33.projet1.entity.Stock;
 @SessionScoped
 public class RechercherCommandeATraiterManagedBean implements Serializable {
 
-	private final Logger slf4jLogger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private static final long serialVersionUID = 1L;
 	
@@ -64,8 +64,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		System.out.println(this.getClass().getName() + ".init()");
-		slf4jLogger.debug(this.getClass().getName() + ".init()");
+		logger.debug(this.getClass().getName() + ".init()");
 		commandes = proxyCommande.getAllToProcess();
 		
 	}
@@ -112,7 +111,6 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	public boolean traiterCommande(Commande cde) {
 		boolean result = true;
 		// traitement de la commande
-		System.err.println("articles commandés : " + cde.getArticlesCommandes());
 		for (ArticleCommande article : cde.getArticlesCommandes()) {
 			// pour chaque article 
 			int quantitePreparee = 0;
@@ -130,6 +128,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 				int quantiteAPrendre = Integer.min(article.getQuantite() - quantitePreparee, approvisionnement.getQuantiteRestante());
 				// décrémenter le stock dans l'approvisionnement
 				approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteRestante() - quantiteAPrendre);
+			//	proxyApprovisionnement.
 				quantitePreparee += quantiteAPrendre;
 				// jusqu'à satisfaire la quantité commandée
 				if (quantitePreparee == article.getQuantite())
@@ -152,7 +151,11 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 			// maj quantite physique et dispo_stock_internet dans Stock
 			stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() - quantitePreparee);
 			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() - quantitePreparee);
+			proxyStock.update(stock);
 		}
+		// mise à jour date expédition commande
+		cde.setDateExpedition(new Date());
+		proxyCommande.update(cde);
 		
 		return result;
 	}
