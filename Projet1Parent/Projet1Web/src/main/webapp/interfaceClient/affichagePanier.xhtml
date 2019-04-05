@@ -56,6 +56,14 @@
 							<f:facet name="header">Articles: </f:facet>
 							<h:outputLabel value="#{articleCommande.quantite}" />
 						</b:dataTableColumn>
+						<b:dataTableColumn>
+								<b:buttonGroup>
+								<b:commandButton id="btn_minus" value="" icon="minus-sign" look="primary" 
+									action="#{mbPanier.minusQuantiteSaisie(articleCommande)}"/>
+	    						<b:commandButton id="btn_plus" value="" icon="plus-sign" look="primary" 
+	    							action="#{mbPanier.plusQuantiteSaisie(article)}"/>
+    						</b:buttonGroup>   						
+ 						</b:dataTableColumn>
 					</b:dataTable>
 				</b:container>
 			</h:form>
