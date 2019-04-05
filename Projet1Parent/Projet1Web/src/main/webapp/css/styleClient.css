@@ -25,14 +25,18 @@ h3
 
 
 /**************************
+
 		MASTERPAGE
+		
 **************************/
 
-/*** HEADER ***/
+	/*** HEADER ***/
 
 
 .navbar
 {
+	padding-top: 5px;
+	padding-bottom: 5px;
 	margin-bottom: 0px !important;
 	border-radius: 0px !important;
 }
@@ -90,11 +94,11 @@ border-bottom: 1px solid #FFF726 !important ;
 }
 
 
-/*** FOOTER ***/
+	/*** FOOTER ***/
 
 footer
 {
-	padding-top: 5px;
+	padding-top: 15px;
     background-color:#222222;
     color: #FFF726;
 }
@@ -150,6 +154,7 @@ footer
 	color: #FFF726; 
 	font-weight: bold; 
 	text-align: center;
+	margin: 10px 0px 10px 0px;
 }
 
 #lien1,
@@ -161,10 +166,12 @@ footer
 
 
 /**************************
-	ACCUEILCLIENT
+
+	ACCUEIL CLIENT
+	
 **************************/
 
-/*** CAROUSEL ***/
+	/*** CAROUSEL ***/
 
 carousel{
 	height: auto;
@@ -229,6 +236,57 @@ carouselItem > img{
   text-align: justify;
 }
 
+/*** FOOTER CAROUSEL ***/
+
+#footer_carousel
+{
+	padding-top: 30px;
+	padding-bottom: 30px;
+    background-color:#222222;
+    color: #FFF726;
+}
+
+/*** JUMBOTRON ***/
+
+#nousConnaitre
+{
+	border-bottom: 1px solid black;
+}
+
+#jeMInscris:hover
+{
+	color:  rgb(29,204,195) !important; 
+}
+
+.inscription
+{
+	text-align:  center;
+	margin-top: 30px;	
+	margin-bottom: 30px;
+}
+
+#jeMInscris1
+{
+	color: rgb(4,66,87) !important;
+	font-size: 20px;
+	padding: 30px 50px;
+	margin: 30px 300px 30px 0px;
+	border: 5px solid rgb(4,66,87);
+	border-radius: 25px;
+	box-shadow: 0 15px 25px rgba(0,0,0,.2);
+	
+}
+
+#jeMInscris1:hover
+{
+	text-decoration: none;
+	transition: .3s ease !important;
+	font-size: 40px;
+	color: #96c001 !important;
+	border: 5px solid #96c001;
+}
+
+
 /**************************
 	CATALOGUE CLIENT
 **************************/
@@ -245,168 +303,120 @@ carouselItem > img{
 	TEST A EFFACER
 *************************/
 
-$main-color: #6394F8;
-$light-text: #ABB0BE;
-
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
-
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-body {
-  font: 14px/22px "Lato", Arial, sans-serif;
-  background: #6394F8;
-}
-
-.lighter-text {
-  color: #ABB0BE;
-}
-
-.main-color-text {
-  color: $main-color;
-}
-
-nav {
-  padding: 20px 0 40px 0;
-  background: #F8F8F8;
-  font-size: 16px;
-  
-  .navbar-left {
-    float: left;
-  }
-  
-  .navbar-right {
-    float: right;
-  }
-  ul {
-    
-    li {
-      display: inline;
-      padding-left: 20px;
-      a {
-        color: #777777;
-        text-decoration: none;
-        
-        &:hover {
-          color: black;
-        }
-      }
-    }
-  }
-}
-
-.container {
-  margin: auto;
-  width: 80%;
-}
-
-.badge {
-    background-color: #6394F8;
-    border-radius: 10px;
-    color: white;
-    display: inline-block;
-    font-size: 12px;
-    line-height: 1;
-    padding: 3px 7px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-
-.shopping-cart {
-  margin: 20px 0;
-  float: right;
-  background: white;
-  width: 320px;
+#jeMInscris
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  border-radius: 3px;
-  padding: 20px;
-  
-  
-  .shopping-cart-header {
-    border-bottom: 1px solid #E8E8E8;
-    padding-bottom: 15px;
-    
-    .shopping-cart-total {
-      float: right;
-    }
-  }
-  
-  .shopping-cart-items {
-    
-    padding-top: 20px;
-
-      li {
-        margin-bottom: 18px;
-      }
-
-    img {
-      float: left;
-      margin-right: 12px;
-    }
-    
-    .item-name {
-      display: block;
-      padding-top: 10px;
-      font-size: 16px;
-    }
-    
-    .item-price {
-      color: $main-color;
-      margin-right: 8px;
-    }
-    
-    .item-quantity {
-      color: $light-text;
-    }
-  }
-   
+  margin: 20px auto;
+  width: 250px;
+  height: 250px;
+  background: white;
+  border-radius: 75px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  transition: 1s box-shadow;
 }
 
-.shopping-cart:after {
-	bottom: 100%;
-	left: 89%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-bottom-color: white;
-	border-width: 8px;
-	margin-left: -8px;
+#jeMInscris:hover {
+  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
 }
 
-.cart-icon {
-  color: #515783;
-  font-size: 24px;
-  margin-right: 7px;
-  float: left;
-}
-
-.button {
-  background: $main-color;
-  color:white;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
+#jeMInscris:hover:before,
+#jeMInscris:hover:after {
   display: block;
-  border-radius: 3px;
-  font-size: 16px;
-  margin: 25px 0 15px 0;
-  
-  &:hover {
-    background: lighten($main-color, 3%);
+  content: '';
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: #FDA8CF;
+  border-radius: 75px;
+  z-index: -1;
+  animation: 1s clockwise infinite;
+}
+
+#jeMInscris:hover:after {
+  background: #F3CE5E;
+  animation: 2s counterclockwise infinite;
+}
+
+@keyframes clockwise {
+  0% {
+    top: -5px;
+    left: 0;
+  }
+  12% {
+    top: -2px;
+    left: 2px;
+  }
+  25% {
+    top: 0;
+    left: 5px;    
+  }
+  37% {
+    top: 2px;
+    left: 2px;
+  }
+  50% {
+    top: 5px;
+    left: 0;    
+  }
+  62% {
+    top: 2px;
+    left: -2px;
+  }
+  75% {
+    top: 0;
+    left: -5px;
+  }
+  87% {
+    top: -2px;
+    left: -2px;
+  }
+  100% {
+    top: -5px;
+    left: 0;    
   }
 }
 
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
+@keyframes counterclockwise {
+  0% {
+    top: -5px;
+    right: 0;
+  }
+  12% {
+    top: -2px;
+    right: 2px;
+  }
+  25% {
+    top: 0;
+    right: 5px;    
+  }
+  37% {
+    top: 2px;
+    right: 2px;
+  }
+  50% {
+    top: 5px;
+    right: 0;    
+  }
+  62% {
+    top: 2px;
+    right: -2px;
+  }
+  75% {
+    top: 0;
+    right: -5px;
+  }
+  87% {
+    top: -2px;
+    right: -2px;
+  }
+  100% {
+    top: -5px;
+    right: 0;    
+  }
 }
-
-
