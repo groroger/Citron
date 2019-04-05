@@ -33,20 +33,25 @@ public class PanierManagedBean implements Serializable{
   @ManagedProperty(value="#{mbCatalogueClient.quantiteSaisie}")
   private int quantiteSaisie;
   
+  private double prixTotal;
+  
   private ArticleCommande articleCommande;
   private Article selectedArticle;
   
-//  public void afficherFicheProduit(Article article) {
-//		selectedArticle = article;
-//
-//		System.out.println(selectedArticle.getId());
-//
-//		FacesContext facesContext = FacesContext.getCurrentInstance();
-//		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-//		session.setAttribute("selectedArticle", selectedArticle);
-//		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/ficheArticleClient.xhtml?faces-redirect=true");
-//	}
+  public void payer() {
+	  System.out.println("Merci de votre visite");
+  }
   
+  public double calculerPanier() {
+		prixTotal = 0;
+		Iterator<ArticleCommande> ite = articlesCommandes.iterator();
+		while(ite.hasNext()) {
+			ArticleCommande ac = ite.next();
+			prixTotal += ac.getArticle().getQuantiteSaisie()*ac.getArticle().getPrix();
+			}
+		return prixTotal;
+  		}
+		
   public void ajouterArticle(Article article) {
 
 		articleCommande = new ArticleCommande();
@@ -136,6 +141,14 @@ public Article getSelectedArticle() {
 
 public void setSelectedArticle(Article selectedArticle) {
 	this.selectedArticle = selectedArticle;
+}
+
+public double getPrixTotal() {
+	return prixTotal;
+}
+
+public void setPrixTotal(double prixTotal) {
+	this.prixTotal = prixTotal;
 }
 
 

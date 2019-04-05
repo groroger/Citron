@@ -68,6 +68,18 @@
     						</b:buttonGroup>   						
  						</b:dataTableColumn>
 					</b:dataTable>
+					
+					<b:panelGrid columns="3">
+						<f:facet name="header">Retour au Catalogue</f:facet>
+						<b:button value="Retour au Catalogue" look="primary" outcome="catalogueClient"/>
+						
+						<f:facet name="header">Prix Total</f:facet>
+						<b:commandButton value="Payer" look="primary" action="#{mbPanier.payer()}"/>
+						
+						<f:facet name="header">Payer</f:facet>
+						<b:commandButton value="Payer" look="primary" action="#{mbPanier.payer()}"/>
+							
+						</b:panelGrid>
 				</b:container>
 			</h:form>
 		</h:body>

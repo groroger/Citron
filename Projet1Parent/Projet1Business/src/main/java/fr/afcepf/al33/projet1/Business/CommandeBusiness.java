@@ -23,5 +23,29 @@ public class CommandeBusiness implements CommandeIBusiness{
 		commandes= proxyCommande.getAllToProcess();
 		return commandes;
 	}
+
+	@Override
+	public Commande add(Commande commande) {
+		proxyCommande.ajouter(commande);
+		return commande;
+	}
+
+	@Override
+	public Boolean delete(Commande commande) {
+		proxyCommande.supprimer(commande);
+		return true;
+	}
+
+	@Override
+	public Commande update(Commande commande) {
+		proxyCommande.modifier(commande);
+		return commande;
+	}
+
+	@Override
+	public Commande searchById(Integer id) {
+		Commande commande = proxyCommande.rechercherParId(id);
+		return commande;
+	}
 	
 }
