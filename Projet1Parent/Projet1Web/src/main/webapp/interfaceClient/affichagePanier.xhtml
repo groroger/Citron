@@ -31,12 +31,19 @@
 					</b:row>
 
 
-					<b:dataTable id="datatablePanier"
+					<b:dataTable 
+						id="datatablePanier"
 						value="#{mbPanier.articlesCommandes}"
-						var="articleCommande" pdf="false" print="false" excel="false"
-						border="true" info="false" tiny-screen="12" medium-screen="12"
-						large-screen="12" page-length="20" selectionMode="single"
-						responsive="true">
+						var="articleCommande" 
+						pdf="false" 
+						print="false" 
+						excel="false"
+						border="true" 
+						info="false" 
+						page-length="20" 
+						selectionMode="single"
+						responsive="true"
+						paginated="false">
 
 
 						<b:dataTableColumn>

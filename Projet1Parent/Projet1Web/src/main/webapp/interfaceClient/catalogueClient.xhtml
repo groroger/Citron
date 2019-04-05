@@ -40,8 +40,6 @@
 								itemLabel="#{categorie.nomCategorie}" />
 						</b:selectOneMenu>
 						
-						
-						
 					</b:formGroup>
 
 					</b:container>
@@ -57,7 +55,8 @@
 						page-length="20" 
 						selectionMode="single" 
 						responsive="true"
-						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);">
+						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);"
+						paginated="false">
 
 						<b:dataTableColumn>
 							<f:facet name="header">Image: </f:facet>
