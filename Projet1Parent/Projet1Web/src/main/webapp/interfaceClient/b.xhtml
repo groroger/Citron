@@ -4,44 +4,34 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
+
 <h:head>
-	<title>COOPER'Active, bienvevue!</title>
-	<link rel="stylesheet" type="text/css" href="css/styleP3.css" />
-	<link href="css/bootstrap.css" rel="stylesheet" />
-	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-		crossorigin="anonymous" />
+<link rel="shortcut icon" href="#{request.contextPath}/pics/website/citronLogo.ico"/>
+<link rel="stylesheet" type="text/css" 
+		href="#{request.contextPath}/css/styleClient.css" />
+<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 
-	<script src="js/jquery.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/navbar.js"></script>
 
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </h:head>
-
-
 <h:body>
 
-	<!-- HEADER -->
+<h:form>
+	
+	<b:navBar id="navbar-brand"
+			  brand=""
+			  brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
+			  brandHref="/Projet1Web/interfaceClient/accueilClient.xhtml"
+			  brand-style="height:100%;padding:8px; margin:0"
+			  inverse="true"
+			  fluid="true" 
+			  sticky="false" 
+			  style="color:red;">
 
-	<b:navBar brand="" fluid="true" brand-img="pics/website/Logo70.png"
-		id="navbar-brand">
-		<div id="navbar">
-			<b:navbarLinks>
-				<b:navLink value="Nous connaitre" href="#jumbotronNousConnaitre"
-					id="navbarLink1"></b:navLink>
-				<b:navLink value="Nos établissements" href="#nosEtablissements"
-					id="navbarLink2"></b:navLink>
-				<b:navLink value="Contact" href="#basDePage" id="navbarLink3"></b:navLink>
-				<b:navLink value="Aide" href="#" id="navbarLink4"></b:navLink>
-				<b:navLink value="S'inscrire" href="#jumbotronNousConnaitre" id="navbarLink5"></b:navLink>
-
-				<b:navLink value="" href="#connect"
-					onclick="$('.formValidationModalClass').modal('show')"
-					iconAwesome="user" icon-size="2x" id="iconConnect">
-					<b:modal styleClass="formValidationModalClass" closable="false"
+		<b:navbarLinks class="navbarLinks" pull="right">
+			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
+					onclick="$('.formValidationModalClass').modal('show')">
+					<f:param name="blockui.disabled" value="true"/>
+					<b:modal styleClass="formValidationModalClass" closable="true"
 						closeOnEscape="true">
 						<b:form id="form">
 							<h4>Déjà adhérent :</h4>
@@ -49,12 +39,12 @@
 							<b:row>
 								<b:column>
 									<b:inputText placeholder="Identifiant"
-										value="#{mbConnect.login}" class="form-control"
+										value="#{mbConnectionUtilisateur.login}" class="form-control"
 										id="exampleDropdownFormEmail1" required="false"
 										requiredMessage="Entrez votre identifiant" />
 
 									<b:inputSecret placeholder="Mot de passe"
-										value="#{mbConnect.password}" class="form-control"
+										value="#{mbConnectionUtilisateur.password}" class="form-control"
 										id="exampleDropdownFormPassword1" required="true"
 										requiredMessage="Entrez votre mot de passel" />
 										<h:message for="exampleDropdownFormPassword1"/>
@@ -67,8 +57,8 @@
 							<b:row>
 								<b:column>
 									<b:commandButton largeScreen="half" update="@form"
-										dismiss="modal" value="Me connecter" look="info"
-										action="#{mbConnect.connexion()}" />
+										dismiss="modal" value="Me connecter" look="warning"
+										action="#{mbConnectionUtilisateur.sIdentifier()}" />
 									<b:button largeScreen="half" value="Annuler" 
 										dismiss="modal"  href="#navbar-brand"/>
 								</b:column>
@@ -79,10 +69,93 @@
 						</b:form>
 					</b:modal>
 				</b:navLink>
-			</b:navbarLinks>
-		</div>
+
+			<b:navLink class="btn_magasin" value="#{clientConnecte.prenom} #{clientConnecte.nom}" rendered="#{not empty clientConnecte}"
+				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
+
+			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
+				 action="#{mbConnectionUtilisateur.seDeconnecter()}"/>
+
+			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
+				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"/>
+
+			<b:navLink class="btn_magasin" value="Mon compte" rendered="#{not empty clientConnecte}"
+				href="/Projet1Web/interfaceConnection/updateCompteClient.xhtml"/>
+
+			<b:navLink class="btn_magasin" value="Notre Magasin"
+				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
+			<b:navLink class="btn_magasin" value="Rechercher Produits"
+				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
+				
+				
+				
+	
+		</b:navbarLinks>
+
 	</b:navBar>
 
+</h:form>
 
-</h:body> 
+	<div id="centre">
+		<ui:insert name="content"></ui:insert>
+	</div>
+
+<!-- CAROUSEL -->
+
+<b:carousel id="carousel">
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
+							alt="jolisFruits5" />
+					</b:carouselItem>
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits5.jpg"
+							alt="jolisFruits2" />
+					</b:carouselItem>
+					<b:carouselItem>
+						<img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg"
+							alt="jolisFruits6" />
+					</b:carouselItem>
+				</b:carousel>
+
+<!-- NOS PRODUCTEURS -->
+
+<div class="container">
+  <div class="card">
+     <div class="card__image-container">
+       <img class="card__image" src="../pics/articlesImages/citron125.jpg"/>
+    </div>
+      
+      <svg class="card__svg" viewBox="0 0 800 500">
+
+        <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+        <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+      </svg>
+    
+     <div class="card__content">
+       <h1 class="card__title">Lorem ipsum</h1>
+     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolor praesentium at quod autem omnis, amet eaque unde perspiciatis adipisci possimus quam facere illo et quisquam quia earum nesciunt porro.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+
+
+	<footer id="basDePage"> 
+	<div id="wrap" class="wrapper">
+		<h2 id="citron">CITRON™</h2>
+		<p id="copyright">Copyright @ 2019. Tous droits réservés</p>
+		<div class="basBasDePage">
+			<a href="#" id="lien1">Qui sommes-nous ?</a> <a href="#" id="lien2">Conditions
+				Générales d'Utilisation</a> <a href="#" id="lien3">Politique de
+				Protection des Données Personnelles</a>
+		</div>
+	</div>
+	</footer>
+
+
+
+	
+</h:body>
 </html>
