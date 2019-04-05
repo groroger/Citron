@@ -24,7 +24,8 @@
 			  brand-style="height:100%;padding:8px; margin:0"
 			  inverse="true"
 			  fluid="true" 
-			  sticky="false" >
+			  sticky="false" 
+			  style="color:red;">
 
 		<b:navbarLinks class="navbarLinks" pull="right">
 			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
@@ -77,7 +78,7 @@
 							<b:row>
 								<b:column>
 									<b:commandButton largeScreen="half" update="@form"
-										dismiss="modal" value="Me connecter" look="info"
+										dismiss="modal" value="Me connecter" look="warning"
 										action="#{mbConnectionUtilisateur.sIdentifier()}" />
 									<b:button largeScreen="half" value="Annuler" 
 										dismiss="modal"  href="#navbar-brand"/>

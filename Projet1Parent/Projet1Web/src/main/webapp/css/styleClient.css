@@ -47,19 +47,46 @@ h3
 	padding:20px
 }
 
-.btn_magasin
+h4
 {
-	font-size: 22px;
-}
-.btn_magasin:hover
-{
-	font-weight: bold;
+	color: #96c001 !important; 
+	font-weight: bold; 	
 }
 
 navbar-footer
 {
 	margin-top: 50px;
 }
+
+.navbar-inverse .navbar-nav > li > a 
+{
+	color:  #c0c0c0!important ;
+	font-size: 22px;
+}
+	
+.navbar-inverse .navbar-nav > li > a:hover 
+{
+color: #ffffff!important;
+border-bottom: 1px solid #FFF726 !important ;
+}
+
+.modal-header
+{
+	padding: 5px 8px 5px 5px !important;
+}
+
+.btn-warning 
+{
+	
+	background-color: #9dcb01!important;
+	border: 2px solid   #96c001 !important;
+}
+
+.btn-default 
+{
+	border: 2px solid  #9dcb01 !important;
+}
+
 
 /*** FOOTER ***/
 
