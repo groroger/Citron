@@ -26,14 +26,14 @@
 				<b:container layout="fluid">
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3	style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Liste des fournisseurs:</h3>
+							<h3>Liste des commandes à traiter</h3>
 							<br />
 							<br />
 						</b:column>
 					</b:row>
 
-					<b:dataTable value="#{mbFicheCommandeATraiter.commandes}" 
-								 var="fourn"
+					<b:dataTable value="#{mbFindCommandeATraiter.commandes}" 
+								 var="cde"
 								 excel="false" 
 								 pdf="false" 
 								 print="false" 
@@ -45,45 +45,37 @@
 								 tiny-screen="12" 
 								 medium-screen="12"  
 								 large-screen="12"
-								 onselect="ajax:mbFindFournisseur.onSelect(fourn);"
-								 paginated="false">
+								 onselect="ajax:mbFindCommandeATraiter.onSelect(cde);"
+								 paginated="false" >
 								 
 						<b:dataTableColumn>
+							<f:facet name="header">Id</f:facet>
+							<h:outputLabel value="#{cde.id}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date création</f:facet>
+							<h:outputLabel value="#{cde.dateCreation}" />
+							<f:convertDateTime pattern="MM-dd-yyyy" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
 							<f:facet name="header">Nom</f:facet>
-							<h:outputLabel value="#{fourn.nom}" />
+							<h:outputLabel value="#{cde.client.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Adresse</f:facet>
-							<h:outputLabel value="#{fourn.adresse}" />
+							<f:facet name="header">Prénom</f:facet>
+							<h:outputLabel value="#{cde.client.prenom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Code Postal</f:facet>
-							<h:outputLabel value="#{fourn.ville.codePostal}" />
+							<f:facet name="header">Montant</f:facet>
+							<h:outputLabel value="#{cde.prixTotal}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Ville</f:facet>
-							<h:outputLabel value="#{fourn.ville.nom}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Téléphone</f:facet>
-							<h:outputLabel value="#{fourn.numeroFixe}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Portable</f:facet>
-							<h:outputLabel value="#{fourn.numeroPort}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Email</f:facet>
-							<h:outputLabel value="#{fourn.email}" />
+							<f:facet name="header">Traiter</f:facet>
+	    						<b:commandButton id="btn_traiter" value="Traiter" look="primary"
+									href="" />
 						</b:dataTableColumn>
 					</b:dataTable>
-					<b:row>
-						<b:column offset="10" tiny-screen="12" medium-screen="12" large-screen="12">
-							<b:button
-								href="/Projet1Web/interfaceAdmin/ajoutFournisseur.xhtml"
-								value="Ajouter un fournisseur" look="primary" style="margin-top:10px"/>
-						</b:column>
-					</b:row>
+
 				</b:container>
 			</h:form>
 			</b:container>
