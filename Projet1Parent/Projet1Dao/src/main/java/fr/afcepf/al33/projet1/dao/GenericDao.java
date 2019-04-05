@@ -1,12 +1,14 @@
 package fr.afcepf.al33.projet1.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.afcepf.al33.projet1.entity.Stock;
 import fr.afcepf.al33.projet1.idao.GenericIdao;
 
 
@@ -64,6 +66,14 @@ public abstract class GenericDao<T> implements GenericIdao<T> {
 			e.printStackTrace();
 		}
 		return t;
+	}
+
+	public List<Stock> getByPeromption(){
+		return null;
+	}
+
+	public List<Stock> getByQuantity() {
+		return null;
 	}
 	
 
