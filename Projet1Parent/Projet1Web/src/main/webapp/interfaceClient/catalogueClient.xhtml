@@ -45,10 +45,19 @@
 
 
 					<b:dataTable id="datatableArticles"
-						value="#{mbCatalogueClient.articles}" var="article" pdf="false"
-						print="false" excel="false" border="true" info="false"
-						tiny-screen="12" medium-screen="12" large-screen="12"
-						page-length="20" selectionMode="single" responsive="true"
+						value="#{mbCatalogueClient.articles}" 
+						var="article" 
+						pdf="false"
+						print="false" 
+						excel="false" 
+						border="true" 
+						info="false"
+						tiny-screen="12" 
+						medium-screen="12" 
+						large-screen="12"
+						page-length="20" 
+						selectionMode="single" 
+						responsive="true"
 						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);">
 
 						<b:dataTableColumn>
