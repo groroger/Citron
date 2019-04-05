@@ -258,8 +258,8 @@ carouselItem > img{
 
 #footer_carousel
 {
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-top: 33px;
+	padding-bottom: 33px;
     background-color:#222222;
     color: #FFF726;
 }
@@ -304,7 +304,7 @@ carouselItem > img{
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   font-weight: lighter;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   transition: 1s box-shadow !important;
 }
 
