@@ -45,27 +45,21 @@
 						selectionMode="single" 
 						responsive="true"
 						onselect="ajax:mbFindClient.onSelect(cl);"
-						paginated="false">
+						paginated="false"
+						
+						>
 
 						<b:dataTableColumn>
-							<f:facet name="header">Nom</f:facet>
-							<h:outputLabel value="#{cl.nom}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Prénom</f:facet>
-							<h:outputLabel value="#{cl.prenom}" />
+							<f:facet name="header">Client</f:facet>
+							<h:outputLabel value="#{cl.nom} #{cl.prenom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Adresse</f:facet>
 							<h:outputLabel value="#{cl.adresse}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Code Postal</f:facet>
-							<h:outputLabel value="#{cl.ville.codePostal}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
 							<f:facet name="header">Ville</f:facet>
-							<h:outputLabel value="#{cl.ville.nom}" />
+							<h:outputLabel value="#{cl.ville.codePostal} #{cl.ville.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Téléphone</f:facet>
