@@ -28,12 +28,24 @@ public class PanierManagedBean implements Serializable{
 
 
   @ManagedProperty(value="#{mbCatalogueClient.articlesCommandes}")
-  private List<ArticleCommande> articlesCommandes ;
+  private List<ArticleCommande> articlesCommandes;
   
   @ManagedProperty(value="#{mbCatalogueClient.quantiteSaisie}")
   private int quantiteSaisie;
   
-  private ArticleCommande articleCommande;  
+  private ArticleCommande articleCommande;
+  private Article selectedArticle;
+  
+//  public void afficherFicheProduit(Article article) {
+//		selectedArticle = article;
+//
+//		System.out.println(selectedArticle.getId());
+//
+//		FacesContext facesContext = FacesContext.getCurrentInstance();
+//		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+//		session.setAttribute("selectedArticle", selectedArticle);
+//		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/ficheArticleClient.xhtml?faces-redirect=true");
+//	}
   
   public void ajouterArticle(Article article) {
 
@@ -109,5 +121,22 @@ public class PanierManagedBean implements Serializable{
   public void setQuantiteSaisie(int quantiteSaisie) {
     this.quantiteSaisie = quantiteSaisie;
   }
+
+public ArticleCommande getArticleCommande() {
+	return articleCommande;
+}
+
+public void setArticleCommande(ArticleCommande articleCommande) {
+	this.articleCommande = articleCommande;
+}
+
+public Article getSelectedArticle() {
+	return selectedArticle;
+}
+
+public void setSelectedArticle(Article selectedArticle) {
+	this.selectedArticle = selectedArticle;
+}
+
 
 }
