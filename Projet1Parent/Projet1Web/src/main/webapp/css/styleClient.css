@@ -253,11 +253,6 @@ carouselItem > img{
 	border-bottom: 1px solid black;
 }
 
-#jeMInscris:hover
-{
-	color:  rgb(29,204,195) !important; 
-}
-
 .inscription
 {
 	text-align:  center;
@@ -309,24 +304,27 @@ carouselItem > img{
 
 #jeMInscris
 {
+  color: rgb(4,66,87) !important;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   margin: 20px auto;
-  width: 250px;
-  height: 250px;
+  width: 210px;
+  height: 50px;
   background: white;
-  border-radius: 75px;
+  border-radius: 25px;
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   font-weight: lighter;
-  letter-spacing: 2px;
-  transition: 1s box-shadow;
+  letter-spacing: 5px;
+  transition: 1s box-shadow !important;
 }
 
 #jeMInscris:hover {
-  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1) !important;
+  color: #96c001 !important;
+  text-decoration: none;
 }
 
 #jeMInscris:hover:before,
@@ -334,93 +332,94 @@ carouselItem > img{
   display: block;
   content: '';
   position: absolute;
-  width: 250px;
-  height: 250px;
-  background: #FDA8CF;
-  border-radius: 75px;
+  width: 210px;
+  height: 50px;
+  background: #FFF726 !important;
+  border-radius: 25px;
   z-index: -1;
-  animation: 1s clockwise infinite;
+  animation: 1s clockwise infinite !important;
 }
 
 #jeMInscris:hover:after {
-  background: #F3CE5E;
-  animation: 2s counterclockwise infinite;
+  background: #96c001 !important;
+  animation: 1.5s counterclockwise infinite !important;
 }
 
 @keyframes clockwise {
   0% {
-    top: -5px;
+    top: -2px;
     left: 0;
   }
   12% {
-    top: -2px;
-    left: 2px;
+    top: -1px;
+    left: 1px;
   }
   25% {
     top: 0;
-    left: 5px;    
+    left: 2px;    
   }
   37% {
-    top: 2px;
-    left: 2px;
+    top: 1px;
+    left: 1px;
   }
   50% {
-    top: 5px;
+    top: 2px;
     left: 0;    
   }
   62% {
-    top: 2px;
-    left: -2px;
+    top: 1px;
+    left: -1px;
   }
   75% {
     top: 0;
-    left: -5px;
-  }
-  87% {
-    top: -2px;
     left: -2px;
   }
+  87% {
+    top: -1px;
+    left: -1px;
+  }
   100% {
-    top: -5px;
+    top: -2px;
     left: 0;    
   }
 }
 
 @keyframes counterclockwise {
-  0% {
-    top: -5px;
-    right: 0;
+ 0% {
+    top: -2px;
+    left: 0;
   }
   12% {
-    top: -2px;
-    right: 2px;
+    top: -1px;
+    left: 1px;
   }
   25% {
     top: 0;
-    right: 5px;    
+    left: 2px;    
   }
   37% {
-    top: 2px;
-    right: 2px;
+    top: 1px;
+    left: 1px;
   }
   50% {
-    top: 5px;
-    right: 0;    
+    top: 2px;
+    left: 0;    
   }
   62% {
-    top: 2px;
-    right: -2px;
+    top: 1px;
+    left: -1px;
   }
   75% {
     top: 0;
-    right: -5px;
+    left: -2px;
   }
   87% {
-    top: -2px;
-    right: -2px;
+    top: -1px;
+    left: -1px;
   }
   100% {
-    top: -5px;
-    right: 0;    
+    top: -2px;
+    left: 0;    
   }
+}
 }

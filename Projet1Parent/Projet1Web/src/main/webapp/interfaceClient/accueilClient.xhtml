@@ -80,9 +80,8 @@
 			<div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 col-xl-2"></div>
 			<div class="inscription col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
 				
-				<a href="#sInscrire" data-toggle="modal" id="jeMInscris1" onclick="$('.formValidationModalClass1').modal('show')" ><b>Je m'inscris!</b></a>	
+				<a href="#sInscrire" data-toggle="modal" id="jeMInscris" onclick="$('.formValidationModalClass1').modal('show')" ><b>Je m'inscris!</b></a>	
 					
-			<div id="jeMInscris">test</div>		
 				
 					<b:modal styleClass="formValidationModalClass1" closable="false"
 						closeOnEscape="true">
@@ -150,7 +149,7 @@
 							<b:row>
 								<b:column>
 									<b:commandButton largeScreen="half" update="@form"
-										dismiss="modal" value="S'enregistrer" look="info"
+										dismiss="modal" value="S'enregistrer" look="warning"
 										action="#{mbAddAdherent.add()}" />
 									<b:button largeScreen="half" value="Annuler" 
 										dismiss="modal"  href="#navbar-brand"/>
