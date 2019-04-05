@@ -58,7 +58,7 @@
 						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);"
 						paginated="false">
 
-						<b:dataTableColumn custom-options="'width':'100px'">
+						<b:dataTableColumn custom-options="'width':'105px'">
 							<f:facet name="header">Image: </f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
 						</b:dataTableColumn>
@@ -70,11 +70,11 @@
 							<f:facet name="header">Categorie: </f:facet>
 							<h:outputLabel value="#{article.categorie.nomCategorie}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Quantité<br />vendue<br />en kg: </f:facet>
 							<h:outputLabel value="#{article.quantiteVendue}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Prix<br />au kilo: </f:facet>
 							<h:outputLabel value="#{article.prixKilo}" />
 						</b:dataTableColumn>
