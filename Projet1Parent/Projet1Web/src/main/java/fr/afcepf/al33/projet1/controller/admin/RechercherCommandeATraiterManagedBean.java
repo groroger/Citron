@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -109,37 +110,51 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
     }
 	
 	public boolean traiterCommande(Commande cde) {
-		System.err.println(this.getClass().getName() + ".traiterCommande(" + cde.getId() + ")");
-		
+		boolean result = true;
 		// traitement de la commande
-		// pour chaque article 
-		// prendre la quantité nécessaire ou disponible 
-		// dans les approvisionnements classés par ordre de date de péremption croissante
-		// jusqu'à satisfaire la quantité commandée
 		System.err.println("articles commandés : " + cde.getArticlesCommandes());
 		for (ArticleCommande article : cde.getArticlesCommandes()) {
-			System.err.println("article commandé : " + article.getQuantite() + " " + article.getArticle().getNom());
+			// pour chaque article 
+			int quantitePreparee = 0;
 			Stock stock = proxyStock.searchById(article.getArticle().getId());
-			System.err.println("stock : " + stock);
 			List<Approvisionnement> approvisionnements = proxyApprovisionnement.getAllApproByStock(stock);
-			System.err.println("approvisionnements : " + approvisionnements);
 			// tri par date de péremption
 			Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
 				  public int compare(Approvisionnement a1, Approvisionnement a2) {
 				      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
 				  }
 				});			
-			System.err.println("approvisionnements trié par date : " + approvisionnements);
 			for (Approvisionnement approvisionnement : approvisionnements) {
-				System.err.println("approvisionnement : " 
-							+ approvisionnement.getArticle().getNom() + " : "
-							+ approvisionnement.getQuantiteRestante() + " restants");
-			} 
+				// dans les approvisionnements classés par ordre de date de péremption croissante
+				// prendre la quantité nécessaire ou disponible 
+				int quantiteAPrendre = Integer.min(article.getQuantite() - quantitePreparee, approvisionnement.getQuantiteRestante());
+				// décrémenter le stock dans l'approvisionnement
+				approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteRestante() - quantiteAPrendre);
+				quantitePreparee += quantiteAPrendre;
+				// jusqu'à satisfaire la quantité commandée
+				if (quantitePreparee == article.getQuantite())
+					break;
+			}
+			// si quantité insuffisante emettre un message d'alerte pour l'administrateur
+			// création d'un message
+			if (quantitePreparee < article.getQuantite()) {
+				result = false;
+				// modification de la quantité commandée à la quantité disponible
+				article.setQuantite(quantitePreparee);
+				FacesMessage message = new FacesMessage("Pour la commande " + cde.getId() 
+													+ " seulement " + quantitePreparee
+													+ " sur " + article.getQuantite()
+													+ " " + article.getArticle().getNom());
+				message.setSeverity(FacesMessage.SEVERITY_ERROR);
+				// ajout à la liste des messages à afficher
+				FacesContext.getCurrentInstance().addMessage(null, message);
+			}			
+			// maj quantite physique et dispo_stock_internet dans Stock
+			stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() - quantitePreparee);
+			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() - quantitePreparee);
 		}
 		
-		// décrémenter le stock
-		// si quantité insuffisante emettre un message d'alerte pour l'administrateur
-		return true;
+		return result;
 	}
 		
 }
