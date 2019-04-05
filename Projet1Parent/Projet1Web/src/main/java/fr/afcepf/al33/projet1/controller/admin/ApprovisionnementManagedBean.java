@@ -73,6 +73,7 @@ public class ApprovisionnementManagedBean implements Serializable{
 	stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()+approvisionnement.getQuantiteCommandee());
 	approvisionnement.setStock(stock);
 	approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteCommandee());
+	
 	proxyApprovisionnement.addApprovisionnement(approvisionnement);
 	
 	

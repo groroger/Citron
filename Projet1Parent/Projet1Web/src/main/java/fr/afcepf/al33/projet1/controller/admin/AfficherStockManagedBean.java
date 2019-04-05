@@ -49,10 +49,16 @@ public class AfficherStockManagedBean implements Serializable{
 
 	@PostConstruct
 	public void init() {
-		stocks=proxyStock.getAll();
 		
 		categories =  proxyCategorie.getAll();
+		stocks=proxyStock.getAll();
+
 		
+	}
+	
+	@PostConstruct
+	public void initComboBox() {
+	categories =  proxyCategorie.getAll();
 	}
 	
 	public void onCategorieChange() {

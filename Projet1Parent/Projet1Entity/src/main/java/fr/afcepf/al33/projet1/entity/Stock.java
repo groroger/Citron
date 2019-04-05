@@ -40,7 +40,7 @@ public class Stock implements Serializable {
 	private int quantiteDispoPhysique;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="stock", cascade=CascadeType.ALL)
-	private List<Approvisionnement> approvisionnement;
+	private List<Approvisionnement> approvisionnements;
 
 	
 	//Constructeur vide
@@ -53,13 +53,13 @@ public class Stock implements Serializable {
 	//Constructeur chargé
 
 	public Stock(Integer id, Article article, int quantiteDispoSiteInternet, int quantiteDispoPhysique,
-			List<Approvisionnement> approvisionnement) {
+			List<Approvisionnement> approvisionnements) {
 		super();
 		this.id = id;
 		this.article = article;
 		this.quantiteDispoSiteInternet = quantiteDispoSiteInternet;
 		this.quantiteDispoPhysique = quantiteDispoPhysique;
-		this.approvisionnement = approvisionnement;
+		this.approvisionnements = approvisionnements;
 	}
 
 	
@@ -105,13 +105,13 @@ public class Stock implements Serializable {
 	}
 
 
-	public List<Approvisionnement> getApprovisionnement() {
-		return approvisionnement;
+	public List<Approvisionnement> getApprovisionnements() {
+		return approvisionnements;
 	}
 
 
-	public void setApprovisionnement(List<Approvisionnement> approvisionnement) {
-		this.approvisionnement = approvisionnement;
+	public void setApprovisionnements(List<Approvisionnement> approvisionnements) {
+		this.approvisionnements = approvisionnements;
 	}
 
 
