@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.entity.Stock;
 import fr.afcepf.al33.projet1.idao.ApprovisionnementIdao;
 
@@ -20,8 +19,7 @@ public class ApprovisionnementBusiness implements ApprovisionnementIBusiness{
 	private ApprovisionnementIdao proxyApprovisionnement;
 	
 	@Override
-	public Approvisionnement addApprovisionnement(Approvisionnement a) {
-		
+	public Approvisionnement addApprovisionnement(Approvisionnement a) {		
 		proxyApprovisionnement.ajouter(a);
 		return a;
 	}
@@ -35,20 +33,20 @@ public class ApprovisionnementBusiness implements ApprovisionnementIBusiness{
 
 	@Override
 	public Boolean delete(Approvisionnement approvisionnement) {
-		// TODO Auto-generated method stub
-		return null;
+		proxyApprovisionnement.supprimer(approvisionnement);
+		return true;
 	}
 
 	@Override
-	public Commande update(Approvisionnement approvisionnement) {
-		// TODO Auto-generated method stub
-		return null;
+	public Approvisionnement update(Approvisionnement approvisionnement) {
+		proxyApprovisionnement.modifier(approvisionnement);
+		return approvisionnement;
 	}
 
 	@Override
 	public Approvisionnement searchById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Approvisionnement approvisionnement = proxyApprovisionnement.rechercherParId(id);
+		return approvisionnement;
 	}
 	
 
