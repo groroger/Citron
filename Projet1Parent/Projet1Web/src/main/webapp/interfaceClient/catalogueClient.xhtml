@@ -58,15 +58,15 @@
 						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);"
 						paginated="false">
 
-						<b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'100px'">
 							<f:facet name="header">Image: </f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Articles: </f:facet>
 							<h:outputLabel value="#{article.nom}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Categorie: </f:facet>
 							<h:outputLabel value="#{article.categorie.nomCategorie}" />
 						</b:dataTableColumn>
@@ -79,7 +79,7 @@
 							<h:outputLabel value="#{article.prixKilo}" />
 						</b:dataTableColumn>
 
-						<b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'200px'">
 							<f:facet name="header">Ajouter Panier</f:facet>
 
 							<h:outputLabel value="#{article.quantiteSaisie}" />
