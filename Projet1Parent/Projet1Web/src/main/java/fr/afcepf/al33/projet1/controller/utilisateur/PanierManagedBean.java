@@ -47,7 +47,7 @@ public class PanierManagedBean implements Serializable{
 		Iterator<ArticleCommande> ite = articlesCommandes.iterator();
 		while(ite.hasNext()) {
 			ArticleCommande ac = ite.next();
-			prixTotal += ac.getArticle().getQuantiteSaisie()*ac.getArticle().getPrix();
+			prixTotal += ac.getQuantite()*ac.getArticle().getPrix();
 			}
 		return prixTotal;
   		}

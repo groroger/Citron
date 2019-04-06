@@ -96,7 +96,10 @@ public class CatalogueClientManagedBean implements Serializable{
 			if (isPresent == false) {
 				articlesCommandes.add(articleCommande);
 			}
+		
 		}
+		
+		article.setQuantiteSaisie(0);
 		
 		System.out.println("Art Quantite "+articleCommande.getQuantite());
 		

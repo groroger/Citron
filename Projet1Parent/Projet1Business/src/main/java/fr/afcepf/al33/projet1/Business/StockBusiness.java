@@ -10,7 +10,6 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.Article;
 import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.entity.Stock;
 import fr.afcepf.al33.projet1.idao.StockIdao;
