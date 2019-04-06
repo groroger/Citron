@@ -131,7 +131,8 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 			// tri par date de péremption de la plus récente à la plus ancienne
 			Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
 				  public int compare(Approvisionnement a1, Approvisionnement a2) {
-				      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
+					  // a2 et a1 en ordre inverse pour tri descendant
+				      return a2.getDateApprovisionnement().compareTo(a1.getDateApprovisionnement());
 				  }
 				});			
 			for (Approvisionnement approvisionnement : approvisionnements) {
