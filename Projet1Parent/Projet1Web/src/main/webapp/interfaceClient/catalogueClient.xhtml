@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="content">
@@ -62,14 +63,23 @@
 						border="true" 
 						info="false"
 						page-length="20" 
-						selectionMode="single" 
+						select="false"
+						
 						responsive="true"
-						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);"
+	
 						paginated="false">
 
 						<b:dataTableColumn custom-options="'width':'105px'">
 							<f:facet name="header">Image</f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header"> Fiche produit</f:facet>
+							<b:commandButton value=""
+								look="primary"
+								action="#{mbCatalogueClient.afficherFicheProduit(article)}">
+								<b:image value="../pics/icones/searchWhite32.png"/>	
+							</b:commandButton>
 						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Articles</f:facet>
@@ -80,27 +90,24 @@
 							<h:outputLabel value="#{article.quantiteVendue}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'150px'">
-							<f:facet name="header">Prix<br />au kilo: </f:facet>
-							<h:outputLabel value="#{article.prixKilo}" />
+							<f:facet name="header">Prix au kilo: </f:facet>
+							<h:outputLabel value="#{article.prixKilo} €" />
 						</b:dataTableColumn>
-
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{article.prix} €" />
+						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'200px'">
 							<f:facet name="header">Ajouter Panier</f:facet>
 
-							<h:outputLabel value="#{article.quantiteSaisie}" />
-							<br />
-							<b:buttonGroup>
-								<b:commandButton id="btn_minus" value="" icon="minus-sign"
-									look="primary"
-									action="#{mbCatalogueClient.minusQuantiteSaisie(article)}" />
+							<p:spinner id="minMax" value="#{article.quantiteSaisie}" min="0" max="100" size="4" />
+							
+							<b:commandButton id="btn_ajouter" value="Ajouter" look="primary"
+									action="#{mbCatalogueClient.ajouterArticle(article)}">
+									
+								
+							</b:commandButton>
 
-								<b:commandButton id="btn_ajouter" value="Ajouter" look="primary"
-									action="#{mbCatalogueClient.ajouterArticle(article)}" />
-
-								<b:commandButton id="btn_plus" value="" icon="plus-sign"
-									look="primary"
-									action="#{mbCatalogueClient.plusQuantiteSaisie(article)}" />
-							</b:buttonGroup>
 						</b:dataTableColumn>
 					</b:dataTable>
 				</h:form>

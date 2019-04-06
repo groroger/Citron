@@ -1,3 +1,6 @@
+/*************************
+		GENERAL
+*************************/
 h3
 {
 	color: rgb(0, 136, 143); 
@@ -7,6 +10,12 @@ h3
 	margin-bottom:5%;
 }
 
+/*** ACCUEIL ADMIN ***/
+
+#infoStock{
+	visibility:hidden;
+}
+
 	/*** DATA TABLE ***/
 	
 .table
@@ -14,9 +23,6 @@ h3
 	border-radius: 25px !important;
 	border: 2px solid #FFF726 !important;
 }
-
-
-
 .table td, .table th
 {
 	text-align: center !important;
@@ -24,16 +30,12 @@ h3
 
 }
 
-
-
 /* header du datatable*/
 
 .sorting
 {
 	background-color: rgba(150, 192, 1 , 0.7) !important;
 	font-size: 16px !important;
-	
-	
 }
 
 /* images à l'intérieur d'une row du datatable*/
@@ -42,7 +44,6 @@ h3
 {
 	border: 2px solid #FFF726 !important;
 	border-radius: 35px !important;
-
 }
 
 /* lignes impaires du datatable */
@@ -51,7 +52,6 @@ table tr:nth-child(odd) td
 {
            background-color: rgba(150, 192, 1 , 0.1) !important;
 }
-
 
 /* lignes paires du datatable */
 
@@ -131,11 +131,7 @@ color: #ffffff!important;
 border-bottom: 1px solid #FFF726 !important ;
 }
 
-/****************************************
-              FOOTER                  
-****************************************/
-
-
+/*** FOOTER  ***/
 
 footer
 {
@@ -205,4 +201,175 @@ footer
 #lien3
 {
 	color: white;
+}
+
+/*************************
+	FICHE ARTICLE
+*************************/
+
+
+/* Basic Styling */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+ 
+.container1 {
+  max-width: 1200px;
+  margin: 22px  auto;
+  padding: 15px;
+  display: flex;
+}
+
+/* Columns */
+.left-column {
+  width: 65%;
+  position: relative;
+}
+ 
+.right-column {
+  width: 35%;
+  margin-top: 120px;
+}
+
+/* Left Column */
+.left-column graphicImage {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+ 
+.left-column graphicImage.active {
+  opacity: 1;
+}
+
+/* Product Description */
+.product-description {
+  border-bottom: 1px solid #E1E8EE;
+  margin-bottom: 20px;
+}
+.product-description .span {
+  font-size: 12px;
+  color: #358ED7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#nomCategorie
+{
+	margin-bottom: 20px;
+}
+.product-description .h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -2px;
+}
+.product-description .p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+}
+#descriptif
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* Product Color */
+.product-color {
+ 	margin-top: 50px;
+ 	font-size: 20px;
+ 	font-weight: 100;
+ 	letter-spacing: 0px;
+}
+ 
+.color-choose div {
+  display: inline-block;
+}
+ 
+
+
+/* Cable Configuration */
+.cable-choose {
+  margin-bottom: 20px;
+}
+ 
+.cable-choose button {
+  border: 2px solid #E1E8EE;
+  border-radius: 6px;
+  padding: 13px 20px;
+  font-size: 14px;
+  color: #5E6977;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all .5s;
+}
+ 
+.cable-choose button:hover,
+.cable-choose button:active,
+.cable-choose button:focus {
+  border: 2px solid #86939E;
+  outline: none;
+}
+ 
+
+/* Product Price */
+.product-price {
+  display: flex;
+  align-items: center;
+}
+ 
+.product-price .span {
+  font-size: 26px;
+  font-weight: 300;
+  color: #43474D;
+  margin-right: 20px;
+}
+ 
+.cart-btn {
+  display: inline-block;
+  background-color: #7DC855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 12px 30px;
+  transition: all .5s;
+}
+.cart-btn:hover {
+  background-color: #64af3d;
+}
+
+/* Responsive */
+@media (max-width: 940px) {
+  .container1 {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+ 
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+ 
+  .left-column graphicImage {
+    width: 300px;
+    right: 0;
+    top: -65px;
+    left: initial;
+  }
+}
+ 
+@media (max-width: 535px) {
+  .left-column graphicImage {
+    width: 220px;
+    top: -85px;
+  }
 }

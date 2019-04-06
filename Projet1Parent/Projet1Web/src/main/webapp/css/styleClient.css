@@ -54,6 +54,16 @@ h3
 	
 }
 
+
+
+
+.table td > button:first-child, .table th > button:first-child
+{
+	
+	border-radius: 100px !important;
+
+}
+
 /* images à l'intérieur d'une row du datatable*/
 
 .table td > img, .table th > img

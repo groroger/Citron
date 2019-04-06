@@ -5,159 +5,72 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<h:head>
-<link rel="shortcut icon" href="#{request.contextPath}/pics/website/citronLogo.ico"/>
-<link rel="stylesheet" type="text/css" 
-		href="#{request.contextPath}/css/styleClient.css" />
-<script src="#{request.contextPath}/js/versLeHaut.js"></script>
-<script src="#{request.contextPath}/js/b.js"></script>
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
 
-</h:head>
-<h:body>
+	<ui:define name="title">Fiche produit</ui:define>
 
-<h:form>
+	<ui:define name="content">
+
+	<h:head>
 	
-	<b:navBar id="navbar-brand"
-			  brand=""
-			  brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
-			  brandHref="/Projet1Web/interfaceClient/accueilClient.xhtml"
-			  brand-style="height:100%;padding:8px; margin:0"
-			  inverse="true"
-			  fluid="true" 
-			  sticky="false" 
-			  style="color:red;">
-			  
-	  
+	<f:metadata>
+				<f:event listener="#{mbFicheArticleAdmin.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 
-		<b:navbarLinks class="navbarLinks" pull="right">
-			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
-					onclick="$('.formValidationModalClass').modal('show')">
-					<f:param name="blockui.disabled" value="true"/>
-					<b:modal styleClass="formValidationModalClass" closable="true"
-						closeOnEscape="true">
-						<b:form id="form">
-							<h4>Déjà adhérent :</h4>
+			<title>Fiche produit</title>
 
-							<b:row>
-								<b:column>
-									<b:inputText placeholder="Identifiant"
-										value="#{mbConnectionUtilisateur.login}" class="form-control"
-										id="exampleDropdownFormEmail1" required="false"
-										requiredMessage="Entrez votre identifiant" />
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
+		</h:head>
 
-									<b:inputSecret placeholder="Mot de passe"
-										value="#{mbConnectionUtilisateur.password}" class="form-control"
-										id="exampleDropdownFormPassword1" required="true"
-										requiredMessage="Entrez votre mot de passel" />
-										<h:message for="exampleDropdownFormPassword1"/>
+		<h:body>
 
-									<b:button look="link" value="Mot de passe oublié"
-										large-screen="full-width" />
-								</b:column>
-							</b:row>
-
-							<b:row>
-								<b:column>
-									<b:commandButton largeScreen="half" update="@form"
-										dismiss="modal" value="Me connecter" look="warning"
-										action="#{mbConnectionUtilisateur.sIdentifier()}" />
-									<b:button largeScreen="half" value="Annuler" 
-										dismiss="modal"  href="#navbar-brand"/>
-								</b:column>
-							</b:row>
-
-							<b:fetchBeanInfos />
-							<b:messages />
-						</b:form>
-					</b:modal>
-				</b:navLink>
-
-			<b:navLink class="btn_magasin" value="#{clientConnecte.prenom} #{clientConnecte.nom}" rendered="#{not empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
-
-			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
-				 action="#{mbConnectionUtilisateur.seDeconnecter()}"/>
-
-			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"/>
-
-			<b:navLink class="btn_magasin" value="Mon compte" rendered="#{not empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/updateCompteClient.xhtml"/>
-
-			<b:navLink class="btn_magasin" value="Notre Magasin"
-				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
-			<b:navLink class="btn_magasin" value="Rechercher Produits"
-				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
-				
-				
-				
-	
-		</b:navbarLinks>
-
-	</b:navBar>
-
-</h:form>
-
-	<div id="centre">
-		<ui:insert name="content"></ui:insert>
-	</div>
-
-<!-- CAROUSEL -->
-
-<b:carousel id="carousel">
-					<b:carouselItem>
-						<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
-							alt="jolisFruits5" />
-					</b:carouselItem>
-					<b:carouselItem>
-						<img src="#{request.contextPath}/pics/carousel/jolisFruits5.jpg"
-							alt="jolisFruits2" />
-					</b:carouselItem>
-					<b:carouselItem>
-						<img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg"
-							alt="jolisFruits6" />
-					</b:carouselItem>
-				</b:carousel>
-
-<!-- NOS PRODUCTEURS -->
-
-<div class="container">
-  <div class="card">
-     <div class="card__image-container">
-       <img class="card__image" src="../pics/articlesImages/citron125.jpg"/>
+			<b:container class="container">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+   <h:graphicImage value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+    	<b:row id="nomCategorie">
+      		<h:outputText class="span" value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"/>
+      	</b:row>
+      	<b:row>
+       		<h:outputText class="h1" value="#{mbFicheArticleAdmin.article.nom}"/>
+       	</b:row>
+       	<b:row id="descriptif">
+       		<h:outputText class="p" value="#{mbFicheArticleAdmin.article.descriptif}"/>
+		</b:row>
     </div>
-      
-      <svg class="card__svg" viewBox="0 0 800 500">
-
-        <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
-        <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
-      </svg>
-    
-     <div class="card__content">
-       <h1 class="card__title">Lorem ipsum</h1>
-     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolor praesentium at quod autem omnis, amet eaque unde perspiciatis adipisci possimus quam facere illo et quisquam quia earum nesciunt porro.</p>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+ 
+      <!-- Product Color -->
+		<div class="product-color">
+	      	<b:row>
+	      		<h:outputText class="span" value="Prix de vente"/>
+	      	</b:row>  
+		</div>  
+ 	</div>
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+		<b:row>
+			<h:outputText class="span" value="#{mbFicheArticleAdmin.article.prix} €" />
+		</b:row>  
     </div>
   </div>
-</div>
+</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
 
-
-<!-- FOOTER -->
-
-
-	<footer id="basDePage"> 
-	<div id="wrap" class="wrapper">
-		<h2 id="citron">CITRON™</h2>
-		<p id="copyright">Copyright @ 2019. Tous droits réservés</p>
-		<div class="basBasDePage">
-			<a href="#" id="lien1">Qui sommes-nous ?</a> <a href="#" id="lien2">Conditions
-				Générales d'Utilisation</a> <a href="#" id="lien3">Politique de
-				Protection des Données Personnelles</a>
-		</div>
-	</div>
-	</footer>
-
-
-
-	
-</h:body>
 </html>

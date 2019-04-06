@@ -23,18 +23,18 @@ public class AccueilAdminManagedBean implements Serializable {
 	private List <Stock> stockQuantity;
 	private List <Stock> stockPeromption;
 	
-//	private int stockTotal;
-//	private int stockVirtuel;
+	private String stockTotal;
+	private String stockVirtuel;
 
 	@EJB
 	private StockIBusiness proxyStock;
 	
 	@PostConstruct
 	public void init() {
-//		setStockQuantity(proxyStock.getByQuantity());
-//		setStockPeromption(proxyStock.getByPeromption());
-//		setStockTotal(proxyStock.getTotalQuantity());
-//		setStockVirtuel(proxyStock.getVirtualQuantity());
+		setStockQuantity(proxyStock.getByQuantity());
+		setStockPeromption(proxyStock.getByPeromption());
+		setStockTotal(proxyStock.getTotalQuantity());
+		setStockVirtuel(proxyStock.getVirtualQuantity());
 		
 	}
 
@@ -54,20 +54,20 @@ public class AccueilAdminManagedBean implements Serializable {
 		this.stockPeromption = stockPeromption;
 	}
 
-//	public int getStockTotal() {
-//		return stockTotal;
-//	}
-//
-//	public void setStockTotal(int stockTotal) {
-//		this.stockTotal = stockTotal;
-//	}
-//
-//	public int getStockVirtuel() {
-//		return stockVirtuel;
-//	}
-//
-//	public void setStockVirtuel(int stockVirtuel) {
-//		this.stockVirtuel = stockVirtuel;
-//	}
+	public String getStockTotal() {
+		return stockTotal;
+	}
+
+	public void setStockTotal(String stockTotal) {
+		this.stockTotal = stockTotal;
+	}
+
+	public String getStockVirtuel() {
+		return stockVirtuel;
+	}
+
+	public void setStockVirtuel(String stockVirtuel) {
+		this.stockVirtuel = stockVirtuel;
+	}
 	
 }
