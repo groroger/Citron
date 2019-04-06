@@ -7,18 +7,34 @@ h3
 
 	/*** DATA TABLE ***/
 	
-
-
-th.sorting {
-	text-align: center;
-	vertical-align: middle;
+.table
+{
+	border-radius: 25px !important;
+	border: 2px solid #FFF726 !important;
 }
+
+
 
 .table td, .table th
 {
 	text-align: center !important;
 	vertical-align: middle !important;
+
 }
+
+
+
+/* header du datatable*/
+
+.sorting
+{
+	background-color: rgba(150, 192, 1 , 0.7) !important;
+	font-size: 16px !important;
+	
+	
+}
+
+/* images à l'intérieur d'une row du datatable*/
 
 .table td > img, .table th > img
 {
@@ -27,21 +43,50 @@ th.sorting {
 
 }
 
-.sorting
-{
-	background-color: rgba(150, 192, 1 , 0.7) !important;
-}
-
+/* lignes impaires du datatable */
 
 table tr:nth-child(odd) td
 {
            background-color: rgba(150, 192, 1 , 0.1) !important;
 }
+
+
+/* lignes paires du datatable */
+
 table tr:nth-child(even) td
 {
            background-color: rgba(150, 192, 1 , 0.3) !important;
 }
 
+
+/* coin haut-gauche arrondi du datatable */
+
+.sorting:first-child {
+	border-radius : 25px 0px 0px 0px !important;
+}
+
+/* coin haut-droit arrondi du datatable */
+
+.sorting:last-child {
+	border-radius : 0px 25px 0px 0px !important;
+}
+
+
+/* coin bas-gauche arrondi du datatable */
+
+table tr:last-child td:first-child
+{
+
+	border-radius : 0px 0px 0px 25px !important;
+}
+
+/* coin bas-droit arrondi du datatable */
+
+table tr:last-child td:last-child
+{
+
+	border-radius : 0px 0px 25px 0px !important;
+}
 
 /**************************
 		MASTERPAGE
