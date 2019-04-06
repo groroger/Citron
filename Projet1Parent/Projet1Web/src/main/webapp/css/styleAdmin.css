@@ -7,10 +7,6 @@ h3
 
 	/*** DATA TABLE ***/
 	
-.sorting
-{
-	background-color: rgba(150, 192, 1 , 0.8) !important;
-}
 
 
 th.sorting {
@@ -24,8 +20,20 @@ th.sorting {
 	vertical-align: middle !important;
 }
 
+.sorting
+{
+	background-color: rgba(150, 192, 1 , 0.7) !important;
+}
 
 
+table tr:nth-child(odd) td
+{
+           background-color: rgba(150, 192, 1 , 0.1) !important;
+}
+table tr:nth-child(even) td
+{
+           background-color: rgba(150, 192, 1 , 0.3) !important;
+}
 
 
 /**************************

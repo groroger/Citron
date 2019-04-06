@@ -24,10 +24,7 @@
 
 				<b:container layout="fluid">
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 							<h3>Panier</h3>
-							<br />
-						</b:column>
 					</b:row>
 
 
@@ -47,16 +44,16 @@
 
 
 						<b:dataTableColumn>
-							<f:facet name="header">Image: </f:facet>
+							<f:facet name="header">Image</f:facet>
 							<h:graphicImage
 								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Articles: </f:facet>
+							<f:facet name="header">Articles</f:facet>
 							<h:outputLabel value="#{articleCommande.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Quantite: </f:facet>
+							<f:facet name="header">Quantite</f:facet>
 							<h:outputLabel value="#{articleCommande.article.quantiteSaisie}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>

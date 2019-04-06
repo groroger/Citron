@@ -69,7 +69,7 @@
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Prix</f:facet>
-							<h:outputLabel value="#{approvisionnement.prix}" />
+							<h:outputLabel value="#{approvisionnement.prix} €" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Date de<br />péremption</f:facet>
@@ -78,7 +78,7 @@
 							</h:outputLabel>
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Quantité<br />restante</f:facet>
+							<f:facet name="header">Quantité<br />disponible à la vente<br />ou périmée</f:facet>
 							<h:outputLabel value="#{approvisionnement.quantiteRestante}" />
 						</b:dataTableColumn>
 					</b:dataTable>

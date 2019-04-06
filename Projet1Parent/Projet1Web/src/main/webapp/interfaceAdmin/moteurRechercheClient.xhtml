@@ -26,12 +26,8 @@
 
 				<b:container layout="fluid">
 					<b:row>
-
 							<h3>Liste des clients:</h3>
-
 					</b:row>
-
-
 
 					<b:dataTable 
 						value="#{mbFindClient.clients}" 
@@ -45,9 +41,7 @@
 						selectionMode="single" 
 						responsive="true"
 						onselect="ajax:mbFindClient.onSelect(cl);"
-						paginated="false"
-						row-style-class="color: #abc225;"
-						>
+						paginated="false">
 
 						<b:dataTableColumn>
 							<f:facet name="header">Client</f:facet>
@@ -76,7 +70,6 @@
 					</b:dataTable>
 				</b:container>
 			</h:form>
-
 		</h:body>
 	</ui:define>
 </ui:composition>
