@@ -70,16 +70,13 @@
 				</b:navLink>
 
 			<b:navLink class="btn_magasin" value="#{clientConnecte.prenom} #{clientConnecte.nom}" rendered="#{not empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/connection.xhtml"/>
+				href="/Projet1Web/interfaceClient/monCompte.xhtml"/>
 
 			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
 				 action="#{mbConnectionUtilisateur.seDeconnecter()}"/>
 
 			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
 				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"/>
-
-			<b:navLink class="btn_magasin" value="Mon compte" rendered="#{not empty clientConnecte}"
-				href="/Projet1Web/interfaceConnection/updateCompteClient.xhtml"/>
 
 			<b:navLink class="btn_magasin" value="Notre Magasin"
 				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>

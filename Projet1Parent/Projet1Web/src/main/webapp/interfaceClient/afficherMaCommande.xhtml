@@ -5,32 +5,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
-	<ui:define name="title">Détail de la commande</ui:define>
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Détail de ma commande</ui:define>
 
 	<ui:define name="content">
 
 		<h:head>
 
-			<title>Détail de la commande</title>
+			<title>Détail de ma commande</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
-			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 		<h:body>
 		
 
 
-			<h:form id="formAfficherApprovisionnement">
+			<h:form id="formAfficherMaCommande">
 				<b:container layout="fluid">
 
 					<b:row>
 
-							<h3>Détail de la commande:</h3>
+							<h3>Détail de ma commande</h3>
 					</b:row>
 
 					<b:dataTable
-						value="#{mbAfficherCommande.articlesCommandes}"
+						value="#{mbAfficherMaCommande.articlesCommandes}"
 						var="articleCommande" 
 						pdf="false" 
 						print="false" 

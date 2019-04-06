@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.controller.admin;
+package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ import fr.afcepf.al33.projet1.entity.Commande;
 
 
 
-@ManagedBean(name="mbFicheClient")
+@ManagedBean(name="mbMonCompte")
 @SessionScoped
-public class FicheClientManagedBean implements Serializable{
+public class MonCompteManagedBean implements Serializable{
 
 	/**
 	 * 
@@ -32,24 +32,24 @@ public class FicheClientManagedBean implements Serializable{
 	private ClientIBusiness proxyClient;
 	
 	
-	@ManagedProperty(value="#{mbFindClient.foundClient}")
+	@ManagedProperty(value="#{mbConnectionUtilisateur.clientConnecte}")
 	private Client client;
 	
 	List<Commande> commandes= new ArrayList<Commande>();
 	
-	private Commande selectedCommande;
+	private Commande selectedCommandePerso;
 	
 	public void onSelect(Commande commande) {
 		
-		selectedCommande=commande;
+		selectedCommandePerso=commande;
 	  
 		System.out.println(commande.getId());
 		
 		
 		 FacesContext facesContext = FacesContext.getCurrentInstance();
 		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-		 session.setAttribute("selectedCommande", selectedCommande);
-		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherCommande.xhtml?faces-redirect=true");
+		 session.setAttribute("selectedCommandePerso", selectedCommandePerso);
+		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/afficherMaCommande.xhtml?faces-redirect=true");
 	}
 
 	
@@ -62,7 +62,7 @@ public class FicheClientManagedBean implements Serializable{
 
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-		client = (Client) session.getAttribute("foundClient");
+		client = (Client) session.getAttribute("clientConnecte");
 		
 		commandes= client.getCommandes();
 		
@@ -106,13 +106,21 @@ public class FicheClientManagedBean implements Serializable{
 	}
 
 
-	public Commande getSelectedCommande() {
-		return selectedCommande;
+
+
+
+	public Commande getSelectedCommandePerso() {
+		return selectedCommandePerso;
 	}
 
 
-	public void setSelectedCommande(Commande selectedCommande) {
-		this.selectedCommande = selectedCommande;
+
+
+
+	public void setSelectedCommandePerso(Commande selectedCommandePerso) {
+		this.selectedCommandePerso = selectedCommandePerso;
 	}
+
+
 	
 }

@@ -6,14 +6,14 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 
-<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
-	<ui:define name="title">Fiche du client</ui:define>
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Mon compte</ui:define>
 
 	<ui:define name="content">
 		<h:head>
-			<title>Fiche du client</title>
+			<title>Mon compte</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
-			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 		<h:body>
@@ -21,13 +21,13 @@
 		<b:container>
 
 	<f:metadata>
-		<f:event listener="#{mbFicheClient.init()}" type="preRenderView"></f:event>
+		<f:event listener="#{mbMonCompte.init()}" type="preRenderView"></f:event>
 	</f:metadata>
 
-			<b:form id="formFicheClient">
+			<b:form id="formMonCompte">
 				<b:container layout="fluid">
 					<b:row>
-								<h3> Informations  du client:</h3>
+								<h3> Mon compte</h3>
 					</b:row>
 					<br />
 					<br />
@@ -35,7 +35,7 @@
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 								<b:inputText
-									value="#{mbFicheClient.client.nom} #{mbFicheClient.client.prenom}"
+									value="#{mbMonCompte.client.nom} #{mbMonCompte.client.prenom} "
 									disabled="true" fieldSize="lg">
 									<f:facet name="prepend">
 										<b:icon name="user" />
@@ -45,7 +45,7 @@
 						</b:row>
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbFicheClient.client.dateDeNaissance}"
+								<b:inputText value="#{mbMonCompte.client.dateDeNaissance}"
 									disabled="true" fieldSize="lg">
 									<f:convertDateTime pattern="dd/MM/yyyy" />
 									<f:facet name="prepend">
@@ -56,7 +56,7 @@
 						</b:row>
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbFicheClient.client.complementAdresse}"
+								<b:inputText value="#{mbMonCompte.client.complementAdresse}"
 									disabled="true" fieldSize="lg">
 									<f:facet name="prepend">
 										<b:icon name="map-marker" />
@@ -66,7 +66,7 @@
 						</b:row>
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbFicheClient.client.adresse}"
+								<b:inputText value="#{mbMonCompte.client.adresse}"
 									disabled="true" fieldSize="lg">
 									<f:facet name="prepend">
 										<b:icon name="map-marker" />
@@ -77,7 +77,7 @@
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 								<b:inputText
-									value="#{mbFicheClient.client.ville.codePostal} #{mbFicheClient.client.ville.nom}"
+									value="#{mbMonCompte.client.ville.codePostal} #{mbMonCompte.client.ville.nom}"
 									disabled="true" fieldSize="lg">
 									<f:facet name="prepend">
 										<b:icon name="map-marker" />
@@ -87,7 +87,7 @@
 						</b:row>
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbFicheClient.client.email}"
+								<b:inputText value="#{mbMonCompte.client.email}"
 									disabled="true" fieldSize="lg">
 									<f:facet name="prepend">
 										<h:outputText value="@" />
@@ -98,7 +98,7 @@
 
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbFicheClient.client.numeroFixe}"
+								<b:inputText value="#{mbMonCompte.client.numeroFixe}"
 									disabled="true" fieldSize="lg">
 									<f:facet name="prepend">
 										<b:icon name="phone-alt" />
@@ -109,7 +109,7 @@
 
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<b:inputText value="#{mbFicheClient.client.numeroPort}"
+								<b:inputText value="#{mbMonCompte.client.numeroPort}"
 									disabled="true" fieldSize="lg">
 									<f:facet name="prepend">
 										<b:icon name="phone" />
@@ -120,25 +120,30 @@
 					</b:panelGrid>
 					<b:panelGrid columns="2">
 						<b:button
-							href="/Projet1Web/interfaceAdmin/updateClient.xhtml"
+							href="/Projet1Web/interfaceClient/updateMonCompte.xhtml"
 							value="Mettre à jour" look="primary" />
 					</b:panelGrid>
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3
-								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Commandes
-								du client:</h3>
+							<h3>Mes commandes</h3>
 						</b:column>
 					</b:row>
 					<br />
 					<br />
 					<b:dataTable
-						value="#{mbFicheClient.commandes}"
-						var="commande" pdf="false" print="false" excel="false"
-						border="true" info="false" page-length="10" selectionMode="single"
-						tiny-screen="12" medium-screen="12"  large-screen="12"
+						value="#{mbMonCompte.commandes}"
+						var="commande"
+						pdf="false"
+						print="false"
+						excel="false"
+						border="true"
+						info="false"
+						page-length="00"
+						selectionMode="single"
 						responsive="true" 
-						onselect="ajax:mbFicheClient.onSelect(commande);">
+						onselect="ajax:mbMonCompte.onSelect(commande);"
+						paginated="false"
+						searching="false">
 
 
 						<b:dataTableColumn>
