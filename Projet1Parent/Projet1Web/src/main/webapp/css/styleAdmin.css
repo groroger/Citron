@@ -20,6 +20,13 @@ th.sorting {
 	vertical-align: middle !important;
 }
 
+.table td > img, .table th > img
+{
+	border: 2px solid #FFF726 !important;
+	border-radius: 35px !important;
+
+}
+
 .sorting
 {
 	background-color: rgba(150, 192, 1 , 0.7) !important;
