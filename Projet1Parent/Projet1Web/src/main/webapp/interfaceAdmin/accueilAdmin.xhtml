@@ -19,13 +19,18 @@
     
 			
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>	
+						
+						
 						<script type="text/javascript">
+						
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
+      var virtuel = document.getElementById("stockVirtuel").innerHTML;
+	  var total = document.getElementById("stockTotal").innerHTML;
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Stocks', 'reste disponible'],
-          ['Stocks Virtuel',   75 ],
+          ['Stocks Virtuel', 75],
           ['Stocks Physiques', 25 ]
         ]);
 
@@ -51,7 +56,12 @@
 
 Ici c'est côté admin
 
-<div id="donutchart" style="width: 500px; height: 500px;"></div>
+<div id="infoStock">
+	<h:outputText id="sockTotal" value="#{mbAccueilAdmin.stockTotal}" />
+	<h:outputText id="stockVirtuel" value="#{mbAccueilAdmin.stockVirtuel}" />
+</div>
+
+<div id="donutchart" style="width: 900px; height: 500px;"></div>
 
 
 

@@ -68,7 +68,12 @@
 						responsive="true"
 	
 						paginated="false">
-
+						<b:dataTableColumn>
+							<f:facet name="header"> Fiche produit</f:facet>
+							<b:commandButton value="Fiche produit"
+								look="primary"
+								action="#{mbCatalogueClient.afficherFicheProduit(article)}" />
+						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'105px'">
 							<f:facet name="header">Image</f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />

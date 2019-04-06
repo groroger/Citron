@@ -94,12 +94,12 @@ public class StockBusiness implements StockIBusiness{
 	}
 
 	@Override
-	public int getTotalQuantity() {
+	public String getTotalQuantity() {
 		return proxyStockIDao.getTotalQuantity();
 	}
 
 	@Override
-	public int getVirtualQuantity() {
+	public String getVirtualQuantity() {
 		return proxyStockIDao.getVirtualQuantity();
 	}
 }
