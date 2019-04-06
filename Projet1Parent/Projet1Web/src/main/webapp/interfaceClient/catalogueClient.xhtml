@@ -91,9 +91,12 @@
 						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Prix au kilo: </f:facet>
-							<h:outputLabel value="#{article.prixKilo}" />
+							<h:outputLabel value="#{article.prixKilo} €" />
 						</b:dataTableColumn>
-
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{article.prix} €" />
+						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'200px'">
 							<f:facet name="header">Ajouter Panier</f:facet>
 
