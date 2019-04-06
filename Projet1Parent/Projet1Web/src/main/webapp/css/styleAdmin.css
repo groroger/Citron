@@ -3,6 +3,8 @@ h3
 	color: rgb(0, 136, 143); 
 	font-weight: bold; 
 	text-align: center;
+	margin-top:5%;
+	margin-bottom:5%;
 }
 
 	/*** DATA TABLE ***/
@@ -87,6 +89,8 @@ table tr:last-child td:last-child
 
 	border-radius : 0px 0px 25px 0px !important;
 }
+
+
 
 /**************************
 		MASTERPAGE
