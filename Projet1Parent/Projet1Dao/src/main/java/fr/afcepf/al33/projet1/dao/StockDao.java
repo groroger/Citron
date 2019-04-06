@@ -1,6 +1,6 @@
 package fr.afcepf.al33.projet1.dao;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,34 +49,18 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 	@Override
 	public List<Stock> getByQuantity(){
 		List<Stock>stocks = new ArrayList<Stock>();
-		String REQ_GETALL = "SELECT stock from Stock stock ORDER BY stock DESC";
+		String REQ_GETALL = "SELECT stock from Stock stock ORDER BY stock";
 		Query queryJPQL = em.createQuery(REQ_GETALL);
 		stocks = queryJPQL.getResultList();
 		return stocks;
-	}
-	
-	public int getTotalQuantity() {
-		int result;
-		String REQ_GETALL = "SELECT SUM(quantiteDispoPhysique) from Stock stock";
-		Query queryJPQL = em.createQuery(REQ_GETALL);
-		result = (int) queryJPQL.getSingleResult();
-		return result;
-	}
-	
-	public int getVirtualQuantity() {
-		int result;
-		String REQ_GETALL = "SELECT SUM(quantiteDispoSiteInternet) from Stock stock";
-		Query queryJPQL = em.createQuery(REQ_GETALL);
-		result = (int) queryJPQL.getSingleResult();
-		return result;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Stock> getByPeromption() {
 		List<Stock> stocksParCategorie=null;
-		LocalDate dateButoire;
-		dateButoire = LocalDate.now().minusDays(3);
+		LocalDateTime dateButoire;
+		dateButoire = LocalDateTime.now().minusDays(4);
 		String REQ= "SELECT s from Stock s JOIN s.approvisionnement a WHERE a.datePeromption >= :date";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("date", dateButoire);
@@ -85,5 +69,23 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 		return stocksParCategorie ;
 		
 	}
+	
+	public String getTotalQuantity() {
+		String result;
+		String REQ_GETALL = "SELECT SUM(quantiteDispoPhysique) from Stock stock";
+		Query queryJPQL = em.createQuery(REQ_GETALL);
+		result = queryJPQL.getSingleResult().toString();
+		return result;
+	}
+	
+	public String getVirtualQuantity() {
+		String result;
+		String REQ_GETALL = "SELECT SUM(quantiteDispoSiteInternet) from Stock stock";
+		Query queryJPQL = em.createQuery(REQ_GETALL);
+		result = queryJPQL.getSingleResult().toString();
+		return result;
+	}
+	
+	
 
 }
