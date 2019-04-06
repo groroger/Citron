@@ -19,19 +19,17 @@
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 		<h:body>
-			<b:container>
+
 			<b:form id="formAjoutFournisseur">
 				<b:container layout="fluid">
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+						<b:column>
 							<h3	>Ajouter un fournisseur:</h3>
 						</b:column>
 					</b:row>
 			
-
-					<b:panelGrid columns="1">
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText value="#{mbAjoutFournisseur.fournisseur.nom}"
 									fieldSize="lg">
 									<f:facet name="prepend">
@@ -41,7 +39,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText
 									value="#{mbAjoutFournisseur.fournisseur.complementAdresse}"
 									fieldSize="lg">
@@ -52,7 +50,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText value="#{mbAjoutFournisseur.fournisseur.adresse}"
 									fieldSize="lg">
 									<f:facet name="prepend">
@@ -62,7 +60,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:selectOneMenu
 									value="#{mbAjoutFournisseur.fournisseur.ville}"
 									required="true" labelColMd="5" select="true" field-size="lg">
@@ -75,7 +73,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText value="#{mbAjoutFournisseur.fournisseur.email}"
 									fieldSize="lg">
 									<f:facet name="prepend">
@@ -86,7 +84,7 @@
 						</b:row>
 
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText
 									value="#{mbAjoutFournisseur.fournisseur.numeroFixe}"
 									fieldSize="lg">
@@ -98,7 +96,7 @@
 						</b:row>
 
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText
 									value="#{mbAjoutFournisseur.fournisseur.numeroPort}"
 									fieldSize="lg">
@@ -109,15 +107,14 @@
 							</b:column>
 						</b:row>
 
-					</b:panelGrid>
+	
 
-					<b:panelGrid columns="3">
+				
 						<b:commandButton value="Enregistrer"
 							action="#{mbAjoutFournisseur.ajout()}" look="primary"/>
-					</b:panelGrid>
+	
 				</b:container>
 			</b:form>
-			</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>

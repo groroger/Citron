@@ -25,15 +25,15 @@
 		<b:form id="formAjoutArticle">
 				<b:container layout="fluid">
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+			
 							<h3>Ajouter	un Article :</h3>
-						</b:column>
+				
 					</b:row>
 		
 
 					<b:panelGrid columns="1">
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText value="#{mbAjoutArticle.article.nom}"
 									fieldSize="lg">
 									<f:facet name="prepend">
@@ -43,7 +43,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText
 									value="#{mbAjoutArticle.article.descriptif}"
 									fieldSize="lg">
@@ -54,7 +54,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText value="#{mbAjoutArticle.article.image}"
 									fieldSize="lg">
 									<f:facet name="prepend">
@@ -64,7 +64,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText value="#{mbAjoutArticle.article.imageMini}"
 									fieldSize="lg">
 									<f:facet name="prepend">
@@ -74,7 +74,7 @@
 							</b:column>
 						</b:row>
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText value="#{mbAjoutArticle.article.quantiteVendue}"
 									fieldSize="lg">
 									<f:facet name="prepend">
@@ -85,7 +85,7 @@
 						</b:row>
 
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText
 									value="#{mbAjoutArticle.article.prix}"
 									fieldSize="lg">
@@ -97,7 +97,7 @@
 						</b:row>
 
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:inputText
 									value="#{mbAjoutArticle.article.prixKilo}"
 									fieldSize="lg">
@@ -109,7 +109,7 @@
 						</b:row>
 						
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+							<b:column>
 								<b:selectOneMenu
 									value="#{mbAjoutArticle.categorie}"
 									required="true" labelColMd="5" select="true" field-size="lg">
