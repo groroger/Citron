@@ -68,7 +68,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		logger.debug(this.getClass().getName() + ".init()");
+		logger.debug("init()");
 		commandes = proxyCommande.getAllToProcess();
 		
 	}
@@ -128,7 +128,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 						+ " internet = " + stock.getQuantiteDispoSiteInternet());
 			}
 			List<Approvisionnement> approvisionnements = proxyApprovisionnement.getAllApproByStock(stock);
-			// tri par date de péremption
+			// tri par date de péremption de la plus récente à la plus ancienne
 			Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
 				  public int compare(Approvisionnement a1, Approvisionnement a2) {
 				      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
@@ -198,9 +198,15 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 		}
 		// mise à jour date expédition commande
 		cde.setDateExpedition(new Date());
-		proxyCommande.update(cde);
-		if(logger.isDebugEnabled()) {
-			logger.debug("commande id=" + cde.getId() + " marquée expédiée à la date du " + cde.getDateExpedition());
+		try {
+			proxyCommande.update(cde);
+			if(logger.isDebugEnabled()) {
+				logger.debug("commande id=" + cde.getId() + " marquée expédiée à la date du " + cde.getDateExpedition());
+			}
+		} catch (Exception e) {
+			// Stack overflow ??????
+			logger.error("erreur sur proxyCommande.update(cde) : ", e);
+			throw e;
 		}
 		
 		return result;
