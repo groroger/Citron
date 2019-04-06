@@ -85,7 +85,7 @@ table tr:nth-child(odd) td
 
 table tr:nth-child(even) td
 {
-           background-color: rgba(150, 192, 1 , 0.3) !important;
+           background-color: rgba(150, 192, 1 , 0.3)f!important;
 }
 
 
@@ -515,7 +515,7 @@ carouselItem > img{
 
 #formCatalogueClient
 {
-	/*background-image: url('../pics/website/bois.jpg');*/
+	/* background-image: url('../pics/carousel/champignon.jpg'); */
 }
 
 
