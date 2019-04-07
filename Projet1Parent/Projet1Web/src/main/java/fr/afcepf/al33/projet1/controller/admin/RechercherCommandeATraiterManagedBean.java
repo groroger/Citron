@@ -128,11 +128,12 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 						+ " internet = " + stock.getQuantiteDispoSiteInternet());
 			}
 			List<Approvisionnement> approvisionnements = proxyApprovisionnement.getAllApproByStock(stock);
-			// tri par date de péremption de la plus récente à la plus ancienne
+			// tri par date de péremption de la plus ancienne à la plus récente
 			Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
 				  public int compare(Approvisionnement a1, Approvisionnement a2) {
+					  // a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
 					  // a2 et a1 en ordre inverse pour tri descendant
-				      return a2.getDateApprovisionnement().compareTo(a1.getDateApprovisionnement());
+				      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
 				  }
 				});			
 			for (Approvisionnement approvisionnement : approvisionnements) {

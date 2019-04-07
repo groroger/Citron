@@ -20,7 +20,8 @@ body
 
 #centre
 {
-	background-image: url('../pics/website/fondsBoisFonce2.jpg');
+	/*background-image: url('../pics/website/fondsBoisFonce2.jpg');*/
+	padding-bottom: 20px;
 }
 
 .errorMessage {
@@ -49,6 +50,7 @@ h3
 {
 	border-radius: 25px !important;
 	border: 2px solid #FFF726 !important;
+	box-shadow: 0 0 8em rgba(265,265,265,.8);
 }
 
 
@@ -59,8 +61,6 @@ h3
 	vertical-align: middle !important;
 
 }
-
-
 
 /* header du datatable*/
 
@@ -93,7 +93,7 @@ h3
 
 table tr:nth-child(odd) td
 {
-           background-color: rgba(150, 192, 1 , 0.1) !important;
+	background-color: rgba(150, 192, 1 , 0.1) !important;
 }
 
 
@@ -101,7 +101,7 @@ table tr:nth-child(odd) td
 
 table tr:nth-child(even) td
 {
-           background-color: rgba(150, 192, 1 , 0.3)f!important;
+	background-color: rgba(255, 255, 255, 0.95) !important;
 }
 
 
@@ -547,4 +547,7 @@ carouselItem > img{
 /*************************
 	TEST A EFFACER
 *************************/
-
+ #test
+ {
+ 	background-color: #ff0000 !important;
+ }
