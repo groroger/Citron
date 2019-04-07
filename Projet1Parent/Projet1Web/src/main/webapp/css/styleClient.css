@@ -11,21 +11,18 @@ body
 #banner
 {
 	height:25%;
-	background-image: url('../pics/website/bandeau1.jpg');
+	/*background-image: url('../pics/website/bandeau1.jpg');*/
   	background-repeat: no-repeat;
   	background-size: 100%;
   	margin-bottom: 25px;
 }
 
 
-/*
-
 #centre
 {
 	background-image: url('../pics/website/fondsBoisFonce2.jpg');
 }
 
-*/
 .errorMessage {
 	color: red;
 }
