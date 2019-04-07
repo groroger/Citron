@@ -22,7 +22,7 @@ import fr.afcepf.al33.projet1.entity.Client;
 import fr.afcepf.al33.projet1.entity.Commande;
 
 
-
+// a effacer
 
 @ManagedBean(name="mbPanier")
 @SessionScoped
