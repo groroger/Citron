@@ -21,15 +21,20 @@
 		</h:head>
 
 		<h:body>
+		
+		
 			<f:metadata>
 				<f:event listener="#{mbFicheArticleClient.init()}" type="preRenderView"></f:event>
 			</f:metadata>
+			
+			<b:row id="banner">
+					<h3>Fiche produit détaillée</h3>
+			</b:row>
+			
 			<b:container>
 				<b:form id="formFicheProduit">
 					<b:container layout="fluid">
-						<b:row>
-								<h3>Fiche produit détaillée</h3>
-						</b:row>
+				
 
 						<div>
 							<h:graphicImage
