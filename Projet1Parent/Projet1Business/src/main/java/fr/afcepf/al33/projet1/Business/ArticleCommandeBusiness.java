@@ -29,7 +29,7 @@ public class ArticleCommandeBusiness implements ArticleCommandeIBusiness {
 		List<ArticleCommande> articlesCommandes = proxyArticleCommandeIDao.getAll();
 		return articlesCommandes;
 	}
-	
+	 
 	@Override
 	public Commande add(Commande commande, List<ArticleCommande> articlesCommandes) {
 		Commande cmde = proxyCommandeIDao.ajouter(commande);

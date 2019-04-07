@@ -9,4 +9,4 @@ public interface ArticleCommandeIBusiness {
 	List<ArticleCommande> getAll();
 	Commande add(Commande commande, List<ArticleCommande> articlesCommandes);
 
-}
+} 
