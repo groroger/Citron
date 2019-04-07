@@ -25,6 +25,12 @@
 		<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
 		<property name="javax.persistence.sql-load-script-source" value="data.sql"/>
 		
+		<property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.DefaultSessionLog"/>
+		<property name="eclipselink.logging.file" value="C:\\JEE_Servers\\Logs\\log4j-Projet1AL.log"/>
+		<property name="eclipselink.logging.level" value="FINE" />
+		<property name="eclipselink.logging.level.sql" value="FINE" />
+		<property name="eclipselink.logging.parameters" value="true"/>
+			
 	</properties>
 	
 	</persistence-unit>
