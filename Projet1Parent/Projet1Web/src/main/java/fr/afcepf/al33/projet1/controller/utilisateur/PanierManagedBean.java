@@ -1,5 +1,6 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -22,7 +24,6 @@ import fr.afcepf.al33.projet1.entity.Client;
 import fr.afcepf.al33.projet1.entity.Commande;
 
 
-//à effacer
 
 @ManagedBean(name="mbPanier")
 @SessionScoped
@@ -74,16 +75,22 @@ public class PanierManagedBean implements Serializable{
     
   public void payer() {
 	  
+	  if (client != null) {
+		  Commande cde = new Commande();
+		  cde.setPrixTotal(prixTotal);
+		  cde.setDateCreation(new Date());
+		  cde.setClient(client);
+		  proxyArticleCommande.add(cde, articlesCommandes);
+	  } else {
+		  FacesContext facesContext = FacesContext.getCurrentInstance();
+		  HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);facesContext.getApplication()
+						.getNavigationHandler()
+						.handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml#test?faces-redirect=true");
+		System.out.println("Merci de votre visite");
+			
+	  }
 	  
-	  Commande cde = new Commande();
-	  cde.setPrixTotal(prixTotal);
-	
-	  cde.setDateCreation(new Date());
-	  cde.setClient(client);
-	  proxyArticleCommande.add(cde, articlesCommandes);
-	  	  
-
-	  System.out.println("Merci de votre visite");
+	  
   }
   
   public double calculerPanier() {
