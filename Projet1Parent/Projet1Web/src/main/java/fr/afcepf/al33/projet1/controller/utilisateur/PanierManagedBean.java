@@ -66,7 +66,7 @@ public class PanierManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		client = (Client) session.getAttribute("clientConnecte");
-	//	articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
+		articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
 	
 	
 	
@@ -80,10 +80,7 @@ public class PanierManagedBean implements Serializable{
 	
 	  cde.setDateCreation(new Date());
 	  cde.setClient(client);
-	  proxyCommande.add(cde);
-	  cde.setArticlesCommandes(articlesCommandes);
-	  proxyCommande.update(cde);
-	  System.out.println(client.getNom());
+	  proxyArticleCommande.add(cde, articlesCommandes);
 	  	  
 
 	  System.out.println("Merci de votre visite");
