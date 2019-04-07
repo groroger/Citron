@@ -7,6 +7,13 @@ body
 	padding: 0px;
 }
 
+/*
+#centre
+{
+	background-image: url('../pics/website/fondsBoisFonce.jpg');
+}
+*/
+
 .errorMessage {
 	color: red;
 }
