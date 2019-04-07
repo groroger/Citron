@@ -1,18 +1,25 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
+import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.projet1.entity.Article;
 import fr.afcepf.al33.projet1.entity.ArticleCommande;
+import fr.afcepf.al33.projet1.entity.Client;
+import fr.afcepf.al33.projet1.entity.Commande;
 
 
 
@@ -33,12 +40,52 @@ public class PanierManagedBean implements Serializable{
   @ManagedProperty(value="#{mbCatalogueClient.quantiteSaisie}")
   private int quantiteSaisie;
   
+  @ManagedProperty(value="#{mbConnectionUtilisateur.clientConnecte}")
+  private Client client;
+  
   private double prixTotal;
   
-  private ArticleCommande articleCommande;
+
   private Article selectedArticle;
   
+  
+  private Commande commande;
+  
+  @EJB
+  private CommandeIBusiness proxyCommande;
+  
+  @EJB
+  private ArticleCommandeIBusiness proxyArticleCommande;
+  
+
+	@SuppressWarnings("unchecked")
+	@PostConstruct
+	public void init() {
+
+
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		client = (Client) session.getAttribute("clientConnecte");
+	//	articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
+	
+	
+	
+	}
+    
   public void payer() {
+	  
+	  
+	  Commande cde = new Commande();
+	  cde.setPrixTotal(prixTotal);
+	
+	  cde.setDateCreation(new Date());
+	  cde.setClient(client);
+	  proxyCommande.add(cde);
+	  cde.setArticlesCommandes(articlesCommandes);
+	  proxyCommande.update(cde);
+	  System.out.println(client.getNom());
+	  	  
+
 	  System.out.println("Merci de votre visite");
   }
   
@@ -52,57 +99,6 @@ public class PanierManagedBean implements Serializable{
 		return prixTotal;
   		}
 		
-  public void ajouterArticle(Article article) {
-
-		articleCommande = new ArticleCommande();
-		articleCommande.setArticle(article);
-		articleCommande.setQuantite(article.getQuantiteSaisie());
-		boolean isPresent = false;
-
-
-		if (articlesCommandes.isEmpty()){
-			articlesCommandes.add(articleCommande);
-			System.out.println("ajout premier article");
-		} else {
-
-			Iterator<ArticleCommande> ite = articlesCommandes.iterator();
-
-
-			while(ite.hasNext()) {
-				ArticleCommande ac = ite.next();
-				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
-					ac.setQuantite(ac.getQuantite()+ article.getQuantiteSaisie());
-					System.out.println("nombre ajouté à la ligne existante");
-					isPresent = true;
-				}
-			} 
-			
-			if (isPresent == false) {
-				articlesCommandes.add(articleCommande);
-			}
-		}
-		
-		System.out.println("Art Quantite "+articleCommande.getQuantite());
-		
-	
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-		session.setAttribute("listeArticlesCommandes", articlesCommandes);
-		facesContext.getApplication()
-					.getNavigationHandler()
-					.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
-
-}
-	
-	public void plusQuantiteSaisie(Article article){	
-		article.setQuantiteSaisie(article.getQuantiteSaisie()+1);
-}
-
-	public void minusQuantiteSaisie(Article article){
-		if (article.getQuantiteSaisie()>0) {
-			article.setQuantiteSaisie(article.getQuantiteSaisie()-1);
-		}		
-}
   
   
   public List<ArticleCommande> getArticlesCommandes() {
@@ -127,13 +123,6 @@ public class PanierManagedBean implements Serializable{
     this.quantiteSaisie = quantiteSaisie;
   }
 
-public ArticleCommande getArticleCommande() {
-	return articleCommande;
-}
-
-public void setArticleCommande(ArticleCommande articleCommande) {
-	this.articleCommande = articleCommande;
-}
 
 public Article getSelectedArticle() {
 	return selectedArticle;
@@ -150,6 +139,34 @@ public double getPrixTotal() {
 public void setPrixTotal(double prixTotal) {
 	this.prixTotal = prixTotal;
 }
+
+public Commande getCommande() {
+	return commande;
+}
+
+public void setCommande(Commande commande) {
+	this.commande = commande;
+}
+
+
+
+public Client getClient() {
+	return client;
+}
+
+public void setClient(Client client) {
+	this.client = client;
+}
+
+public CommandeIBusiness getProxyCommande() {
+	return proxyCommande;
+}
+
+public void setProxyCommande(CommandeIBusiness proxyCommande) {
+	this.proxyCommande = proxyCommande;
+}
+
+
 
 
 }

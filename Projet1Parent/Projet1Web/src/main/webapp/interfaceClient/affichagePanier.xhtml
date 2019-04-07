@@ -19,6 +19,11 @@
 			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
+		
+		<f:metadata>
+			<f:event listener="#{mbPanier.init()}"
+				type="preRenderView"></f:event>
+		</f:metadata>
 
 		<h:body>
 		
