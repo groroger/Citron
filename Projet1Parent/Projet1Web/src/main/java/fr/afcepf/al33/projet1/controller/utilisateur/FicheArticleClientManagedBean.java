@@ -53,6 +53,9 @@ public class FicheArticleClientManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		article =  (Article) session.getAttribute("selectedArticle");
+		if ((List<ArticleCommande>)session.getAttribute("listeArticlesCommandes")!=null) {
+			articlesCommandes= (List<ArticleCommande>)session.getAttribute("listeArticlesCommandes");
+		}
 	}
 
 public void ajouterArticle() {
