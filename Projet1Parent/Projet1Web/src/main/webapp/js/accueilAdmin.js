@@ -20,7 +20,7 @@ function drawChart() {
 				color : 'yellow'
 			},
 			1 : {
-				color : 'green'
+				color : '4DFF11'
 			}
 		}
 	};
