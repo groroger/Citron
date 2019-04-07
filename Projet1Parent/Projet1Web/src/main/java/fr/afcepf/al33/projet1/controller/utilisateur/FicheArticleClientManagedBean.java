@@ -1,6 +1,7 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,13 +27,14 @@ public class FicheArticleClientManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
 	private int quantiteSaisie;
 
-	//@ManagedProperty(value="#{mbCatalogueClient.articleCommande}")
-	private ArticleCommande articleCommande;
+
+	private ArticleCommande articleCommande=new ArticleCommande();
+
 	
-	@ManagedProperty(value="#{mbCatalogueClient.articlesCommandes}")
-	List<ArticleCommande> articlesCommandes;
+	List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
 
 	
 	@EJB
@@ -42,6 +44,8 @@ public class FicheArticleClientManagedBean implements Serializable{
 	private Article article;
 	
 	
+
+	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void init() {
 
@@ -49,19 +53,19 @@ public class FicheArticleClientManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		article =  (Article) session.getAttribute("selectedArticle");
-		
+		if ((List<ArticleCommande>)session.getAttribute("listeArticlesCommandes")!=null) {
+			articlesCommandes= (List<ArticleCommande>)session.getAttribute("listeArticlesCommandes");
+		}
 	}
 
 public void ajouterArticle() {
 		
-
-		articleCommande =new ArticleCommande();
-
+		articleCommande = new ArticleCommande();
 		articleCommande.setArticle(article);
+		articleCommande.setQuantite(quantiteSaisie);
 
-		articleCommande.setQuantite(article.getQuantiteSaisie());
-		
 		System.out.println(articleCommande.getArticle().getNom());
+		System.out.println(articleCommande.getQuantite());
 		
 		boolean isPresent = false;
 
@@ -77,7 +81,7 @@ public void ajouterArticle() {
 			while(ite.hasNext()) {
 				ArticleCommande ac = ite.next();
 				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
-					ac.setQuantite(ac.getQuantite()+ 1);
+					ac.setQuantite(ac.getQuantite()+ quantiteSaisie);
 					System.out.println("nombre ajouté à la ligne existante");
 					isPresent = true;
 				}
@@ -85,18 +89,22 @@ public void ajouterArticle() {
 			
 			if (isPresent == false) {
 				articlesCommandes.add(articleCommande);
+				System.out.println("nouvel article en plus");
 			}
+
 		}
 
-
-
+	quantiteSaisie=0;
+	System.out.println("Art Quantite "+articleCommande.getQuantite());
+	
+	
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 	session.setAttribute("listeArticlesCommandes", articlesCommandes);
 	facesContext.getApplication()
 				.getNavigationHandler()
 				.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
-	
+
 }
 
 public void plusQuantiteSaisie(){	

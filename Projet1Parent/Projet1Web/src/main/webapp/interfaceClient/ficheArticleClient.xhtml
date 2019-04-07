@@ -73,12 +73,13 @@
 	 <!-- Ajout panier -->
 	<div class="ajoutPanier">
 	<b:row class="ajoutPanier">
+			<h:form>
 		<f:facet name="header">Ajouter Panier</f:facet>
-		<p:spinner id="minMax" value="#{article.quantiteSaisie}" min="0" max="100" size="4" />
+		<p:spinner id="minMax" value="#{mbFicheArticleClient.quantiteSaisie}" min="0" max="100" size="4" />
 		<label id="espaceVide"></label>
-		<h:form action="">
+
 		<b:commandButton id="btn_ajouterFicheArticle" value="" look="warning"
-				action="#{mbCatalogueClient.ajouterArticle(article)}">
+				action="#{mbFicheArticleClient.ajouterArticle()}">
 			<b:image value="../pics/icones/shoppingCartWhite32.png"/>	
 			
 		</b:commandButton>

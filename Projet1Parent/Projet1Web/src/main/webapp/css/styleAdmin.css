@@ -12,8 +12,12 @@ h3
 
 /*** ACCUEIL ADMIN ***/
 
-#infoStock{
+#infoJS{
 	visibility:hidden;
+}
+
+#charts{
+	display: flex;
 }
 
 #btnLienReporting{
