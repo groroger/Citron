@@ -60,6 +60,7 @@
 							<h:outputLabel value="#{articleCommande.article.quantiteSaisie}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
+						<f:facet name="header">Ajouter/Supprimer: </f:facet>
 								<b:buttonGroup>
 								<b:commandButton id="btn_minus" value="" icon="minus-sign" look="primary" 
 									action="#{mbPanier.minusQuantiteSaisie(articleCommande.article)}"/>
