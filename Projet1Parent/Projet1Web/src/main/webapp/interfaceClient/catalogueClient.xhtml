@@ -73,13 +73,13 @@
 						paginated="false">
 
 						<b:dataTableColumn custom-options="'width':'105px'">
-							<f:facet name="header">Image</f:facet>
+							<f:facet name="header">Visuel</f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header"> Fiche produit</f:facet>
 							<b:commandButton value=""
-								look="primary"
+								look="warning"
 								action="#{mbCatalogueClient.afficherFicheProduit(article)}">
 								<b:image value="../pics/icones/searchWhite32.png"/>	
 							</b:commandButton>
@@ -109,7 +109,7 @@
 
 							<p:spinner id="minMax" value="#{article.quantiteSaisie}" min="0" max="100" size="4" />
 							
-							<b:commandButton id="btn_ajouter" value="" look="primary"
+							<b:commandButton id="btn_ajouter" value="" look="warning"
 									action="#{mbCatalogueClient.ajouterArticle(article)}">
 								<b:image value="../pics/icones/shoppingCartWhite21.png"/>	
 								

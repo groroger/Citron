@@ -49,7 +49,7 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 	@Override
 	public List<Stock> getByQuantity(){
 		List<Stock>stocks = new ArrayList<Stock>();
-		String REQ_GETALL = "SELECT stock from Stock stock ORDER BY stock";
+		String REQ_GETALL = "SELECT stock from Stock stock ORDER BY stock.quantiteDispoPhysique";
 		Query queryJPQL = em.createQuery(REQ_GETALL);
 		stocks = queryJPQL.getResultList();
 		return stocks;
@@ -60,7 +60,7 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 	public List<Stock> getByPeromption() {
 		List<Stock> stocksParCategorie=null;
 		LocalDateTime dateButoire;
-		dateButoire = LocalDateTime.now().minusDays(4);
+		dateButoire = LocalDateTime.now().minusDays(5);
 		String REQ= "SELECT s from Stock s JOIN s.approvisionnement a WHERE a.datePeromption >= :date";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("date", dateButoire);

@@ -18,7 +18,8 @@ h3
 
 #btnLienReporting{
 	position: relative;
-	margin-left: 600px;
+	left: 40%;
+	margin-bottom: 50px;
 }
 
 	/*** DATA TABLE ***/

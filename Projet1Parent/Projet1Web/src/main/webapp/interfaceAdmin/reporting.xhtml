@@ -25,7 +25,7 @@
 					<h3>REPORTING</h3>
 
 
-				<b:tabView activeIndex="2">
+				<b:tabView activeIndex="0">
 					<b:tab title="Stock par quantité">
 						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.stockQuantity}" 
 						var="ligneStock" pdf="false"
@@ -82,6 +82,31 @@
 					</b:tab>
 					<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
 					<b:tab title="Commandes en attente">
+						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.commandesEnAttente}" 
+						var="ligneCommande" pdf="false"
+						print="false" excel="false" border="true" info="false"
+						tiny-screen="12" medium-screen="12" large-screen="12"
+						page-length="20" selectionMode="single" responsive="true">
+
+						<b:dataTableColumn
+							headerStyle="text-align: center;vertical-align: middle;">
+							<f:facet name="header">Numéro de Commande : </f:facet>
+							<h:graphicImage
+								value="#{ligneCommande.id.toString()}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Numéro de CLient : </f:facet>
+							<h:outputLabel value="#{ligneCommande.client.id.toString()}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date de Création : </f:facet>
+							<h:outputLabel value="#{ligneCommande.dateCreation.toString()}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix de la Commande : </f:facet>
+							<h:outputLabel value="#{ligneCommande.prixTotal.toString()}" />
+						</b:dataTableColumn>
+					</b:dataTable>
 					</b:tab>
 				</b:tabView>
 			</b:container>
