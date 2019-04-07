@@ -351,7 +351,7 @@ carouselItem > img{
 
 #carousel
 {
-	interval: 2500;
+	interval: 500;
 }
 
 .carousel-inner img

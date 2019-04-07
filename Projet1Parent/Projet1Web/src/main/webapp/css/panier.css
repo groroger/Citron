@@ -1,0 +1,33 @@
+.btn-warning
+{
+	width: 250px !important;
+	height: 70px !important;
+	font-size: 22px !important;
+	font-weight: bold !important;
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+#boutonBas
+{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 25px;
+}
+
+.input-group-addon:first-child
+{
+	height: 70px !important;
+	border-radius: 15px 0px 0px 15px; 
+	font-size: 22px !important;
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	text-align: center;
+	font-style: italic;
+}
+
+.input-group .form-control
+{
+	height: 70px !important;
+	font-size: 22px !important;
+	text-align: center;
+}
