@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="title">Panier</ui:define>
@@ -41,33 +42,25 @@
 						border="true" 
 						info="false" 
 						page-length="20" 
-						selectionMode="single"
+						select="false"
 						responsive="true"
 						paginated="false">
 
 
 						<b:dataTableColumn>
-							<f:facet name="header">Image: </f:facet>
+							<f:facet name="header">Image</f:facet>
 							<h:graphicImage
 								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Articles: </f:facet>
+							<f:facet name="header">Articles</f:facet>
 							<h:outputLabel value="#{articleCommande.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Quantite: </f:facet>
-							<h:outputLabel value="#{articleCommande.article.quantiteSaisie}" />
+							<f:facet name="header">Quantite</f:facet>
+							<p:spinner id="minMax" value="#{articleCommande.quantite}" min="0" max="100" size="4" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
-						<f:facet name="header">Ajouter/Supprimer: </f:facet>
-								<b:buttonGroup>
-								<b:commandButton id="btn_minus" value="" icon="minus-sign" look="primary" 
-									action="#{mbPanier.minusQuantiteSaisie(articleCommande.article)}"/>
-	    						<b:commandButton id="btn_plus" value="" icon="plus-sign" look="primary" 
-	    							action="#{mbPanier.plusQuantiteSaisie(articleCommande.article)}"/>
-    						</b:buttonGroup>   						
- 						</b:dataTableColumn>
+			
 					</b:dataTable>
 					
 					<b:panelGrid columns="3">

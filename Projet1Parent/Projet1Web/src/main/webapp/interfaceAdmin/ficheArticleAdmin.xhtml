@@ -11,7 +11,11 @@
 
 	<ui:define name="content">
 
-		<h:head>
+	<h:head>
+	
+	<f:metadata>
+				<f:event listener="#{mbFicheArticleAdmin.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 
 			<title>Fiche produit</title>
 
@@ -21,87 +25,50 @@
 		</h:head>
 
 		<h:body>
-		<b:container >
-			<f:metadata>
-				<f:event listener="#{mbFicheArticleAdmin.init()}"
-					type="preRenderView"></f:event>
-			</f:metadata>
-			<b:container >
-				<b:form id="formFicheProduit">
-					<b:container layout="fluid">
-						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<h3>Fiche produit détaillée</h3>
-							</b:column>
-						</b:row>
 
-						<div>
-							<h:graphicImage
-								value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
-						</div>
-
-						<b:panelGrid columns="1">
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputTextarea
-										value="#{mbFicheArticleAdmin.article.descriptif}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Description" />
-										</f:facet>
-									</b:inputTextarea>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText value="#{mbFicheArticleAdmin.article.nom}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Appellation" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText
-										value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Catégorie" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText value="#{mbFicheArticleAdmin.article.prix}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Prix de vente" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText value="#{mbFicheArticleAdmin.article.prixKilo}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Prix au kilo" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-						</b:panelGrid>
-						<b:panelGrid columns="2">
-							<b:button href="/Projet1Web/interfaceAdmin/updateArticle.xhtml"
-								value="Mettre à jour" look="primary" />
-						</b:panelGrid>
-					</b:container>
-				</b:form>
-			</b:container>
-			</b:container>
+			<b:container class="container1">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+   <h:graphicImage value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+    	<b:row id="nomCategorie">
+      		<h:outputText class="span" value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"/>
+      	</b:row>
+      	<b:row>
+       		<h:outputText class="h1" value="#{mbFicheArticleAdmin.article.nom}"/>
+       	</b:row>
+       	<b:row id="descriptif">
+       		<h:outputText class="p" value="#{mbFicheArticleAdmin.article.descriptif}"/>
+		</b:row>
+    </div>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+ 
+      <!-- Product Color -->
+		<div class="product-color">
+	      	<b:row>
+	      		<h:outputText class="span" value="Prix de vente"/>
+	      	</b:row>  
+		</div>  
+ 	</div>
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+		<b:row>
+			<h:outputText class="span" value="#{mbFicheArticleAdmin.article.prix} €" />
+		</b:row>  
+    </div>
+  </div>
+</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>

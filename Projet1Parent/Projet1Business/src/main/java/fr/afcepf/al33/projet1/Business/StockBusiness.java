@@ -10,7 +10,6 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.Article;
 import fr.afcepf.al33.projet1.entity.Categorie;
 import fr.afcepf.al33.projet1.entity.Stock;
 import fr.afcepf.al33.projet1.idao.StockIdao;
@@ -53,16 +52,17 @@ public class StockBusiness implements StockIBusiness{
 		List<Stock> stocks=new ArrayList<Stock>();
 		stocks=proxyStockIDao.getAll();
 		Date aujourdhui = new Date();
-		
+
 		for (Stock stock : stocks) {
-			stock.setQuantiteDispoPhysique(0);
-			for (Approvisionnement approvisionnement : stock.getApprovisionnement()) {
+			int nbreStock = 0;
+			for (Approvisionnement approvisionnement : stock.getApprovisionnements()) {
 				if (approvisionnement.getDatePeremption().after(aujourdhui))
 					{
-						stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() + approvisionnement.getQuantiteRestante());
-		
+						
+						nbreStock= nbreStock + approvisionnement.getQuantiteRestante();
 					}
 			}
+			stock.setQuantiteDispoPhysique(nbreStock);
 		}
 		
 		
@@ -94,12 +94,12 @@ public class StockBusiness implements StockIBusiness{
 	}
 
 	@Override
-	public int getTotalQuantity() {
+	public String getTotalQuantity() {
 		return proxyStockIDao.getTotalQuantity();
 	}
 
 	@Override
-	public int getVirtualQuantity() {
+	public String getVirtualQuantity() {
 		return proxyStockIDao.getVirtualQuantity();
 	}
 }

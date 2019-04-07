@@ -17,45 +17,24 @@
 			
 			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
-			
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>	
-						<script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Stocks', 'reste disponible'],
-          ['Stocks Virtuel',   75 ],
-          ['Stocks Physiques', 25 ]
-        ]);
-
-        var options = {
-          title: 'Mes Stocks',
-          
-          is3D: true,
-          slices: {
-              0: { color: 'yellow' },
-              1: { color: 'green' }
-          }
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
-
-      </script>		
+						
+			<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
+				
 		</h:head>
-		<h:body>
-			<b:container >
 		
+		<h:body>
 
-Ici c'est côté admin
+<div id="infoStock">
+	<h:outputText id="sockTotal" value="#{mbAccueilAdmin.stockTotal}" />
+	<h:outputText id="stockVirtuel" value="#{mbAccueilAdmin.stockVirtuel}" />
+</div>
 
-<div id="donutchart" style="width: 500px; height: 500px;"></div>
+<div id="donutchart" style="width: 90%; height: 500px;"></div>
+
+<b:button id="btnLienReporting" look="success" value="ALLER AU REPORTING" size="lg" href="#{request.contextPath}/interfaceAdmin/reporting.xhtml"/>
 
 
-
-			</b:container>
 
 		</h:body>
 	</ui:define>

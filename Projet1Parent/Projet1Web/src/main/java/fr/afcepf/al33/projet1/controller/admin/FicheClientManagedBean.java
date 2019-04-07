@@ -45,10 +45,6 @@ public class FicheClientManagedBean implements Serializable{
 	  
 		System.out.println(commande.getId());
 		
-//		for (ArticleCommande ac : commande.getArticlesCommandes()) {
-//			System.out.println(ac.getArticle().getNom());
-//		}
-
 		
 		 FacesContext facesContext = FacesContext.getCurrentInstance();
 		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);

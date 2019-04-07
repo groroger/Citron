@@ -40,26 +40,27 @@
 						page-length="10" 
 						selectionMode="single"
 						responsive="true" 
-						paginated="false">
+						paginated="false"
+						searching="false">
 
 
 						<b:dataTableColumn headerStyle="text-align: center;vertical-align: middle;" >
-							<f:facet name="header">Image : </f:facet>
+							<f:facet name="header">Image</f:facet>
 							<h:graphicImage
-								value="/pics/articlesImages/#{articleCommande.article.image}" />
+								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Article : </f:facet>
+							<f:facet name="header">Article</f:facet>
 							<h:outputLabel value="#{articleCommande.article.nom}" />
 						</b:dataTableColumn>
 
 						<b:dataTableColumn>
-							<f:facet name="header">Quantité : </f:facet>
+							<f:facet name="header">Quantité</f:facet>
 							<h:outputLabel value="#{articleCommande.quantite}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Prix : </f:facet>
-							<h:outputLabel value="#{articleCommande.prixTotal}" />
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{articleCommande.prixTotal} €" />
 						</b:dataTableColumn>
 					</b:dataTable>
 				</b:container>
