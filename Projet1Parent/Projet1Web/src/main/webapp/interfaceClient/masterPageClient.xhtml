@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" 	href="#{request.contextPath}/css/styleClient.css" />
 <script src="#{request.contextPath}/js/versLeHaut.js"></script>
 
-
 </h:head>
 <h:body>
 	<h:form>
@@ -84,7 +83,7 @@
 				href="/Projet1Web/interfaceClient/affichagePanier.xhtml"/>
 				
 				
-				
+				 <b:badge id="cartBadge" value="#{mbPanier.articlesCommandes.size()}"/>
 	
 		</b:navbarLinks>
 
