@@ -90,6 +90,10 @@
 							<h:outputLabel value="#{article.quantiteVendue}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Quantité Disponible</f:facet>
+							<h:outputLabel value="#{article.stock.quantiteDispoSiteInternet}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Prix au kilo: </f:facet>
 							<h:outputLabel value="#{article.prixKilo} €" />
 						</b:dataTableColumn>
