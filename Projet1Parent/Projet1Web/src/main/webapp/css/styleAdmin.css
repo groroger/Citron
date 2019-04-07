@@ -16,6 +16,11 @@ h3
 	visibility:hidden;
 }
 
+#btnLienReporting{
+	position: relative;
+	margin-left: 600px;
+}
+
 	/*** DATA TABLE ***/
 	
 .table

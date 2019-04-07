@@ -25,7 +25,10 @@
 
 				<b:container layout="fluid">
 					<b:row>
+						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 							<h3>Panier</h3>
+							<br />
+						</b:column>
 					</b:row>
 
 
@@ -57,7 +60,7 @@
 							<f:facet name="header">Quantite</f:facet>
 							<p:spinner id="minMax" value="#{articleCommande.quantite}" min="0" max="100" size="4" />
 						</b:dataTableColumn>
-
+			
 					</b:dataTable>
 					
 					<b:panelGrid columns="3">
@@ -77,8 +80,7 @@
 		            </b:row>
 		              
 		            <f:facet name="header">Payer</f:facet>
-		            <b:commandButton value="Payer" look="primary" action="#{mbPanier.payer()}">
-		            </b:commandButton>
+		            <b:commandButton value="Payer" look="primary" action="#{mbPanier.payer()}"/>
 		            
 		            </b:panelGrid>
 					
