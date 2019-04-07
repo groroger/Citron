@@ -8,7 +8,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
+import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.entity.Stock;
 
 @ManagedBean(name="mbAccueilAdmin")
@@ -22,6 +24,7 @@ public class AccueilAdminManagedBean implements Serializable {
 	
 	private List <Stock> stockQuantity;
 	private List <Stock> stockPeromption;
+	private List<Commande> commandesEnAttente;
 	
 	private String stockTotal;
 	private String stockVirtuel;
@@ -29,12 +32,16 @@ public class AccueilAdminManagedBean implements Serializable {
 	@EJB
 	private StockIBusiness proxyStock;
 	
+	@EJB
+	private CommandeIBusiness proxyCommande;
+	
 	@PostConstruct
 	public void init() {
 		setStockQuantity(proxyStock.getByQuantity());
 		setStockPeromption(proxyStock.getByPeromption());
 		setStockTotal(proxyStock.getTotalQuantity());
 		setStockVirtuel(proxyStock.getVirtualQuantity());
+		setCommandesEnAttente(proxyCommande.getAllToProcess());
 		
 	}
 
@@ -68,6 +75,14 @@ public class AccueilAdminManagedBean implements Serializable {
 
 	public void setStockVirtuel(String stockVirtuel) {
 		this.stockVirtuel = stockVirtuel;
+	}
+
+	public List<Commande> getCommandesEnAttente() {
+		return commandesEnAttente;
+	}
+
+	public void setCommandesEnAttente(List<Commande> commandesEnAttente) {
+		this.commandesEnAttente = commandesEnAttente;
 	}
 	
 }
