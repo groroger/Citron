@@ -66,7 +66,7 @@
 						</b:dataTableColumn>
 					</b:dataTable>
 					
-					<b:commandButton value="Traiter la commande"
+					<b:commandButton value="Traiter la commande" rendered="#{empty mbAfficherCommande.commande.dateExpedition}"
 							action="#{mbAfficherCommande.traiterCommande()}" look="primary"/>
 				</b:container>
 			</h:form>
