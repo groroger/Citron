@@ -15,6 +15,7 @@
 			<title>Détail de la commande</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/fournisseurAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 		<h:body>
@@ -22,14 +23,13 @@
 				<f:event listener="#{mbAfficherCommande.init()}" type="preRenderView"></f:event>
 			</f:metadata>
 
-
-			<h:form id="formAfficherApprovisionnement">
-				<b:container layout="fluid">
-
 					<b:row id="banner">
 
-							<h3>Détail de la commande:</h3>
+							<h3>Détail de la commande</h3>
 					</b:row>
+					
+			<h:form id="formAfficherApprovisionnement">
+				<b:container layout="fluid">
 
 					<b:dataTable
 						value="#{mbAfficherCommande.articlesCommandes}"
@@ -66,8 +66,10 @@
 						</b:dataTableColumn>
 					</b:dataTable>
 					
+					<div id="boutonBas">
 					<b:commandButton value="Traiter la commande" rendered="#{empty mbAfficherCommande.commande.dateExpedition}"
-							action="#{mbAfficherCommande.traiterCommande()}" look="primary"/>
+							action="#{mbAfficherCommande.traiterCommande()}" look="warning"/>
+					</div>
 				</b:container>
 			</h:form>
 			</h:body>

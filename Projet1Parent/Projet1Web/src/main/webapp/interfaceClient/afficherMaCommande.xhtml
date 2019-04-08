@@ -17,6 +17,11 @@
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
+		
+			<f:metadata>
+			<f:event listener="#{mbAfficherMaCommande.init()}" type="preRenderView"></f:event>
+		</f:metadata>
+		
 		<h:body>
 				<b:row id="banner">
 
@@ -26,12 +31,6 @@
 
 			<h:form id="formAfficherMaCommande">
 				<b:container layout="fluid">
-
-					<b:row>
-
-							<h3>Détail de ma commande</h3>
-					</b:row>
-
 					<b:dataTable
 						value="#{mbAfficherMaCommande.articlesCommandes}"
 						var="articleCommande" 

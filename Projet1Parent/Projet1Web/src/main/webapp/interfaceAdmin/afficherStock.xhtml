@@ -22,17 +22,14 @@
 			<f:metadata>
 				<f:event listener="#{mbStock.init()}" type="preRenderView"></f:event>
 			</f:metadata>
+			<b:row id="banner">
+					<h3>Stock</h3>
+			</b:row>
 			<b:container>
-
 
 			<h:form id="formAfficherStock">
 
 				<b:container layout="fluid">
-					<b:row>
-
-							<h3>Stock</h3>
-
-					</b:row>
 
 					<b:formGroup>
 						<b:selectOneMenu update="datatableStocks"

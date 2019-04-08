@@ -13,26 +13,24 @@
 		<h:head>
 
 			<title>Approvisionnement</title>
-
 			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/approvisionnementAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 
 		<h:body>
+			<f:metadata>
+				<f:event listener="#{mbApprovisionnement.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+			<b:row id="banner">					
+				<h3>Enregistrer un achat fournisseur</h3>					
+			</b:row>
 		
-		<b:container>
+			<b:container>
 			<h:form id="formApprovisionnement">
 
 				<b:container layout="fluid">
-
-					<b:row>
-					
-							 <h3>Enregistrer un achat fournisseur:</h3>
-					
-					</b:row>
-			
-
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 							<h:outputLabel value="Article :" for="article" style="padding-top:5px"/>
@@ -136,17 +134,18 @@
 					<br />
 					<br />
 
+					<div id="boutonBas">
 					<b:row>
-						<b:column offset="0" tiny-screen="2" medium-screen="2"	large-screen="2">
+						<b:column>
 							<b:commandButton
 								action="#{mbApprovisionnement.addApprovisionnementToStock()}"
 								value="Enregistrer" look="warning" />
 						</b:column>
 					</b:row>
-
+					</div>
+					
 				</b:container>
-			</h:form>
-			
+			</h:form>			
 			</b:container>
 		</h:body>
 	</ui:define>
