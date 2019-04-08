@@ -8,51 +8,40 @@
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="title">Mon compte</ui:define>
 
-	<ui:define name="content">
-	
-		<link rel="stylesheet" type="text/css"
-			href="#{request.contextPath}/css/styleAdmin.css" />
-			
+	<ui:define name="content">			
 		<h:head>
 			<title>Compte client</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/panier.css" />
+			<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/gestionCompte.css" />
 		</h:head>
 		<h:body>
-			<b:container>
-				<h:form id="formGestionCompteClient">
-
-					<b:container layout="fluid">
-						<h:messages style="color:red;margin:8px;" />
-						<br />
-						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+				
+						<b:row id="banner">
 								<h3 id="titre1">Mon compte</h3>
-							</b:column>
 						</b:row>
 						<br />
 						<br />
-
+				
+				<b:container id="gestionCompte" layout="fluid">
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 								<h:outputLabel value="Prénom :" for="prenom" />
 							</b:column>
 
-							<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
 								<h:inputText id="prenom" required="true"
 									requiredMessage="Prénom obligatoire"
 									value="#{mbGererCompteClient.client.prenom}">
 								</h:inputText>
 							</b:column>
-						</b:row>
-						<br />
-
-						<b:row>
+						
 							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 								<h:outputLabel value="Nom :" for="nom" />
 							</b:column>
 
-							<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
 								<h:inputText id="nom" required="true"
 									requiredMessage="Nom obligatoire"
 									value="#{mbGererCompteClient.client.nom}" />
@@ -77,7 +66,7 @@
 						<br />
 
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="3" large-screen="3">
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 								<h:outputLabel value="Téléphone :" for="telephone" />
 							</b:column>
 
@@ -85,8 +74,8 @@
 								<h:inputText id="telephone"
 									value="#{mbGererCompteClient.client.numeroFixe}" />
 							</b:column>
-
-							<b:column tiny-screen="12" medium-screen="3" large-screen="3">
+						
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 								<h:outputLabel value="Portable :" for="portable" />
 							</b:column>
 
@@ -111,15 +100,18 @@
 						<br />
 
 
+
+
+						<div id="adresse">
 						<!-- adresse domicile -->
-						<fieldset>
+						<fieldset id="fieldset1">
 							<legend>domicile</legend>
-							<b:row>
+							<b:row >
 								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 									<h:outputLabel value="Adresse 1 :" for="adresse1" />
 								</b:column>
 
-								<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
 									<h:inputText id="adresse1" required="true"
 										requiredMessage="Adresse obligatoire"
 										value="#{mbGererCompteClient.client.adresse}" />
@@ -132,7 +124,7 @@
 									<h:outputLabel value="Adresse 2 :" for="adresse2" />
 								</b:column>
 
-								<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
 									<h:inputText id="adresse2"
 										value="#{mbGererCompteClient.client.complementAdresse}" />
 								</b:column>
@@ -144,7 +136,7 @@
 									<h:outputLabel value="Ville :" for="ville" />
 								</b:column>
 
-								<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+								<b:column tiny-screen="12" medium-screen="9" large-screen="4">
 									<b:selectOneMenu id="ville" required="true"
 										requiredMessage="Ville obligatoire"
 										value="#{mbGererCompteClient.client.ville}">
@@ -163,14 +155,14 @@
 
 
 						<!-- adresse livraison -->
-						<fieldset>
+						<fieldset id="fieldset2">
 							<legend>livraison</legend>
 							<b:row>
 								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 									<h:outputLabel value="Adresse 1 :" for="adresse1liv" />
 								</b:column>
 
-								<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
 									<h:inputText id="adresse1liv"
 										value="#{mbGererCompteClient.client.adresseLivraison}" />
 								</b:column>
@@ -182,7 +174,7 @@
 									<h:outputLabel value="Adresse 2 :" for="adresse2liv" />
 								</b:column>
 
-								<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
 									<h:inputText id="adresse2liv"
 										value="#{mbGererCompteClient.client.complementAdresseLivraison}" />
 								</b:column>
@@ -194,7 +186,7 @@
 									<h:outputLabel value="Ville :" for="villeliv" />
 								</b:column>
 
-								<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+								<b:column tiny-screen="12" medium-screen="9" large-screen="4">
 									<b:selectOneMenu id="villeliv"
 										value="#{mbGererCompteClient.client.villeLivraison}">
 										<f:selectItem itemLabel="Ville" itemValue=""
@@ -206,20 +198,25 @@
 								</b:column>
 							</b:row>
 						</fieldset>
+						
+						</div>
 						<br />
 
 						<b:row>
-							<b:column tiny-screen="12" medium-screen="3" large-screen="3">
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 								<h:outputLabel value="Identifiant :" for="login" />
 							</b:column>
 
-							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
+							<b:column tiny-screen="6" medium-screen="3" large-screen="2">
 								<h:inputText id="login" required="true"
 									requiredMessage="Identifiant obligatoire"
 									value="#{mbGererCompteClient.client.login}" />
 							</b:column>
-
-							<b:column tiny-screen="12" medium-screen="3" large-screen="3">
+						</b:row>
+						
+						<br />
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 								<h:outputLabel value="Mot de passe :" for="password" />
 							</b:column>
 
@@ -228,13 +225,9 @@
 									requiredMessage="Mot de passe obligatoire"
 									value="#{mbGererCompteClient.client.password}" />
 							</b:column>
-						</b:row>
-						<br />
-
-						<b:row>
-							<b:column offset-xs="0" tiny-screen="12" offset-md="6"
-								medium-screen="3" offset-lg="6" large-screen="3">
-								<h:outputLabel value="Mot de passe :" for="password2" />
+						
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Confirmation mot de passe :" for="password2" />
 							</b:column>
 
 							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
@@ -244,21 +237,20 @@
 							</b:column>
 						</b:row>
 						<br />
-
+						
+						<h:form id="formGestionCompteClient">
 						<b:row>
 							<b:column offset="10" tiny-screen="2" medium-screen="2"
 								large-screen="2">
 								<b:commandButton action="#{mbGererCompteClient.ajouter()}"
-									value="Valider" look="primary" />
+									value="Valider" look="warning" />
 							</b:column>
 						</b:row>
 						<br />
-
+</h:form>
 					</b:container>
 
-				</h:form>
-
-			</b:container>
+			
 		</h:body>
 	</ui:define>
 </ui:composition>
