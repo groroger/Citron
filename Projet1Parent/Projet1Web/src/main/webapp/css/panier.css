@@ -19,6 +19,19 @@
 	margin-right: 25px;
 }
 
+.btn-secondary
+{
+	width: 48px !important;
+	height: 48px !important;
+	font-size: 25px !important;
+	font-weight: bold !important;
+	border-radius: 25px; 
+	border: 3px solid #9dcb01 !important;
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	margin-left: 25px;
+	padding: 0px 0px 4px 0px;
+}
+
 #boutonBas
 {
 	display: flex;
