@@ -94,6 +94,11 @@ public class PanierManagedBean implements Serializable{
 			proxyStock.update(stock);
 		}
 		  
+	
+			 FacesContext facesContext = FacesContext.getCurrentInstance();
+			 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/monCompte.xhtml#test?faces-redirect=true");
+		  
 		  
 	  } else {
 		  FacesContext facesContext = FacesContext.getCurrentInstance();
