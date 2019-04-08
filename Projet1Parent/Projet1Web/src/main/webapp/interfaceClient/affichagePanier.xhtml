@@ -56,7 +56,12 @@
 
 
 						<b:dataTableColumn label="">
-							
+				
+							<b:commandButton id="btn_supprimer" value="" look="danger"
+									action="#{mbPanier.supprimerArticle(articleCommande)}">
+							<b:image value="../pics/icones/deleteWhite21.png"/>	
+								
+							</b:commandButton>
 							<h:graphicImage
 								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
 						</b:dataTableColumn>
