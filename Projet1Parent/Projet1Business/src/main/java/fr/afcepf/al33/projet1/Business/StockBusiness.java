@@ -87,10 +87,10 @@ public class StockBusiness implements StockIBusiness{
 	}
 
 	@Override
-	public List<Stock> getByPeromption() {
-		List<Stock> stockPeromption = new ArrayList<>();
-		stockPeromption=proxyStockIDao.getByQuantity();
-		return stockPeromption;
+	public List<Stock> getByPeremption() {
+		List<Stock> stockPeremption = new ArrayList<>();
+		stockPeremption=proxyStockIDao.getByPeremption();
+		return stockPeremption;
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class AccueilAdminManagedBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List <Stock> stockQuantity;
-	private List <Stock> stockPeromption;
+	private List <Stock> stockPeremption;
 	private List<Commande> commandesEnAttente;
 	
 	private String stockTotal;
@@ -38,7 +38,7 @@ public class AccueilAdminManagedBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		setStockQuantity(proxyStock.getByQuantity());
-		setStockPeromption(proxyStock.getByPeromption());
+		setStockPeremption(proxyStock.getByPeremption());
 		setStockTotal(proxyStock.getTotalQuantity());
 		setStockVirtuel(proxyStock.getVirtualQuantity());
 		setCommandesEnAttente(proxyCommande.getAllToProcess());
@@ -53,12 +53,12 @@ public class AccueilAdminManagedBean implements Serializable {
 		this.stockQuantity = stockQuantity;
 	}
 
-	public List <Stock> getStockPeromption() {
-		return stockPeromption;
+	public List <Stock> getStockPeremption() {
+		return stockPeremption;
 	}
 
-	public void setStockPeromption(List <Stock> stockPeromption) {
-		this.stockPeromption = stockPeromption;
+	public void setStockPeremption(List <Stock> stockPeremption) {
+		this.stockPeremption = stockPeremption;
 	}
 
 	public String getStockTotal() {

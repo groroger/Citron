@@ -15,7 +15,7 @@ public interface StockIBusiness {
 	
 	public List<Stock> getAll() ;
 	List<Stock> getByQuantity();
-	List<Stock> getByPeromption();
+	List<Stock> getByPeremption();
 	String getTotalQuantity();
 	String getVirtualQuantity();
 
