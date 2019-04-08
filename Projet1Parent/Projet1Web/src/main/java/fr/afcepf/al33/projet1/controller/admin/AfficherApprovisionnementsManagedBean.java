@@ -8,6 +8,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
 import fr.afcepf.al33.projet1.entity.Stock;
@@ -39,7 +42,11 @@ public class AfficherApprovisionnementsManagedBean implements Serializable{
 
 	@PostConstruct
 	public void init() {
-		approvisionnements=proxyApprovisionnement.getAllApproByStock(selectedStock);
+		
+		 FacesContext facesContext = FacesContext.getCurrentInstance();
+		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		 selectedStock=(Stock)session.getAttribute("selectedStock");
+		 approvisionnements=proxyApprovisionnement.getAllApproByStock(selectedStock);
 		
 	}
 
