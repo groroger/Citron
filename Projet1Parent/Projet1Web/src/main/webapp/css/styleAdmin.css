@@ -50,6 +50,31 @@ h3
 
 /*** ACCUEIL ADMIN ***/
 
+#donutchart text{
+	font-size: 1.5em;
+}
+
+#compteur{
+	box-sizing: ;
+	border: 6px solid green;
+	box-shadow: 12px 12px 2px 1px rgba(255, 255, 17, 0.8);
+	border-radius: 30px;
+	width: 40%;
+	height: 50%;
+	margin: inherit;
+	margin-top: 5%;
+	padding-top: 1em;
+	text-align: center;
+	font-size: 5em;
+}
+
+#titreChartCommande{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-top: 10%;
+}
+
 #infoJS{
 	visibility:hidden;
 }
