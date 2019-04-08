@@ -17,6 +17,11 @@
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
+		
+			<f:metadata>
+				<f:event listener="#{mbFindCommandeATraiter.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+		
 		<h:body>
 		<b:container id="principal">
 			<h:form id="formRechercheCommandesATraiter">
