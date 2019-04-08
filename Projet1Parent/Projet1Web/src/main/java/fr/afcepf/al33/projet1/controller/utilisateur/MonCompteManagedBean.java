@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
+import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.projet1.entity.Client;
 import fr.afcepf.al33.projet1.entity.Commande;
 
@@ -30,6 +31,9 @@ public class MonCompteManagedBean implements Serializable{
 
 	@EJB
 	private ClientIBusiness proxyClient;
+	
+	@EJB
+	private CommandeIBusiness proxyCommandes;
 	
 	
 	@ManagedProperty(value="#{mbConnectionUtilisateur.clientConnecte}")
@@ -64,7 +68,7 @@ public class MonCompteManagedBean implements Serializable{
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		client = (Client) session.getAttribute("clientConnecte");
 		
-		commandes= client.getCommandes();
+		commandes= proxyCommandes.getAllByClient(client);
 		
 	
 	}
