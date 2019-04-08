@@ -76,7 +76,10 @@
 							<b:image value="../pics/icones/refreshGreen24.png"/>
 							</b:commandButton>
 						</b:dataTableColumn>
-			
+						<b:dataTableColumn label="Prix Total">
+				
+							<h:outputLabel value="#{articleCommande.prixTotal}" />
+						</b:dataTableColumn>
 					</b:dataTable>
 					
 					
@@ -88,8 +91,7 @@
 		            
 		           
 		                
-		                  <b:inputText value="#{mbPanier.calculerPanier()}"
-		                  	mask="9{1,6}.99 €"
+		                  <b:inputText value="#{mbPanier.calculerPanier()} €"
 		                    disabled="true" fieldSize="lg">
 		                    <f:facet name="prepend">
 		                      <h:outputText value="Total à payer: " />
