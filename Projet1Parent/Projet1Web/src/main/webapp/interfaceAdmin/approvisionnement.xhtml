@@ -15,6 +15,7 @@
 			<title>Approvisionnement</title>
 			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/approvisionnementAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 
@@ -133,14 +134,16 @@
 					<br />
 					<br />
 
+					<div id="boutonBas">
 					<b:row>
-						<b:column offset="0" tiny-screen="2" medium-screen="2"	large-screen="2">
+						<b:column>
 							<b:commandButton
 								action="#{mbApprovisionnement.addApprovisionnementToStock()}"
 								value="Enregistrer" look="warning" />
 						</b:column>
 					</b:row>
-
+					</div>
+					
 				</b:container>
 			</h:form>			
 			</b:container>
