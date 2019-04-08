@@ -30,7 +30,7 @@ public class CatalogueManagedBean implements Serializable{
 
 	private List <Article> articles;
 	private List <Categorie> categories;
-	private Categorie selectedCategorie;
+	private Categorie selectedCategorie = null;
 
 	private Article selectedArticleAdmin;
 
@@ -45,10 +45,12 @@ public class CatalogueManagedBean implements Serializable{
 
 	@PostConstruct
 	public void init() {
-		articles= proxyArticle.getAll();
-
+		
 		categories =  proxyCategorie.getAll();
+	
+		onCategorieChange();
 
+		
 	}
 
 	public void afficherFicheProduit(Article article) {
@@ -72,9 +74,15 @@ public class CatalogueManagedBean implements Serializable{
 			
 			articles=proxyArticle.getByIdCategorie(selectedCategorie);
 			
+		} else if (selectedCategorie==null) {
+			
+			
+			articles=proxyArticle.getAll();
+			
 		} else if(selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
 			
 			articles=proxyArticle.getAll();
+			
 
 		} else {
 			

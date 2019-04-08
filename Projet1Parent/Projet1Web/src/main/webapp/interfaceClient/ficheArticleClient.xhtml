@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 
@@ -11,110 +12,82 @@
 
 	<ui:define name="content">
 
-		<h:head>
+	<h:head>
+	
+	<f:metadata>
+				<f:event listener="#{mbFicheArticleClient.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 
 			<title>Fiche produit</title>
 
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
-			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+			
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheArticle.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 
 		<h:body>
-			<f:metadata>
-				<f:event listener="#{mbFicheArticleClient.init()}"
-					type="preRenderView"></f:event>
-			</f:metadata>
-			<b:container>
-				<b:form id="formFicheProduit">
-					<b:container layout="fluid">
-						<b:row>
-							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-								<h3>Fiche produit détaillée</h3>
-							</b:column>
-						</b:row>
 
-						<div>
-							<h:graphicImage
-								value="/pics/articlesImages/#{mbFicheArticleClient.article.image}" />
-						</div>
+			<b:container class="container1">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+   <h:graphicImage value="/pics/articlesImages/#{mbFicheArticleClient.article.image}" />
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+    	<b:row id="nomCategorie">
+      		<h:outputText class="span" value="#{mbFicheArticleClient.article.categorie.nomCategorie}"/>
+      	</b:row>
+      	<b:row>
+       		<h:outputText class="h1" value="#{mbFicheArticleClient.article.nom}"/>
+       	</b:row>
+       	<b:row id="descriptif">
+       		<h:outputText class="p" value="#{mbFicheArticleClient.article.descriptif}"/>
+		</b:row>
+    </div>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+ 
+      <!-- Product Color -->
+		<div class="product-color">
+	      	<b:row>
+	      		<h:outputText class="span" value="Prix de vente"/>
+	      	</b:row>  
+		</div>  
+ 	</div>
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+		<b:row>
+			<h:outputText class="span" value="#{mbFicheArticleClient.article.prix} €" />
+		</b:row> 
+		</div> 
+	 <!-- Ajout panier -->
+	<div class="ajoutPanier">
+	<b:row class="ajoutPanier">
+			<h:form>
+		<f:facet name="header">Ajouter Panier</f:facet>
+		<p:spinner id="minMax" value="#{mbFicheArticleClient.quantiteSaisie}" min="1" max="100" size="4" />
+		<label id="espaceVide"></label>
 
-						<b:panelGrid columns="1">
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputTextarea
-										value="#{mbFicheArticleClient.article.descriptif}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Description" />
-										</f:facet>
-									</b:inputTextarea>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText value="#{mbFicheArticleClient.article.nom}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Appellation" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText
-										value="#{mbFicheArticleClient.article.categorie.nomCategorie}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Catégorie" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText value="#{mbFicheArticleClient.article.prix}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Prix de vente" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputText value="#{mbFicheArticleClient.article.prixKilo}"
-										disabled="true" fieldSize="lg">
-										<f:facet name="prepend">
-											<h:outputText value="Prix au kilo" />
-										</f:facet>
-									</b:inputText>
-								</b:column>
-							</b:row>
-						</b:panelGrid>
-						<b:panelGrid columns="2">
-						
-						<b:column >
-							<b:commandButton value="Ajouter au panier" look="primary" 
-								action="#{mbFicheArticleClient.ajouterArticle()}"/>
-								
-							<div class="quantity">
-      <b:commandButton id="btn_minus" value="" icon="minus-sign"
-									look="primary"
-									action="#{mbFicheArticleClient.minusQuantiteSaisie()}" />
-									
-      <input type="text" name="name" value="#{mbFicheArticleClient.quantiteSaisie}"/>
-      
-      <b:commandButton id="btn_plus" value="" icon="plus-sign"
-									look="primary"
-									action="#{mbFicheArticleClient.plusQuantiteSaisie()}" />
-						    </div>
-							</b:column>>
-						</b:panelGrid>
-					</b:container>
-				</b:form>
-			</b:container>
+		<b:commandButton id="btn_ajouterFicheArticle" value="" look="warning"
+				action="#{mbFicheArticleClient.ajouterArticle()}">
+			<b:image value="../pics/icones/shoppingCartWhite32.png"/>	
+			
+		</b:commandButton>
+		</h:form>
+		</b:row>
+    </div>
+  </div>
+</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>

@@ -1,5 +1,6 @@
 package fr.afcepf.al33.projet1.dao;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,5 +44,48 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 		return stocksParCategorie ;
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Stock> getByQuantity(){
+		List<Stock>stocks = new ArrayList<Stock>();
+		String REQ_GETALL = "SELECT stock from Stock stock ORDER BY stock.quantiteDispoPhysique";
+		Query queryJPQL = em.createQuery(REQ_GETALL);
+		stocks = queryJPQL.getResultList();
+		return stocks;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Stock> getByPeromption() {
+		List<Stock> stocksParCategorie=null;
+		LocalDateTime dateButoire;
+		dateButoire = LocalDateTime.now().minusDays(5);
+		String REQ= "SELECT s from Stock s JOIN s.approvisionnement a WHERE a.datePeromption >= :date";
+		Query queryJPQL = em.createQuery(REQ);
+		queryJPQL.setParameter("date", dateButoire);
+		stocksParCategorie = queryJPQL.getResultList();
+		
+		return stocksParCategorie ;
+		
+	}
+	
+	public String getTotalQuantity() {
+		String result;
+		String REQ_GETALL = "SELECT SUM(quantiteDispoPhysique) from Stock stock";
+		Query queryJPQL = em.createQuery(REQ_GETALL);
+		result = queryJPQL.getSingleResult().toString();
+		return result;
+	}
+	
+	public String getVirtualQuantity() {
+		String result;
+		String REQ_GETALL = "SELECT SUM(quantiteDispoSiteInternet) from Stock stock";
+		Query queryJPQL = em.createQuery(REQ_GETALL);
+		result = queryJPQL.getSingleResult().toString();
+		return result;
+	}
+	
+	
 
 }

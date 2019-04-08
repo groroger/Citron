@@ -14,17 +14,32 @@
 			<title>Accueil admin</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
-			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
+			
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>	
+						
+			<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
+				
 		</h:head>
+		
 		<h:body>
-			<b:container >
-		
-		
 
-Ici c'est côté admin
+<div id="infoJS">
+	<h:outputText id="sockTotal" value="#{mbAccueilAdmin.stockTotal}" />
+	<h:outputText id="stockVirtuel" value="#{mbAccueilAdmin.stockVirtuel}" />
+	<h:outputText id="commandesAtraiter" value="#{String.valueOf(mbAccueilAdmin.commandesEnAttente.size())}" />
+</div>
+
+<div id="charts">
+	<div id="donutchart" style="width: 50%; height: 500px;"></div>
+	<div id="compteur" style="width: 50%; height: 500px; size: 5em; color: green;"></div>
+</div>
 
 
-			</b:container>
+<b:button id="btnLienReporting" look="success" value="ALLER AU REPORTING" size="lg" href="#{request.contextPath}/interfaceAdmin/reporting.xhtml"/>
+
+
 
 		</h:body>
 	</ui:define>

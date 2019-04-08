@@ -3,48 +3,63 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="content">
 
 		<h:head>
 			<title>Catalogue</title>
-		
-			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+			
+			
 		</h:head>
+
+		<f:metadata>
+			<f:event listener="#{mbFicheArticleClient.init()}"
+				type="preRenderView"></f:event>
+		</f:metadata>
 
 		<h:body>
 		
+				<b:row id="banner">
+					<h3>Catalogue de produits</h3>
+
+				</b:row>
+
 			<b:container>
 
-			<h:form id="formCatalogueClient">
+				<h:form id="formCatalogueClient">
+				
+			
+					<b:container layout="fluid">
+					
 
-				<b:container layout="fluid">
-					<b:row>
-							<h3>Catalogue de produits</h3>
-		
-					</b:row>
+						<b:formGroup>
+							<b:selectOneMenu 
+								update="datatableArticles"
+								onchange="ajax:AJAXBean.onChange()"
+								value="#{mbCatalogueClient.selectedCategorie}" 
+								colMd="3"
+								labelColMd="3">
+								<f:ajax listener="#{mbCatalogueClient.onCategorieChange()}"
+									update="datatableArticles" />
+								<f:selectItems value="#{mbCatalogueClient.categories}"
+									var="categorie" itemValue="#{categorie}"
+									itemLabel="#{categorie.nomCategorie}" />
+							</b:selectOneMenu>
 
-					<b:formGroup>
-						<b:selectOneMenu update="datatableArticles"
-							onchange="ajax:AJAXBean.onChange()"
-							value="#{mbCatalogueClient.selectedCategorie}" colMd="3"
-							labelColMd="3">
-							<f:ajax listener="#{mbCatalogueClient.onCategorieChange()}"
-								update="datatableArticles" />
-							<f:selectItems value="#{mbCatalogueClient.categories}"
-								var="categorie" itemValue="#{categorie}"
-								itemLabel="#{categorie.nomCategorie}" />
-						</b:selectOneMenu>
-						
-					</b:formGroup>
+						</b:formGroup>
 
 					</b:container>
-			
-					<b:dataTable id="datatableArticles"
+
+					<b:dataTable 
+						id="datatableArticles"
 						value="#{mbCatalogueClient.articles}" 
 						var="article" 
 						pdf="false"
@@ -53,53 +68,58 @@
 						border="true" 
 						info="false"
 						page-length="20" 
-						selectionMode="single" 
+						select="false"
+						
 						responsive="true"
-						onselect="ajax:mbCatalogueClient.afficherFicheProduit(article);"
+	
 						paginated="false">
 
-						<b:dataTableColumn custom-options="'width':'100px'">
-							<f:facet name="header">Image: </f:facet>
+						<b:dataTableColumn custom-options="'width':'105px'">
+							<f:facet name="header">Visuel</f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
 						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header"> Fiche produit</f:facet>
+							<b:commandButton value=""
+								look="warning"
+								action="#{mbCatalogueClient.afficherFicheProduit(article)}">
+								<b:image value="../pics/icones/searchWhite32.png"/>	
+							</b:commandButton>
+						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'150px'">
-							<f:facet name="header">Articles: </f:facet>
+							<f:facet name="header">Articles</f:facet>
 							<h:outputLabel value="#{article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'150px'">
-							<f:facet name="header">Categorie: </f:facet>
-							<h:outputLabel value="#{article.categorie.nomCategorie}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Quantité<br />vendue<br />en kg: </f:facet>
+							<f:facet name="header">Quantité vendue<br />(en kg) </f:facet>
 							<h:outputLabel value="#{article.quantiteVendue}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Prix<br />au kilo: </f:facet>
-							<h:outputLabel value="#{article.prixKilo}" />
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Quantité Disponible</f:facet>
+							<h:outputLabel value="#{article.stock.quantiteDispoSiteInternet}" />
 						</b:dataTableColumn>
-
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Prix au kilo: </f:facet>
+							<h:outputLabel value="#{article.prixKilo} €" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{article.prix} €" />
+						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'200px'">
 							<f:facet name="header">Ajouter Panier</f:facet>
 
-							<h:outputLabel value="#{article.quantiteSaisie}" />
-							<br />
-							<b:buttonGroup>
-								<b:commandButton id="btn_minus" value="" icon="minus-sign"
-									look="primary"
-									action="#{mbCatalogueClient.minusQuantiteSaisie(article)}" />
+							<p:spinner id="minMax" value="#{article.quantiteSaisie}" min="1" max="100" size="4" />
+							
+							<b:commandButton id="btn_ajouter" value="" look="warning"
+									action="#{mbCatalogueClient.ajouterArticle(article)}">
+								<b:image value="../pics/icones/shoppingCartWhite21.png"/>	
+								
+							</b:commandButton>
 
-								<b:commandButton id="btn_ajouter" value="Ajouter" look="primary"
-									action="#{mbCatalogueClient.ajouterArticle(article)}" />
-
-								<b:commandButton id="btn_plus" value="" icon="plus-sign"
-									look="primary"
-									action="#{mbCatalogueClient.plusQuantiteSaisie(article)}" />
-							</b:buttonGroup>
 						</b:dataTableColumn>
 					</b:dataTable>
-			
-			</h:form>
+				</h:form>
 			</b:container>
 		</h:body>
 	</ui:define>

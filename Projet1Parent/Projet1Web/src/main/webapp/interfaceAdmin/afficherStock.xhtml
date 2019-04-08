@@ -19,7 +19,9 @@
 		</h:head>
 
 		<h:body>
-
+			<f:metadata>
+				<f:event listener="#{mbStock.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 			<b:container>
 
 
@@ -60,26 +62,26 @@
 
 						<b:dataTableColumn
 							headerStyle="text-align: center;vertical-align: middle;">
-							<f:facet name="header">Image: </f:facet>
+							<f:facet name="header">Images</f:facet>
 							<h:graphicImage
 								value="/pics/articlesImages/#{ligneStock.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Articles: </f:facet>
+							<f:facet name="header">Articles</f:facet>
 							<h:outputLabel value="#{ligneStock.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Disponibilité site internet: </f:facet>
+							<f:facet name="header">Disponibilité<br/>site internet</f:facet>
 							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Quantités en stock: </f:facet>
+							<f:facet name="header">Quantités<br/>en stock</f:facet>
 							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Approvisionnement: </f:facet>
+							<f:facet name="header">Approvisionnement</f:facet>
 							<b:commandButton value="Voir les approvisionnements"
-								look="primary"
+								look="warning"
 								action="#{mbStock.afficherApprovisionnements(ligneStock)}" />
 						</b:dataTableColumn>
 					</b:dataTable>

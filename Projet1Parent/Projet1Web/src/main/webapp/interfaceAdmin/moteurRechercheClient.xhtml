@@ -26,12 +26,8 @@
 
 				<b:container layout="fluid">
 					<b:row>
-
 							<h3>Liste des clients:</h3>
-
 					</b:row>
-
-
 
 					<b:dataTable 
 						value="#{mbFindClient.clients}" 
@@ -48,24 +44,16 @@
 						paginated="false">
 
 						<b:dataTableColumn>
-							<f:facet name="header">Nom</f:facet>
-							<h:outputLabel value="#{cl.nom}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Prénom</f:facet>
-							<h:outputLabel value="#{cl.prenom}" />
+							<f:facet name="header">Client</f:facet>
+							<h:outputLabel value="#{cl.nom} #{cl.prenom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Adresse</f:facet>
 							<h:outputLabel value="#{cl.adresse}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Code Postal</f:facet>
-							<h:outputLabel value="#{cl.ville.codePostal}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
 							<f:facet name="header">Ville</f:facet>
-							<h:outputLabel value="#{cl.ville.nom}" />
+							<h:outputLabel value="#{cl.ville.codePostal} #{cl.ville.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Téléphone</f:facet>
@@ -82,7 +70,6 @@
 					</b:dataTable>
 				</b:container>
 			</h:form>
-
 		</h:body>
 	</ui:define>
 </ui:composition>

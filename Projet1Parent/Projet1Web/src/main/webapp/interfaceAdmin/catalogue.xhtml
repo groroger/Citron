@@ -18,6 +18,11 @@
 		</h:head>
 
 		<h:body>
+		
+			<f:metadata>
+				<f:event listener="#{mbCatalogue.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+			
 			<b:container>
 		
 			<h:form id="formCatalogue">
@@ -34,7 +39,7 @@
 							onchange="ajax:AJAXBean.onChange()"
 							value="#{mbCatalogue.selectedCategorie}" colMd="3" labelColMd="3">
 							<f:ajax listener="#{mbCatalogue.onCategorieChange()}"
-								update="datatableArticles" />
+								 update="datatableArticles" />
 							<f:selectItems value="#{mbCatalogue.categories}" var="categorie"
 								itemValue="#{categorie}" itemLabel="#{categorie.nomCategorie}" />
 						</b:selectOneMenu>
@@ -61,26 +66,25 @@
 								 paginated="false">
 								 
 						<b:dataTableColumn>
-							<f:facet name="header">Image: </f:facet>
+							<f:facet name="header">Image</f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Articles: </f:facet>
+							<f:facet name="header">Articles</f:facet>
 							<h:outputLabel value="#{article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Categorie: </f:facet>
-							<h:outputLabel value="#{article.categorie.nomCategorie}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Quantité<br />vendue<br />en kg: </f:facet>
+							<f:facet name="header">Quantité vendue<br />(en kg)</f:facet>
 							<h:outputLabel value="#{article.quantiteVendue}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Prix<br />au kilo: </f:facet>
-							<h:outputLabel value="#{article.prixKilo}" />
+							<f:facet name="header">Prix<br />au kilo</f:facet>
+							<h:outputLabel value="#{article.prixKilo} €" />
 						</b:dataTableColumn>
-						
+						<b:dataTableColumn>
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{article.prix} €" />
+						</b:dataTableColumn>
 					</b:dataTable>
 				</h:form>
 			</b:container>	

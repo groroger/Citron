@@ -172,6 +172,7 @@ public class Commande implements Serializable {
 		public void setArticlesCommandes(List<ArticleCommande> articlesCommandes) {
 			this.articlesCommandes = articlesCommandes;
 		}
+		
 
 	
 }
