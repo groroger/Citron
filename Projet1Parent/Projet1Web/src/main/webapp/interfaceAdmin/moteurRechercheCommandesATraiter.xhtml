@@ -57,7 +57,9 @@
 
 						<b:dataTableColumn>
 							<f:facet name="header">Enregistrée le</f:facet>
-							<h:outputLabel value="#{mbFindCommandeATraiter.getDateToString(cde.dateCreation)}" />
+							<h:outputLabel value="#{cde.dateCreation}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Client</f:facet>

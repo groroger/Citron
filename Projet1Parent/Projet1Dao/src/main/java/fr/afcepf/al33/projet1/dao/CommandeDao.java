@@ -37,7 +37,7 @@ public class CommandeDao extends GenericDao<Commande> implements CommandeIdao {
 		//slf4jLogger.debug("getAllToProcess");
 		List<Commande> commandes = null;
 		// Commande à traiter si dateExpedition = null
-		String REQ = "SELECT commande from Commande commande WHERE commande.dateExpedition is null ORDER BY commande.dateCreation";
+		String REQ = "SELECT commande from Commande commande WHERE commande.dateExpedition is null ORDER BY commande.dateCreation desc";
 		Query queryJPQL = em.createQuery(REQ);
 		commandes = queryJPQL.getResultList();
 		return commandes;
