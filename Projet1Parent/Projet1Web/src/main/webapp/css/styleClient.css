@@ -215,6 +215,20 @@ table tr:last-child td:last-child
 
 	/*** HEADER ***/
 
+ .badge
+ {
+	width: 30px;
+	height: 30px;
+	border-radius: 20px;
+	background-color: #FFF726;
+	color: black;
+	font-size: 17px;
+	padding: 7px 5px;
+	position: absolute;
+	top: 21%;
+	left: 97%;
+ }
+ 
 
 .navbar
 {
@@ -709,17 +723,4 @@ html, body {
 
 
  
- .badge
- {
-	width: 30px;
-	height: 30px;
-	border-radius: 20px;
-	background-color: #FFF726;
-	color: black;
-	font-size: 17px;
-	padding: 7px 5px;
-	position: absolute;
-	top: 21%;
-	left: 97%;
- }
- 
+
