@@ -200,16 +200,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 		}
 		// mise à jour date expédition commande
 		cde.setDateExpedition(new Date());
-		try {
-			proxyCommande.update(cde);
-			if(logger.isDebugEnabled()) {
-				logger.debug("commande id=" + cde.getId() + " marquée expédiée à la date du " + cde.getDateExpedition());
-			}
-		} catch (Exception e) {
-			// Stack overflow ??????
-			logger.error("erreur sur proxyCommande.update(cde) : ", e);
-			throw e;
-		}
+		proxyCommande.update(cde);
 		
 		// rechargement des commandes à traiter
 		commandes = proxyCommande.getAllToProcess();
