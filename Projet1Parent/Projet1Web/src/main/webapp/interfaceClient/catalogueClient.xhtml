@@ -16,6 +16,8 @@
 				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+			
+			
 		</h:head>
 
 		<f:metadata>
@@ -107,7 +109,7 @@
 						<b:dataTableColumn custom-options="'width':'200px'">
 							<f:facet name="header">Ajouter Panier</f:facet>
 
-							<p:spinner id="minMax" value="#{article.quantiteSaisie}" min="0" max="100" size="4" />
+							<p:spinner id="minMax" value="#{article.quantiteSaisie}" min="1" max="100" size="4" />
 							
 							<b:commandButton id="btn_ajouter" value="" look="warning"
 									action="#{mbCatalogueClient.ajouterArticle(article)}">

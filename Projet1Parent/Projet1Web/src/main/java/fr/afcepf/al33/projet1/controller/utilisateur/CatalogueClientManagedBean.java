@@ -50,11 +50,17 @@ public class CatalogueClientManagedBean implements Serializable{
 
 
 
+	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void init() {
 	
 		categories =  proxyCategorie.getAll();
 		onCategorieChange();
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		if ((List<ArticleCommande>)session.getAttribute("listeArticlesCommandes")!=null) {
+			articlesCommandes= (List<ArticleCommande>)session.getAttribute("listeArticlesCommandes");
+		}
 	}
 
 	public void afficherFicheProduit(Article article) {

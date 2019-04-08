@@ -53,7 +53,7 @@ public class Commande implements Serializable {
 		@JoinColumn(referencedColumnName="id")
 		private Client client;
 	
-		@OneToMany(fetch=FetchType.EAGER, mappedBy="commande", cascade=CascadeType.ALL)
+		@OneToMany(fetch=FetchType.LAZY, mappedBy="commande", cascade=CascadeType.PERSIST)
 		private List<ArticleCommande> articlesCommandes;
 
 		
