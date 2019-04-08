@@ -4,6 +4,7 @@ package fr.afcepf.al33.projet1.controller.utilisateur;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -120,11 +121,15 @@ public class PanierManagedBean implements Serializable{
 			 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/monCompte.xhtml#test?faces-redirect=true");
 		  
+			 articlesCommandes= new ArrayList<ArticleCommande>();
+			 session.setAttribute("listeArticlesCommandes", articlesCommandes);
 		  
 	  } else {
 		  FacesContext facesContext = FacesContext.getCurrentInstance();
 		  HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		  facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml#test?faces-redirect=true");
+		  
+		  
 		System.out.println("Merci de votre visite");
 			
 	  }
