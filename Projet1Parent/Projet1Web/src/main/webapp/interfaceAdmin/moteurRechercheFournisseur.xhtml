@@ -15,21 +15,21 @@
 			
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />				
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
-			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/panier.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/fournisseurAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 
 		</h:head>
 		<h:body>
-
-			<h:form id="formRechercheFournisseur">
-
-				<b:container layout="fluid">
-					<b:row>
+					<b:row id="banner">
 	
-							<h3>Liste des fournisseurs:</h3>
+							<h3>Liste des fournisseurs</h3>
 
 					</b:row>
-
+					
+					<h:form id="formRechercheFournisseur">
+					
+					<b:container layout="fluid">
+					
 					<b:dataTable value="#{mbFindFournisseur.fournisseurs}" 
 								 var="fourn"
 								 excel="false" 
@@ -68,13 +68,14 @@
 							<h:outputLabel value="#{fourn.email}" />
 						</b:dataTableColumn>
 					</b:dataTable>
-					<b:row>
-						<b:column offset="10" tiny-screen="12" medium-screen="12" large-screen="12">
+					
+					<div id="boutonBas">
+						
 							<b:button
 								href="/Projet1Web/interfaceAdmin/ajoutFournisseur.xhtml"
 								value="Ajouter un fournisseur" look="warning" style="margin-top:10px"/>
-						</b:column>
-					</b:row>
+				
+					</div>
 				</b:container>
 			</h:form>
 		</h:body>
