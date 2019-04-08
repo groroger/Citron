@@ -43,6 +43,7 @@ public class AccueilAdminManagedBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		setStockQuantity(proxyStock.getByQuantity());
+		// recherche des approvisionnements qui seront périmés dans n jours
 		setApprovisionnementsPeremption(proxyApprovisionnement.getOutOfDateAppro(5));
 		setStockTotal(proxyStock.getTotalQuantity());
 		setStockVirtuel(proxyStock.getVirtualQuantity());

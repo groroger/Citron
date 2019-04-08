@@ -76,7 +76,9 @@
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Date péremption: </f:facet>
-							<h:outputLabel value="#{ligneStock.datePeremption}" />
+							<h:outputLabel value="#{ligneStock.datePeremption}"  >
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+  							</h:outputLabel>
 						</b:dataTableColumn>
 						
 					</b:dataTable>

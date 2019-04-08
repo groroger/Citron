@@ -131,9 +131,9 @@ INSERT INTO `stock`(id, article_id, quantiteDispoSiteInternet, quantiteDispoPhys
 INSERT INTO `stock`(id, article_id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (29, 29, 90, 90);
 INSERT INTO `stock`(id, article_id, quantiteDispoSiteInternet, quantiteDispoPhysique) VALUES (30, 30, 40, 40);
 
-INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (1, 1, 1, 1, '2019-04-04', '2019-05-01', 'A78EF48', '175.00', '50', '50');
-INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (2, 2, 2, 1, '2019-04-04', '2019-05-01', 'B78FQ49', '190.00', '100', '100');
-INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (3, 3, 3, 2, '2019-04-04', '2019-05-01', 'C78GF50', '150.00', '75', '75');
+INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (1, 1, 1, 1, '2019-03-04', '2019-04-01', 'A78EF48', '175.00', '50', '50');
+INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (2, 2, 2, 1, '2019-03-04', '2019-04-01', 'B78FQ49', '190.00', '100', '100');
+INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (3, 3, 3, 2, '2019-03-04', '2019-04-01', 'C78GF50', '150.00', '75', '75');
 INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (4, 4, 4, 2, '2019-04-04', '2019-05-01', 'D78HF51', '200.00', '75', '75');
 INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (5, 5, 5, 2, '2019-04-04', '2019-05-01', 'E78IF52', '203.00', '80', '80');
 INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (6, 6, 6, 2, '2019-04-04', '2019-05-01', 'F78JF53', '157.00', '50', '50');
