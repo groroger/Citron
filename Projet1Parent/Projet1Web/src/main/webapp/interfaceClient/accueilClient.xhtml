@@ -174,19 +174,15 @@
 				</b:modal>
 
 			</div>
-			<b:container id="container_presentation"></b:container>
-			<b:container id="container_producteurs"></b:container>
-			<b:container id="container_service"></b:container>
-			
 			<b:row>
 			 
 			</b:row>
 			
-			<b:row>
+			<b:row id="nosProducteurs">
 	  			<b:column id="col-Presentation" col-sm="6" col-md="4">
 				    <b:thumbnail>
-				    <h3>Presentation</h3>
-				    <img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg" alt="Generic placeholder thumbnail"/>
+				    <h2 id="h22">Presentation</h2>
+				    <img src="#{request.contextPath}/pics/carousel/jolisFruits.jpg" alt="Generic placeholder thumbnail"/>
 				      <f:facet name="caption">
 
 						<h2> Qu'est-ce que le Lorem Ipsum?</h2>
@@ -198,9 +194,10 @@
 							grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications 
 							de mise en page de texte, comme Aldus PageMaker.
 						</p>
+						
 				        <p>
-					        <b:button look="primary" value="Button"/>
-					        <b:button value="Button"/>
+					        <b:button id="boutonsNosProducteurs1" look="warning" value="Button"/>
+					        <b:button id="boutonsNosProducteurs2" value="Button"/>
 				        </p>
 				      </f:facet>
 				    </b:thumbnail>
@@ -208,8 +205,8 @@
 				  
 				  <b:column id="col-Producteurs" col-sm="6" col-md="4">
 				    <b:thumbnail>
-				    <h3>Producteurs</h3>
-				    <img src="#{request.contextPath}/pics/producteurs/Producteur-1.jpg" alt="Producteur"/>
+				    <h2 id="h22">Producteurs</h2>
+				    <img src="#{request.contextPath}/pics/carousel/jolisFruits3.jpg" alt="Producteur"/>
 				      <f:facet name="caption">
 
 						<h2> Qu'est-ce que le Lorem Ipsum?</h2>
@@ -221,9 +218,9 @@
 							grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications 
 							de mise en page de texte, comme Aldus PageMaker.
 						</p>
-				        <p>
-					        <b:button look="primary" value="Button"/>
-					        <b:button value="Button"/>
+				         <p>
+					        <b:button id="boutonsNosProducteurs3" look="warning" value="Button"/>
+					        <b:button id="boutonsNosProducteurs4" value="Button"/>
 				        </p>
 				      </f:facet>
 				    </b:thumbnail>
@@ -231,7 +228,7 @@
 				  
 				  <b:column id="col-Services" col-sm="6" col-md="4">
 				    <b:thumbnail>
-				    <h3>Services</h3>
+				    <h2 id="h22">Services</h2>
 				    <img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg" alt="Generic placeholder thumbnail"/>
 				      <f:facet name="caption">
 
@@ -244,9 +241,9 @@
 							grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications 
 							de mise en page de texte, comme Aldus PageMaker.
 						</p>
-				        <p>
-					        <b:button look="primary" value="Button"/>
-					        <b:button value="Button"/>
+				         <p>
+					        <b:button id="boutonsNosProducteurs5" look="warning" value="Button"/>
+					        <b:button id="boutonsNosProducteurs6" value="Button"/>
 				        </p>
 				      </f:facet>
 				    </b:thumbnail>

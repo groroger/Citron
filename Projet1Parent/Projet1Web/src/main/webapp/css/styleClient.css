@@ -208,6 +208,11 @@ table tr:last-child td:last-child
 	border-radius : 0px 0px 25px 0px !important;
 }
 
+.input-group-addon:first-child
+{
+	border-radius: 15px 0px 0px 15px;
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
 /**************************
 
 		MASTERPAGE
@@ -355,7 +360,6 @@ footer
 	color: white;
 }
 
-
 /**************************
 
 	ACCUEIL CLIENT
@@ -443,6 +447,7 @@ carouselItem > img{
 {
 	margin-bottom: 0px !important;
 	padding-bottom: 0px !important;
+	padding-top: 150px !important;
 }
 
 #nousConnaitre
@@ -456,7 +461,8 @@ carouselItem > img{
 .inscription
 {
 	text-align:  center;
-	padding-bottom: 30px;
+	padding-top: 50px;
+	padding-bottom: 100px;
 	background-color: #eeeeee;	
 	z-index: 1;
 }
@@ -516,7 +522,57 @@ carouselItem > img{
 	
 }
 
+/*** NOS PRODUCTEURS ***/
 
+#h22
+{
+	font-size: 35px;
+	text-align: center;
+	margin-bottom: 20px;
+	letter-spacing: 2px;
+}
+
+#nosProducteurs
+{
+	margin-top: 100px;
+	margin-right: 50px;
+	margin-left: 50px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+#col-Presentation,
+#col-Producteurs,
+#col-Services
+{
+	
+}
+
+.thumbnail
+{
+	border: 3px solid #d8d8d8 !important;
+	border-radius: 25px !important;
+	box-shadow: 0 15px 25px rgba(0,0,0,.2);
+}
+
+
+#boutonsNosProducteurs1,
+#boutonsNosProducteurs3,
+#boutonsNosProducteurs5
+
+{
+	margin-left: 150px;
+	margin-right: 50px;
+}
+
+#boutonsNosProducteurs2,
+#boutonsNosProducteurs4,
+#boutonsNosProducteurs6
+
+{
+	margin-right: 100px;
+	margin-left: 50px;
+}
 /**************************
 	CATALOGUE CLIENT
 **************************/

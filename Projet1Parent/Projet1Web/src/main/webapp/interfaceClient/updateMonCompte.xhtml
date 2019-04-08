@@ -15,6 +15,7 @@
 			
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />				
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 
@@ -130,7 +131,7 @@
 					</b:panelGrid>
 					<b:panelGrid columns="3">
 						<b:commandButton value="Enregistrer"
-							action="#{mbUpdateMonCompte.update()}" look="primary" />
+							action="#{mbUpdateMonCompte.update()}" look="warning" />
 					</b:panelGrid>
 				</b:container>
 			</b:form>
