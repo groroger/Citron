@@ -12,5 +12,6 @@ public interface ApprovisionnementIBusiness {
 	public Approvisionnement update(Approvisionnement approvisionnement);
 	public Approvisionnement searchById(Integer id);
 	List<Approvisionnement> getAllApproByStock (Stock stock);
+	List<Approvisionnement> getOutOfDateAppro(int nbJours);
 
 }

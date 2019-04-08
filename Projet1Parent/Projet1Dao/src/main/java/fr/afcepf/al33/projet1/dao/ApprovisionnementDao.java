@@ -1,5 +1,6 @@
 package fr.afcepf.al33.projet1.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -31,4 +32,21 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 		return approvisionnements;
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Approvisionnement> getOutOfDateAppro(int nbJours) {
+		// retourne la liste des approvisionnements
+		// avec date de péremption proche de la date du jour
+				
+		List<Approvisionnement> approvisionnements = null;
+		java.sql.Date dateButoire;
+		dateButoire = java.sql.Date.valueOf(LocalDate.now().plusDays(nbJours));
+		String REQ = "SELECT appro from Approvisionnement appro inner join Article art on appro.article = art.id WHERE appro.datePeremption <= :date";
+		Query queryJPQL = em.createQuery(REQ);
+		queryJPQL.setParameter("date", dateButoire);
+		approvisionnements = queryJPQL.getResultList();
+		return approvisionnements;
+		
+	}
+	
 }

@@ -1,6 +1,5 @@
 package fr.afcepf.al33.projet1.dao;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,22 +53,7 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 		stocks = queryJPQL.getResultList();
 		return stocks;
 	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Stock> getByPeremption() {
-		List<Stock> stocksParCategorie=null;
-		java.sql.Date dateButoire;
-		dateButoire = java.sql.Date.valueOf(LocalDate.now().plusDays(5));
-		String REQ= "SELECT s from Stock s JOIN s.approvisionnement a WHERE a.datePeremption <= :date";
-		Query queryJPQL = em.createQuery(REQ);
-		queryJPQL.setParameter("date", dateButoire);
-		stocksParCategorie = queryJPQL.getResultList();
 		
-		return stocksParCategorie ;
-		
-	}
-	
 	public String getTotalQuantity() {
 		String result;
 		String REQ_GETALL = "SELECT SUM(quantiteDispoPhysique) from Stock stock";

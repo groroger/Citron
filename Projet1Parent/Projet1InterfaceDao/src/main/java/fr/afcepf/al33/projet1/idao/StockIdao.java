@@ -10,7 +10,6 @@ public interface StockIdao extends GenericIdao<Stock>{
 	public List<Stock> getAll();
 	public List<Stock> getByIdCategorie(Categorie c);
 	public List<Stock> getByQuantity();
-	public List<Stock> getByPeremption();
 	public String getVirtualQuantity();
 	public String getTotalQuantity();
 }

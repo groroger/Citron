@@ -53,8 +53,8 @@
 						</b:dataTableColumn>
 					</b:dataTable>
 					</b:tab>
-					<b:tab title="Stock par péremption">
-						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.stockPeremption}" 
+					<b:tab title="Appros proches péremption">
+						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.approvisionnementsPeremption}" 
 						var="ligneStock" pdf="false"
 						print="false" excel="false" border="true" info="false"
 						tiny-screen="12" medium-screen="12" large-screen="12"
@@ -71,13 +71,14 @@
 							<h:outputLabel value="#{ligneStock.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Disponibilité site internet: </f:facet>
-							<h:outputLabel value="#{ligneStock.quantiteDispoSiteInternet}" />
+							<f:facet name="header">Quantités en stock: </f:facet>
+							<h:outputLabel value="#{ligneStock.quantiteRestante}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Quantités en stock: </f:facet>
-							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+							<f:facet name="header">Date péremption: </f:facet>
+							<h:outputLabel value="#{ligneStock.datePeremption}" />
 						</b:dataTableColumn>
+						
 					</b:dataTable>
 					</b:tab>
 					<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->

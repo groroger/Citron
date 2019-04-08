@@ -8,8 +8,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
+import fr.afcepf.al33.projet1.entity.Approvisionnement;
 import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.entity.Stock;
 
@@ -23,7 +25,7 @@ public class AccueilAdminManagedBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List <Stock> stockQuantity;
-	private List <Stock> stockPeremption;
+	private List <Approvisionnement> approvisionnementsPeremption;
 	private List<Commande> commandesEnAttente;
 	
 	private String stockTotal;
@@ -35,10 +37,13 @@ public class AccueilAdminManagedBean implements Serializable {
 	@EJB
 	private CommandeIBusiness proxyCommande;
 	
+	@EJB
+	private ApprovisionnementIBusiness proxyApprovisionnement;
+	
 	@PostConstruct
 	public void init() {
 		setStockQuantity(proxyStock.getByQuantity());
-		setStockPeremption(proxyStock.getByPeremption());
+		setApprovisionnementsPeremption(proxyApprovisionnement.getOutOfDateAppro(5));
 		setStockTotal(proxyStock.getTotalQuantity());
 		setStockVirtuel(proxyStock.getVirtualQuantity());
 		setCommandesEnAttente(proxyCommande.getAllToProcess());
@@ -53,12 +58,12 @@ public class AccueilAdminManagedBean implements Serializable {
 		this.stockQuantity = stockQuantity;
 	}
 
-	public List <Stock> getStockPeremption() {
-		return stockPeremption;
+	public List<Approvisionnement> getApprovisionnementsPeremption() {
+		return approvisionnementsPeremption;
 	}
 
-	public void setStockPeremption(List <Stock> stockPeremption) {
-		this.stockPeremption = stockPeremption;
+	public void setApprovisionnementsPeremption(List<Approvisionnement> approvisionnementsPeremption) {
+		this.approvisionnementsPeremption = approvisionnementsPeremption;
 	}
 
 	public String getStockTotal() {
