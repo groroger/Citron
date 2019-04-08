@@ -7,7 +7,6 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
 import fr.afcepf.al33.projet1.entity.ArticleCommande;
 import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.idao.ArticleCommandeIDao;
@@ -25,8 +24,8 @@ public class ArticleCommandeBusiness implements ArticleCommandeIBusiness {
 	private CommandeIdao proxyCommandeIDao;
 	
 	@Override
-	public List<ArticleCommande> getAll() {
-		List<ArticleCommande> articlesCommandes = proxyArticleCommandeIDao.getAll();
+	public List<ArticleCommande> getAllByCommande(Commande commande) {
+		List<ArticleCommande> articlesCommandes = proxyArticleCommandeIDao.getAllByCommande(commande);
 		return articlesCommandes;
 	}
 	 

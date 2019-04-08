@@ -53,8 +53,8 @@
 						</b:dataTableColumn>
 					</b:dataTable>
 					</b:tab>
-					<b:tab title="Stock par péromption">
-						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.stockPeromption}" 
+					<b:tab title="Stock par péremption">
+						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.stockPeremption}" 
 						var="ligneStock" pdf="false"
 						print="false" excel="false" border="true" info="false"
 						tiny-screen="12" medium-screen="12" large-screen="12"
@@ -72,7 +72,7 @@
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Disponibilité site internet: </f:facet>
-							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+							<h:outputLabel value="#{ligneStock.quantiteDispoSiteInternet}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Quantités en stock: </f:facet>

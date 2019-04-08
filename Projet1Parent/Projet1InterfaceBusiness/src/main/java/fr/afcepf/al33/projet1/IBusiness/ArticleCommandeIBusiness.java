@@ -6,7 +6,7 @@ import fr.afcepf.al33.projet1.entity.Commande;
 
 
 public interface ArticleCommandeIBusiness {
-	List<ArticleCommande> getAll();
+	List<ArticleCommande> getAllByCommande(Commande commande);
 	Commande add(Commande commande, List<ArticleCommande> articlesCommandes);
 
 } 

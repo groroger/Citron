@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.al33.projet1.entity.ArticleCommande;
+import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.idao.ArticleCommandeIDao;
 
 
@@ -23,10 +24,11 @@ public class ArticleCommandeDao extends GenericDao<ArticleCommande> implements A
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ArticleCommande> getAll() {
+	public List<ArticleCommande> getAllByCommande(Commande commande) {
 		List<ArticleCommande> articlesCommandes=null;
-		String REQ = "SELECT ac from ArticleCommande ac ORDER BY ac.article.nom";
+		String REQ = "SELECT ac from ArticleCommande ac WHERE ac.commande = :commande";
 		Query queryJPQL = em.createQuery(REQ);
+		queryJPQL.setParameter("commande", commande);
 		articlesCommandes = queryJPQL.getResultList();
 		return articlesCommandes;
 	}

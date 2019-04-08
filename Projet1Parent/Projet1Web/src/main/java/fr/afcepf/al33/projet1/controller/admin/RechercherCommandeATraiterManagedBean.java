@@ -2,6 +2,7 @@ package fr.afcepf.al33.projet1.controller.admin;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -16,9 +17,10 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+
 
 import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
+import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
@@ -39,6 +41,9 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	
 	@EJB
 	private CommandeIBusiness proxyCommande;
+	
+	@EJB
+	private ArticleCommandeIBusiness proxyArticleCommande;
 
 	@EJB
 	private ArticleIBusiness proxyArticle;
@@ -51,6 +56,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	
 	private Commande foundCommande;
 	private List<Commande> commandes;
+	private List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
 
 	
 
@@ -74,6 +80,115 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	}
 
 
+
+
+	// formatage date commande
+	public String getDateToString(Date date) {
+		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+												DateFormat.SHORT,
+												DateFormat.SHORT);
+		
+        return shortDateFormat.format(date);
+    }
+	
+	public boolean traiterCommande(Commande cde) {
+		boolean result = true;
+		// traitement de la commande
+		if(logger.isDebugEnabled()) {
+			logger.debug("traiterCommande() id=" + cde.getId());
+		}
+		
+		articlesCommandes= proxyArticleCommande.getAllByCommande(cde);
+		
+		for (ArticleCommande ac : articlesCommandes) {
+			// pour chaque article 
+			int quantitePreparee = 0;
+			Stock stock = proxyStock.searchById(ac.getArticle().getId());
+			if(logger.isDebugEnabled()) {
+				logger.debug("stock avant pour " + ac.getArticle().getNom() 
+						+ " physique = " + stock.getQuantiteDispoPhysique()
+						+ " internet = " + stock.getQuantiteDispoSiteInternet());
+			}
+			List<Approvisionnement> approvisionnements = proxyApprovisionnement.getAllApproByStock(stock);
+			// tri par date de péremption de la plus ancienne à la plus récente
+			Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
+				  public int compare(Approvisionnement a1, Approvisionnement a2) {
+					  // a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
+					  // a2 et a1 en ordre inverse pour tri descendant
+				      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
+				  }
+				});			
+			for (Approvisionnement approvisionnement : approvisionnements) {
+				// dans les approvisionnements classés par ordre de date de péremption croissante
+				// prendre la quantité nécessaire ou disponible 
+				int quantiteAPrendre = Integer.min(ac.getQuantite() - quantitePreparee, approvisionnement.getQuantiteRestante());
+				if(logger.isDebugEnabled()) {
+					logger.debug("quantité approvisionnement avant pour " 
+							+ " lot " + approvisionnement.getLot()
+							+ " date péremption " + approvisionnement.getDatePeremption()
+							+ " = " + approvisionnement.getQuantiteRestante());
+				}
+				// décrémenter le stock dans l'approvisionnement
+				approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteRestante() - quantiteAPrendre);
+				// modifier le stock
+				proxyApprovisionnement.update(approvisionnement);
+				if(logger.isDebugEnabled()) {
+					logger.debug("quantité approvisionnement après pour " 
+							+ " lot " + approvisionnement.getLot()
+							+ " date péremption " + approvisionnement.getDatePeremption()
+							+ " = " + approvisionnement.getQuantiteRestante());
+				}
+				quantitePreparee += quantiteAPrendre;
+				// jusqu'à satisfaire la quantité commandée
+				if(logger.isDebugEnabled()) {
+					logger.debug("quantité préparée pour " + ac.getArticle().getNom() 
+							+ " = " + quantitePreparee + " / " + ac.getQuantite());
+				}
+				if (quantitePreparee == ac.getQuantite()) {
+					if(logger.isDebugEnabled()) {
+						logger.debug("quantité intégralement préparée pour " + ac.getArticle().getNom());
+					}
+					break;					
+				}
+			}
+			// si quantité insuffisante emettre un message d'alerte pour l'administrateur
+			// création d'un message
+			if (quantitePreparee < ac.getQuantite()) {
+				result = false;
+				// modification de la quantité commandée à la quantité disponible
+				ac.setQuantite(quantitePreparee);
+				// update fait par l'update de proxyCommande
+				if(logger.isDebugEnabled()) {
+					logger.debug("quantité commande ramenée à " + ac.getQuantite() 
+								+ " pour " + ac.getArticle().getNom());
+				}
+				FacesMessage message = new FacesMessage("Pour la commande " + cde.getId() 
+													+ " seulement " + quantitePreparee
+													+ " sur " + ac.getQuantite()
+													+ " " + ac.getArticle().getNom());
+				message.setSeverity(FacesMessage.SEVERITY_ERROR);
+				// ajout à la liste des messages à afficher
+				FacesContext.getCurrentInstance().addMessage(null, message);
+			}			
+			// maj quantite physique dans Stock
+			stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() - quantitePreparee);
+			proxyStock.update(stock);
+			if(logger.isDebugEnabled()) {
+				logger.debug("stock après pour " + ac.getArticle().getNom() 
+						+ " physique = " + stock.getQuantiteDispoPhysique());
+			}
+		}
+		// mise à jour date expédition commande
+		cde.setDateExpedition(new Date());
+		proxyCommande.update(cde);
+		
+		// rechargement des commandes à traiter
+		commandes = proxyCommande.getAllToProcess();
+		
+		return result;
+	}
+	
+	
 	public CommandeIBusiness getProxyCommande() {
 		return proxyCommande;
 	}
@@ -102,110 +217,5 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
-
-	// formatage date commande
-	public String getDateToString(Date date) {
-		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
-												DateFormat.SHORT,
-												DateFormat.SHORT);
-		
-        return shortDateFormat.format(date);
-    }
 	
-	public boolean traiterCommande(Commande cde) {
-		boolean result = true;
-		// traitement de la commande
-		if(logger.isDebugEnabled()) {
-			logger.debug("traiterCommande() id=" + cde.getId());
-		}
-		for (ArticleCommande article : cde.getArticlesCommandes()) {
-			// pour chaque article 
-			int quantitePreparee = 0;
-			Stock stock = proxyStock.searchById(article.getArticle().getId());
-			if(logger.isDebugEnabled()) {
-				logger.debug("stock avant pour " + article.getArticle().getNom() 
-						+ " physique = " + stock.getQuantiteDispoPhysique()
-						+ " internet = " + stock.getQuantiteDispoSiteInternet());
-			}
-			List<Approvisionnement> approvisionnements = proxyApprovisionnement.getAllApproByStock(stock);
-			// tri par date de péremption de la plus ancienne à la plus récente
-			Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
-				  public int compare(Approvisionnement a1, Approvisionnement a2) {
-					  // a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
-					  // a2 et a1 en ordre inverse pour tri descendant
-				      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
-				  }
-				});			
-			for (Approvisionnement approvisionnement : approvisionnements) {
-				// dans les approvisionnements classés par ordre de date de péremption croissante
-				// prendre la quantité nécessaire ou disponible 
-				int quantiteAPrendre = Integer.min(article.getQuantite() - quantitePreparee, approvisionnement.getQuantiteRestante());
-				if(logger.isDebugEnabled()) {
-					logger.debug("quantité approvisionnement avant pour " 
-							+ " lot " + approvisionnement.getLot()
-							+ " date péremption " + approvisionnement.getDatePeremption()
-							+ " = " + approvisionnement.getQuantiteRestante());
-				}
-				// décrémenter le stock dans l'approvisionnement
-				approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteRestante() - quantiteAPrendre);
-				// modifier le stock
-				proxyApprovisionnement.update(approvisionnement);
-				if(logger.isDebugEnabled()) {
-					logger.debug("quantité approvisionnement après pour " 
-							+ " lot " + approvisionnement.getLot()
-							+ " date péremption " + approvisionnement.getDatePeremption()
-							+ " = " + approvisionnement.getQuantiteRestante());
-				}
-				quantitePreparee += quantiteAPrendre;
-				// jusqu'à satisfaire la quantité commandée
-				if(logger.isDebugEnabled()) {
-					logger.debug("quantité préparée pour " + article.getArticle().getNom() 
-							+ " = " + quantitePreparee + " / " + article.getQuantite());
-				}
-				if (quantitePreparee == article.getQuantite()) {
-					if(logger.isDebugEnabled()) {
-						logger.debug("quantité intégralement préparée pour " + article.getArticle().getNom());
-					}
-					break;					
-				}
-			}
-			// si quantité insuffisante emettre un message d'alerte pour l'administrateur
-			// création d'un message
-			if (quantitePreparee < article.getQuantite()) {
-				result = false;
-				// modification de la quantité commandée à la quantité disponible
-				article.setQuantite(quantitePreparee);
-				// update fait par l'update de proxyCommande
-				if(logger.isDebugEnabled()) {
-					logger.debug("quantité commande ramenée à " + article.getQuantite() 
-								+ " pour " + article.getArticle().getNom());
-				}
-				FacesMessage message = new FacesMessage("Pour la commande " + cde.getId() 
-													+ " seulement " + quantitePreparee
-													+ " sur " + article.getQuantite()
-													+ " " + article.getArticle().getNom());
-				message.setSeverity(FacesMessage.SEVERITY_ERROR);
-				// ajout à la liste des messages à afficher
-				FacesContext.getCurrentInstance().addMessage(null, message);
-			}			
-			// maj quantite physique et dispo_stock_internet dans Stock
-			stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() - quantitePreparee);
-			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() - quantitePreparee);
-			proxyStock.update(stock);
-			if(logger.isDebugEnabled()) {
-				logger.debug("stock après pour " + article.getArticle().getNom() 
-						+ " physique = " + stock.getQuantiteDispoPhysique()
-						+ " internet = " + stock.getQuantiteDispoSiteInternet());
-			}
-		}
-		// mise à jour date expédition commande
-		cde.setDateExpedition(new Date());
-		proxyCommande.update(cde);
-		
-		// rechargement des commandes à traiter
-		commandes = proxyCommande.getAllToProcess();
-		
-		return result;
-	}
-		
 }

@@ -7,6 +7,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
+import fr.afcepf.al33.projet1.entity.Client;
 import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.idao.CommandeIdao;
 
@@ -46,6 +47,12 @@ public class CommandeBusiness implements CommandeIBusiness{
 	public Commande searchById(Integer id) {
 		Commande commande = proxyCommande.rechercherParId(id);
 		return commande;
+	}
+
+	@Override
+	public List<Commande> getAllByClient(Client client) {
+		List<Commande> commandes = proxyCommande.getAllByClient(client);
+		return commandes;
 	}
 	
 }
