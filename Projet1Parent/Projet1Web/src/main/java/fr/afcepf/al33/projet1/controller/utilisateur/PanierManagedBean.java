@@ -16,10 +16,12 @@ import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
+import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
 import fr.afcepf.al33.projet1.entity.Article;
 import fr.afcepf.al33.projet1.entity.ArticleCommande;
 import fr.afcepf.al33.projet1.entity.Client;
 import fr.afcepf.al33.projet1.entity.Commande;
+import fr.afcepf.al33.projet1.entity.Stock;
 
 
 
@@ -50,11 +52,16 @@ public class PanierManagedBean implements Serializable{
   
   private Commande commande;
   
+  private Stock stock = new Stock();
+  
   @EJB
   private CommandeIBusiness proxyCommande;
   
   @EJB
   private ArticleCommandeIBusiness proxyArticleCommande;
+  
+  @EJB
+  private StockIBusiness proxyStock;
   
 
 	@SuppressWarnings("unchecked")
@@ -69,10 +76,7 @@ public class PanierManagedBean implements Serializable{
 		{
 			articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
 		}
-		
-	
-	
-	
+			
 	}
     
   public void payer() {
@@ -83,6 +87,14 @@ public class PanierManagedBean implements Serializable{
 		  cde.setDateCreation(new Date());
 		  cde.setClient(client);
 		  proxyArticleCommande.add(cde, articlesCommandes);
+		  
+		  for (ArticleCommande articleCommande : articlesCommandes) {
+			stock= proxyStock.searchById(articleCommande.getArticle().getStock().getId());
+			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-articleCommande.getQuantite());
+			proxyStock.update(stock);
+		}
+		  
+		  
 	  } else {
 		  FacesContext facesContext = FacesContext.getCurrentInstance();
 		  HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);facesContext.getApplication()
@@ -195,6 +207,14 @@ public CommandeIBusiness getProxyCommande() {
 
 public void setProxyCommande(CommandeIBusiness proxyCommande) {
 	this.proxyCommande = proxyCommande;
+}
+
+public Stock getStock() {
+	return stock;
+}
+
+public void setStock(Stock stock) {
+	this.stock = stock;
 }
 
 

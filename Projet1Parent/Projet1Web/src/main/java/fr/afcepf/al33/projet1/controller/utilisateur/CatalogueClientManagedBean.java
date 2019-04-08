@@ -53,7 +53,7 @@ public class CatalogueClientManagedBean implements Serializable{
 	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void init() {
-	
+		articles=proxyArticle.getAll();
 		categories =  proxyCategorie.getAll();
 		onCategorieChange();
 		FacesContext fc = FacesContext.getCurrentInstance();
