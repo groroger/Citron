@@ -163,6 +163,9 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 		cde.setDateExpedition(new Date());
 		proxyCommande.update(cde);
 		
+		// rechargement des commandes à traiter
+		commandes = proxyCommande.getAllToProcess();
+		
 		return result;
 	}
 		
