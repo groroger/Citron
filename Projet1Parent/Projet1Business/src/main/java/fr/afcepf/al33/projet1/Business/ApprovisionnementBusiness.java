@@ -55,7 +55,13 @@ public class ApprovisionnementBusiness implements ApprovisionnementIBusiness{
 		approvisionnements= proxyApprovisionnement.getOutOfDateAppro(nbJours);
 		return approvisionnements;
 	}
-	
+
+	@Override
+	public List<Approvisionnement> getApproRupture(){
+		List<Approvisionnement> approvisionnements=null;
+		approvisionnements = proxyApprovisionnement.getApproRupture();
+		return approvisionnements;
+	}
 
 	
 

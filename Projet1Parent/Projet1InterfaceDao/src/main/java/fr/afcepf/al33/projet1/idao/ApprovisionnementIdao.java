@@ -9,4 +9,5 @@ public interface ApprovisionnementIdao extends GenericIdao<Approvisionnement> {
 	
 	List<Approvisionnement> getAllApproByStock (Stock stock);
 	List<Approvisionnement> getOutOfDateAppro(int nbJours);
+	List<Approvisionnement> getApproRupture();
 }

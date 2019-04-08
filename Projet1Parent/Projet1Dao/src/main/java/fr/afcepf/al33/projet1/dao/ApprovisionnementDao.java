@@ -60,4 +60,14 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Approvisionnement> getApproRupture() {
+		List<Approvisionnement> approvisionnements = null;
+		String REQ = "SELECT approvisionnement from Approvisionnement approvisionnement WHERE approvisionnement.quantiteRestante <= 50";
+		Query queryJPQL = em.createQuery(REQ);
+		approvisionnements = queryJPQL.getResultList();
+		return approvisionnements;
+		
+	}
+	
 }

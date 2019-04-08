@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+
+
+/*** ACCUEIL ADMIN ***/
+
+#charts{
+	display: flex;
+	margin-bottom: 150px;
+}
+
+#charts div{
+	width: 33%;
+	height: 250px;
+	margin: auto;
+}
+
+#charts h5{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-top: 10%;
+}
+
+#peremption,#rupture,#compteur{
+	border: 6px solid green;
+	box-shadow: 12px 12px 2px 1px rgba(255, 255, 17, 0.8);
+	border-radius: 30px;
+	width: 100%;
+	padding-top: 1em;
+	text-align: center;
+	font-size: 5em;
+}
+
+#btnLienPeremption,#btnLienRupture,#btnLienReporting{
+	margin: auto;
+}
+
+#infoJS{
+	visibility:hidden;
+}
+

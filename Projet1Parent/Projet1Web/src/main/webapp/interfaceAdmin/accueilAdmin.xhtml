@@ -14,6 +14,7 @@
 			<title>Accueil admin</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdminMorad.css" />
 			
 			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
@@ -26,21 +27,34 @@
 		<h:body>
 
 <div id="infoJS">
-	<h:outputText id="stockTotal" value="#{mbAccueilAdmin.stockTotal}" />
-	<h:outputText id="stockVirtuel" value="#{mbAccueilAdmin.stockVirtuel}" />
+	<h:outputText id="nbArticlePeremption" value="#{mbAccueilAdmin.approvisionnementsPeremption.size()}" />
+	<h:outputText id="nbArticleRupture" value="#{mbAccueilAdmin.approvisionnementsRupture.size()}" />
 	<h:outputText id="commandesAtraiter" value="#{mbAccueilAdmin.commandesEnAttente.size()}" />
 </div>
 
 <div id="charts">
-	<div id="donutchart" class="col-md-6" style="width: 50%; height: 500px;"></div>
-		<div class="col-md-6" style="width: 50%; height: 500px; margin: auto">
-			<h5 id="titreChartCommande">Mes Commandes en attentes</h5>
-			<div id="compteur" ></div>		
+		
+		<div>
+			<h5>Mes Articles en fin de Vie</h5>
+			<div id="peremption"></div>
+			<b:button id="btnLienPeremption" look="success" value="Aller aux Articles en Péremption" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
 		</div>
+		
+		<div>
+			<h5>Mes Articles en Rupture</h5>
+			<div id="rupture"></div>
+			<b:button id="btnLienRupture" look="success" value="Aller aux Articles en Rupture" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
+		</div>
+		
+		<div>
+			<h5>Mes Commandes en attentes</h5>
+			<div id="compteur"></div>
+			<b:button id="btnLienReporting" look="success" value="Aller aux Commandes à Traiter" size="lg" href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
+		</div>	
 </div>
 
 
-<b:button id="btnLienReporting" class="col-md-2 col-xs-4 offset-md-5 offset-xs-4" look="success" value="ALLER AU REPORTING" size="lg" href="#{request.contextPath}/interfaceAdmin/reporting.xhtml"/>
+
 
 
 <script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
