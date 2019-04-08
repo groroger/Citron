@@ -55,17 +55,17 @@
 						paginated="false">
 
 
-						<b:dataTableColumn>
-							<f:facet name="header">Image</f:facet>
+						<b:dataTableColumn label="">
+							
 							<h:graphicImage
 								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Articles</f:facet>
+						<b:dataTableColumn label="Articles">
+				
 							<h:outputLabel value="#{articleCommande.article.nom}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Quantite</f:facet>
+						<b:dataTableColumn label="Quantité">
+							
 							<p:spinner id="minMax" value="#{articleCommande.quantite}" min="1" max="100" size="4" />
 						</b:dataTableColumn>
 			
@@ -73,13 +73,13 @@
 					
 					<div id="boutonBas">
             
-		            <f:facet name="header">Retour au Catalogue</f:facet>
+		
 		            <b:button value="Retour au Catalogue" look="warning" outcome="catalogueClient"/>
 		            
 		           
 		                
-		                  <b:inputText value="#{mbPanier.calculerPanier()}€"
-		                  	mask="9{1,6}.99"
+		                  <b:inputText value="#{mbPanier.calculerPanier()}"
+		                  	mask="9{1,6}.99 €"
 		                    disabled="true" fieldSize="lg">
 		                    <f:facet name="prepend">
 		                      <h:outputText value="Total à payer: " />
