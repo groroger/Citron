@@ -121,6 +121,14 @@ public class PanierManagedBean implements Serializable{
 		session.setAttribute("listeArticlesCommandes", articlesCommandes);
 		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
   }
+  
+  public List<ArticleCommande> rafraichirPanier() {
+	 FacesContext facesContext = FacesContext.getCurrentInstance();
+	 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+	 session.setAttribute("listeArticlesCommandes", articlesCommandes);
+	 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
+	 return articlesCommandes;
+  }
 		
   
   
