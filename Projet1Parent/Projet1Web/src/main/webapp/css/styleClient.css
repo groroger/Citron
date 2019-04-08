@@ -1,5 +1,12 @@
 @charset "ISO-8859-1";
 
+#boutonBas
+{
+	display: flex;
+	justify-content: space-around;
+	margin-top: 25px;
+}
+
 html,
 body
 {
@@ -556,22 +563,11 @@ carouselItem > img{
 }
 
 
-#boutonsNosProducteurs1,
-#boutonsNosProducteurs3,
-#boutonsNosProducteurs5
-
+.boutonBas
 {
-	margin-left: 150px;
-	margin-right: 50px;
-}
-
-#boutonsNosProducteurs2,
-#boutonsNosProducteurs4,
-#boutonsNosProducteurs6
-
-{
-	margin-right: 100px;
-	margin-left: 50px;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 25px;
 }
 /**************************
 	CATALOGUE CLIENT

@@ -15,6 +15,7 @@
 			
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheArticleAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>				
 		</h:head>
 		<h:body>
@@ -41,8 +42,8 @@
 
 						<b:panelGrid columns="1">
 							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-									<b:inputTextarea value="#{mbFicheArticleAdmin.article.descriptif}"
+								<b:column>
+									<b:inputTextarea row="6" value="#{mbFicheArticleAdmin.article.descriptif}"
 										fieldSize="lg">
 										<f:facet name="prepend">
 											<h:outputText value="Description" />
@@ -51,7 +52,7 @@
 								</b:column>
 							</b:row>
 							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:column>
 									<b:inputText
 										value="#{mbFicheArticleAdmin.article.nom}"
 										fieldSize="lg">
@@ -62,7 +63,7 @@
 								</b:column>
 							</b:row>
 							<b:row>
-								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:column>
 									<b:inputText
 										value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"
 										fieldSize="lg">
@@ -96,8 +97,12 @@
 							</b:row>
 						</b:panelGrid>
 						<b:panelGrid columns="3">
-						<b:commandButton value="Enregistrer"
-							action="#{mbUpdateArticle.update()}" look="primary"/>
+						<b:button id="chargerImage" value="Annuler"
+							href="../interfaceAdmin/ficheArticleAdmin.xhtml" look="default"/>
+							<b:button value="Charger une image"
+							href="#chargerImage" look="secondary"/>
+							<b:commandButton value="Enregistrer"
+							action="#{mbUpdateArticle.update()}" look="warning"/>
 					</b:panelGrid>
 					</b:container>
 				</b:form>
