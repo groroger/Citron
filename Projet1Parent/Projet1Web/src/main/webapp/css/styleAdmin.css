@@ -11,6 +11,14 @@ h3
 	margin-top:7%;
 	margin-bottom:7%;
 }
+/* h3 n°2 dans la page */
+#h32
+{
+	color: #d7d7d7!important;
+	border-top: 1px solid black;
+	padding-top: 30px;
+	margin-bottom: 20px !important;
+}
 
 #banner
 {
@@ -64,6 +72,12 @@ h3
 	border: 2px solid #FFF726 !important;
 	box-shadow: 0 15px 25px rgba(0,0,0,.2);
 	letter-spacing: 1px;
+}
+
+div.dataTables_wrapper div.dataTables_length label
+{
+	font-size: 20px;
+	font-weight: bold !important;
 }
 
 /*combobox "categories"*/
@@ -150,7 +164,7 @@ div.dataTables_wrapper div.dataTables_filter input
 table tr:nth-child(odd) td
 {
 	background-color: rgba(150, 192, 1 , 0.1) !important;
-	font-size: 18px !important;	
+	font-size: 17px !important;	
 }
 
 
@@ -159,7 +173,7 @@ table tr:nth-child(odd) td
 table tr:nth-child(even) td
 {
 	background-color: rgba(255, 255, 255, 0.95) !important;
-	font-size: 18px !important;	
+	font-size: 17px !important;	
 	border-radius : 0px 0px 0px 25px !important;
 }
 
@@ -199,7 +213,37 @@ table tr:last-child td:last-child
 	border-radius : 0px 0px 25px 0px !important;
 }
 
+/*pagination bas de datatable*/
+.pagination > li:first-child > a
+{
+	width: 100px;
+	border-radius: 20px 0px 0px 20px;
+	text-align: center;
+	font-weight: bold;
+	
+}
 
+.pagination > li:last-child > a
+{
+	width: 100px;
+	border-radius: 0px 20px 20px 0px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.pagination > .active > a
+{
+	width: 40px;
+	background-color: #9dcb01!important;
+	border-color: #9dcb01!important;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination
+{
+	margin-top: 20px;
+}
 
 /**************************
 		MASTERPAGE

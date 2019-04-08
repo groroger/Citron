@@ -18,17 +18,19 @@
 		</h:head>
 		<h:body>
 		
-		<b:container>
+		
 
 	<f:metadata>
 		<f:event listener="#{mbFicheClient.init()}" type="preRenderView"></f:event>
 	</f:metadata>
 
-			<b:form id="formFicheClient">
-				<b:container layout="fluid">
-					<b:row>
+			
+				
+					<b:row id="banner">
 								<h3> Informations  du client:</h3>
 					</b:row>
+					
+					<b:container layout="fluid">
 					<br />
 					<br />
 					<b:panelGrid columns="1">
@@ -121,24 +123,28 @@
 					<b:panelGrid columns="2">
 						<b:button
 							href="/Projet1Web/interfaceAdmin/updateClient.xhtml"
-							value="Mettre à jour" look="primary" />
+							value="Mettre à jour" look="warning" />
 					</b:panelGrid>
+					
 					<b:row>
 						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3
-								style="color: rgb(0, 136, 143); font-weight: bold; text-align: center;">Commandes
-								du client:</h3>
+							<h3 id="h32">Commandes du client:</h3>
 						</b:column>
 					</b:row>
 					<br />
 					<br />
-					<b:dataTable
-						value="#{mbFicheClient.commandes}"
-						var="commande" pdf="false" print="false" excel="false"
-						border="true" info="false" page-length="10" selectionMode="single"
-						tiny-screen="12" medium-screen="12"  large-screen="12"
-						responsive="true" 
-						onselect="ajax:mbFicheClient.onSelect(commande);">
+					<b:dataTable    value="#{mbFicheClient.commandes}"
+									var="commande" 
+									pdf="false" 
+									print="false" 
+									excel="false"
+									border="true" 
+									info="false" 
+									page-length="10" 
+									selectionMode="single"
+									tiny-screen="12" medium-screen="12"  large-screen="12"
+									responsive="true" 
+									onselect="ajax:mbFicheClient.onSelect(commande);">
 
 
 						<b:dataTableColumn>
@@ -170,9 +176,7 @@
 						</b:dataTableColumn>
 					</b:dataTable>
 				</b:container>
-			</b:form>
 			
-			</b:container>
 		</h:body>
 	</ui:define>
 </ui:composition>
