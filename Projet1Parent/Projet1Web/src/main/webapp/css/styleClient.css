@@ -7,6 +7,7 @@ body
 	padding: 0px;
 }
 
+
 .btn-warning 
 {
 	
@@ -279,6 +280,10 @@ border-bottom: 1px solid #FFF726 !important ;
 	background-color: #96c001 !important;
 }
 
+.navbar-inverse .btn-link:hover
+{
+	color: red !important;
+}
 
 	/*** FOOTER ***/
 
