@@ -18,20 +18,22 @@
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>				
 		</h:head>
 		<h:body>
-		<b:container >
-		<f:metadata>
+		
+		
+			<f:metadata>
 				<f:event listener="#{mbUpdateArticle.init()}" type="preRenderView"></f:event>
 			</f:metadata>
 
-			<b:container >
-				<b:form id="formFicheProduit">
-					<b:container layout="fluid">
-						<b:row>
+			
+						<b:row id="banner">
 						
 								<h3>Fiche produit détaillée</h3>
 						
 						</b:row>
 
+				<b:container >
+				<b:form id="formFicheProduit">
+					<b:container layout="fluid">
 						<div>
 							<h:graphicImage
 								value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
@@ -100,7 +102,7 @@
 					</b:container>
 				</b:form>
 			</b:container>
-			</b:container>
+	
 		</h:body>
 
 	</ui:define>
