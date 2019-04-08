@@ -67,7 +67,11 @@ public class PanierManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		client = (Client) session.getAttribute("clientConnecte");
-		articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
+		if ((List<ArticleCommande>) session.getAttribute("listeArticlesCommandes") != null)
+		{
+			articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
+		}
+		
 	
 	
 	

@@ -188,14 +188,12 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 				// ajout à la liste des messages à afficher
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			}			
-			// maj quantite physique et dispo_stock_internet dans Stock
+			// maj quantite physique dans Stock
 			stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() - quantitePreparee);
-			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() - quantitePreparee);
 			proxyStock.update(stock);
 			if(logger.isDebugEnabled()) {
 				logger.debug("stock après pour " + article.getArticle().getNom() 
-						+ " physique = " + stock.getQuantiteDispoPhysique()
-						+ " internet = " + stock.getQuantiteDispoSiteInternet());
+						+ " physique = " + stock.getQuantiteDispoPhysique());
 			}
 		}
 		// mise à jour date expédition commande
