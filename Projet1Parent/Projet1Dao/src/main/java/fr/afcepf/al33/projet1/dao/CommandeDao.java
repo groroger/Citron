@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import fr.afcepf.al33.projet1.entity.Client;
 import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.idao.CommandeIdao;
 
@@ -41,5 +42,16 @@ public class CommandeDao extends GenericDao<Commande> implements CommandeIdao {
 		commandes = queryJPQL.getResultList();
 		return commandes;
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Commande> getAllByClient(Client client) {
+		List<Commande> commandes=null;
+		String REQ = "SELECT commande from Commande commande WHERE commande.client = :client";
+		Query queryJPQL = em.createQuery(REQ);
+		queryJPQL.setParameter("client", client);
+		commandes = queryJPQL.getResultList();
+		return commandes;
 	}
 }
