@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.log4j.Logger;
+
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
 import fr.afcepf.al33.projet1.entity.Stock;
 import fr.afcepf.al33.projet1.idao.ApprovisionnementIdao;
@@ -17,6 +19,8 @@ import fr.afcepf.al33.projet1.idao.ApprovisionnementIdao;
 @Remote(ApprovisionnementIdao.class)
 @Stateless
 public class ApprovisionnementDao extends GenericDao<Approvisionnement> implements ApprovisionnementIdao {
+	
+	final Logger logger = Logger.getLogger(this.getClass());
 
 	@PersistenceContext(unitName="Projet1DS")
 	private EntityManager em;
@@ -44,7 +48,14 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 		String REQ = "SELECT appro from Approvisionnement appro inner join Article art on appro.article = art.id WHERE appro.datePeremption <= :date";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("date", dateButoire);
+		if(logger.isDebugEnabled()) {
+			logger.debug("requête pour approvisionnements périmés dans " + nbJours + " jours (" + dateButoire + ") : " + queryJPQL.toString());
+		}
 		approvisionnements = queryJPQL.getResultList();
+		if(logger.isDebugEnabled()) {
+			logger.debug("requête pour approvisionnements périmés dans " + nbJours + " jours : " 
+					+ approvisionnements.size() + " trouvés");
+		}
 		return approvisionnements;
 		
 	}
