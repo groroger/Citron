@@ -75,11 +75,11 @@
 							<b:commandButton value="" look="secondary" action="#{mbPanier.rafraichirPanier()}">
 							<b:image value="../pics/icones/refreshGreen24.png"/>
 							</b:commandButton>
+							<br/>
+							<br/>
+							<h:outputLabel  value="Total: #{articleCommande.prixTotal} €" />
 						</b:dataTableColumn>
-						<b:dataTableColumn label="Prix Total">
-				
-							<h:outputLabel value="#{articleCommande.prixTotal}" />
-						</b:dataTableColumn>
+					
 					</b:dataTable>
 					
 					

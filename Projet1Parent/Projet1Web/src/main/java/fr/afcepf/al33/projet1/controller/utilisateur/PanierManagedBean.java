@@ -88,9 +88,26 @@ public class PanierManagedBean implements Serializable{
 		  cde.setPrixTotal(prixTotal);
 		  cde.setDateCreation(new Date());
 		  cde.setClient(client);
+		  
+		  DecimalFormat twoDForm =new DecimalFormat("##.##");
+		  DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+		  dfs.setDecimalSeparator('.');
+		  twoDForm.setDecimalFormatSymbols(dfs);
+			
+		  
+		  for (ArticleCommande articleCommande : articlesCommandes) {
+			  double calculPrixLigneArticleCommande = articleCommande.getQuantite()*articleCommande.getArticle().getPrix();
+			  
+			  calculPrixLigneArticleCommande=Double.parseDouble(twoDForm.format(calculPrixLigneArticleCommande));
+			  articleCommande.setPrixTotal(calculPrixLigneArticleCommande);
+			
+				
+		  }
+		  
 		  proxyArticleCommande.add(cde, articlesCommandes);
 		  
 		  for (ArticleCommande articleCommande : articlesCommandes) {
+			
 			stock= proxyStock.searchById(articleCommande.getArticle().getStock().getId());
 			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-articleCommande.getQuantite());
 			
@@ -149,6 +166,22 @@ public class PanierManagedBean implements Serializable{
   }
   
   public List<ArticleCommande> rafraichirPanier() {
+	  
+	  DecimalFormat twoDForm =new DecimalFormat("##.##");
+	  DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+	  dfs.setDecimalSeparator('.');
+	  twoDForm.setDecimalFormatSymbols(dfs);
+		
+	  
+	  for (ArticleCommande articleCommande : articlesCommandes) {
+		  double calculPrixLigneArticleCommande = articleCommande.getQuantite()*articleCommande.getArticle().getPrix();
+		  
+		  calculPrixLigneArticleCommande=Double.parseDouble(twoDForm.format(calculPrixLigneArticleCommande));
+		  articleCommande.setPrixTotal(calculPrixLigneArticleCommande);
+		
+			
+	  }
+	  
 	 FacesContext facesContext = FacesContext.getCurrentInstance();
 	 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 	 session.setAttribute("listeArticlesCommandes", articlesCommandes);
