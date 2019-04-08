@@ -55,7 +55,7 @@ public class FicheArticleClientManagedBean implements Serializable{
 public void ajouterArticle() {
 		
 
-		articleCommande =new ArticleCommande();
+		articleCommande = new ArticleCommande();
 
 		articleCommande.setArticle(article);
 
