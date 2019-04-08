@@ -37,8 +37,4 @@ div.dataTables_wrapper div.dataTables_filter input
 	height: 35px !important;
 }
 
-table.dataTable tbody > tr.selected
-{
-	background-color: white !important;
-	color: black !important;
-}
+
