@@ -145,31 +145,30 @@
 									paginated="false" 
 									page-length="10" 
 									selectionMode="single"
-									tiny-screen="12" medium-screen="12"  large-screen="12"
 									responsive="true" 
 									onselect="ajax:mbFicheClient.onSelect(commande);">
 
 
 						<b:dataTableColumn>
-							<f:facet name="header">Date de<br />la commande :</f:facet>
+							<f:facet name="header">Enregistrée le</f:facet>
 							<h:outputLabel value="#{commande.dateCreation}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputLabel>
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Expédiée le :</f:facet>
+							<f:facet name="header">Expédiée le</f:facet>
 							<h:outputLabel value="#{commande.dateExpedition}" >
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputLabel>
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Annulée le :</f:facet>
+							<f:facet name="header">Annulée le</f:facet>
 							<h:outputLabel value="#{commande.dateAnnulation}" >
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputLabel>
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Remboursée le :</f:facet>
+							<f:facet name="header">Remboursée le</f:facet>
 							<h:outputLabel value="#{commande.dateRemboursement}" />
 						</b:dataTableColumn>
 

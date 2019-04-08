@@ -12,40 +12,47 @@
 
 		<h:head>
 
-			<title>Articles Peremption</title>
+			<title>Date de péremption proche</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
 
 		</h:head>
 		
 		<h:body>
-
+			<b:row id="banner">
+							<h3>Date de péremption proche</h3>
+			</b:row>
+		
 			<b:container>
-			
-					<h3>ARTICLES PROCHE DE LA DATE DE PEREMPTION</h3>
+		
 					
-			<b:dataTable id="datatableArticlePeremption" value="#{mbAccueilAdmin.approvisionnementsPeremption}" 
-						var="appro" pdf="false"
-						print="false" excel="false" border="true" info="false"
-						tiny-screen="12" medium-screen="12" large-screen="12"
-						page-length="20" selectionMode="single" responsive="true">
+			<b:dataTable 
+				id="datatableArticlePeremption" 
+				value="#{mbAccueilAdmin.approvisionnementsPeremption}" 
+				var="appro"
+				pdf="false"
+				print="false" 
+				excel="false" 
+				border="true" 
+				info="false"
+				page-length="20" 
+				selectionMode="single" 
+				responsive="true"
+				paginated="false">
 
-						<b:dataTableColumn
-							headerStyle="text-align: center;vertical-align: middle;">
-							<f:facet name="header">Image: </f:facet>
-							<h:graphicImage
-								value="/pics/articlesImages/#{appro.article.imageMini}" />
+						<b:dataTableColumn label="">
+							<h:graphicImage	value="/pics/articlesImages/#{appro.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Articles: </f:facet>
+							<f:facet name="header">Article</f:facet>
 							<h:outputLabel value="#{appro.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Quantités en stock: </f:facet>
+							<f:facet name="header">Quantités en stock</f:facet>
 							<h:outputLabel value="#{appro.quantiteRestante}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Date péremption: </f:facet>
+							<f:facet name="header">Date de péremption</f:facet>
 							<h:outputLabel value="#{appro.datePeremption}"  >
   								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
   							</h:outputLabel>
