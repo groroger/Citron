@@ -8,7 +8,7 @@ var delta1 = Math.ceil((duree1 * 1000) / n1);
 var node1 =  document.getElementById('peremption');
  
 function countdown1() {
-	node1.innerHTML = cpt1++;
+	node1.innerHTML = ++cpt1;
   
   if( cpt1 < n1 ){
      setTimeout(countdown1, delta1);

@@ -12,7 +12,7 @@
 
 		<h:head>
 
-			<title>Article en Rupture</title>
+			<title>Articles Peremption</title>
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
 
@@ -22,9 +22,9 @@
 
 			<b:container>
 			
-					<h3>ARTICLES EN RUPTURE DE STOCK</h3>
+					<h3>ARTICLES PROCHE DE LA DATE DE PEREMPTION</h3>
 					
-			<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.approvisionnementsRupture}" 
+			<b:dataTable id="datatableArticlePeremption" value="#{mbAccueilAdmin.approvisionnementsPeremption}" 
 						var="appro" pdf="false"
 						print="false" excel="false" border="true" info="false"
 						tiny-screen="12" medium-screen="12" large-screen="12"
@@ -44,6 +44,13 @@
 							<f:facet name="header">Quantités en stock: </f:facet>
 							<h:outputLabel value="#{appro.quantiteRestante}" />
 						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date péremption: </f:facet>
+							<h:outputLabel value="#{appro.datePeremption}"  >
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+  							</h:outputLabel>
+						</b:dataTableColumn>
+						
 					</b:dataTable>
 					
 					
