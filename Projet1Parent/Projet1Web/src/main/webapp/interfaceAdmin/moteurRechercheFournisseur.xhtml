@@ -52,12 +52,8 @@
 							<h:outputLabel value="#{fourn.adresse}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Code Postal</f:facet>
-							<h:outputLabel value="#{fourn.ville.codePostal}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
 							<f:facet name="header">Ville</f:facet>
-							<h:outputLabel value="#{fourn.ville.nom}" />
+							<h:outputLabel value="#{fourn.ville.codePostal} #{fourn.ville.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Téléphone</f:facet>
