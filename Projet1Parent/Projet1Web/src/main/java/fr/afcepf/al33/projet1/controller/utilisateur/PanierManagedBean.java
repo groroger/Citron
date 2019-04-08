@@ -1,15 +1,13 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
-import java.io.IOException;
+
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -106,6 +104,31 @@ public class PanierManagedBean implements Serializable{
 			}
 		return prixTotal;
   		}
+  
+  public void supprimerArticle(ArticleCommande articleCommande) {
+		Iterator<ArticleCommande> ite = articlesCommandes.iterator();
+		while(ite.hasNext()) {
+			ArticleCommande ac = ite.next();
+				if (ac.getArticle().getId()== articleCommande.getArticle().getId()) {
+					ite.remove();
+					break;
+				}
+					
+			}
+		
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		session.setAttribute("listeArticlesCommandes", articlesCommandes);
+		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
+  }
+  
+  public List<ArticleCommande> rafraichirPanier() {
+	 FacesContext facesContext = FacesContext.getCurrentInstance();
+	 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+	 session.setAttribute("listeArticlesCommandes", articlesCommandes);
+	 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
+	 return articlesCommandes;
+  }
 		
   
   
