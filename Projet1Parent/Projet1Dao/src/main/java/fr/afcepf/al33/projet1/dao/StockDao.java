@@ -60,8 +60,8 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 	public List<Stock> getByPeromption() {
 		List<Stock> stocksParCategorie=null;
 		LocalDateTime dateButoire;
-		dateButoire = LocalDateTime.now().minusDays(5);
-		String REQ= "SELECT s from Stock s JOIN s.approvisionnement a WHERE a.datePeromption >= :date";
+		dateButoire = LocalDateTime.now().plusDays(5);
+		String REQ= "SELECT s from Stock s JOIN s.approvisionnement a WHERE a.datePeromption <= :date";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("date", dateButoire);
 		stocksParCategorie = queryJPQL.getResultList();

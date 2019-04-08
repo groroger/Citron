@@ -88,23 +88,22 @@
 						tiny-screen="12" medium-screen="12" large-screen="12"
 						page-length="20" selectionMode="single" responsive="true">
 
-						<b:dataTableColumn
-							headerStyle="text-align: center;vertical-align: middle;">
+						<b:dataTableColumn>
 							<f:facet name="header">Numéro de Commande : </f:facet>
-							<h:graphicImage
-								value="#{ligneCommande.id.toString()}" />
+							<h:outputLabel value="#{ligneCommande.id}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Numéro de CLient : </f:facet>
-							<h:outputLabel value="#{ligneCommande.client.id.toString()}" />
+							<h:outputLabel value="#{ligneCommande.client.id}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Date de Création : </f:facet>
-							<h:outputLabel value="#{ligneCommande.dateCreation.toString()}" />
+							<h:outputLabel value="#{ligneCommande.dateCreation}"/>
+							
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Prix de la Commande : </f:facet>
-							<h:outputLabel value="#{ligneCommande.prixTotal.toString()}" />
+							<h:outputLabel value="#{ligneCommande.prixTotal}"/>
 						</b:dataTableColumn>
 					</b:dataTable>
 					</b:tab>

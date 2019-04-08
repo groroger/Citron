@@ -3,13 +3,17 @@ google.charts.load("current", { packages : [ "corechart" ] });
 
 google.charts.setOnLoadCallback(drawChart);
 
-var virtuel = document.getElementById("stockVirtuel").innerHTML;
-var total = document.getElementById("stockTotal").innerHTML;
+var virtuel = document.getElementById('stockVirtuel').innerHTML;
+virtuel = parseInt(virtuel,10);
+var total = document.getElementById('stockTotal').innerHTML;
+total = parseInt(total,10);
+
+console.log(total +"   " + virtuel);
 
 function drawChart() {
 	var data = google.visualization.arrayToDataTable([
-			[ 'Stocks', 'reste disponible' ], [ 'Stocks Virtuel', 75 ],
-			[ 'Stocks Physiques', 25 ] ]);
+			[ 'Stocks', 'reste disponible' ], [ 'Stocks Virtuel', total ],
+			[ 'Stocks Physiques', virtuel ] ]);
 
 	var options = {
 		title : 'Mes Stocks',
@@ -31,14 +35,16 @@ function drawChart() {
 }
 
 
-var n = document.getElementById("commandesAtraiter").innerHTML;
+var n = document.getElementById('commandesAtraiter').innerHTML;
+console.log(n);
 var cpt = 0;
-var duree = 2;
+var duree = 1;
 var delta = Math.ceil((duree * 1000) / n);
-var node =  document.getElementById("compteur");
+var node =  document.getElementById('compteur');
  
 function countdown() {
-  node.innerHTML = ++cpt;
+	node.innerHTML = ++cpt;
+  
   if( cpt < n ){
      setTimeout(countdown, delta);
   }

@@ -19,16 +19,16 @@
     
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>	
 						
-			<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
+			
 				
 		</h:head>
 		
 		<h:body>
 
 <div id="infoJS">
-	<h:outputText id="sockTotal" value="#{mbAccueilAdmin.stockTotal}" />
+	<h:outputText id="stockTotal" value="#{mbAccueilAdmin.stockTotal}" />
 	<h:outputText id="stockVirtuel" value="#{mbAccueilAdmin.stockVirtuel}" />
-	<h:outputText id="commandesAtraiter" value="#{String.valueOf(mbAccueilAdmin.commandesEnAttente.size())}" />
+	<h:outputText id="commandesAtraiter" value="#{mbAccueilAdmin.commandesEnAttente.size()}" />
 </div>
 
 <div id="charts">
@@ -40,7 +40,7 @@
 <b:button id="btnLienReporting" look="success" value="ALLER AU REPORTING" size="lg" href="#{request.contextPath}/interfaceAdmin/reporting.xhtml"/>
 
 
-
+<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
 		</h:body>
 	</ui:define>
 </ui:composition>
