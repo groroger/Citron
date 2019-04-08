@@ -15,7 +15,7 @@
 			<title>Fiche du fournisseur</title>
 			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
-			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheFournisseurAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/fournisseurAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 		
@@ -23,6 +23,7 @@
 			<f:metadata>
 				<f:event listener="#{mbFicheFournisseur.init()}" type="preRenderView"></f:event>
 			</f:metadata>
+			
 			<b:row id="banner">					
 				<h3>Informations du fournisseur</h3>			
 			</b:row>
@@ -114,13 +115,11 @@
 					<b:panelGrid columns="2">
 						<b:button
 							href="/Projet1Web/interfaceAdmin/updateFournisseur.xhtml"
-							value="Mettre à jour" look="primary"/>
+							value="Mettre à jour" look="warning"/>
 					</b:panelGrid>
 					
 					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3>Achats auprès de ce fournisseur :</h3>
-						</b:column>
+							<h3 id="h32">Achats auprès de ce fournisseur</h3>
 					</b:row>
 					<br />
 					<br />
