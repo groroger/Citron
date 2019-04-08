@@ -20,12 +20,12 @@
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 		<h:body>
-		
+
 					<b:row id="banner">
 							<h3>Liste des clients:</h3>
 					</b:row>
-					
-					<b:container layout="fluid">
+					<h:form id="formRechercheClient">
+			<b:container layout="fluid">
 					<b:dataTable 
 						value="#{mbFindClient.clients}" 
 						var="cl" 
@@ -66,7 +66,7 @@
 						</b:dataTableColumn>
 					</b:dataTable>
 				</b:container>
-			
+			</h:form>
 		</h:body>
 	</ui:define>
 </ui:composition>
