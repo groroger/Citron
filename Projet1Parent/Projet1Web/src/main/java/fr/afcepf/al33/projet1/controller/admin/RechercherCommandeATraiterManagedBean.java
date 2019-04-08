@@ -16,7 +16,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+
 
 import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;

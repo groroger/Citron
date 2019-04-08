@@ -18,7 +18,9 @@
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 		<h:body>
-		
+			<f:metadata>
+				<f:event listener="#{mbAfficherCommande.init()}" type="preRenderView"></f:event>
+			</f:metadata>
 
 
 			<h:form id="formAfficherApprovisionnement">
@@ -63,6 +65,9 @@
 							<h:outputLabel value="#{articleCommande.prixTotal} €" />
 						</b:dataTableColumn>
 					</b:dataTable>
+					
+					<b:commandButton value="Traiter la commande"
+							action="#{mbAfficherCommande.traiterCommande()}" look="primary"/>
 				</b:container>
 			</h:form>
 			</h:body>
