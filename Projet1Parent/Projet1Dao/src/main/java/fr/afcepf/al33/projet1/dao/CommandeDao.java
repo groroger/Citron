@@ -48,7 +48,7 @@ public class CommandeDao extends GenericDao<Commande> implements CommandeIdao {
 	@Override
 	public List<Commande> getAllByClient(Client client) {
 		List<Commande> commandes=null;
-		String REQ = "SELECT commande from Commande commande WHERE commande.client = :client";
+		String REQ = "SELECT commande from Commande commande WHERE commande.client = :client ORDER BY commande.dateCreation desc";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("client", client);
 		commandes = queryJPQL.getResultList();

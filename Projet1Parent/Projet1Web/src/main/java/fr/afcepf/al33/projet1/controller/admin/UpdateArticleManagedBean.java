@@ -47,7 +47,7 @@ public class UpdateArticleManagedBean implements Serializable{
 	{
 		proxyArticle.update(article);
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/catalogue.xhtml?faces-redirect=true");
+		facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/ficheArticleAdmin.xhtml?faces-redirect=true");
 	}
 
 	public ArticleIBusiness getProxyArticle() {

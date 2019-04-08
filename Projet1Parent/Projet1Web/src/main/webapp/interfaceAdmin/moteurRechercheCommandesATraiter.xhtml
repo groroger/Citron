@@ -23,19 +23,20 @@
 			</f:metadata>
 		
 		<h:body>
+					<b:row id="banner">
+		
+							<h3>Liste des commandes à traiter</h3>
+				
+				
+					</b:row>
+		
 		<b:container id="principal">
 			<h:form id="formRechercheCommandesATraiter">
 
 				<b:container layout="fluid">
 					<h:messages style="color:red;margin:8px;" />
 					<br />
-					<b:row>
-						<b:column tiny-screen="12" medium-screen="12" large-screen="12">
-							<h3>Liste des commandes à traiter</h3>
-							<br />
-							<br />
-						</b:column>
-					</b:row>
+		
 
 					<b:dataTable value="#{mbFindCommandeATraiter.commandes}" 
 								 var="cde"
@@ -53,21 +54,14 @@
 								 onselect="ajax:mbFindCommandeATraiter.onSelect(cde);"
 								 paginated="false" >
 								 
+
 						<b:dataTableColumn>
-							<f:facet name="header">Id</f:facet>
-							<h:outputLabel value="#{cde.id}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Date création</f:facet>
+							<f:facet name="header">Enregistrée le</f:facet>
 							<h:outputLabel value="#{mbFindCommandeATraiter.getDateToString(cde.dateCreation)}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Nom</f:facet>
-							<h:outputLabel value="#{cde.client.nom}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn>
-							<f:facet name="header">Prénom</f:facet>
-							<h:outputLabel value="#{cde.client.prenom}" />
+							<f:facet name="header">Client</f:facet>
+							<h:outputLabel value="#{cde.client.nom} #{cde.client.prenom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Montant</f:facet>
@@ -75,7 +69,7 @@
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Traiter</f:facet>
-	    						<b:commandButton id="btn_traiter" value="Traiter" look="primary"
+	    						<b:commandButton id="btn_traiter" value="Traiter" look="warning"
 									action="#{mbFindCommandeATraiter.traiterCommande(cde)}" />
 						</b:dataTableColumn>
 					</b:dataTable>

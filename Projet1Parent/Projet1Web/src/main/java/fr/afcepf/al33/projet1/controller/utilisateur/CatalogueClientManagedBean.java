@@ -126,7 +126,7 @@ public class CatalogueClientManagedBean implements Serializable{
 		session.setAttribute("listeArticlesCommandes", articlesCommandes);
 		facesContext.getApplication()
 					.getNavigationHandler()
-					.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
+					.handleNavigation(facesContext,null,"/interfaceClient/catalogueClient.xhtml?faces-redirect=true");
 
 }
 	

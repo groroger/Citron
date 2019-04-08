@@ -38,10 +38,8 @@ public class FicheArticleManagedBean implements Serializable{
 		article =  (Article) session.getAttribute("selectedArticleAdmin");
 		
 	}
-
 	
 	
-
 	public ArticleIBusiness getProxyArticle() {
 		return proxyArticle;
 	}
