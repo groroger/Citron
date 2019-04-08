@@ -14,10 +14,14 @@
 			
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/CatalogueAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
 
 		<h:body>
+		<b:row id="banner">
+			<h3>Catalogue de produits</h3>
+		</b:row>
 		
 			<f:metadata>
 				<f:event listener="#{mbCatalogue.init()}" type="preRenderView"></f:event>
@@ -28,11 +32,7 @@
 			<h:form id="formCatalogue">
 
 				<b:container layout="fluid">
-					<b:row>
-
-							<h3>Catalogue de produits</h3>
-
-					</b:row>
+					
 				
 					<b:formGroup>
 						<b:selectOneMenu update="datatableArticles"
@@ -45,7 +45,7 @@
 						</b:selectOneMenu>
 						
 						<b:button href="/Projet1Web/interfaceAdmin/ajouterArticle.xhtml" 
-									value="Création Nouvel Article" look="primary" size="xs"/>
+									value="Création Nouvel Article" look="warning" size="xs"/>
 						
 					</b:formGroup>
 					
