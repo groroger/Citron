@@ -21,6 +21,7 @@
 
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheArticleAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 
@@ -67,7 +68,20 @@
 			<h:outputText class="span" value="#{mbFicheArticleAdmin.article.prix} €" />
 		</b:row>  
     </div>
+    
+    <div class="ajourFicheArticle">
+		<b:row class="ajourFicheArticle">
+		<h:form>
+			<b:commandButton id="btn_ajouterFicheArticleAdmin" value="Mise à jour" look="warning"
+				action="none">
+			</b:commandButton>
+		</h:form>
+		</b:row>
+    </div>
+    
   </div>
+  
+  
 </b:container>
 		</h:body>
 	</ui:define>
