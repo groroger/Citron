@@ -2,6 +2,8 @@ package fr.afcepf.al33.projet1.controller.utilisateur;
 
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -91,7 +93,9 @@ public class PanierManagedBean implements Serializable{
 		  for (ArticleCommande articleCommande : articlesCommandes) {
 			stock= proxyStock.searchById(articleCommande.getArticle().getStock().getId());
 			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-articleCommande.getQuantite());
+			
 			proxyStock.update(stock);
+			
 		}
 		  
 	
@@ -102,9 +106,8 @@ public class PanierManagedBean implements Serializable{
 		  
 	  } else {
 		  FacesContext facesContext = FacesContext.getCurrentInstance();
-		  HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);facesContext.getApplication()
-						.getNavigationHandler()
-						.handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml#test?faces-redirect=true");
+		  HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		  facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml#test?faces-redirect=true");
 		System.out.println("Merci de votre visite");
 			
 	  }
@@ -119,6 +122,12 @@ public class PanierManagedBean implements Serializable{
 			ArticleCommande ac = ite.next();
 			prixTotal += ac.getQuantite()*ac.getArticle().getPrix();
 			}
+		
+		DecimalFormat twoDForm =new DecimalFormat("##.##");
+		DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+		dfs.setDecimalSeparator('.');
+		twoDForm.setDecimalFormatSymbols(dfs);
+		prixTotal=Double.parseDouble(twoDForm.format(prixTotal));
 		return prixTotal;
   		}
   

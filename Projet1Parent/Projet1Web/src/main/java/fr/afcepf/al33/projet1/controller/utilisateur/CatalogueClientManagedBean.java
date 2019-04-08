@@ -1,6 +1,8 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -79,6 +81,15 @@ public class CatalogueClientManagedBean implements Serializable{
 		articleCommande = new ArticleCommande();
 		articleCommande.setArticle(article);
 		articleCommande.setQuantite(article.getQuantiteSaisie());
+		Double calculPrixLigneArticleCommande = article.getPrix()*article.getQuantiteSaisie();
+		
+		DecimalFormat twoDForm =new DecimalFormat("##.##");
+		DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+		dfs.setDecimalSeparator('.');
+		twoDForm.setDecimalFormatSymbols(dfs);
+		calculPrixLigneArticleCommande=Double.parseDouble(twoDForm.format(calculPrixLigneArticleCommande));
+		articleCommande.setPrixTotal(calculPrixLigneArticleCommande);
+		
 		boolean isPresent = false;
 
 

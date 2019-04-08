@@ -13,22 +13,23 @@
 		<h:head>
 
 			<title>Mise à jour fournisseur</title>
-
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/updateFournisseurAdmin.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
+		
 		<h:body>
-		<b:container >
-
+			<b:row id="banner">
+					<h3>Mise à jour du fournisseur</h3>		
+			</b:row>
 			<f:metadata>
 				<f:event listener="#{mbUpdateFournisseur.init()}" type="preRenderView"></f:event>
 			</f:metadata>
+			
+			<b:container >
 			<b:form id="formFicheFournisseur">
 				<b:container layout="fluid">
-					<b:row>
-							<h3>Mise à jour du fournisseur</h3>		
-					</b:row>
 		
 
 					<b:panelGrid columns="1">
@@ -112,10 +113,12 @@
 						</b:row>
 
 					</b:panelGrid>
+					<div id="boutonBas">
 					<b:panelGrid columns="3">
 						<b:commandButton value="Enregistrer"
-							action="#{mbUpdateFournisseur.update()}" look="primary" />
+							action="#{mbUpdateFournisseur.update()}" look="warning" />
 					</b:panelGrid>
+					</div>
 
 				</b:container>
 			</b:form>
