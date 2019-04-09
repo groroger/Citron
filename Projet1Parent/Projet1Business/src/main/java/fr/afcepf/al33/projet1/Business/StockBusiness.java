@@ -64,45 +64,47 @@ public class StockBusiness implements StockIBusiness{
 	@Override
 	public List<Stock> getAll() {
 		List<Stock> stocks=new ArrayList<Stock>();
-		List<Commande> commandesEnCours = proxyCommandeIdao.getAllToProcess();
 		stocks=proxyStockIDao.getAll();
-		Date aujourdhui = new Date();
-		int nbreStockPhysique=0;
-		int dispoWebARetirer=0;
-		for (Stock stock : stocks) {
-			
-			List<Approvisionnement> approvisionnements = proxyApprovisionnementIdao.getAllApproByStock(stock);
-			for (Approvisionnement approvisionnement : approvisionnements) {
-				if (approvisionnement.getDatePeremption().after(aujourdhui))
-					{
-						
-					nbreStockPhysique= nbreStockPhysique + approvisionnement.getQuantiteRestante();
-						
-					}
-			}
-			System.out.println(nbreStockPhysique);
-			stock.setQuantiteDispoPhysique(nbreStockPhysique);
-			stock.setQuantiteDispoSiteInternet(nbreStockPhysique);
-			nbreStockPhysique=0;
-			
-			
-			for (Commande commande : commandesEnCours) {
-				List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
-				articlesCommandes= proxyArticleComande.getAllByCommande(commande);
-				for (ArticleCommande ac : articlesCommandes) {
-					if(ac.getArticle().getStock().getId()==stock.getId()) {
-						dispoWebARetirer = dispoWebARetirer + ac.getQuantite();
-					}
-				}
-				
-			}
-			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-dispoWebARetirer);
-			dispoWebARetirer=0;
-			proxyStockIDao.modifier(stock);
-		}
 		
 		
-		
+//		List<Commande> commandesEnCours = proxyCommandeIdao.getAllToProcess();
+//		Date aujourdhui = new Date();
+//		int nbreStockPhysique=0;
+//		int dispoWebARetirer=0;
+//		for (Stock stock : stocks) {
+//			
+//			List<Approvisionnement> approvisionnements = proxyApprovisionnementIdao.getAllApproByStock(stock);
+//			for (Approvisionnement approvisionnement : approvisionnements) {
+//				if (approvisionnement.getDatePeremption().after(aujourdhui))
+//					{
+//						
+//					nbreStockPhysique= nbreStockPhysique + approvisionnement.getQuantiteRestante();
+//						
+//					}
+//			}
+//			System.out.println(nbreStockPhysique);
+//			stock.setQuantiteDispoPhysique(nbreStockPhysique);
+//			stock.setQuantiteDispoSiteInternet(nbreStockPhysique);
+//			nbreStockPhysique=0;
+//			
+//			
+//			for (Commande commande : commandesEnCours) {
+//				List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
+//				articlesCommandes= proxyArticleComande.getAllByCommande(commande);
+//				for (ArticleCommande ac : articlesCommandes) {
+//					if(ac.getArticle().getStock().getId()==stock.getId()) {
+//						dispoWebARetirer = dispoWebARetirer + ac.getQuantite();
+//					}
+//				}
+//				
+//			}
+//			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-dispoWebARetirer);
+//			dispoWebARetirer=0;
+//			proxyStockIDao.modifier(stock);
+//		}
+//		
+//		
+//		
 		return stocks;
 	}
 
