@@ -45,7 +45,7 @@ body
 }
 
 .errorMessage {
-	color: red;
+	color: red !important;
 }
 
 .required:before { 
@@ -471,7 +471,7 @@ carouselItem > img{
 	padding-top: 50px;
 	padding-bottom: 100px;
 	background-color: #eeeeee;	
-	z-index: 1;
+	
 }
 
 
