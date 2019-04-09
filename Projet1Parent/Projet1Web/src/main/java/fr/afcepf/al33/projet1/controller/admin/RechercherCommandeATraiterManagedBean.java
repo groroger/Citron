@@ -115,7 +115,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 				  public int compare(Approvisionnement a1, Approvisionnement a2) {
 					  // a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
 					  // a2 et a1 en ordre inverse pour tri descendant
-				      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
+				      return a2.getDateApprovisionnement().compareTo(a1.getDateApprovisionnement());
 				  }
 				});			
 			for (Approvisionnement approvisionnement : approvisionnements) {
