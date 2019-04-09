@@ -50,6 +50,9 @@ public class Approvisionnement implements Serializable{
 	@Column(name="datePeremption")
 	private Date datePeremption;
 	
+	@Column(name="dateMiseAuRebutProduitPerime")
+	private Date dateMiseAuRebutProduitPerime;
+	
 	@Column(name="lot")
 	private String lot;
 	
@@ -76,9 +79,11 @@ public class Approvisionnement implements Serializable{
 	}
 
 
-	public Approvisionnement(Article article, Fournisseur fournisseur, int quantiteCommandee, int quantiteRestante,
-			double prix, Date dateApprovisionnement, Date datePeremption, String lot, Stock stock) {
+	public Approvisionnement(Integer id, Article article, Fournisseur fournisseur, int quantiteCommandee,
+			int quantiteRestante, double prix, Date dateApprovisionnement, Date datePeremption,
+			Date dateMiseAuRebutProduitPerime, String lot, Stock stock) {
 		super();
+		this.id = id;
 		this.article = article;
 		this.fournisseur = fournisseur;
 		this.quantiteCommandee = quantiteCommandee;
@@ -86,11 +91,10 @@ public class Approvisionnement implements Serializable{
 		this.prix = prix;
 		this.dateApprovisionnement = dateApprovisionnement;
 		this.datePeremption = datePeremption;
+		this.dateMiseAuRebutProduitPerime = dateMiseAuRebutProduitPerime;
 		this.lot = lot;
 		this.stock = stock;
 	}
-
-
 
 	public Article getArticle() {
 		return article;
@@ -173,5 +177,14 @@ public class Approvisionnement implements Serializable{
 	public void setStock(Stock stock) {
 		this.stock = stock;
 	}
+
+	public Date getDateMiseAuRebutProduitPerime() {
+		return dateMiseAuRebutProduitPerime;
+	}
+
+	public void setDateMiseAuRebutProduitPerime(Date dateMiseAuRebutProduitPerime) {
+		this.dateMiseAuRebutProduitPerime = dateMiseAuRebutProduitPerime;
+	}
+	
 	
 }

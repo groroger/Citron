@@ -28,8 +28,8 @@
 					
 					<b:dataTable 
 						id="datatableStocks" 
-						value="#{mbAccueilAdmin.approvisionnementsRupture}" 
-						var="appro" 
+						value="#{mbAccueilAdmin.stockRupture}" 
+						var="stock" 
 						pdf="false"
 						print="false" 
 						excel="false" 
@@ -44,15 +44,15 @@
 							headerStyle="text-align: center;vertical-align: middle;">
 							<f:facet name="header">Image: </f:facet>
 							<h:graphicImage
-								value="/pics/articlesImages/#{appro.article.imageMini}" />
+								value="/pics/articlesImages/#{stock.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Articles: </f:facet>
-							<h:outputLabel value="#{appro.article.nom}" />
+							<h:outputLabel value="#{stock.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
 							<f:facet name="header">Quantités en stock: </f:facet>
-							<h:outputLabel value="#{appro.quantiteRestante}" />
+							<h:outputLabel value="#{stock.quantiteDispoPhysique}" />
 						</b:dataTableColumn>
 					</b:dataTable>
 					

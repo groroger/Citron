@@ -15,6 +15,7 @@ public interface StockIBusiness {
 	
 	public List<Stock> getAll() ;
 	List<Stock> getByQuantity();
+	public List<Stock> getRupture();
 	String getTotalQuantity();
 	String getVirtualQuantity();
 
