@@ -128,6 +128,11 @@ public class StockBusiness implements StockIBusiness{
 	public String getTotalQuantity() {
 		return proxyStockIDao.getTotalQuantity();
 	}
+	
+	@Override
+	public List<Stock> getRupture(){
+		return proxyStockIDao.getRupture();
+	}
 
 	@Override
 	public String getVirtualQuantity() {

@@ -12,4 +12,5 @@ public interface StockIdao extends GenericIdao<Stock>{
 	public List<Stock> getByQuantity();
 	public String getVirtualQuantity();
 	public String getTotalQuantity();
+	public List<Stock> getRupture();
 }

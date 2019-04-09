@@ -25,6 +25,7 @@ public class AccueilAdminManagedBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List <Stock> stockQuantity;
+	private List<Stock> stockRupture;
 	private List <Approvisionnement> approvisionnementsPeremption;
 	private List <Approvisionnement> approvisionnementsRupture;
 	private List<Commande> commandesEnAttente;
@@ -47,6 +48,7 @@ public class AccueilAdminManagedBean implements Serializable {
 		// recherche des approvisionnements qui seront périmés dans n jours
 		setApprovisionnementsPeremption(proxyApprovisionnement.getOutOfDateAppro(5));
 		setApprovisionnementsRupture(proxyApprovisionnement.getApproRupture());
+		setStockRupture(proxyStock.getRupture());
 		setStockTotal(proxyStock.getTotalQuantity());
 		setStockVirtuel(proxyStock.getVirtualQuantity());
 		setCommandesEnAttente(proxyCommande.getAllToProcess());
@@ -99,6 +101,14 @@ public class AccueilAdminManagedBean implements Serializable {
 
 	public void setApprovisionnementsRupture(List <Approvisionnement> approvisionnementsRupture) {
 		this.approvisionnementsRupture = approvisionnementsRupture;
+	}
+
+	public List<Stock> getStockRupture() {
+		return stockRupture;
+	}
+
+	public void setStockRupture(List<Stock> stockRupture) {
+		this.stockRupture = stockRupture;
 	}
 	
 }

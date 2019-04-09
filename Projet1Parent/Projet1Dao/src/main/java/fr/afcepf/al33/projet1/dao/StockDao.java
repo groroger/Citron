@@ -53,6 +53,16 @@ public class StockDao extends GenericDao<Stock> implements StockIdao {
 		stocks = queryJPQL.getResultList();
 		return stocks;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Stock> getRupture(){
+		List<Stock> stocks = new ArrayList<>();
+		String REQ_GETALL = "SELECT stock from Stock stock WHERE stock.quantiteDispoPhysique <= 50 ORDER BY stock.quantiteDispoPhysique";
+		Query queryJPQL = em.createQuery(REQ_GETALL);
+		stocks = queryJPQL.getResultList();
+		return stocks;
+	}
 		
 	public String getTotalQuantity() {
 		String result;

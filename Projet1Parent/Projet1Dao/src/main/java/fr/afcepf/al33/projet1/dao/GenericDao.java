@@ -75,6 +75,10 @@ public abstract class GenericDao<T> implements GenericIdao<T> {
 	public List<Stock> getByQuantity() {
 		return null;
 	}
+
+	public List<Stock> getRupture() {
+		return null;
+	}
 	
 
 
