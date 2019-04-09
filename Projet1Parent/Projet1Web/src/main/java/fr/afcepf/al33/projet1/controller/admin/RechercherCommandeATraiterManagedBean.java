@@ -109,7 +109,7 @@ public class RechercherCommandeATraiterManagedBean implements Serializable {
 						+ " physique = " + stock.getQuantiteDispoPhysique()
 						+ " internet = " + stock.getQuantiteDispoSiteInternet());
 			}
-			List<Approvisionnement> approvisionnements = proxyApprovisionnement.getAllApproByStock(stock);
+			List<Approvisionnement> approvisionnements = stock.getApprovisionnements();
 			// tri par date de péremption de la plus ancienne à la plus récente
 			Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
 				  public int compare(Approvisionnement a1, Approvisionnement a2) {
