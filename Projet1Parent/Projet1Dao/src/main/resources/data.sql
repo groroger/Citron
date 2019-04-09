@@ -175,8 +175,9 @@ INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateAp
 INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (42, 27, 27, 3, '2019-04-04', '2019-05-01', 'B78FF74', '196.00', '25', '25');
 INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (43, 28, 28, 3, '2019-04-04', '2019-05-01', 'C78GF75', '147.00', '20', '20');
 INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (44, 29, 29, 3, '2019-04-04', '2019-04-13', 'D78HF76', '177.00', '30', '30');
-INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (45, 30, 30, 4, '2019-04-04', '2019-04-08', 'E78IF77', '171.00', '40', '40');
+INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (45, 30, 30, 4, '2019-04-04', '2019-04-28', 'E78IF77', '171.00', '40', '40');
 INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (46, 7, 7, 4, '2019-04-04', '2019-04-08', 'E78IF12', '171.00', '40', '40');
+INSERT INTO `approvisionnement`(id, article_id, stock_id, fournisseur_id, dateApprovisionnement, datePeremption, lot, prix, quantiteCommandee, quantiteRestante) VALUES (47, 18, 18, 4, '2019-04-04', '2019-04-08', 'F8IHG2', '152.00', '40', '40');
 
 INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (1, 1,'2019-04-04', '2019-04-05', '39.96');
 INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (2, 1,'2019-03-08', '2019-03-09', '39.96');

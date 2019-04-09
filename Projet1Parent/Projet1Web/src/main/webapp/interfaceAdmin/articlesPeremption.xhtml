@@ -23,13 +23,15 @@
 			</f:metadata>
 		
 		<h:body>
+		
+	
 			<b:row id="banner">
 							<h3>Date de péremption proche</h3>
 			</b:row>
 		
 			<b:container>
 		
-					
+			<h:form>	
 			<b:dataTable 
 				id="datatableArticlePeremption" 
 				value="#{mbAccueilAdmin.approvisionnementsPeremption}" 
@@ -39,7 +41,6 @@
 				excel="false" 
 				border="true" 
 				info="false"
-				page-length="10" 
 				selectionMode="single" 
 				responsive="true"
 				paginated="true">
@@ -65,8 +66,9 @@
   								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
   							</h:outputLabel>
 						</b:dataTableColumn>
-						
+				
 					</b:dataTable>
+				</h:form>	
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
 								<h3 id="h32">Articles périmés</h3>
@@ -111,10 +113,20 @@
   								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
   							</h:outputLabel>
 						</b:dataTableColumn>
+						<b:dataTableColumn label="Jeter">
+							<h:form>
+							<b:commandButton id="btn_supprimer" value="" look="danger"
+									action="#{mbAccueilAdmin.jeterArticlePerime(approPerime)}">
+								<b:image value="../pics/icones/deleteWhite21.png"/>	
+								
+							</b:commandButton>
+							</h:form>
+						</b:dataTableColumn>
+							
 						</b:dataTable>
 					
 					</b:container>
-					
+			
 		</h:body>
 	</ui:define>
 </ui:composition>

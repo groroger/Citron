@@ -78,7 +78,7 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 		List<Approvisionnement> approvisionnements = null;
 		java.sql.Date today = java.sql.Date.valueOf(LocalDate.now());
 
-		String REQ = "SELECT appro from Approvisionnement appro WHERE appro.datePeremption < :today";
+		String REQ = "SELECT appro from Approvisionnement appro WHERE appro.datePeremption < :today AND appro.dateMiseAuRebut = null";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("today", today);
 

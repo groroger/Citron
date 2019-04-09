@@ -50,8 +50,8 @@ public class Approvisionnement implements Serializable{
 	@Column(name="datePeremption")
 	private Date datePeremption;
 	
-	@Column(name="dateMiseAuRebutProduitPerime")
-	private Date dateMiseAuRebutProduitPerime;
+	@Column(name="dateMiseAuRebut")
+	private Date dateMiseAuRebut;
 	
 	@Column(name="lot")
 	private String lot;
@@ -69,19 +69,9 @@ public class Approvisionnement implements Serializable{
 	
 	//Constructeur chargé
 
-
-
-
-	//GETTERS ET SETTERS
-	
-	public Integer getId() {
-		return id;
-	}
-
-
 	public Approvisionnement(Integer id, Article article, Fournisseur fournisseur, int quantiteCommandee,
-			int quantiteRestante, double prix, Date dateApprovisionnement, Date datePeremption,
-			Date dateMiseAuRebutProduitPerime, String lot, Stock stock) {
+			int quantiteRestante, double prix, Date dateApprovisionnement, Date datePeremption, Date dateMiseAuRebut,
+			String lot, Stock stock) {
 		super();
 		this.id = id;
 		this.article = article;
@@ -91,10 +81,19 @@ public class Approvisionnement implements Serializable{
 		this.prix = prix;
 		this.dateApprovisionnement = dateApprovisionnement;
 		this.datePeremption = datePeremption;
-		this.dateMiseAuRebutProduitPerime = dateMiseAuRebutProduitPerime;
+		this.dateMiseAuRebut = dateMiseAuRebut;
 		this.lot = lot;
 		this.stock = stock;
 	}
+
+
+	//GETTERS ET SETTERS
+	
+	public Integer getId() {
+		return id;
+	}
+
+
 
 	public Article getArticle() {
 		return article;
@@ -178,13 +177,15 @@ public class Approvisionnement implements Serializable{
 		this.stock = stock;
 	}
 
-	public Date getDateMiseAuRebutProduitPerime() {
-		return dateMiseAuRebutProduitPerime;
+	public Date getDateMiseAuRebut() {
+		return dateMiseAuRebut;
 	}
 
-	public void setDateMiseAuRebutProduitPerime(Date dateMiseAuRebutProduitPerime) {
-		this.dateMiseAuRebutProduitPerime = dateMiseAuRebutProduitPerime;
+	public void setDateMiseAuRebut(Date dateMiseAuRebut) {
+		this.dateMiseAuRebut = dateMiseAuRebut;
 	}
+
+
 	
 	
 }

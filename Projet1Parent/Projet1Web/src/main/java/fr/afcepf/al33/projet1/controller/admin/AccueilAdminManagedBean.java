@@ -1,6 +1,7 @@
 package fr.afcepf.al33.projet1.controller.admin;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -55,6 +56,20 @@ public class AccueilAdminManagedBean implements Serializable {
 		setCommandesEnAttente(proxyCommande.getAllToProcess());
 		approvisionnementsPerimes=proxyApprovisionnement.getAllApproPerimes();
 		
+	}
+	
+	public void jeterArticlePerime(Approvisionnement approvisionnement) {
+		Date dateRebut = new Date();
+		approvisionnement.setDateMiseAuRebut(dateRebut);
+
+		
+		Stock stock = new Stock();
+		stock= approvisionnement.getStock();
+		stock.setQuantiteDispoPhysique(stock.getQuantiteDispoPhysique() - approvisionnement.getQuantiteRestante());
+		stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet() - approvisionnement.getQuantiteRestante());
+		
+		proxyApprovisionnement.update(approvisionnement);
+		proxyStock.update(stock);
 	}
 
 	public List <Stock> getStockQuantity() {
