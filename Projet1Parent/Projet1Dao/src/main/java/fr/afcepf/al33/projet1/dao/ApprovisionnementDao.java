@@ -43,11 +43,13 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 		// avec date de péremption proche de la date du jour
 				
 		List<Approvisionnement> approvisionnements = null;
+		java.sql.Date today = java.sql.Date.valueOf(LocalDate.now());
 		java.sql.Date dateButoire;
 		dateButoire = java.sql.Date.valueOf(LocalDate.now().plusDays(nbJours));
-		String REQ = "SELECT appro from Approvisionnement appro inner join Article art on appro.article = art.id WHERE appro.datePeremption <= :date";
+		String REQ = "SELECT appro from Approvisionnement appro inner join Article art on appro.article = art.id WHERE appro.datePeremption <= :date AND appro.datePeremption >= :today";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("date", dateButoire);
+		queryJPQL.setParameter("today", today);
 		if(logger.isDebugEnabled()) {
 			logger.debug("requête pour approvisionnements périmés dans " + nbJours + " jours (" + dateButoire + ") : " + queryJPQL.toString());
 		}

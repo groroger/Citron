@@ -25,8 +25,17 @@
 			<f:event listener="#{mbPanier.init()}"
 				type="preRenderView"></f:event>
 		</f:metadata>
+		
+		
 
 		<h:body>
+			<p:dialog header=""  widgetVar="notConnected" modal="true" height="100">
+   					 <h:outputText value="Merci de vous identifier ou de vous enregistrer pour valider votre commande." />
+			</p:dialog>
+			
+			<p:dialog header=""  widgetVar="quantiteInsuffisante" modal="true" height="100">
+   					 <h:outputText value="Quantité disponible insuffisante pour l'article suivant: #{mbPanier.articleEnRupture}" />
+			</p:dialog>   
 		
 			<b:row  id="banner">
 						
@@ -37,9 +46,7 @@
 			<h:form id="formPanier">
 
 				<b:container layout="fluid">
-				
-
-
+		
 					<b:dataTable 
 						id="datatablePanier"
 						value="#{mbPanier.articlesCommandes}"
@@ -71,7 +78,7 @@
 						</b:dataTableColumn>
 						<b:dataTableColumn label="Quantité">
 							
-							<p:spinner id="minMax" value="#{articleCommande.quantite}" min="1" max="100" size="4" />
+							<p:spinner id="minMax" value="#{articleCommande.quantite}" min="1" max="999" size="4" />
 							<b:commandButton value="" look="secondary" action="#{mbPanier.rafraichirPanier()}">
 							<b:image value="../pics/icones/refreshGreen24.png"/>
 							</b:commandButton>
@@ -82,7 +89,7 @@
 					
 					</b:dataTable>
 					
-					
+
 					
 					<div id="boutonBas">
             

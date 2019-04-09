@@ -17,6 +17,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.PrimeFaces;
+
 import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
@@ -57,6 +59,8 @@ public class PanierManagedBean implements Serializable{
   
   private Stock stock = new Stock();
   
+  private String articleEnRupture;
+  
   @EJB
   private CommandeIBusiness proxyCommande;
   
@@ -77,6 +81,7 @@ public class PanierManagedBean implements Serializable{
 		client = (Client) session.getAttribute("clientConnecte");
 		if ((List<ArticleCommande>) session.getAttribute("listeArticlesCommandes") != null)
 		{
+			
 			articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
 		}
 			
@@ -95,42 +100,50 @@ public class PanierManagedBean implements Serializable{
 		  dfs.setDecimalSeparator('.');
 		  twoDForm.setDecimalFormatSymbols(dfs);
 			
+		  boolean toutEstDispo = true;
 		  
 		  for (ArticleCommande articleCommande : articlesCommandes) {
 			  double calculPrixLigneArticleCommande = articleCommande.getQuantite()*articleCommande.getArticle().getPrix();
 			  
 			  calculPrixLigneArticleCommande=Double.parseDouble(twoDForm.format(calculPrixLigneArticleCommande));
 			  articleCommande.setPrixTotal(calculPrixLigneArticleCommande);
-			
+			  stock= proxyStock.searchById(articleCommande.getArticle().getStock().getId());
+			  
+			  if (stock.getQuantiteDispoSiteInternet() - articleCommande.getQuantite()<0) {
+				  articleEnRupture=articleCommande.getArticle().getNom();
+				  PrimeFaces current = PrimeFaces.current();
+				  current.executeScript("PF('quantiteInsuffisante').show();");
+				  toutEstDispo=false;
+			  }
 				
 		  }
 		  
-		  proxyArticleCommande.add(cde, articlesCommandes);
+		  if (toutEstDispo== true) {
 		  
-		  for (ArticleCommande articleCommande : articlesCommandes) {
-			
-			stock= proxyStock.searchById(articleCommande.getArticle().getStock().getId());
-			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-articleCommande.getQuantite());
-			
-			proxyStock.update(stock);
-			
-		}
-		  
-	
-			 FacesContext facesContext = FacesContext.getCurrentInstance();
-			 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/monCompte.xhtml#test?faces-redirect=true");
-		  
-			 articlesCommandes= new ArrayList<ArticleCommande>();
-			 session.setAttribute("listeArticlesCommandes", articlesCommandes);
-		  
+			  proxyArticleCommande.add(cde, articlesCommandes);
+			  
+			  for (ArticleCommande articleCommande : articlesCommandes) {
+				
+				stock= proxyStock.searchById(articleCommande.getArticle().getStock().getId());
+				stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-articleCommande.getQuantite());
+				
+				proxyStock.update(stock);
+				
+			  }
+			  
+		
+				 FacesContext facesContext = FacesContext.getCurrentInstance();
+				 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+				 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/monCompte.xhtml#test?faces-redirect=true");
+			  
+				 articlesCommandes= new ArrayList<ArticleCommande>();
+				 session.setAttribute("listeArticlesCommandes", articlesCommandes);
+		  }
 	  } else {
-		  FacesContext facesContext = FacesContext.getCurrentInstance();
-		  HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-		  facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml#test?faces-redirect=true");
 		  
-		  
-		System.out.println("Merci de votre visite");
+		  PrimeFaces current = PrimeFaces.current();
+		  current.executeScript("PF('notConnected').show();");
+		 
 			
 	  }
 	  
@@ -267,6 +280,14 @@ public Stock getStock() {
 
 public void setStock(Stock stock) {
 	this.stock = stock;
+}
+
+public String getArticleEnRupture() {
+	return articleEnRupture;
+}
+
+public void setArticleEnRupture(String articleEnRupture) {
+	this.articleEnRupture = articleEnRupture;
 }
 
 

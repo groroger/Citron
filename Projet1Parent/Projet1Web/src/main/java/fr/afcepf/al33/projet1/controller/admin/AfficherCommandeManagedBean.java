@@ -78,46 +78,55 @@ public class AfficherCommandeManagedBean implements Serializable{
 							+ " physique = " + stock.getQuantiteDispoPhysique()
 							+ " internet = " + stock.getQuantiteDispoSiteInternet());
 				}
-				List<Approvisionnement> approvisionnements = proxyApprovisionnement.getAllApproByStock(stock);
+				List<Approvisionnement> approvisionnements = stock.getApprovisionnements();
 				// tri par date de péremption de la plus ancienne à la plus récente
 				Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
-					  public int compare(Approvisionnement a1, Approvisionnement a2) {
-						  // a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
-						  // a2 et a1 en ordre inverse pour tri descendant
-					      return a1.getDateApprovisionnement().compareTo(a2.getDateApprovisionnement());
-					  }
-					});			
+					public int compare(Approvisionnement a1, Approvisionnement a2) {
+						// a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
+						// a2 et a1 en ordre inverse pour tri descendant
+						return a1.getDatePeremption().compareTo(a2.getDatePeremption());
+					}
+				});
+				if(logger.isDebugEnabled()) {
+					logger.debug("après tri des approvisionnements sur date péremption : "); 
+					for (Approvisionnement approvisionnement : approvisionnements) {
+						logger.debug("approvisionnement date péremption : " + approvisionnement.getDateApprovisionnement()); 
+					}
+				}
 				for (Approvisionnement approvisionnement : approvisionnements) {
 					// dans les approvisionnements classés par ordre de date de péremption croissante
 					// prendre la quantité nécessaire ou disponible 
-					int quantiteAPrendre = Integer.min(ac.getQuantite() - quantitePreparee, approvisionnement.getQuantiteRestante());
-					if(logger.isDebugEnabled()) {
-						logger.debug("quantité approvisionnement avant pour " 
-								+ " lot " + approvisionnement.getLot()
-								+ " date péremption " + approvisionnement.getDatePeremption()
-								+ " = " + approvisionnement.getQuantiteRestante());
-					}
-					// décrémenter le stock dans l'approvisionnement
-					approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteRestante() - quantiteAPrendre);
-					// modifier le stock
-					proxyApprovisionnement.update(approvisionnement);
-					if(logger.isDebugEnabled()) {
-						logger.debug("quantité approvisionnement après pour " 
-								+ " lot " + approvisionnement.getLot()
-								+ " date péremption " + approvisionnement.getDatePeremption()
-								+ " = " + approvisionnement.getQuantiteRestante());
-					}
-					quantitePreparee += quantiteAPrendre;
-					// jusqu'à satisfaire la quantité commandée
-					if(logger.isDebugEnabled()) {
-						logger.debug("quantité préparée pour " + ac.getArticle().getNom() 
-								+ " = " + quantitePreparee + " / " + ac.getQuantite());
-					}
-					if (quantitePreparee == ac.getQuantite()) {
+					// si la date de péremption n'est pas dépassée
+					if (approvisionnement.getDatePeremption().after(new Date())) {
+						int quantiteAPrendre = Integer.min(ac.getQuantite() - quantitePreparee, approvisionnement.getQuantiteRestante());
 						if(logger.isDebugEnabled()) {
-							logger.debug("quantité intégralement préparée pour " + ac.getArticle().getNom());
+							logger.debug("quantité approvisionnement avant pour " 
+									+ " lot " + approvisionnement.getLot()
+									+ " date péremption " + approvisionnement.getDatePeremption()
+									+ " = " + approvisionnement.getQuantiteRestante());
 						}
-						break;					
+						// décrémenter le stock dans l'approvisionnement
+						approvisionnement.setQuantiteRestante(approvisionnement.getQuantiteRestante() - quantiteAPrendre);
+						// modifier le stock
+						proxyApprovisionnement.update(approvisionnement);
+						if(logger.isDebugEnabled()) {
+							logger.debug("quantité approvisionnement après pour " 
+									+ " lot " + approvisionnement.getLot()
+									+ " date péremption " + approvisionnement.getDatePeremption()
+									+ " = " + approvisionnement.getQuantiteRestante());
+						}
+						quantitePreparee += quantiteAPrendre;
+						// jusqu'à satisfaire la quantité commandée
+						if(logger.isDebugEnabled()) {
+							logger.debug("quantité préparée pour " + ac.getArticle().getNom() 
+									+ " = " + quantitePreparee + " / " + ac.getQuantite());
+						}
+						if (quantitePreparee == ac.getQuantite()) {
+							if(logger.isDebugEnabled()) {
+								logger.debug("quantité intégralement préparée pour " + ac.getArticle().getNom());
+							}
+							break;					
+						}
 					}
 				}
 				// si quantité insuffisante emettre un message d'alerte pour l'administrateur
