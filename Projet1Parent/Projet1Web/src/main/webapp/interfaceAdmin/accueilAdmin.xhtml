@@ -51,13 +51,13 @@
 		  <b:column col-sm="6" col-md="4">
 		    <b:thumbnail class="thumbnail">
 		      <b:iconAwesome name="cog" spin="true" size="3x" />
-		      <h2>Produits en Péremption</h2>
+		      <h2>Alerte: Date de péremption</h2>
 		       <img src="#{request.contextPath}/pics/carousel/jolisFruits.jpg" alt="Generic placeholder thumbnail"/>
 		      <f:facet name="caption">
 
 		        <div class="compteurJS" id="stockPeremption"></div>
 
-		                <b:button look="warning" value="Produits en Peremption" 
+		                <b:button look="warning" value="Articles concernés" 
 		        			href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
 		       
 		      </f:facet>
@@ -67,13 +67,13 @@
 		  <b:column col-sm="6" col-md="4">
 		    <b:thumbnail class="thumbnail">
 		       <b:iconAwesome name="cog" spin="true" size="3x" />
-		        <h2>Articles Proche de la Rupture</h2>
+		        <h2>Alerte: Etat du Stock</h2>
 		        <img src="#{request.contextPath}/pics/carousel/jolisFruits.jpg" alt="Generic placeholder thumbnail"/>
 		      <f:facet name="caption">
 
 		        <div class="compteurJS" id="stockRupture"></div>
 
-		                <b:button look="warning" value="Articles en Rupture" 
+		                <b:button look="warning" value="Articles concernés" 
 		        			href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
 		       
 		      </f:facet>

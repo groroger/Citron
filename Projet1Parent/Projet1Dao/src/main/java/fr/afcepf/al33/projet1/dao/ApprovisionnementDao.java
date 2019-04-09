@@ -29,7 +29,7 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 	@Override
 	public List<Approvisionnement> getAllApproByStock(Stock stock) {
 		List<Approvisionnement> approvisionnements = null;
-		String REQ = "SELECT approvisionnement from Approvisionnement approvisionnement WHERE approvisionnement.stock.id = :id";
+		String REQ = "SELECT approvisionnement from Approvisionnement approvisionnement WHERE approvisionnement.stock.id = :id ORDER BY approvisionnement.datePeremption DESC";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("id", stock.getId());
 		approvisionnements = queryJPQL.getResultList();

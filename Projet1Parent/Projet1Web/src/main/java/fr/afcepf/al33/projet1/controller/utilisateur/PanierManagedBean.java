@@ -91,14 +91,25 @@ public class PanierManagedBean implements Serializable{
 	  
 	  if (client != null) {
 		  Commande cde = new Commande();
-		  cde.setPrixTotal(prixTotal);
-		  cde.setDateCreation(new Date());
-		  cde.setClient(client);
+		  prixTotal = 0;
+		  
+		  Iterator<ArticleCommande> ite = articlesCommandes.iterator();
+			while(ite.hasNext()) {
+				ArticleCommande ac = ite.next();
+				prixTotal += ac.getQuantite()*ac.getArticle().getPrix();
+			}
+		  
 		  
 		  DecimalFormat twoDForm =new DecimalFormat("##.##");
 		  DecimalFormatSymbols dfs = new DecimalFormatSymbols();
 		  dfs.setDecimalSeparator('.');
 		  twoDForm.setDecimalFormatSymbols(dfs);
+		  
+		  prixTotal=Double.parseDouble(twoDForm.format(prixTotal));
+		  
+		  cde.setPrixTotal(prixTotal);
+		  cde.setDateCreation(new Date());
+		  cde.setClient(client);
 			
 		  boolean toutEstDispo = true;
 		  
