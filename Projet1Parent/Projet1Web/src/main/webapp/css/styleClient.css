@@ -14,6 +14,14 @@ body
 	padding: 0px;
 }
 
+/* couleur entete fenetre modal primfaces */
+.ui-widget-header
+{
+	
+	background: #96c001 !important;
+
+}
+
 
 .btn-warning 
 {
@@ -52,6 +60,8 @@ body
 	content:"* ";
 	color: red;
 }
+
+
 
 h3
 {
@@ -475,8 +485,11 @@ carouselItem > img{
 }
 
 
+
+
 #jeMInscris1
 {
+
   color: rgb(4,66,87) !important;
   display: flex;
   align-items: center;
