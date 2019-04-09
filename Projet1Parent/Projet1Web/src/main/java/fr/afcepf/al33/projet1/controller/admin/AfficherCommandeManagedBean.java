@@ -81,12 +81,18 @@ public class AfficherCommandeManagedBean implements Serializable{
 				List<Approvisionnement> approvisionnements = stock.getApprovisionnements();
 				// tri par date de péremption de la plus ancienne à la plus récente
 				Collections.sort(approvisionnements, new Comparator<Approvisionnement>() {
-					  public int compare(Approvisionnement a1, Approvisionnement a2) {
-						  // a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
-						  // a2 et a1 en ordre inverse pour tri descendant
-					      return a2.getDateApprovisionnement().compareTo(a1.getDateApprovisionnement());
-					  }
-					});			
+					public int compare(Approvisionnement a1, Approvisionnement a2) {
+						// a1 et a2 dans l'ordre pour un tri ascendant (option choisie ici)
+						// a2 et a1 en ordre inverse pour tri descendant
+						return a1.getDatePeremption().compareTo(a2.getDatePeremption());
+					}
+				});
+				if(logger.isDebugEnabled()) {
+					logger.debug("après tri des approvisionnements sur date péremption : "); 
+					for (Approvisionnement approvisionnement : approvisionnements) {
+						logger.debug("approvisionnement date péremption : " + approvisionnement.getDateApprovisionnement()); 
+					}
+				}
 				for (Approvisionnement approvisionnement : approvisionnements) {
 					// dans les approvisionnements classés par ordre de date de péremption croissante
 					// prendre la quantité nécessaire ou disponible 
