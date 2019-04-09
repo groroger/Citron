@@ -32,17 +32,17 @@
 					value="#{mbAccueilAdmin.commandesEnAttente.size()}" />
 			</div>
 
-		<b:row class="reporting">
+		<b:row id="reporting">
 		  <b:column col-sm="6" col-md="4">
 		    <b:thumbnail class="thumbnail">
-		      <b:iconAwesome name="cog" spin="true" size="10x" />
+		      <b:iconAwesome name="cog" spin="true" size="3x" />
+		         <h2>Commandes à Traiter</h2>
+		      <img src="#{request.contextPath}/pics/carousel/jolisFruits.jpg" alt="Generic placeholder thumbnail"/>
 		      <f:facet name="caption">
-		      
-		        <h2>Commandes à Traiter</h2>
-		        <div id="compteur"></div>
-		      
+		     
+		        <div class="compteurJS" id="compteur"></div>
 		                <b:button look="warning" value="Commandes à Traiter" 
-		        			size="lg" href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
+		        			href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
 		       
 		      </f:facet>
 		    </b:thumbnail>
@@ -50,14 +50,15 @@
 		  
 		  <b:column col-sm="6" col-md="4">
 		    <b:thumbnail class="thumbnail">
-		      <b:iconAwesome name="list-alt" spin="false" size="10x" />
+		      <b:iconAwesome name="cog" spin="true" size="3x" />
+		      <h2>Produits en Péremption</h2>
+		       <img src="#{request.contextPath}/pics/carousel/jolisFruits.jpg" alt="Generic placeholder thumbnail"/>
 		      <f:facet name="caption">
-		      
-		        <h2>Produits en Péremption</h2>
-		        <div id="stockPeremption"></div>
 
-		                <b:button look="warning" value="Produits en peremption" 
-		        			size="lg" href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
+		        <div class="compteurJS" id="stockPeremption"></div>
+
+		                <b:button look="warning" value="Produits en Peremption" 
+		        			href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
 		       
 		      </f:facet>
 		    </b:thumbnail>
@@ -65,14 +66,15 @@
 		  
 		  <b:column col-sm="6" col-md="4">
 		    <b:thumbnail class="thumbnail">
-		      <b:iconAwesome name="cog" spin="true" size="10x" />
-		      <f:facet name="caption">
-		      
+		       <b:iconAwesome name="cog" spin="true" size="3x" />
 		        <h2>Articles proche de la rupture</h2>
-		        <div id="stockRupture"></div>
+		        <img src="#{request.contextPath}/pics/carousel/jolisFruits.jpg" alt="Generic placeholder thumbnail"/>
+		      <f:facet name="caption">
 
-		                <b:button look="warning" value="Articles en rupture" 
-		        			size="lg" href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
+		        <div class="compteurJS" id="stockRupture"></div>
+
+		                <b:button look="warning" value="Articles en Rupture" 
+		        			href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
 		       
 		      </f:facet>
 		    </b:thumbnail>
