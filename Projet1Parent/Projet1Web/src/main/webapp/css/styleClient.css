@@ -14,6 +14,14 @@ body
 	padding: 0px;
 }
 
+/* couleur entete fenetre modal primfaces */
+.ui-widget-header
+{
+	
+	background: #96c001 !important;
+
+}
+
 
 .btn-warning 
 {
@@ -45,13 +53,15 @@ body
 }
 
 .errorMessage {
-	color: red;
+	color: red !important;
 }
 
 .required:before { 
 	content:"* ";
 	color: red;
 }
+
+
 
 h3
 {
@@ -471,12 +481,15 @@ carouselItem > img{
 	padding-top: 50px;
 	padding-bottom: 100px;
 	background-color: #eeeeee;	
-	z-index: 1;
+	
 }
+
+
 
 
 #jeMInscris1
 {
+
   color: rgb(4,66,87) !important;
   display: flex;
   align-items: center;

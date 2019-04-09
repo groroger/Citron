@@ -29,21 +29,25 @@
 		
 
 		<h:body>
-			<p:dialog header=""  widgetVar="notConnected" modal="true" height="100">
-   					 <h:outputText value="Merci de vous identifier ou de vous enregistrer pour valider votre commande." />
-			</p:dialog>
-			
-			<p:dialog header=""  widgetVar="quantiteInsuffisante" modal="true" height="100">
-   					 <h:outputText value="Quantité disponible insuffisante pour l'article suivant: #{mbPanier.articleEnRupture}" />
-			</p:dialog>   
+		
 		
 			<b:row  id="banner">
 						
 				<h3>Panier</h3>
 					
 			</b:row>
+			
+
 		
 			<h:form id="formPanier">
+			
+							<p:dialog id="jeMInscris1" header=""  widgetVar="notConnected" modal="true" height="100">
+   					 <h:outputText value="Merci de vous identifier ou de vous enregistrer pour valider votre commande." />
+			</p:dialog>
+			
+			<p:dialog header=""  widgetVar="quantiteInsuffisante" modal="true" height="100">
+   					 <h:outputText value="Quantité disponible insuffisante pour l'article suivant: #{mbPanier.articleEnRupture}" />
+			</p:dialog>   
 
 				<b:container layout="fluid">
 		

@@ -18,13 +18,26 @@
 		</h:head>
 		<h:body>
 				
+				<f:metadata>
+					<f:event listener="#{mbGererCompteClient.init()}"
+						type="preRenderView"></f:event>
+				</f:metadata>
+				
 						<b:row id="banner">
 								<h3 id="titre1">Mon compte</h3>
 						</b:row>
 						<br />
 						<br />
 				
+				
+				<h:form id="formGestionCompteClient">	
 				<b:container id="gestionCompte" layout="fluid">
+					
+						<b:row>
+							<h:messages />
+						</b:row>
+				<br />
+						<br />
 						<b:row>
 							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
 								<h:outputLabel value="Prénom :" for="prenom" />
@@ -137,7 +150,7 @@
 								</b:column>
 
 								<b:column tiny-screen="12" medium-screen="9" large-screen="4">
-									<b:selectOneMenu id="ville" required="true"
+									<b:selectOneMenu id="ville" required="false"
 										requiredMessage="Ville obligatoire"
 										value="#{mbGererCompteClient.client.ville}">
 										<f:selectItem itemLabel="Ville" itemValue=""
@@ -238,7 +251,7 @@
 						</b:row>
 						<br />
 						
-						<h:form id="formGestionCompteClient">
+						
 						<b:row>
 							<b:column offset="10" tiny-screen="2" medium-screen="2"
 								large-screen="2">
@@ -247,9 +260,9 @@
 							</b:column>
 						</b:row>
 						<br />
-</h:form>
+					
 					</b:container>
-
+</h:form>
 			
 		</h:body>
 	</ui:define>
