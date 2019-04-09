@@ -10,8 +10,13 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
 import fr.afcepf.al33.projet1.entity.Approvisionnement;
+import fr.afcepf.al33.projet1.entity.ArticleCommande;
 import fr.afcepf.al33.projet1.entity.Categorie;
+import fr.afcepf.al33.projet1.entity.Commande;
 import fr.afcepf.al33.projet1.entity.Stock;
+import fr.afcepf.al33.projet1.idao.ApprovisionnementIdao;
+import fr.afcepf.al33.projet1.idao.ArticleCommandeIDao;
+import fr.afcepf.al33.projet1.idao.CommandeIdao;
 import fr.afcepf.al33.projet1.idao.StockIdao;
 
 @Remote(StockIBusiness.class)
@@ -20,6 +25,15 @@ public class StockBusiness implements StockIBusiness{
 
 	@EJB
 	private StockIdao proxyStockIDao;
+	
+	@EJB 
+	private ApprovisionnementIdao proxyApprovisionnementIdao;
+	
+	@EJB
+	private CommandeIdao proxyCommandeIdao;
+	
+	@EJB
+	private ArticleCommandeIDao proxyArticleComande;
 
 	
 	
@@ -50,19 +64,41 @@ public class StockBusiness implements StockIBusiness{
 	@Override
 	public List<Stock> getAll() {
 		List<Stock> stocks=new ArrayList<Stock>();
+		List<Commande> commandesEnCours = proxyCommandeIdao.getAllToProcess();
 		stocks=proxyStockIDao.getAll();
 		Date aujourdhui = new Date();
-
+		int nbreStockPhysique=0;
+		int dispoWebARetirer=0;
 		for (Stock stock : stocks) {
-			int nbreStock = 0;
-			for (Approvisionnement approvisionnement : stock.getApprovisionnements()) {
+			
+			List<Approvisionnement> approvisionnements = proxyApprovisionnementIdao.getAllApproByStock(stock);
+			for (Approvisionnement approvisionnement : approvisionnements) {
 				if (approvisionnement.getDatePeremption().after(aujourdhui))
 					{
 						
-						nbreStock= nbreStock + approvisionnement.getQuantiteRestante();
+					nbreStockPhysique= nbreStockPhysique + approvisionnement.getQuantiteRestante();
+						
 					}
 			}
-			stock.setQuantiteDispoPhysique(nbreStock);
+			System.out.println(nbreStockPhysique);
+			stock.setQuantiteDispoPhysique(nbreStockPhysique);
+			stock.setQuantiteDispoSiteInternet(nbreStockPhysique);
+			nbreStockPhysique=0;
+			
+			
+			for (Commande commande : commandesEnCours) {
+				List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
+				articlesCommandes= proxyArticleComande.getAllByCommande(commande);
+				for (ArticleCommande ac : articlesCommandes) {
+					if(ac.getArticle().getStock().getId()==stock.getId()) {
+						dispoWebARetirer = dispoWebARetirer + ac.getQuantite();
+					}
+				}
+				
+			}
+			stock.setQuantiteDispoSiteInternet(stock.getQuantiteDispoSiteInternet()-dispoWebARetirer);
+			dispoWebARetirer=0;
+			proxyStockIDao.modifier(stock);
 		}
 		
 		
