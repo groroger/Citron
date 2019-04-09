@@ -251,8 +251,8 @@ INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) V
 INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (72, 18,'2019-01-15', '2019-01-16', '39.96');
 INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (73, 19,'2019-04-04', '2019-04-05', '39.96');
 INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (74, 15,'2019-03-08', '2019-03-09', '39.96');
-INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (75, 14,'2019-02-07', 'null', '39.96');
-INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (76, 19,'2019-01-15', 'null', '39.96');
+INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (75, 14,'2019-02-07', null, '39.96');
+INSERT INTO `commande`(id, client_id, dateCreation, dateExpedition, prixTotal) VALUES (76, 19,'2019-01-15', null, '39.96');
 
 INSERT INTO `articleCommande`(commande_id, article_id, quantite, prixTotal) VALUES (1, 7, 1, '2.23');
 INSERT INTO `articleCommande`(commande_id, article_id, quantite, prixTotal) VALUES (1, 8, 2, '7.98');
