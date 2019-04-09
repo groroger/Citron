@@ -13,11 +13,11 @@
 
 #reporting
 {
-	margin-top: 100px;
+	margin-top: 30px;
 	margin-right: 50px;
 	margin-left: 50px;
 	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-bottom: 50px;
 }
 
 .thumbnail
@@ -29,8 +29,9 @@
 
 .compteurJS{
 	margin: auto;
-	font-size: 35px;
+	font-size: 3em;
 	text-align: center;
+	height: 70px;
 }
 
 
