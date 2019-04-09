@@ -46,7 +46,7 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 		java.sql.Date today = java.sql.Date.valueOf(LocalDate.now());
 		java.sql.Date dateButoire;
 		dateButoire = java.sql.Date.valueOf(LocalDate.now().plusDays(nbJours));
-		String REQ = "SELECT appro from Approvisionnement appro inner join Article art on appro.article = art.id WHERE appro.datePeremption <= :date AND appro.datePeremption >= :today";
+		String REQ = "SELECT appro from Approvisionnement appro WHERE appro.datePeremption <= :date AND appro.datePeremption >= :today";
 		Query queryJPQL = em.createQuery(REQ);
 		queryJPQL.setParameter("date", dateButoire);
 		queryJPQL.setParameter("today", today);
@@ -70,6 +70,21 @@ public class ApprovisionnementDao extends GenericDao<Approvisionnement> implemen
 		approvisionnements = queryJPQL.getResultList();
 		return approvisionnements;
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Approvisionnement> getAllApproPerimes() {
+		List<Approvisionnement> approvisionnements = null;
+		java.sql.Date today = java.sql.Date.valueOf(LocalDate.now());
+
+		String REQ = "SELECT appro from Approvisionnement appro WHERE appro.datePeremption < :today";
+		Query queryJPQL = em.createQuery(REQ);
+		queryJPQL.setParameter("today", today);
+
+		approvisionnements = queryJPQL.getResultList();
+
+		return approvisionnements;
 	}
 	
 }

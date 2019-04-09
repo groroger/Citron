@@ -74,6 +74,13 @@ public class ApprovisionnementBusiness implements ApprovisionnementIBusiness{
 		return approvisionnements;
 	}
 
+	@Override
+	public List<Approvisionnement> getAllApproPerimes() {
+		List<Approvisionnement> approvisionnements=null;
+		approvisionnements = proxyApprovisionnement.getAllApproPerimes();
+		return approvisionnements;
+	}
+
 	
 
 }

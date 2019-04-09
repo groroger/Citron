@@ -44,11 +44,15 @@
 							<h:graphicImage	value="/pics/articlesImages/#{appro.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
+							<f:facet name="header">N° du Lot</f:facet>
+							<h:outputLabel value="#{appro.lot}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
 							<f:facet name="header">Article</f:facet>
 							<h:outputLabel value="#{appro.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
-							<f:facet name="header">Quantités en stock</f:facet>
+							<f:facet name="header">Quantité restante du lot</f:facet>
 							<h:outputLabel value="#{appro.quantiteRestante}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn>
