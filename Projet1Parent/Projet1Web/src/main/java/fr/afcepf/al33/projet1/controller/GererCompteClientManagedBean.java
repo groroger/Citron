@@ -91,7 +91,7 @@ public class GererCompteClientManagedBean implements Serializable{
 		// controles pattern mot de passe saisi
 		if (verifierMotDePasse()) {
 			// génération du sel et du mot de passe haché
-			if (genererMotDePasseHache()) {				
+			 if (genererMotDePasseHache()) {				
 				try {
 					// enregistrement du client
 					proxyClient.add(client);
@@ -113,7 +113,7 @@ public class GererCompteClientManagedBean implements Serializable{
 				}
 			}
 					
-		}
+		 }
 	}
 	
 	private boolean verifierMotDePasse() {
