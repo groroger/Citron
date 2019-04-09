@@ -37,26 +37,26 @@
 		<div>
 			<h5>Mes Articles en fin de Vie</h5>
 			<div id="peremption"></div>
-			<b:button id="btnLienPeremption" look="success" value="Aller aux Articles en Péremption" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
+			
 		</div>
 		
 		<div>
 			<h5>Mes Articles en Rupture</h5>
 			<div id="rupture"></div>
-			<b:button id="btnLienRupture" look="success" value="Aller aux Articles en Rupture" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
+			
 		</div>
 		
 		<div>
 			<h5>Mes Commandes en attentes</h5>
 			<div id="compteur"></div>
-			<b:button id="btnLienReporting" look="success" value="Aller aux Commandes à Traiter" size="lg" href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
+			
 		</div>	
 </div>
-
-
-
-
-
+<div id="btns">
+<b:button id="btnLienPeremption" look="success" value="Aller aux Articles en Péremption" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
+<b:button id="btnLienRupture" look="success" value="Aller aux Articles en Rupture" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
+<b:button id="btnLienReporting" look="success" value="Aller aux Commandes à Traiter" size="lg" href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
+</div>
 <script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
 		</h:body>
 	</ui:define>
