@@ -1,38 +1,26 @@
-@charset "ISO-8859-1";
+
+.btn-warning
+{
+	width: 100% !important;
+	height: 50px !important;
+	font-size: 22px !important;
+	font-weight: bold !important;
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	margin: auto;
+	
+}
+.thumbnail{
+	margin-top: 100px;
+	margin-right: 50px;
+	margin-left: 50px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
 
 
-/*** ACCUEIL ADMIN ***/
-
-#charts{
+#commandeTraite{
 	display: flex;
-	margin-bottom: 150px;
-}
-
-#charts div{
-	width: 33%;
-	height: 250px;
-	margin: auto;
-}
-
-#charts h5{
-	text-align: center;
-	font-weight: bold;
-	font-size: 1.5em;
-	margin-top: 10%;
-}
-
-#peremption,#rupture,#compteur{
-	border: 6px solid green;
-	box-shadow: 12px 12px 2px 1px rgba(255, 255, 17, 0.8);
-	border-radius: 30px;
-	width: 100%;
-	padding-top: 1em;
-	text-align: center;
-	font-size: 5em;
-}
-
-#btnLienPeremption,#btnLienRupture,#btnLienReporting{
-	margin: auto;
 }
 
 #infoJS{

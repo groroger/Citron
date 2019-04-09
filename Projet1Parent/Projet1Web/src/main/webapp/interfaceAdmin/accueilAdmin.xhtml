@@ -17,47 +17,73 @@
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdminMorad.css" />
 			
 			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>	
-						
-			
-				
 		</h:head>
 		
 		<h:body>
 
-<div id="infoJS">
-	<h:outputText id="nbArticlePeremption" value="#{mbAccueilAdmin.approvisionnementsPeremption.size()}" />
-	<h:outputText id="nbArticleRupture" value="#{mbAccueilAdmin.approvisionnementsRupture.size()}" />
-	<h:outputText id="commandesAtraiter" value="#{mbAccueilAdmin.commandesEnAttente.size()}" />
-</div>
+			<div id="infoJS">
+				<h:outputText id="nbArticlePeremption"
+					value="#{mbAccueilAdmin.approvisionnementsPeremption.size()}" />
+				<h:outputText id="nbArticleRupture"
+					value="#{mbAccueilAdmin.approvisionnementsRupture.size()}" />
+				<h:outputText id="commandesAtraiter"
+					value="#{mbAccueilAdmin.commandesEnAttente.size()}" />
+			</div>
 
-<div id="charts">
-		
-		<div>
-			<h5>Mes Articles en fin de Vie</h5>
-			<div id="peremption"></div>
-			<b:button id="btnLienPeremption" look="success" value="Aller aux Articles en Péremption" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
-		</div>
-		
-		<div>
-			<h5>Mes Articles en Rupture</h5>
-			<div id="rupture"></div>
-			<b:button id="btnLienRupture" look="success" value="Aller aux Articles en Rupture" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
-		</div>
-		
-		<div>
-			<h5>Mes Commandes en attentes</h5>
-			<div id="compteur"></div>
-			<b:button id="btnLienReporting" look="success" value="Aller aux Commandes à Traiter" size="lg" href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
-		</div>	
-</div>
+		<b:row class="reporting">
+		  <b:column col-sm="6" col-md="4">
+		    <b:thumbnail class="thumbnail">
+		      <b:iconAwesome name="cog" spin="true" size="10x" />
+		      <f:facet name="caption">
+		      
+		        <h2>Commandes à Traiter</h2>
+		        <div id="compteur"></div>
+		      
+		                <b:button look="warning" value="Commandes à Traiter" 
+		        			size="lg" href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
+		       
+		      </f:facet>
+		    </b:thumbnail>
+		  </b:column>
+		  
+		  <b:column col-sm="6" col-md="4">
+		    <b:thumbnail class="thumbnail">
+		      <b:iconAwesome name="list-alt" spin="false" size="10x" />
+		      <f:facet name="caption">
+		      
+		        <h2>Produits en Péremption</h2>
+		        <div id="stockPeremption"></div>
+
+		                <b:button look="warning" value="Produits en peremption" 
+		        			size="lg" href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
+		       
+		      </f:facet>
+		    </b:thumbnail>
+		  </b:column>
+		  
+		  <b:column col-sm="6" col-md="4">
+		    <b:thumbnail class="thumbnail">
+		      <b:iconAwesome name="cog" spin="true" size="10x" />
+		      <f:facet name="caption">
+		      
+		        <h2>Articles proche de la rupture</h2>
+		        <div id="stockRupture"></div>
+
+		                <b:button look="warning" value="Articles en rupture" 
+		        			size="lg" href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
+		       
+		      </f:facet>
+		    </b:thumbnail>
+		  </b:column>
+		</b:row>
+			
 
 
 
 
 
-<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
+			<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
 		</h:body>
 	</ui:define>
 </ui:composition>

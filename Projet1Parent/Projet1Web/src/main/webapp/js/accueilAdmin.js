@@ -5,7 +5,7 @@ console.log(n1);
 var cpt1 = 0;
 var duree1 = 2;
 var delta1 = Math.ceil((duree1 * 1000) / n1);
-var node1 =  document.getElementById('peremption');
+var node1 =  document.getElementById('stockPeremption');
  
 function countdown1() {
 	node1.innerHTML = ++cpt1;
@@ -24,7 +24,7 @@ console.log(n2);
 var duree2 = 2;
 var cpt2 = 0;
 var delta2 = Math.ceil((duree2 * 1000) / n2);
-var node2 =  document.getElementById('rupture');
+var node2 =  document.getElementById('stockRupture');
  
 function countdown2() {
 	node2.innerHTML = ++cpt2;
