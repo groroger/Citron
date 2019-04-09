@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
 import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
@@ -31,6 +33,7 @@ public class AccueilAdminManagedBean implements Serializable {
 	private List <Approvisionnement> approvisionnementsRupture;
 	private List <Approvisionnement> approvisionnementsPerimes;
 	private List<Commande> commandesEnAttente;
+	private Commande selectedCommandeReporting;
 	
 	private String stockTotal;
 	private String stockVirtuel;
@@ -70,6 +73,19 @@ public class AccueilAdminManagedBean implements Serializable {
 		
 		proxyApprovisionnement.update(approvisionnement);
 		proxyStock.update(stock);
+	}
+	
+	public void onSelect(Commande commande) {
+		
+		selectedCommandeReporting=commande;
+	  
+		System.out.println(commande.getId());
+		
+		
+		 FacesContext facesContext = FacesContext.getCurrentInstance();
+		 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		 session.setAttribute("selectedCommandeReporting", selectedCommandeReporting);
+		 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/afficherCommandeReporting.xhtml?faces-redirect=true");
 	}
 
 	public List <Stock> getStockQuantity() {
@@ -136,7 +152,16 @@ public class AccueilAdminManagedBean implements Serializable {
 		this.approvisionnementsPerimes = approvisionnementsPerimes;
 	}
 
+	public Commande getSelectedCommandeReporting() {
+		return selectedCommandeReporting;
+	}
 
+	public void setSelectedCommandeReporting(Commande selectedCommandeReporting) {
+		this.selectedCommandeReporting = selectedCommandeReporting;
+	}
+
+
+	
 	
 	
 }

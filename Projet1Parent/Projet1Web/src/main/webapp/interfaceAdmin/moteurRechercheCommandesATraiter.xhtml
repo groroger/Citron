@@ -62,6 +62,14 @@
 							</h:outputLabel>
 						</b:dataTableColumn>
 						<b:dataTableColumn>
+							<f:facet name="header"> Détail</f:facet>
+							<b:commandButton value=""
+								look="warning"
+								action="#{mbAccueilAdmin.onSelect(cde)}">
+								<b:image value="../pics/icones/searchWhite32.png"/>	
+							</b:commandButton>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
 							<f:facet name="header">Client</f:facet>
 							<h:outputLabel value="#{cde.client.nom} #{cde.client.prenom}" />
 						</b:dataTableColumn>
