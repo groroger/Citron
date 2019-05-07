@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.Business;
+package fr.afcepf.al33.citron.Business;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

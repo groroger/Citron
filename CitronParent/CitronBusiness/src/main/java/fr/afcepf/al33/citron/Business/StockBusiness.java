@@ -1,7 +1,6 @@
-package fr.afcepf.al33.projet1.Business;
+package fr.afcepf.al33.citron.Business;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -9,10 +8,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.al33.citron.IBusiness.StockIBusiness;
-import fr.afcepf.al33.citron.entity.Approvisionnement;
-import fr.afcepf.al33.citron.entity.ArticleCommande;
 import fr.afcepf.al33.citron.entity.Categorie;
-import fr.afcepf.al33.citron.entity.Commande;
 import fr.afcepf.al33.citron.entity.Stock;
 import fr.afcepf.al33.citron.idao.ApprovisionnementIdao;
 import fr.afcepf.al33.citron.idao.ArticleCommandeIDao;
