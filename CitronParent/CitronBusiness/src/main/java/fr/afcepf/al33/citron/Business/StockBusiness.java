@@ -8,16 +8,16 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
-import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.ArticleCommande;
-import fr.afcepf.al33.projet1.entity.Categorie;
-import fr.afcepf.al33.projet1.entity.Commande;
-import fr.afcepf.al33.projet1.entity.Stock;
-import fr.afcepf.al33.projet1.idao.ApprovisionnementIdao;
-import fr.afcepf.al33.projet1.idao.ArticleCommandeIDao;
-import fr.afcepf.al33.projet1.idao.CommandeIdao;
-import fr.afcepf.al33.projet1.idao.StockIdao;
+import fr.afcepf.al33.citron.IBusiness.StockIBusiness;
+import fr.afcepf.al33.citron.entity.Approvisionnement;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
+import fr.afcepf.al33.citron.entity.Categorie;
+import fr.afcepf.al33.citron.entity.Commande;
+import fr.afcepf.al33.citron.entity.Stock;
+import fr.afcepf.al33.citron.idao.ApprovisionnementIdao;
+import fr.afcepf.al33.citron.idao.ArticleCommandeIDao;
+import fr.afcepf.al33.citron.idao.CommandeIdao;
+import fr.afcepf.al33.citron.idao.StockIdao;
 
 @Remote(StockIBusiness.class)
 @Stateless

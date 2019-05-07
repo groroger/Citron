@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.idao;
+package fr.afcepf.al33.citron.idao;
 
 
 public interface GenericIdao<T> {

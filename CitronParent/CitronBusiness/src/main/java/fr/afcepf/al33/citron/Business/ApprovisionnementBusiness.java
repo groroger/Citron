@@ -8,10 +8,10 @@ import javax.ejb.Stateless;
 
 import org.apache.log4j.Logger;
 
-import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
-import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.Stock;
-import fr.afcepf.al33.projet1.idao.ApprovisionnementIdao;
+import fr.afcepf.al33.citron.IBusiness.ApprovisionnementIBusiness;
+import fr.afcepf.al33.citron.entity.Approvisionnement;
+import fr.afcepf.al33.citron.entity.Stock;
+import fr.afcepf.al33.citron.idao.ApprovisionnementIdao;
 
 @Remote(ApprovisionnementIBusiness.class)
 @Stateless

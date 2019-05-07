@@ -12,10 +12,9 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-
-import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
-import fr.afcepf.al33.projet1.entity.Client;
-import fr.afcepf.al33.projet1.idao.ClientIdao;
+import fr.afcepf.al33.citron.IBusiness.ClientIBusiness;
+import fr.afcepf.al33.citron.entity.Client;
+import fr.afcepf.al33.citron.idao.ClientIdao;
 
 
 @Remote(ClientIBusiness.class)

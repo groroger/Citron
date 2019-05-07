@@ -10,8 +10,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.FournisseurIBusiness;
-import fr.afcepf.al33.projet1.entity.Fournisseur;
+import fr.afcepf.al33.citron.IBusiness.FournisseurIBusiness;
+import fr.afcepf.al33.citron.entity.Fournisseur;
 
 
 @ManagedBean(name="mbFindFournisseur")

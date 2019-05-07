@@ -6,8 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import fr.afcepf.al33.projet1.entity.Client;
-import fr.afcepf.al33.projet1.entity.Commande;
+import fr.afcepf.al33.citron.entity.Client;
+import fr.afcepf.al33.citron.entity.Commande;
 
 
 @ManagedBean(name="mbValiderCommande")

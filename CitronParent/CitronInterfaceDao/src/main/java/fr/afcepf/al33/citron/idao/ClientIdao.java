@@ -1,8 +1,8 @@
-package fr.afcepf.al33.projet1.idao;
+package fr.afcepf.al33.citron.idao;
 
 import java.util.List;
 
-import fr.afcepf.al33.projet1.entity.Client;
+import fr.afcepf.al33.citron.entity.Client;
 
 
 

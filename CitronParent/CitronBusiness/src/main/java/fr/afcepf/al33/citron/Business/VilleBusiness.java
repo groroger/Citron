@@ -6,10 +6,9 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-
-import fr.afcepf.al33.projet1.IBusiness.VilleIBusiness;
-import fr.afcepf.al33.projet1.entity.Ville;
-import fr.afcepf.al33.projet1.idao.VilleIdao;
+import fr.afcepf.al33.citron.IBusiness.VilleIBusiness;
+import fr.afcepf.al33.citron.entity.Ville;
+import fr.afcepf.al33.citron.idao.VilleIdao;
 
 @Remote(VilleIBusiness.class)
 @Stateless

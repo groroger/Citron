@@ -1,9 +1,9 @@
-package fr.afcepf.al33.projet1.IBusiness;
+package fr.afcepf.al33.citron.IBusiness;
 
 import java.util.List;
 
-import fr.afcepf.al33.projet1.entity.Categorie;
-import fr.afcepf.al33.projet1.entity.Stock;
+import fr.afcepf.al33.citron.entity.Categorie;
+import fr.afcepf.al33.citron.entity.Stock;
 
 public interface StockIBusiness {
 	

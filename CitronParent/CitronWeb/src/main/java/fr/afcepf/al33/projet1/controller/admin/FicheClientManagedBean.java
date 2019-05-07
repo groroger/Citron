@@ -12,10 +12,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
-import fr.afcepf.al33.projet1.entity.Client;
-import fr.afcepf.al33.projet1.entity.Commande;
+import fr.afcepf.al33.citron.IBusiness.ClientIBusiness;
+import fr.afcepf.al33.citron.IBusiness.CommandeIBusiness;
+import fr.afcepf.al33.citron.entity.Client;
+import fr.afcepf.al33.citron.entity.Commande;
 
 
 

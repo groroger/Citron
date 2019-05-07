@@ -6,11 +6,11 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
-import fr.afcepf.al33.projet1.entity.ArticleCommande;
-import fr.afcepf.al33.projet1.entity.Commande;
-import fr.afcepf.al33.projet1.idao.ArticleCommandeIDao;
-import fr.afcepf.al33.projet1.idao.CommandeIdao;
+import fr.afcepf.al33.citron.IBusiness.ArticleCommandeIBusiness;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
+import fr.afcepf.al33.citron.entity.Commande;
+import fr.afcepf.al33.citron.idao.ArticleCommandeIDao;
+import fr.afcepf.al33.citron.idao.CommandeIdao;
 
 
 @Remote(ArticleCommandeIBusiness.class)

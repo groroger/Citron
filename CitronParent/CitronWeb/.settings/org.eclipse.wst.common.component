@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Projet1Web-1.0">
+    <wb-module deploy-name="CitronWeb-1.0">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="Projet1Entity-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Projet1Entity/Projet1Entity">
+        <dependent-module archiveName="CitronEntity-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CitronEntity/CitronEntity">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="Projet1InterfaceBusiness-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Projet1InterfaceBusiness/Projet1InterfaceBusiness">
+        <dependent-module archiveName="CitronInterfaceBusiness-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CitronInterfaceBusiness/CitronInterfaceBusiness">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="context-root" value="Projet1Web"/>
-        <property name="java-output-path" value="/Projet1Web/target/classes"/>
+        <property name="java-output-path" value="/CitronWeb/target/classes"/>
+        <property name="context-root" value="CitronWeb"/>
     </wb-module>
 </project-modules>

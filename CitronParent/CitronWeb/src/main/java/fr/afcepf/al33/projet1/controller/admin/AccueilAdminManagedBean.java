@@ -11,12 +11,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
-import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.Commande;
-import fr.afcepf.al33.projet1.entity.Stock;
+import fr.afcepf.al33.citron.IBusiness.ApprovisionnementIBusiness;
+import fr.afcepf.al33.citron.IBusiness.CommandeIBusiness;
+import fr.afcepf.al33.citron.IBusiness.StockIBusiness;
+import fr.afcepf.al33.citron.entity.Approvisionnement;
+import fr.afcepf.al33.citron.entity.Commande;
+import fr.afcepf.al33.citron.entity.Stock;
 
 @ManagedBean(name="mbAccueilAdmin")
 @SessionScoped

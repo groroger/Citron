@@ -2,8 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.afcepf.al33.projet1</groupId>
-	<artifactId>Projet1Parent</artifactId>
+	<groupId>fr.afcepf.al33.citron</groupId>
+	<artifactId>CitronParent</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
 
@@ -89,12 +89,12 @@
 		</pluginManagement>
 	</build>
 	<modules>
-		<module>Projet1Entity</module>
-		<module>Projet1InterfaceDao</module>
-		<module>Projet1Dao</module>
-		<module>Projet1InterfaceBusiness</module>
-		<module>Projet1Business</module>
-		<module>Projet1Web</module>
-		<module>Projet1EAR</module>
+		<module>CitronEntity</module>
+		<module>CitronInterfaceDao</module>
+		<module>CitronDao</module>
+		<module>CitronInterfaceBusiness</module>
+		<module>CitronBusiness</module>
+		<module>CitronWeb</module>
+		<module>CitronEAR</module>
 	</modules>
 </project>

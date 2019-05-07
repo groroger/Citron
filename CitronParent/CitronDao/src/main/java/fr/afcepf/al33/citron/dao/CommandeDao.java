@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.dao;
+package fr.afcepf.al33.citron.dao;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import fr.afcepf.al33.projet1.entity.Client;
-import fr.afcepf.al33.projet1.entity.Commande;
-import fr.afcepf.al33.projet1.idao.CommandeIdao;
+import fr.afcepf.al33.citron.entity.Client;
+import fr.afcepf.al33.citron.entity.Commande;
+import fr.afcepf.al33.citron.idao.CommandeIdao;
 
 
 @Remote(CommandeIdao.class)

@@ -7,9 +7,9 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-import fr.afcepf.al33.projet1.IBusiness.FournisseurIBusiness;
-import fr.afcepf.al33.projet1.entity.Fournisseur;
-import fr.afcepf.al33.projet1.idao.FournisseurIdao;
+import fr.afcepf.al33.citron.IBusiness.FournisseurIBusiness;
+import fr.afcepf.al33.citron.entity.Fournisseur;
+import fr.afcepf.al33.citron.idao.FournisseurIdao;
 
 @Remote(FournisseurIBusiness.class)
 @Stateless

@@ -14,11 +14,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.CategorieIBusiness;
-import fr.afcepf.al33.projet1.entity.Article;
-import fr.afcepf.al33.projet1.entity.ArticleCommande;
-import fr.afcepf.al33.projet1.entity.Categorie;
+import fr.afcepf.al33.citron.IBusiness.ArticleIBusiness;
+import fr.afcepf.al33.citron.IBusiness.CategorieIBusiness;
+import fr.afcepf.al33.citron.entity.Article;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
+import fr.afcepf.al33.citron.entity.Categorie;
 
 
 

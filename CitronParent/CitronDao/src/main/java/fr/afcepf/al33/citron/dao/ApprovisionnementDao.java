@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.dao;
+package fr.afcepf.al33.citron.dao;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,9 +11,9 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
-import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.Stock;
-import fr.afcepf.al33.projet1.idao.ApprovisionnementIdao;
+import fr.afcepf.al33.citron.entity.Approvisionnement;
+import fr.afcepf.al33.citron.entity.Stock;
+import fr.afcepf.al33.citron.idao.ApprovisionnementIdao;
 
 
 @Remote(ApprovisionnementIdao.class)

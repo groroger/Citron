@@ -7,9 +7,9 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-import fr.afcepf.al33.projet1.IBusiness.CategorieIBusiness;
-import fr.afcepf.al33.projet1.entity.Categorie;
-import fr.afcepf.al33.projet1.idao.CategorieIdao;
+import fr.afcepf.al33.citron.IBusiness.CategorieIBusiness;
+import fr.afcepf.al33.citron.entity.Categorie;
+import fr.afcepf.al33.citron.idao.CategorieIdao;
 
 
 

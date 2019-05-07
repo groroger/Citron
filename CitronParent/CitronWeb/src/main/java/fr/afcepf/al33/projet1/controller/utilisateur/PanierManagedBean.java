@@ -19,14 +19,14 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.PrimeFaces;
 
-import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
-import fr.afcepf.al33.projet1.entity.Article;
-import fr.afcepf.al33.projet1.entity.ArticleCommande;
-import fr.afcepf.al33.projet1.entity.Client;
-import fr.afcepf.al33.projet1.entity.Commande;
-import fr.afcepf.al33.projet1.entity.Stock;
+import fr.afcepf.al33.citron.IBusiness.ArticleCommandeIBusiness;
+import fr.afcepf.al33.citron.IBusiness.CommandeIBusiness;
+import fr.afcepf.al33.citron.IBusiness.StockIBusiness;
+import fr.afcepf.al33.citron.entity.Article;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
+import fr.afcepf.al33.citron.entity.Client;
+import fr.afcepf.al33.citron.entity.Commande;
+import fr.afcepf.al33.citron.entity.Stock;
 
 
 

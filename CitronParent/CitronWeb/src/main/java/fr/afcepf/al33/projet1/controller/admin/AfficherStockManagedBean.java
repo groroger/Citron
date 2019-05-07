@@ -11,10 +11,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.CategorieIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
-import fr.afcepf.al33.projet1.entity.Categorie;
-import fr.afcepf.al33.projet1.entity.Stock;
+import fr.afcepf.al33.citron.IBusiness.CategorieIBusiness;
+import fr.afcepf.al33.citron.IBusiness.StockIBusiness;
+import fr.afcepf.al33.citron.entity.Categorie;
+import fr.afcepf.al33.citron.entity.Stock;
 
 
 

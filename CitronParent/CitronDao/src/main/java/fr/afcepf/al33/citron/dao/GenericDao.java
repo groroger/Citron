@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.dao;
+package fr.afcepf.al33.citron.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.afcepf.al33.projet1.entity.Stock;
-import fr.afcepf.al33.projet1.idao.GenericIdao;
+import fr.afcepf.al33.citron.entity.Stock;
+import fr.afcepf.al33.citron.idao.GenericIdao;
 
 
 @Remote(GenericIdao.class)

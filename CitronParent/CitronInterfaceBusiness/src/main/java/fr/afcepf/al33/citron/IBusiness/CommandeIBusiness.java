@@ -1,9 +1,9 @@
-package fr.afcepf.al33.projet1.IBusiness;
+package fr.afcepf.al33.citron.IBusiness;
 
 import java.util.List;
 
-import fr.afcepf.al33.projet1.entity.Client;
-import fr.afcepf.al33.projet1.entity.Commande;
+import fr.afcepf.al33.citron.entity.Client;
+import fr.afcepf.al33.citron.entity.Commande;
 
 public interface CommandeIBusiness {
 		

@@ -18,16 +18,15 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-
-import fr.afcepf.al33.projet1.IBusiness.ApprovisionnementIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.ArticleIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.CommandeIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.StockIBusiness;
-import fr.afcepf.al33.projet1.entity.Approvisionnement;
-import fr.afcepf.al33.projet1.entity.ArticleCommande;
-import fr.afcepf.al33.projet1.entity.Commande;
-import fr.afcepf.al33.projet1.entity.Stock;
+import fr.afcepf.al33.citron.IBusiness.ApprovisionnementIBusiness;
+import fr.afcepf.al33.citron.IBusiness.ArticleCommandeIBusiness;
+import fr.afcepf.al33.citron.IBusiness.ArticleIBusiness;
+import fr.afcepf.al33.citron.IBusiness.CommandeIBusiness;
+import fr.afcepf.al33.citron.IBusiness.StockIBusiness;
+import fr.afcepf.al33.citron.entity.Approvisionnement;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
+import fr.afcepf.al33.citron.entity.Commande;
+import fr.afcepf.al33.citron.entity.Stock;
 
 
 @ManagedBean(name="mbFindCommandeATraiter")

@@ -12,9 +12,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import fr.afcepf.al33.projet1.IBusiness.ArticleCommandeIBusiness;
-import fr.afcepf.al33.projet1.entity.ArticleCommande;
-import fr.afcepf.al33.projet1.entity.Commande;
+import fr.afcepf.al33.citron.IBusiness.ArticleCommandeIBusiness;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
+import fr.afcepf.al33.citron.entity.Commande;
 
 
 @ManagedBean(name="mbAfficherMaCommande")

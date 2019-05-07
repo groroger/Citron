@@ -1,4 +1,4 @@
-package fr.afcepf.al33.projet1.entity;
+package fr.afcepf.al33.citron.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;

@@ -6,10 +6,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import fr.afcepf.al33.projet1.IBusiness.ClientIBusiness;
-import fr.afcepf.al33.projet1.IBusiness.VilleIBusiness;
-import fr.afcepf.al33.projet1.entity.Client;
-import fr.afcepf.al33.projet1.entity.Ville;
+import fr.afcepf.al33.citron.IBusiness.ClientIBusiness;
+import fr.afcepf.al33.citron.IBusiness.VilleIBusiness;
+import fr.afcepf.al33.citron.entity.Client;
+import fr.afcepf.al33.citron.entity.Ville;
 
 @ManagedBean(name="NouveauClientManagedBean")
 @SessionScoped

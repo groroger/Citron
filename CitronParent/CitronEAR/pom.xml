@@ -3,46 +3,46 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>fr.afcepf.al33.projet1</groupId>
-		<artifactId>Projet1Parent</artifactId>
+		<groupId>fr.afcepf.al33.citron</groupId>
+		<artifactId>CitronParent</artifactId>
 		<version>1.0</version>
 	</parent>
-	<artifactId>Projet1EAR</artifactId>
+	<artifactId>CitronEAR</artifactId>
 	<packaging>ear</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>Projet1Web</artifactId>
+			<artifactId>CitronWeb</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>Projet1Business</artifactId>
+			<artifactId>CitronBusiness</artifactId>
 			<version>${project.version}</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>Projet1InterfaceBusiness</artifactId>
+			<artifactId>CitronInterfaceBusiness</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>Projet1Dao</artifactId>
+			<artifactId>CitronDao</artifactId>
 			<version>${project.version}</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>Projet1InterfaceDao</artifactId>
+			<artifactId>CitronInterfaceDao</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>Projet1Entity</artifactId>
+			<artifactId>CitronEntity</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 		</dependency>
