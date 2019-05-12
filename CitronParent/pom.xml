@@ -96,6 +96,6 @@
 		<module>CitronBusiness</module>
 		<module>CitronWeb</module>
 		<module>CitronEAR</module>
-	
+		<module>CitronBusinessDelegate</module>
 	</modules>
 </project>
