@@ -15,11 +15,15 @@ import fr.afcepf.al33.citron.ws.saison.ws.ServiceClientArticleSaisonImplService;
 public class ClientArticleDelegateSoap implements ClientArticleDelegate {
 	
 	// design pattern singleton
-	private static ClientArticleDelegateSoap uniqueInstance = null;
+	private volatile static ClientArticleDelegateSoap uniqueInstance = null;
 	public static ClientArticleDelegateSoap getInstance()	{
-		if (uniqueInstance == null) {
-			uniqueInstance = new ClientArticleDelegateSoap();
-		}
+        if (uniqueInstance == null) {
+            synchronized (ClientArticleDelegateSoap.class) {
+                if (uniqueInstance == null) {
+                	uniqueInstance = new ClientArticleDelegateSoap();
+                }
+            }
+        }
 		return uniqueInstance; // instance nouvellement ou anciennement créée .
 	}
 
