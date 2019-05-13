@@ -11,8 +11,6 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.glassfish.jersey.jackson.JacksonFeature;
-
 import fr.afcepf.al33.citron.ws.saison.client.dto.ArticleDto;
 import fr.afcepf.al33.citron.ws.saison.client.dto.CategorieDto;
 
@@ -31,8 +29,8 @@ public class AdminArticleDelegateRest implements AdminArticleDelegate {
 	private String debutUrlArticlesPublic="http://" + wsHost + ":" + wsPort + "/articlesSaison/rest/public/articles";
 	
 	public AdminArticleDelegateRest() {
-		this.jaxrs2client = ClientBuilder.newClient()
-				            .register(JacksonFeature.class);
+		this.jaxrs2client = ClientBuilder.newClient();
+				           // .register(JacksonFeature.class); pour jersey
 		System.out.println("adresse du web service lue dans application.properties : " + wsHost + ":" + wsPort + "\n");
 	}
 	

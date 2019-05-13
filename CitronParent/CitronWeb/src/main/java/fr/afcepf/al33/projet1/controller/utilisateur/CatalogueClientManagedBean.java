@@ -169,13 +169,13 @@ public List<Article> listeArticlesSaison() {
 
 	// test ClientArticleDelegateSoap
 	
-	int mois = 5;
-	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
-	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison = clientArticleDelegate.ListeArticlesParMois(mois);
-	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article article : articlesSaison) {
-		String match = "";
-		System.out.println(article.getNom());
-	}
+//	int mois = 5;
+//	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
+//	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison = clientArticleDelegate.ListeArticlesParMois(mois);
+//	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article article : articlesSaison) {
+//		String match = "";
+//		System.out.println(article.getNom());
+//	}
 
 	return articles;
 }
