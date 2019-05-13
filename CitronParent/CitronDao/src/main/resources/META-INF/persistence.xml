@@ -15,7 +15,7 @@
 		<class>fr.afcepf.al33.citron.entity.Categorie</class>
 		<class>fr.afcepf.al33.citron.entity.Commande</class>
 		<class>fr.afcepf.al33.citron.entity.Stock</class>
-
+		<class>fr.afcepf.al33.citron.entity.Entrepot</class>
 
 	<properties>
 		<property name="hibernate.dialect"

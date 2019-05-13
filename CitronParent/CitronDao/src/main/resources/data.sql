@@ -1091,3 +1091,6 @@ INSERT INTO `articleCommande`(commande_id, article_id, quantite, prixTotal) VALU
 INSERT INTO `articleCommande`(commande_id, article_id, quantite, prixTotal) VALUES (76, 28, 3, '5.04');
 INSERT INTO `articleCommande`(commande_id, article_id, quantite, prixTotal) VALUES (76, 1, 1, '1.99');
 INSERT INTO `articleCommande`(commande_id, article_id, quantite, prixTotal) VALUES (76, 6, 1, '1.44');
+
+INSERT INTO `entrepot`(id, ville_id, nom, adresse) VALUES (1, 30, 'Entrepot IDF', '9 Boulevard du Général de Gaulle');
+INSERT INTO `entrepot`(id, ville_id, nom, adresse) VALUES (2, 29, 'Entrepot LYON', '9 Boulevard de Balmont');
