@@ -15,7 +15,13 @@ import fr.afcepf.al33.citron.ws.saison.ws.ServiceClientArticleSaisonImplService;
 public class ClientArticleDelegateSoap implements ClientArticleDelegate {
 	
 	// design pattern singleton
-	//private static 
+	private static ClientArticleDelegateSoap uniqueInstance = null;
+	public static ClientArticleDelegateSoap getInstance()	{
+		if (uniqueInstance == null) {
+			uniqueInstance = new ClientArticleDelegateSoap();
+		}
+		return uniqueInstance; // instance nouvellement ou anciennement créée .
+	}
 
 	private ServiceClientArticleSaison proxyWsServiceClientArticleSaison;
 		
@@ -23,7 +29,8 @@ public class ClientArticleDelegateSoap implements ClientArticleDelegate {
 	private String wsHost = bundle.getString("webservice.host");
 	private String wsPort = bundle.getString("webservice.port");
 	
-	public ClientArticleDelegateSoap() {
+	// constructeur privé pour le singleton
+	private ClientArticleDelegateSoap() {
 		//code d'appel du WS soap qui s'appuie sur le code g�n�r�
 		//par wsimport -keep -... URL_WSDL
 		//.... (...Service).get...Port()

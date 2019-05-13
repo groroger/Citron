@@ -51,10 +51,6 @@ public class CatalogueClientManagedBean implements Serializable{
 	@EJB
 	private CategorieIBusiness proxyCategorie;
 
-	// test ClientArticleDelegateSoap
-	
-	//ClientArticleDelegate clientArticleDelegate = new ClientArticleDelegateSoap();
-
 
 	@SuppressWarnings("unchecked")
 	@PostConstruct
@@ -67,6 +63,9 @@ public class CatalogueClientManagedBean implements Serializable{
 		if ((List<ArticleCommande>)session.getAttribute("listeArticlesCommandes")!=null) {
 			articlesCommandes= (List<ArticleCommande>)session.getAttribute("listeArticlesCommandes");
 		}
+		
+		// juste pour test appel web service
+		listeArticlesSaison();
 	}
 
 	public void afficherFicheProduit(Article article) {
@@ -166,6 +165,20 @@ public void onCategorieChange() {
 	}
 }
 
+public List<Article> listeArticlesSaison() {
+
+	// test ClientArticleDelegateSoap
+	
+	int mois = 5;
+	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
+	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison = clientArticleDelegate.ListeArticlesParMois(mois);
+	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article article : articlesSaison) {
+		String match = "";
+		System.out.println(article.getNom());
+	}
+
+	return articles;
+}
 
 public List<Article> getArticles() {
 	return articles;
