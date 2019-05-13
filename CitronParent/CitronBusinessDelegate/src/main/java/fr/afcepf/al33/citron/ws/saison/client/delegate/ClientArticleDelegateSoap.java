@@ -26,8 +26,8 @@ public class ClientArticleDelegateSoap implements ClientArticleDelegate {
 	private ServiceClientArticleSaison proxyWsServiceClientArticleSaison;
 		
 	private ResourceBundle bundle = ResourceBundle.getBundle("application");
-	private String wsHost = bundle.getString("webservice.host");
-	private String wsPort = bundle.getString("webservice.port");
+	private String wsHost = bundle.getString("webservice_articles_saison.host");
+	private String wsPort = bundle.getString("webservice_articles_saison.port");
 	
 	// constructeur privé pour le singleton
 	private ClientArticleDelegateSoap() {
