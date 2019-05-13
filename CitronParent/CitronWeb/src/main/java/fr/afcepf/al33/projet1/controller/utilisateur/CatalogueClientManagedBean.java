@@ -19,7 +19,8 @@ import fr.afcepf.al33.citron.IBusiness.CategorieIBusiness;
 import fr.afcepf.al33.citron.entity.Article;
 import fr.afcepf.al33.citron.entity.ArticleCommande;
 import fr.afcepf.al33.citron.entity.Categorie;
-
+import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegate;
+import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegateSoap;
 
 
 
@@ -50,6 +51,9 @@ public class CatalogueClientManagedBean implements Serializable{
 	@EJB
 	private CategorieIBusiness proxyCategorie;
 
+	// test ClientArticleDelegateSoap
+	
+	//ClientArticleDelegate clientArticleDelegate = new ClientArticleDelegateSoap();
 
 
 	@SuppressWarnings("unchecked")

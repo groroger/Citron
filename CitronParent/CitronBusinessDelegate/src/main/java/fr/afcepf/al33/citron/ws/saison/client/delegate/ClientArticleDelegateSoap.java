@@ -13,6 +13,9 @@ import fr.afcepf.al33.citron.ws.saison.ws.ServiceClientArticleSaison;
 import fr.afcepf.al33.citron.ws.saison.ws.ServiceClientArticleSaisonImplService;
 
 public class ClientArticleDelegateSoap implements ClientArticleDelegate {
+	
+	// design pattern singleton
+	//private static 
 
 	private ServiceClientArticleSaison proxyWsServiceClientArticleSaison;
 		

@@ -23,6 +23,11 @@
 			<artifactId>CitronInterfaceBusiness</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>fr.afcepf.al33.citron.bd</groupId>
+			<artifactId>CitronBusinessDelegate</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 
 <!-- 		<dependency> -->
