@@ -96,25 +96,76 @@
 
 					
 					<div id="boutonBas">
-            
-		
-		            <b:button value="Retour au Catalogue" look="warning" outcome="catalogueClient"/>
-		            
-		           
-		                
-		                  <b:inputText value="#{mbPanier.calculerPanier()} €"
-		                    disabled="true" fieldSize="lg">
-		                    <f:facet name="prepend">
-		                      <h:outputText value="Total à payer: " />
-		                    </f:facet>
-		                  </b:inputText>
-		                
-		            
-		              
-		            <f:facet name="header">Payer</f:facet>
-		            <b:commandButton value="Payer" look="warning" action="#{mbPanier.payer()}"/>
-		            </div>
-		         
+
+
+						<b:button value="Retour au Catalogue" look="warning"
+							outcome="catalogueClient" />
+
+
+
+						<b:inputText value="#{mbPanier.calculerPanier()} €"
+							disabled="true" fieldSize="lg">
+							<f:facet name="prepend">
+								<h:outputText value="Total à payer: " />
+							</f:facet>
+						</b:inputText>
+
+
+
+						<f:facet name="header">Payer</f:facet>
+						<b:buttonGroup>
+							<b:button value="Livraison" look="warning"
+								onclick="$('.formUpdataInfoLivraison').modal();">
+							</b:button>
+							<b:commandButton value="Payer" look="warning"
+								action="#{mbPanier.payer()}" />
+						</b:buttonGroup>
+					</div>
+
+					<b:modal styleClass="formUpdataInfoLivraison" closable="false"
+						closeOnEscape="true">
+						<h:form>
+
+							<br />
+							<h4>Livraison infos</h4>
+							<br />
+							<b:column>
+
+								<b:inputText placeholder="Numéro et type de voie"
+									value="#{mbUpdateCompteClient.client.adresseLivraison}"
+									class="form-control" id="exampleDropdownFormEmail4"
+									required="true" requiredMessage="Veuillez saisir une adresse" />
+								<b:inputText placeholder="Complement d'adresse"
+									value="#{mbUpdateCompteClient.client.complementAdresseLivraison}"
+									class="form-control" id="exampleDropdownFormEmail5"
+									required="false" />
+								<b:selectOneMenu id="ville" required="true"
+									requiredMessage="Ville obligatoire"
+									value="#{mbUpdateCompteClient.client.villeLivraison}">
+									<f:selectItem itemLabel="Ville" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{mbUpdateCompteClient.villes}"
+										required="true" requiredMessage="Ville obligatoire"
+										var="ville" itemValue="#{ville}"
+										itemLabel="#{ville.codePostal} #{ville.nom}"></f:selectItems>
+								</b:selectOneMenu>
+							</b:column>
+
+							<b:row>
+								<b:column>
+									<b:commandButton largeScreen="half" update="@form"
+										dismiss="modal" value="Valider" look="warning"
+										action="#{mbUpdateCompteClient.modifier()}" />
+									<b:button largeScreen="half" value="Annuler" dismiss="modal"
+										href="#navbar-brand" />
+								</b:column>
+							</b:row>
+
+							<b:fetchBeanInfos />
+							<b:messages />
+						</h:form>
+					</b:modal>
+
 				</b:container>
 			</h:form>
 		</h:body>
