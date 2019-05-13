@@ -8,11 +8,36 @@
   <groupId>fr.afcepf.al33.citron.bd</groupId>
   <artifactId>CitronBusinessDelegate</artifactId>
   <packaging>war</packaging>
+   
+  <properties>
+          <maven.compiler.source>1.8</maven.compiler.source>
+          <maven.compiler.target>1.8</maven.compiler.target>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+  </properties>
   
   <dependencies>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 		</dependency>
+		
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.16.22</version>
+	</dependency>
+
+     <dependency>
+	    <groupId>org.glassfish.jersey.core</groupId>
+	    <artifactId>jersey-client</artifactId>
+	    <version>2.26-b03</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.glassfish.jersey.media</groupId>
+	    <artifactId>jersey-media-json-jackson</artifactId>
+	    <version>2.26-b03</version>
+	</dependency>
+	
   </dependencies>
 </project>
