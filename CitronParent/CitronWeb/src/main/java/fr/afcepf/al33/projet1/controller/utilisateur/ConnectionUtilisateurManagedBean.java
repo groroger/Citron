@@ -91,7 +91,7 @@ public class ConnectionUtilisateurManagedBean implements Serializable{
 		else
 		{
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceAdmin/masterPageAdmin.xhtml?faces-redirect=true");
+			 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/accueilClient.xhtml?faces-redirect=true");
 			 
 
 		}		
