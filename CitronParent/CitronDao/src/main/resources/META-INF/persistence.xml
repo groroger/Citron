@@ -16,7 +16,8 @@
 		<class>fr.afcepf.al33.citron.entity.Commande</class>
 		<class>fr.afcepf.al33.citron.entity.Stock</class>
 		<class>fr.afcepf.al33.citron.entity.Entrepot</class>
-
+		<class>fr.afcepf.al33.citron.entity.Facture</class>
+		
 	<properties>
 		<property name="hibernate.dialect"
 			value="org.hibernate.dialect.MySQL5InnoDBDialect" />
