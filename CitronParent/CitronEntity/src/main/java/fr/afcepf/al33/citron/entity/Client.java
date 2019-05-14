@@ -58,6 +58,7 @@ public class Client implements Serializable{
 	
 	@Column(name="complementAdresseLivraison")
 	private String complementAdresseLivraison;
+	
 	@ManyToOne
 	@JoinColumn(referencedColumnName="id")
 	private Ville villeLivraison;

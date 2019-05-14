@@ -79,12 +79,22 @@ public class PanierManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		client = (Client) session.getAttribute("clientConnecte");
+		//client.setVilleLivraison(client.getVille());
+		
 		if ((List<ArticleCommande>) session.getAttribute("listeArticlesCommandes") != null)
 		{
 			
 			articlesCommandes = (List<ArticleCommande>) session.getAttribute("listeArticlesCommandes");
 		}
 			
+	}
+	
+	public void valider() {
+		
+		System.out.println("==================== HELLO Livraison =========================================");
+		System.out.println(client.getAdresseLivraison());
+		System.out.println(client.toString());
+		//System.out.println(commande.getPrixTotal());
 	}
     
   public void payer() {
