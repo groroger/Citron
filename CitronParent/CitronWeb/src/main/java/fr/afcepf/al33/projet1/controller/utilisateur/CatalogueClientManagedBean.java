@@ -15,15 +15,17 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.joda.time.DateTime;
+
 import fr.afcepf.al33.citron.IBusiness.ArticleIBusiness;
 import fr.afcepf.al33.citron.IBusiness.CategorieIBusiness;
 import fr.afcepf.al33.citron.entity.Article;
 import fr.afcepf.al33.citron.entity.ArticleCommande;
 import fr.afcepf.al33.citron.entity.Categorie;
+import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegate;
+import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegateSoap;
 import fr.afcepf.al33.citron.ws.saison.client.dto.debug.ArticleDtoDebug;
 import fr.afcepf.al33.citron.ws.saison.client.dto.debug.CategorieDtoDebug;
-
-import org.joda.time.DateTime;
 
 
 @ManagedBean(name="mbCatalogueClient")
@@ -212,8 +214,8 @@ public List<ArticleDtoDebug> listeArticlesSaison() {
 	int mois = dateTime.getMonthOfYear();
 
 	// test ClientArticleDelegateSoap
-//	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
-//	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison = clientArticleDelegate.ListeArticlesParMois(mois);
+	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
+//	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaisonSoap = clientArticleDelegate.ListeArticlesParMois(mois);
 	
 	// mock appel ci dessus pour obtenir une liste de produits de saison
 	// dans l'attente de résolution du bug d'appel aux objets du projet CitronBusinessDelegate
