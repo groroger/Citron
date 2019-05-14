@@ -226,27 +226,6 @@ public List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> listeArticlesSais
 											+ " à " + moisFR[article.getFinSaison() - 1]);
 	}
 
-	
-//	// mock appel ci dessus pour obtenir une liste de produits de saison
-//	// dans l'attente de résolution du bug d'appel aux objets du projet CitronBusinessDelegate
-//	// CategorieDtoDebug et ArticleDtoDebug seront à remplacer par Categorie et Article
-//	// du package fr.afcepf.al33.citron.ws.saison.ws.entity
-//	//--------------------------------------------------------------------------
-//	CategorieDtoDebug categorieFruits = new CategorieDtoDebug(1, "fruits");
-//	
-//	List<ArticleDtoDebug> articlesSaison = new ArrayList<ArticleDtoDebug>();
-//	
-//	articlesSaison.add(new ArticleDtoDebug(1, "banane", 1, 12, categorieFruits));
-//	articlesSaison.add(new ArticleDtoDebug(2, "citron", 1, 12, categorieFruits));
-//	articlesSaison.add(new ArticleDtoDebug(3, "fraise", 5, 8, categorieFruits));
-//	articlesSaison.add(new ArticleDtoDebug(4, "pomme", 10, 3, categorieFruits));
-//		
-//	System.out.println("debug articles de saison");
-//	for (ArticleDtoDebug article : articlesSaison) {
-//		System.out.println(article.getNom());
-//	}
-//	//--------------------------------------------------------------------------
-
 	return articlesMois;
 }
 
