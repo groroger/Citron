@@ -3,8 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/interfaceClient/masterPageClient.xhtml">
 	<ui:define name="title">Panier</ui:define>
@@ -12,89 +11,89 @@
 	<ui:define name="content">
 
 		<h:head>
-		
+
 			<title>Panier</title>
-		
-			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
 			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
-			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/panier.css" />
+			<link rel="stylesheet" type="text/css"
+				href="#{request.contextPath}/css/panier.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 		</h:head>
-		
+
 		<f:metadata>
-			<f:event listener="#{mbPanier.init()}"
-				type="preRenderView"></f:event>
+			<f:event listener="#{mbPanier.init()}" type="preRenderView"></f:event>
 		</f:metadata>
-		
-		
+
+
 
 		<h:body>
-		
-		
-			<b:row  id="banner">
-						
-				<h3>Panier</h3>
-					
-			</b:row>
-			
 
-		
+
+			<b:row id="banner">
+
+				<h3>Panier</h3>
+
+			</b:row>
+
+
+
 			<h:form id="formPanier">
-			
-			<p:dialog header=""  widgetVar="notConnected" modal="true" height="100">
-   					 <h:outputText value="Merci de vous identifier ou de vous enregistrer pour valider votre commande." />
-			</p:dialog>
-			
-			<p:dialog header=""  widgetVar="quantiteInsuffisante" modal="true" height="100">
-   					 <h:outputText value="Quantité disponible insuffisante pour l'article suivant: #{mbPanier.articleEnRupture}" />
-			</p:dialog>   
+
+				<p:dialog header="" widgetVar="notConnected" modal="true"
+					height="100">
+					<h:outputText
+						value="Merci de vous identifier ou de vous enregistrer pour valider votre commande." />
+				</p:dialog>
+
+				<p:dialog header="" widgetVar="quantiteInsuffisante" modal="true"
+					height="100">
+					<h:outputText
+						value="Quantité disponible insuffisante pour l'article suivant: #{mbPanier.articleEnRupture}" />
+				</p:dialog>
 
 				<b:container layout="fluid">
-		
-					<b:dataTable 
-						id="datatablePanier"
-						value="#{mbPanier.articlesCommandes}"
-						var="articleCommande" 
-						pdf="false" 
-						print="false" 
-						excel="false"
-						border="true" 
-						info="false" 
-						page-length="20" 
-						select="false"
-						responsive="true"
+
+					<b:dataTable id="datatablePanier"
+						value="#{mbPanier.articlesCommandes}" var="articleCommande"
+						pdf="false" print="false" excel="false" border="true" info="false"
+						page-length="20" select="false" responsive="true"
 						paginated="false">
 
 
 						<b:dataTableColumn label="">
-				
+
 							<b:commandButton id="btn_supprimer" value="" look="danger"
-									action="#{mbPanier.supprimerArticle(articleCommande)}">
-							<b:image value="../pics/icones/deleteWhite21.png"/>	
-								
+								action="#{mbPanier.supprimerArticle(articleCommande)}">
+								<b:image value="../pics/icones/deleteWhite21.png" />
+
 							</b:commandButton>
 							<h:graphicImage
 								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn label="Articles">
-				
+
 							<h:outputLabel value="#{articleCommande.article.nom}" />
 						</b:dataTableColumn>
 						<b:dataTableColumn label="Quantité">
-							
-							<p:spinner id="minMax" value="#{articleCommande.quantite}" min="1" max="999" size="4" />
-							<b:commandButton value="" look="secondary" action="#{mbPanier.rafraichirPanier()}">
-							<b:image value="../pics/icones/refreshGreen24.png"/>
-							</b:commandButton>
-							<br/>
-							<br/>
-							<h:outputLabel  value="Total: #{articleCommande.prixTotal} €" />
-						</b:dataTableColumn>
-					
-					</b:dataTable>
-					
 
-					
+							<p:spinner id="minMax" value="#{articleCommande.quantite}"
+								min="1" max="999" size="4" />
+							<b:commandButton value="" look="secondary"
+								action="#{mbPanier.rafraichirPanier()}">
+								<b:image value="../pics/icones/refreshGreen24.png" />
+							</b:commandButton>
+							<br />
+							<br />
+							<h:outputLabel value="Total: #{articleCommande.prixTotal} €" />
+						</b:dataTableColumn>
+
+					</b:dataTable>
+
+
+
 					<div id="boutonBas">
 
 
@@ -117,57 +116,64 @@
 							<b:button value="Livraison" look="warning"
 								onclick="$('.formUpdataInfoLivraison').modal();">
 							</b:button>
-							<b:commandButton value="Payer" look="warning"
+							<b:button href="/CitronWeb/interfaceClient/maFacture.xhtml"
+								value="Facture" look="warning" />
+							<b:commandButton value="Valider" look="warning"
 								action="#{mbPanier.payer()}" />
 						</b:buttonGroup>
 					</div>
 
-					<b:modal styleClass="formUpdataInfoLivraison" closable="false"
-						closeOnEscape="true">
-						<h:form>
-
-							<br />
-							<h4>Livraison infos</h4>
-							<br />
-							<b:column>
-
-								<b:inputText placeholder="Numéro et type de voie"
-									value="#{mbUpdateCompteClient.client.adresseLivraison}"
-									class="form-control" id="exampleDropdownFormEmail4"
-									required="true" requiredMessage="Veuillez saisir une adresse" />
-								<b:inputText placeholder="Complement d'adresse"
-									value="#{mbUpdateCompteClient.client.complementAdresseLivraison}"
-									class="form-control" id="exampleDropdownFormEmail5"
-									required="false" />
-								<b:selectOneMenu id="ville" required="true"
-									requiredMessage="Ville obligatoire"
-									value="#{mbUpdateCompteClient.client.villeLivraison}">
-									<f:selectItem itemLabel="Ville" itemValue=""
-										noSelectionOption="true" />
-									<f:selectItems value="#{mbUpdateCompteClient.villes}"
-										required="true" requiredMessage="Ville obligatoire"
-										var="ville" itemValue="#{ville}"
-										itemLabel="#{ville.codePostal} #{ville.nom}"></f:selectItems>
-								</b:selectOneMenu>
-							</b:column>
-
-							<b:row>
-								<b:column>
-									<b:commandButton largeScreen="half" update="@form"
-										dismiss="modal" value="Valider" look="warning"
-										action="#{mbUpdateCompteClient.modifier()}" />
-									<b:button largeScreen="half" value="Annuler" dismiss="modal"
-										href="#navbar-brand" />
-								</b:column>
-							</b:row>
-
-							<b:fetchBeanInfos />
-							<b:messages />
-						</h:form>
-					</b:modal>
 
 				</b:container>
 			</h:form>
+			<b:modal styleClass="formUpdataInfoLivraison" closable="false"
+				closeOnEscape="true">
+				<h:form>
+
+					<br />
+					<h4>Livraison infos</h4>
+					<br />
+					<b:column>
+
+						<b:inputText placeholder="Numéro et type de voie"
+							value="#{mbUpdateInfoLivraison.client.adresseLivraison}"
+							class="form-control" id="exampleDropdownFormEmail4"
+							required="true" requiredMessage="Veuillez saisir une adresse" />
+						<b:inputText placeholder="Complement d'adresse"
+							value="#{mbUpdateInfoLivraison.client.complementAdresseLivraison}"
+							class="form-control" id="exampleDropdownFormEmail5"
+							required="false" />
+						<b:selectOneMenu id="ville" required="true"
+							requiredMessage="Ville obligatoire"
+							value="#{mbUpdateInfoLivraison.client.villeLivraison}">
+							<f:selectItem itemLabel="Ville" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{mbUpdateInfoLivraison.villes}"
+								required="true" requiredMessage="Ville obligatoire" var="ville"
+								itemValue="#{ville}"
+								itemLabel="#{ville.codePostal} #{ville.nom}">
+							</f:selectItems>
+						</b:selectOneMenu>
+					</b:column>
+
+					<b:row>
+						<b:column>
+							<b:commandButton largeScreen="half" update="@form"
+								dismiss="modal" value="Valider" look="warning"
+								action="#{mbUpdateInfoLivraison.update()}" />
+							<b:button largeScreen="half" value="Annuler" dismiss="modal"
+								href="#navbar-brand" />
+						</b:column>
+					</b:row>
+
+					<b:fetchBeanInfos />
+					<b:messages />
+				</h:form>
+			</b:modal>
+
+
+
+
 		</h:body>
 	</ui:define>
 </ui:composition>
