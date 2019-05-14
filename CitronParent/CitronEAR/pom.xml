@@ -1,56 +1,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>fr.afcepf.al33.citron</groupId>
-		<artifactId>CitronParent</artifactId>
-		<version>1.0</version>
-	</parent>
-	<artifactId>CitronEAR</artifactId>
-	<packaging>ear</packaging>
-	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>CitronWeb</artifactId>
-			<version>${project.version}</version>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>CitronBusiness</artifactId>
-			<version>${project.version}</version>
-			<type>ejb</type>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>CitronInterfaceBusiness</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>fr.afcepf.al33.citron.bd</groupId> -->
-<!-- 			<artifactId>CitronBusinessDelegate</artifactId> -->
-<!-- 			<version>${project.version}</version> -->
-<!-- 			<type>jar</type> -->
-<!-- 		</dependency> -->
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>CitronDao</artifactId>
-			<version>${project.version}</version>
-			<type>ejb</type>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>CitronInterfaceDao</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>CitronEntity</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-		</dependency>
-	</dependencies>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.afcepf.al33.citron</groupId>
+    <artifactId>CitronParent</artifactId>
+    <version>1.0</version>
+  </parent>
+  <artifactId>CitronEAR</artifactId>
+  <packaging>ear</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>CitronWeb</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>CitronBusiness</artifactId>
+      <version>${project.version}</version>
+      <type>ejb</type>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>CitronInterfaceBusiness</artifactId>
+      <version>${project.version}</version>
+      <type>jar</type>
+    </dependency>
+<!--     <dependency> -->
+<!--       <groupId>fr.afcepf.al33.citron.bd</groupId> -->
+<!--       <artifactId>CitronBusinessDelegate</artifactId> -->
+<!--       <version>${project.version}</version> -->
+<!--       <type>jar</type> -->
+<!--     </dependency> -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>CitronDao</artifactId>
+      <version>${project.version}</version>
+      <type>ejb</type>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>CitronInterfaceDao</artifactId>
+      <version>${project.version}</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>CitronEntity</artifactId>
+      <version>${project.version}</version>
+      <type>jar</type>
+    </dependency>
+  </dependencies>
 </project>
