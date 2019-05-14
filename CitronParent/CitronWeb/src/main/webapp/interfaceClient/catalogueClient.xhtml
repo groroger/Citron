@@ -37,47 +37,47 @@
 				<h:form id="formCatalogueClient">
 				
 			
-					<b:container layout="fluid">
+					 <b:container layout="fluid">
 					
-						<b:modal styleClass="formPanierSaison" closable="false"
-						closeOnEscape="true">
-							<h:form>
-								<h4>GENERER UN PANIER DE SAISON</h4>
+<!-- 						<b:modal styleClass="formPanierSaison" closable="false" -->
+<!-- 						closeOnEscape="true"> -->
+<!-- 							<h:form> -->
+<!-- 								<h4>GENERER UN PANIER DE SAISON</h4> -->
 								
-								<b:column>
+<!-- 								<b:column> -->
 	
-									<div id="DivPrixPanier">
-										<label id="labelPanierSaison">Prix du Panier : </label>
-										<p:spinner id="prixPanier" value="#{prixPanier} €" min="5" max="999" />
-										<label id="labelPrixPanierSaison">€</label>
-									</div>
-									<b:selectOneMenu id="categoriePanier" required="true"
-										requiredMessage="Catégorie obligatoire"
-										value="#{mbUpdateCompteClient.client.villeLivraison}">
-										<f:selectItem itemLabel="Toutes" itemValue="Toutes"
-											noSelectionOption="true" />
-										<f:selectItems value="#{mbCatalogueClient.categories}"
-											required="true" requiredMessage="Categorie obligatoire"
-											var="categorie" itemValue="#{categorie.nomCategorie}"
-											itemLabel="#{categorie.nomCategorie}"></f:selectItems>
-									</b:selectOneMenu>
-								</b:column>
+<!-- 									<div id="DivPrixPanier"> -->
+<!-- 										<label id="labelPanierSaison">Prix du Panier : </label> -->
+<!-- 										<p:spinner id="prixPanier" value="#{prixPanier} €" min="5" max="999" /> -->
+<!-- 										<label id="labelPrixPanierSaison">€</label> -->
+<!-- 									</div> -->
+<!-- 									<b:selectOneMenu id="categoriePanier" required="true" -->
+<!-- 										requiredMessage="Catégorie obligatoire" -->
+<!-- 										value="#{mbUpdateCompteClient.client.villeLivraison}"> -->
+<!-- 										<f:selectItem itemLabel="Toutes" itemValue="Toutes" -->
+<!-- 											noSelectionOption="true" /> -->
+<!-- 										<f:selectItems value="#{mbCatalogueClient.categories}" -->
+<!-- 											required="true" requiredMessage="Categorie obligatoire" -->
+<!-- 											var="categorie" itemValue="#{categorie.nomCategorie}" -->
+<!-- 											itemLabel="#{categorie.nomCategorie}"></f:selectItems> -->
+<!-- 									</b:selectOneMenu> -->
+<!-- 								</b:column> -->
 								
 								
-								<b:row>
-									<b:column>
-										<b:commandButton largeScreen="half" update="@form"
-											dismiss="modal" value="Valider" look="warning"
-											action="#{mbUpdateCompteClient.modifier()}" />
-										<b:button largeScreen="half" look="secondary" value="Annuler" dismiss="modal"
-											href="#navbar-brand" />
-									</b:column>
-								</b:row>
+<!-- 								<b:row> -->
+<!-- 									<b:column> -->
+<!-- 										<b:commandButton largeScreen="half" update="@form" -->
+<!-- 											dismiss="modal" value="Valider" look="warning" -->
+<!-- 											action="#{mbUpdateCompteClient.modifier()}" /> -->
+<!-- 										<b:button largeScreen="half" look="secondary" value="Annuler" dismiss="modal" -->
+<!-- 											href="#navbar-brand" /> -->
+<!-- 									</b:column> -->
+<!-- 								</b:row> -->
 	
-								<b:fetchBeanInfos />
-								<b:messages />
-							</h:form>
-						</b:modal>
+<!-- 								<b:fetchBeanInfos /> -->
+<!-- 								<b:messages /> -->
+<!-- 							</h:form> -->
+<!-- 						</b:modal> -->
 						<b:formGroup>
 							<b:selectOneMenu 
 								update="datatableArticles"
@@ -110,7 +110,7 @@
 							</b:button>
 						</b:formGroup>
 
-					</b:container>
+					</b:container> 
 
 					<b:dataTable 
 						id="datatableArticles"
