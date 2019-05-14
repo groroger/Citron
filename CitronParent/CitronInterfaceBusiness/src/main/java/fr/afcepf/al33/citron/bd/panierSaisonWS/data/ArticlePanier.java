@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(namespace="data.panierSaisonWS.bd.citron.al33.afcepf.fr")
 @XmlRootElement(name="article")
-public class Article {
+public class ArticlePanier {
     private String categorie;
 
     private Integer debutSaison;
@@ -22,10 +22,10 @@ public class Article {
 
     private Double quantiteVendue;
 
-    public Article() {
+    public ArticlePanier() {
     }
 
-    public Article(
+    public ArticlePanier(
            String categorie,
            Integer debutSaison,
            Integer finSaison,

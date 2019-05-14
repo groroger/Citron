@@ -2,24 +2,23 @@ package fr.afcepf.al33.citron.bd.panierSaisonWS;
 
 
 import java.net.URL;
+import java.util.List;
+
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-import fr.afcepf.al33.citron.bd.panierSaisonWS.data.Article;
+import fr.afcepf.al33.citron.bd.panierSaisonWS.data.ArticlePanier;
+import fr.afcepf.al33.citron.bd.panierSaisonWS.data.RefPanier;
 
 public class PanierSaisonBusiness implements PanierSaison {
 	public static String URL_PANIER_SAISON = "http://localhost:7979/panierSaisonWS/PanierSaisonImpl?wsdl";
 	
-	@Override
-	public double exemple(double montant, String codeMonnaieSource, String codeMonnaieCible) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
-	public Article[] getAllArticles() {
+	public List<ArticlePanier> getAllArticles() {
 		
-		Article[] articles = null;
+		List<ArticlePanier> articles = null;
 		try {
 			URL wsdlURL = new URL(URL_PANIER_SAISON);
 			QName SERVICE_NAME = new QName("http://panierSaisonWS.bd.citron.al33.afcepf.fr/","PanierSaisonImplService");
@@ -38,6 +37,22 @@ public class PanierSaisonBusiness implements PanierSaison {
 	public String getHelloWorld() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<RefPanier> getPanier(String categorie, double prix) {
+		List<RefPanier> articles = null;
+		try {
+			URL wsdlURL = new URL(URL_PANIER_SAISON);
+			QName SERVICE_NAME = new QName("http://panierSaisonWS.bd.citron.al33.afcepf.fr/","PanierSaisonImplService");
+			Service service = Service.create(wsdlURL, SERVICE_NAME);
+			QName PORT_NAME = new QName("http://panierSaisonWS.bd.citron.al33.afcepf.fr/","PanierSaisonImplPort");
+			PanierSaison wsPanier = (PanierSaison) service.getPort(PORT_NAME, PanierSaison.class);
+			articles = wsPanier.getPanier(categorie, prix);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return articles;
 	}
 
 }
