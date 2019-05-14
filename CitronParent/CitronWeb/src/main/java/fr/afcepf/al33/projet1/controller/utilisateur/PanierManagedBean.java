@@ -89,13 +89,6 @@ public class PanierManagedBean implements Serializable{
 			
 	}
 	
-	public void valider() {
-		
-		System.out.println("==================== HELLO Livraison =========================================");
-		System.out.println(client.getAdresseLivraison());
-		System.out.println(client.toString());
-		//System.out.println(commande.getPrixTotal());
-	}
     
   public void payer() {
 	  
