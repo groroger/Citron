@@ -792,6 +792,39 @@ html, body {
  	background-color: #ff0000 !important;
  }
 
+/*********************************
+	Catalogue Panier Saison
+*********************************/
+#DivPrixPanier
+{
+	margin-bottom: 10px;
+	margin-left: 18px;
+}
 
+ #labelPanierSaison
+ {
+ 	font-size: 20px;
+ 	margin-right: 10px;
+ }
  
+ .formPanierSaison .modal-dialog
+ {
+ 	width: 350px;
+ 
+ }
+ 
+ #labelPrixPanierSaison
+ {
+ 	font-size: 22px;
+ 	color: #96c001 !important;
+ }
+ 
+ #formCatalogueClient:j_idt77
+ {
+ 	color: red !important;
+ 	font-size: 18px;
+	border-radius: 15px;
+	width: 255px;
+	margin-left: 15px;
+ }
 
