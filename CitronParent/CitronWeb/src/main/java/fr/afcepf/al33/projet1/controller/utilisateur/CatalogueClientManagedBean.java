@@ -177,7 +177,9 @@ public void updateSelectedArticles() {
 	}	
 
 	// filtre éventuel sur saisonnalité des articles
-	if (selectedSaison !=null && selectedSaison.equals("De saison")) {
+	// si le webservice est disponible et a fourni une liste d'articles de saison non vide
+	if (selectedSaison !=null && selectedSaison.equals("De saison") 
+		&& !libellesArticlesSaison.isEmpty()) {
 		articles = filtreSaisonFort(articles, libellesArticlesSaison);
 	}
 }
@@ -193,6 +195,10 @@ private List<String> listeLibellesArticlesSaison(List<fr.afcepf.al33.citron.ws.s
 
 private List<Article> filtreSaisonFort(List<Article> articles, List<String> libellesArticlesSaison) {
 	// filtre des articles sur la saisonnalité
+	
+	// si le web service est indisponible alors pas de filtre
+	if (libellesArticlesSaison.isEmpty())
+		return articles;
 	
 	// liste des articles filtrés
 	List<Article> articlesFiltres = new ArrayList<>();
@@ -216,14 +222,20 @@ public List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> listeArticlesSais
 	DateTime dateTime = new DateTime(new Date());
 	int mois = dateTime.getMonthOfYear();
 
-	// test ClientArticleDelegateSoap
+	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesMois = new ArrayList<>();
+	// test disponibilité du web service Soap par ClientArticleDelegate
 	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
-	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesMois = clientArticleDelegate.ListeArticlesParMois(mois);
+	try {
+		articlesMois = clientArticleDelegate.ListeArticlesParMois(mois);
 
-	System.out.println("*** test clientArticleDelegate articles de saison pour le mois de " + moisFR[mois - 1] + " : \n");
-	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article article : articlesMois) {
-		System.out.println(article.getNom() + " de " + moisFR[article.getDebutSaison() - 1]
-											+ " à " + moisFR[article.getFinSaison() - 1]);
+		System.out.println("*** test clientArticleDelegate articles de saison pour le mois de " + moisFR[mois - 1] + " : \n");
+		for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article article : articlesMois) {
+			System.out.println(article.getNom() + " de " + moisFR[article.getDebutSaison() - 1]
+												+ " à " + moisFR[article.getFinSaison() - 1]);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+		System.out.println("web service articles de saison indisponible");
 	}
 
 	return articlesMois;
