@@ -9,6 +9,11 @@
   <packaging>war</packaging> 
  
   	<dependencies>
+  		<dependency>
+			<groupId>fr.afcepf.al33</groupId>
+			<artifactId>RecettesDTO</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
