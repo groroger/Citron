@@ -1,12 +1,14 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
+import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,15 +17,15 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.joda.time.DateTime;
+
 import fr.afcepf.al33.citron.IBusiness.ArticleIBusiness;
 import fr.afcepf.al33.citron.IBusiness.CategorieIBusiness;
 import fr.afcepf.al33.citron.entity.Article;
 import fr.afcepf.al33.citron.entity.ArticleCommande;
 import fr.afcepf.al33.citron.entity.Categorie;
-import fr.afcepf.al33.citron.ws.saison.client.dto.debug.ArticleDtoDebug;
-import fr.afcepf.al33.citron.ws.saison.client.dto.debug.CategorieDtoDebug;
-
-import org.joda.time.DateTime;
+import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegate;
+import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegateSoap;
 
 
 @ManagedBean(name="mbCatalogueClient")
@@ -44,7 +46,7 @@ public class CatalogueClientManagedBean implements Serializable{
 	private ArticleCommande articleCommande = new ArticleCommande();
 	private List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
 
-	private List <ArticleDtoDebug> articlesSaison;
+	private List <fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison;
 	private List <String> libellesArticlesSaison;
 	private List<String> saisons;
 	private String selectedSaison;
@@ -180,10 +182,10 @@ public void updateSelectedArticles() {
 	}
 }
 
-private List<String> listeLibellesArticlesSaison(List<ArticleDtoDebug> articlesDeSaison) {
+private List<String> listeLibellesArticlesSaison(List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison) {
 	// liste des libellés des articles de saison pour recherche rapide
 	List<String> libellesArticlesSaison = new ArrayList<>();
-	for (ArticleDtoDebug articleDeSaison : articlesDeSaison) {
+	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article articleDeSaison : articlesSaison) {
 		libellesArticlesSaison.add(articleDeSaison.getNom().toUpperCase());
 	}
 	return libellesArticlesSaison;
@@ -198,42 +200,43 @@ private List<Article> filtreSaisonFort(List<Article> articles, List<String> libe
 	for (Article article : articles) {
 		// rechercher sa présence dans les articles de saison
 		// s'il est présent alors l'ajouter à la liste des articles de saison
-		if(libellesArticlesSaison.indexOf(article.getNom().toUpperCase()) >= 0) {
+		// recherche sur le premier mot en cas de nom composé ramené au singulier
+		if(libellesArticlesSaison.indexOf(pluralCut(article.getNom().split(" ")[0]).toUpperCase()) >= 0) {
 			articlesFiltres.add(article);
 		}		
 	}
 	return articlesFiltres;
 }
 
-public List<ArticleDtoDebug> listeArticlesSaison() {
+public List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> listeArticlesSaison() {
 		
+	DateFormatSymbols dfsFR = new DateFormatSymbols(Locale.FRENCH);
+	String[] moisFR = dfsFR.getMonths();
+
 	DateTime dateTime = new DateTime(new Date());
 	int mois = dateTime.getMonthOfYear();
 
 	// test ClientArticleDelegateSoap
-//	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
-//	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison = clientArticleDelegate.ListeArticlesParMois(mois);
-	
-	// mock appel ci dessus pour obtenir une liste de produits de saison
-	// dans l'attente de résolution du bug d'appel aux objets du projet CitronBusinessDelegate
-	// CategorieDtoDebug et ArticleDtoDebug seront à remplacer par Categorie et Article
-	// du package fr.afcepf.al33.citron.ws.saison.ws.entity
-	//--------------------------------------------------------------------------
-	CategorieDtoDebug categorieFruits = new CategorieDtoDebug(1, "fruits");
-	
-	List<ArticleDtoDebug> articlesSaison = new ArrayList<ArticleDtoDebug>();
-	
-	articlesSaison.add(new ArticleDtoDebug(1, "banane", 1, 12, categorieFruits));
-	articlesSaison.add(new ArticleDtoDebug(2, "citron", 1, 12, categorieFruits));
-	articlesSaison.add(new ArticleDtoDebug(2, "fraise", 5, 8, categorieFruits));
-		
-	System.out.println("debug articles de saison");
-	for (ArticleDtoDebug article : articlesSaison) {
-		System.out.println(article.getNom());
-	}
-	//--------------------------------------------------------------------------
+	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
+	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesMois = clientArticleDelegate.ListeArticlesParMois(mois);
 
-	return articlesSaison;
+	System.out.println("*** test clientArticleDelegate articles de saison pour le mois de " + moisFR[mois - 1] + " : \n");
+	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article article : articlesMois) {
+		System.out.println(article.getNom() + " de " + moisFR[article.getDebutSaison() - 1]
+											+ " à " + moisFR[article.getFinSaison() - 1]);
+	}
+
+	return articlesMois;
+}
+
+private String pluralCut(String name) {
+	// supprime les marques françaises de pluriel
+	String singleName = name;
+	if (singleName.endsWith("s") | singleName.endsWith("S") | singleName.endsWith("x") | singleName.endsWith("X")) {
+		if (singleName.length() > 1)
+			singleName = singleName.substring(0, singleName.length() - 1);
+	}
+	return singleName;
 }
 
 public List<Article> getArticles() {
