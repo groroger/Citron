@@ -7,26 +7,30 @@
   </parent>
   <groupId>fr.afcepf.al33.citron.bd</groupId>
   <artifactId>CitronBusinessDelegate</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
    
   <properties>
           <maven.compiler.source>1.8</maven.compiler.source>
           <maven.compiler.target>1.8</maven.compiler.target>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
   </properties>
   
   <dependencies>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		
 	<dependency>
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
 		<version>1.16.22</version>
+		<scope>provided</scope>
 	</dependency>
 
+<!-- jersey est une implementation de JAX-RS2 a utiliser au dehors de jBoss
+     dans Jboss , il y a deja resteasy qui fait la même chose . -->
+<!-- 
      <dependency>
 	    <groupId>org.glassfish.jersey.core</groupId>
 	    <artifactId>jersey-client</artifactId>
@@ -38,6 +42,7 @@
 	    <artifactId>jersey-media-json-jackson</artifactId>
 	    <version>2.26-b03</version>
 	</dependency>
+	-->
 	
   </dependencies>
 </project>

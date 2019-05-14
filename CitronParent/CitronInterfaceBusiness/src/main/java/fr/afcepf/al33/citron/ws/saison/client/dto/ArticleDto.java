@@ -9,9 +9,9 @@ import lombok.ToString;
 @Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
 
 public class ArticleDto {
-	private int			id;
-	private String 		nom;
-	private int			debutSaison;
-	private int			finSaison;
+	private int				id;
+	private String 			nom;
+	private int				debutSaison;
+	private int				finSaison;
 	private CategorieDto	categorie;
 }

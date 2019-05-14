@@ -17,6 +17,9 @@
         <dependent-module archiveName="CitronInterfaceBusiness-1.0.jar" deploy-path="/lib" handle="module:/resource/CitronInterfaceBusiness/CitronInterfaceBusiness">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="RecettesDTO-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/fr/afcepf/al33/RecettesDTO/0.0.1-SNAPSHOT/RecettesDTO-0.0.1-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="CitronDao-1.0.jar" deploy-path="/" handle="module:/resource/CitronDao/CitronDao">
             <dependency-type>uses</dependency-type>
         </dependent-module>

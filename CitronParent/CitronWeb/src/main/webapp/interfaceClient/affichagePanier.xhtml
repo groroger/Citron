@@ -97,11 +97,6 @@
 					<div id="boutonBas">
 
 
-						<b:button value="Retour au Catalogue" look="warning"
-							outcome="catalogueClient" />
-
-
-
 						<b:inputText value="#{mbPanier.calculerPanier()} €"
 							disabled="true" fieldSize="lg">
 							<f:facet name="prepend">
@@ -109,10 +104,12 @@
 							</f:facet>
 						</b:inputText>
 
-
+						
 
 						<f:facet name="header">Payer</f:facet>
 						<b:buttonGroup>
+							<b:button value="Retour au Catalogue" look="warning"
+							outcome="catalogueClient" />
 							<b:button value="Livraison" look="warning"
 								onclick="$('.formUpdataInfoLivraison').modal();">
 							</b:button>
@@ -122,7 +119,6 @@
 								action="#{mbPanier.payer()}" />
 						</b:buttonGroup>
 					</div>
-
 
 				</b:container>
 			</h:form>
