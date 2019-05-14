@@ -198,7 +198,8 @@ private List<Article> filtreSaisonFort(List<Article> articles, List<String> libe
 	for (Article article : articles) {
 		// rechercher sa présence dans les articles de saison
 		// s'il est présent alors l'ajouter à la liste des articles de saison
-		if(libellesArticlesSaison.indexOf(article.getNom().toUpperCase()) >= 0) {
+		// recherche sur le premier mot en cas de nom composé ramené au singulier
+		if(libellesArticlesSaison.indexOf(pluralCut(article.getNom().split(" ")[0]).toUpperCase()) >= 0) {
 			articlesFiltres.add(article);
 		}		
 	}
@@ -225,7 +226,8 @@ public List<ArticleDtoDebug> listeArticlesSaison() {
 	
 	articlesSaison.add(new ArticleDtoDebug(1, "banane", 1, 12, categorieFruits));
 	articlesSaison.add(new ArticleDtoDebug(2, "citron", 1, 12, categorieFruits));
-	articlesSaison.add(new ArticleDtoDebug(2, "fraise", 5, 8, categorieFruits));
+	articlesSaison.add(new ArticleDtoDebug(3, "fraise", 5, 8, categorieFruits));
+	articlesSaison.add(new ArticleDtoDebug(4, "pomme", 10, 3, categorieFruits));
 		
 	System.out.println("debug articles de saison");
 	for (ArticleDtoDebug article : articlesSaison) {
@@ -234,6 +236,16 @@ public List<ArticleDtoDebug> listeArticlesSaison() {
 	//--------------------------------------------------------------------------
 
 	return articlesSaison;
+}
+
+private String pluralCut(String name) {
+	// supprime les marques françaises de pluriel
+	String singleName = name;
+	if (singleName.endsWith("s") | singleName.endsWith("S") | singleName.endsWith("x") | singleName.endsWith("X")) {
+		if (singleName.length() > 1)
+			singleName = singleName.substring(0, singleName.length() - 1);
+	}
+	return singleName;
 }
 
 public List<Article> getArticles() {
