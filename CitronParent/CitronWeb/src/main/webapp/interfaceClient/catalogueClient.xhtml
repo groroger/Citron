@@ -54,6 +54,19 @@
 									itemLabel="#{categorie.nomCategorie}" />
 							</b:selectOneMenu>
 
+							<b:selectOneMenu 
+								update="datatableArticles"
+								onchange="ajax:AJAXBean.onChange()"
+								value="#{mbCatalogueClient.selectedSaison}" 
+								colMd="3"
+								labelColMd="3">
+								<f:ajax listener="#{mbCatalogueClient.onSaisonChange()}"
+									update="datatableArticles" />
+								<f:selectItems value="#{mbCatalogueClient.saisons}"
+									var="saison" itemValue="#{saison}"
+									itemLabel="#{saison}" />
+							</b:selectOneMenu>
+
 						</b:formGroup>
 
 					</b:container>
