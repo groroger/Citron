@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,9 +20,10 @@ import fr.afcepf.al33.citron.IBusiness.CategorieIBusiness;
 import fr.afcepf.al33.citron.entity.Article;
 import fr.afcepf.al33.citron.entity.ArticleCommande;
 import fr.afcepf.al33.citron.entity.Categorie;
-import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegate;
-import fr.afcepf.al33.citron.ws.saison.client.delegate.ClientArticleDelegateSoap;
+import fr.afcepf.al33.citron.ws.saison.client.dto.debug.ArticleDtoDebug;
+import fr.afcepf.al33.citron.ws.saison.client.dto.debug.CategorieDtoDebug;
 
+import org.joda.time.DateTime;
 
 
 @ManagedBean(name="mbCatalogueClient")
@@ -42,7 +44,10 @@ public class CatalogueClientManagedBean implements Serializable{
 	private ArticleCommande articleCommande = new ArticleCommande();
 	private List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
 
-
+	private List <ArticleDtoDebug> articlesSaison;
+	private List <String> libellesArticlesSaison;
+	private List<String> saisons;
+	private String selectedSaison;
 
 
 	@EJB
@@ -64,8 +69,14 @@ public class CatalogueClientManagedBean implements Serializable{
 			articlesCommandes= (List<ArticleCommande>)session.getAttribute("listeArticlesCommandes");
 		}
 		
-		// juste pour test appel web service
-		listeArticlesSaison();
+		// items de la combo box filtre saisonnalité
+		saisons = new ArrayList<>();
+		saisons.add("Toute saison");
+		saisons.add("De saison");
+		// liste des articles disponibles pour le mois courant
+		articlesSaison = listeArticlesSaison();
+		// liste des libellés des articles disponibles pour le mois courant
+		libellesArticlesSaison = listeLibellesArticlesSaison(articlesSaison);
 	}
 
 	public void afficherFicheProduit(Article article) {
@@ -144,40 +155,85 @@ public class CatalogueClientManagedBean implements Serializable{
 }
 
 public void onCategorieChange() {
+	updateSelectedArticles();
+}
 
+public void onSaisonChange() {
+	updateSelectedArticles();
+}
 
+public void updateSelectedArticles() {
+	
 	if (selectedCategorie !=null && !selectedCategorie.equals("") && !selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
-
-		articles=proxyArticle.getByIdCategorie(selectedCategorie);
-		
+		articles=proxyArticle.getByIdCategorie(selectedCategorie);		
 	} else if(selectedCategorie==null) {
-
 		articles=proxyArticle.getAll();	
-
 	} else if(selectedCategorie.getNomCategorie().equals("Toutes les catégories")) {
-
 		articles=proxyArticle.getAll();
-
 	} else {
-
 		articles=new ArrayList<>();
+	}	
 
+	// filtre éventuel sur saisonnalité des articles
+	if (selectedSaison !=null && selectedSaison.equals("De saison")) {
+		articles = filtreSaisonFort(articles, libellesArticlesSaison);
 	}
 }
 
-public List<Article> listeArticlesSaison() {
+private List<String> listeLibellesArticlesSaison(List<ArticleDtoDebug> articlesDeSaison) {
+	// liste des libellés des articles de saison pour recherche rapide
+	List<String> libellesArticlesSaison = new ArrayList<>();
+	for (ArticleDtoDebug articleDeSaison : articlesDeSaison) {
+		libellesArticlesSaison.add(articleDeSaison.getNom().toUpperCase());
+	}
+	return libellesArticlesSaison;
+}
+
+private List<Article> filtreSaisonFort(List<Article> articles, List<String> libellesArticlesSaison) {
+	// filtre des articles sur la saisonnalité
+	
+	// liste des articles filtrés
+	List<Article> articlesFiltres = new ArrayList<>();
+	// pour chaque article
+	for (Article article : articles) {
+		// rechercher sa présence dans les articles de saison
+		// s'il est présent alors l'ajouter à la liste des articles de saison
+		if(libellesArticlesSaison.indexOf(article.getNom().toUpperCase()) >= 0) {
+			articlesFiltres.add(article);
+		}		
+	}
+	return articlesFiltres;
+}
+
+public List<ArticleDtoDebug> listeArticlesSaison() {
+		
+	DateTime dateTime = new DateTime(new Date());
+	int mois = dateTime.getMonthOfYear();
 
 	// test ClientArticleDelegateSoap
-	
-//	int mois = 5;
 //	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
 //	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesSaison = clientArticleDelegate.ListeArticlesParMois(mois);
-//	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article article : articlesSaison) {
-//		String match = "";
-//		System.out.println(article.getNom());
-//	}
+	
+	// mock appel ci dessus pour obtenir une liste de produits de saison
+	// dans l'attente de résolution du bug d'appel aux objets du projet CitronBusinessDelegate
+	// CategorieDtoDebug et ArticleDtoDebug seront à remplacer par Categorie et Article
+	// du package fr.afcepf.al33.citron.ws.saison.ws.entity
+	//--------------------------------------------------------------------------
+	CategorieDtoDebug categorieFruits = new CategorieDtoDebug(1, "fruits");
+	
+	List<ArticleDtoDebug> articlesSaison = new ArrayList<ArticleDtoDebug>();
+	
+	articlesSaison.add(new ArticleDtoDebug(1, "banane", 1, 12, categorieFruits));
+	articlesSaison.add(new ArticleDtoDebug(2, "citron", 1, 12, categorieFruits));
+	articlesSaison.add(new ArticleDtoDebug(2, "fraise", 5, 8, categorieFruits));
+		
+	System.out.println("debug articles de saison");
+	for (ArticleDtoDebug article : articlesSaison) {
+		System.out.println(article.getNom());
+	}
+	//--------------------------------------------------------------------------
 
-	return articles;
+	return articlesSaison;
 }
 
 public List<Article> getArticles() {
@@ -253,5 +309,19 @@ public void setQuantiteSaisie(int quantiteSaisie) {
 	this.quantiteSaisie = quantiteSaisie;
 }
 
+public List<String> getSaisons() {
+	return saisons;
+}
 
+public void setSaisons(List<String> saisons) {
+	this.saisons = saisons;
+}
+
+public String getSelectedSaison() {
+	return selectedSaison;
+}
+
+public void setSelectedSaison(String saison) {
+	this.selectedSaison = saison;
+}
 }
