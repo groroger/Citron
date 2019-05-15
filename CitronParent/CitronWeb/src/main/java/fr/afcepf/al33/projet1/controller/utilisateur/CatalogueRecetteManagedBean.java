@@ -42,9 +42,7 @@ public class CatalogueRecetteManagedBean implements Serializable{
 	public void init() {
 
 		List<String> listeArticle = new ArrayList<String>();
-		listeArticle.add("Panais");
-		listeArticle.add("Pomme de terre rouge");
-		listeArticle.add("Ail");
+		
 		System.out.println("coucou 1");
 		
 		// chargement de la table des articles commandés (panier)
@@ -59,8 +57,7 @@ public class CatalogueRecetteManagedBean implements Serializable{
 			}
 			
 		}
-		
-		
+		System.out.println("listeArticle = "+listeArticle);		
 		recettes = recetteDelegate.recettesSelectionnees(listeArticle);
 		for (RecetteSelectionnee recetteSelectionnee : recettes) 
 		{
@@ -85,7 +82,6 @@ public class CatalogueRecetteManagedBean implements Serializable{
 		List<IngredientSelectionnee> ingredientSelectionnees = recette.getIngredientSelectionnees();
 		for (IngredientSelectionnee ingSel: ingredientSelectionnees) 
 		{
-			//listeIngredient.concat(ingSel.getNom()+", ");
 			listeIngredient = listeIngredient+ingSel.getNom()+", ";
 		} 
 		System.out.println("listeIngredient = "+listeIngredient);
