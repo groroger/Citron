@@ -85,10 +85,11 @@ public class CatalogueRecetteManagedBean implements Serializable{
 		List<IngredientSelectionnee> ingredientSelectionnees = recette.getIngredientSelectionnees();
 		for (IngredientSelectionnee ingSel: ingredientSelectionnees) 
 		{
-			listeIngredient.concat(ingSel.getNom()+", ");
+			//listeIngredient.concat(ingSel.getNom()+", ");
+			listeIngredient = listeIngredient+ingSel.getNom()+", ";
 		} 
 		System.out.println("listeIngredient = "+listeIngredient);
-
+		
 		return listeIngredient;
 	}
 
