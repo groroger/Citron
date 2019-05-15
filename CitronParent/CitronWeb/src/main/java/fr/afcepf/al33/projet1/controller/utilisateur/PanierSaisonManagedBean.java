@@ -18,11 +18,11 @@ public class PanierSaisonManagedBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String categoriePanier;
+	private String categoriePanier = null;
 	
-	private double prixPanier;
+	private Double prixPanier = null;
 	
-	private PanierSaisonBusiness panierSaison;
+	private PanierSaisonBusiness panierSaison = new PanierSaisonBusiness();
 	
 	public void genererPanierSaison(double prixPanier, String categoriePanier)
 	{
