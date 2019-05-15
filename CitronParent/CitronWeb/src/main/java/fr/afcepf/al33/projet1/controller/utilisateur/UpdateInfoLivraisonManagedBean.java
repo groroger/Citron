@@ -75,7 +75,7 @@ public class UpdateInfoLivraisonManagedBean implements Serializable{
 			
 			
 			
-			FacesMessage message = new FacesMessage("Modification de votre compte réussie");
+			FacesMessage message = new FacesMessage("MAJ vos infos de Livraison, OK! ");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			
 			//System.out.println(FacesContext.getCurrentInstance());
@@ -84,7 +84,7 @@ public class UpdateInfoLivraisonManagedBean implements Serializable{
 		}
 		catch (Exception e) {
 			// création d'un message
-			FacesMessage message = new FacesMessage("Erreur lors de la modification de votre compte : " + e.getMessage());
+			FacesMessage message = new FacesMessage("Erreur lors de la MAJ de vos infos de Livraison : " + e.getMessage());
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			// ajout à la liste des messages à afficher
 			FacesContext.getCurrentInstance().addMessage(null, message);
