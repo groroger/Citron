@@ -56,11 +56,19 @@
 						paginated="false"
 						searching="false">
 
-						<b:dataTableColumn custom-options="'width':'105px'">
+						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Visuel</f:facet>
 							<h:graphicImage value="/pics/articlesImages/#{recette.imageMini}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Nom</f:facet>
+							<h:outputLabel value="#{recette.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'350px'">
+							<f:facet name="header">Ingrédients</f:facet>
+							<h:outputLabel value="#{mbCatalogueRecette.listeIngredient(recette)}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'50px'">
 							<f:facet name="header">Fiche recette</f:facet>
 							<b:commandButton value=""
 								look="warning"
@@ -68,15 +76,6 @@
 								<b:image value="../pics/icones/searchWhite32.png"/>	
 							</b:commandButton>
 						</b:dataTableColumn>
-						<b:dataTableColumn custom-options="'width':'150px'">
-							<f:facet name="header">Nom</f:facet>
-							<h:outputLabel value="#{recette.nom}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn custom-options="'width':'150px'">
-							<f:facet name="header">Ingrédients</f:facet>
-							<h:outputLabel value="#{mbCatalogueRecette.listeIngredient(recette)}" />
-						</b:dataTableColumn>
-						
 						
 					</b:dataTable>
 					
