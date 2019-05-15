@@ -15,6 +15,7 @@
 			<link
 				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/catalogueClient.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
 			
 			
@@ -31,13 +32,54 @@
 					<h3>Catalogue de produits</h3>
 
 				</b:row>
-
+			<b:container>
+					 
+					 	<b:modal styleClass="formPanierSaison" closable="false"
+						closeOnEscape="true">
+							<h:form>
+								<h4>GENERER UN PANIER DE SAISON</h4>
+								
+								<b:column>
+	
+									<div id="DivPrixPanier">
+										<label id="labelPanierSaison">Prix du Panier : </label>
+										<p:spinner id="prixPanier" value="#{prixPanier} €" min="5" max="999" />
+										<label id="labelPrixPanierSaison">€</label>
+									</div>
+									<b:selectOneMenu id="categoriePanier" required="true"
+										requiredMessage="Catégorie obligatoire"
+										value="#{mbUpdateCompteClient.client.villeLivraison}">
+										<f:selectItem itemLabel="Toutes" itemValue="Toutes"
+											noSelectionOption="true" />
+										<f:selectItems value="#{mbCatalogueClient.categories}"
+											required="true" requiredMessage="Categorie obligatoire"
+											var="categorie" itemValue="#{categorie.nomCategorie}"
+											itemLabel="#{categorie.nomCategorie}"></f:selectItems>
+									</b:selectOneMenu>
+								</b:column>
+								
+								
+								<b:row>
+									<b:column>
+										<b:commandButton largeScreen="half" update="@form"
+											dismiss="modal" value="Valider" look="warning"
+											action="#{mbUpdateCompteClient.modifier()}" />
+										<b:button largeScreen="half" look="secondary" value="Annuler" dismiss="modal"
+											href="#navbar-brand" />
+									</b:column>
+								</b:row>
+	
+								<b:fetchBeanInfos />
+								<b:messages />
+							</h:form>
+						</b:modal>
+					 </b:container>
 			<b:container>
 
 				<h:form id="formCatalogueClient">
 				
-			
-					<b:container layout="fluid">
+					 
+					 <b:container layout="fluid">
 					
 
 						<b:formGroup>
@@ -66,10 +108,13 @@
 									var="saison" itemValue="#{saison}"
 									itemLabel="#{saison}" />
 							</b:selectOneMenu>
-
+							
+							<b:button id="btn_PanierSaison" value="Panier de Saison" look="default"
+								onclick="$('.formPanierSaison').modal();">
+							</b:button>
 						</b:formGroup>
 
-					</b:container>
+					</b:container> 
 
 					<b:dataTable 
 						id="datatableArticles"
@@ -130,9 +175,17 @@
 
 						</b:dataTableColumn>
 					</b:dataTable>
+					
+					
+					
+
+					
+					
+					
 				</h:form>
 			</b:container>
 		</h:body>
 	</ui:define>
+	
 </ui:composition>
 </html>

@@ -79,6 +79,8 @@ public class PanierManagedBean implements Serializable{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		client = (Client) session.getAttribute("clientConnecte");
+		//client.setVilleLivraison(client.getVille());
+		
 		if ((List<ArticleCommande>) session.getAttribute("listeArticlesCommandes") != null)
 		{
 			
@@ -86,6 +88,7 @@ public class PanierManagedBean implements Serializable{
 		}
 			
 	}
+	
     
   public void payer() {
 	  
@@ -145,8 +148,9 @@ public class PanierManagedBean implements Serializable{
 		
 				 FacesContext facesContext = FacesContext.getCurrentInstance();
 				 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-				 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/monCompte.xhtml#test?faces-redirect=true");
-			  
+				 //facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/monCompte.xhtml#test?faces-redirect=true");
+				 facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,
+						                  "/interfaceClient/updateInfoLivraison.xhtml#test?faces-redirect=true");
 				 articlesCommandes= new ArrayList<ArticleCommande>();
 				 session.setAttribute("listeArticlesCommandes", articlesCommandes);
 		  }
