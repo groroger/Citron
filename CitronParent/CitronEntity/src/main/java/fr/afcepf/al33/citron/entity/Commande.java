@@ -61,7 +61,6 @@ public class Commande implements Serializable {
 		
 		public Commande() {
 			super();
-			
 		}
 		
 		

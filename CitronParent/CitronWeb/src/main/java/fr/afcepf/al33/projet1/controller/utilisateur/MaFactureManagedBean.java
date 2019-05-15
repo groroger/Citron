@@ -1,11 +1,16 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.Application;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -17,6 +22,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import fr.afcepf.al33.citron.IBusiness.EntrepotIBusiness;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
 import fr.afcepf.al33.citron.entity.CallWsLivraison;
 import fr.afcepf.al33.citron.entity.Client;
 import fr.afcepf.al33.citron.entity.Commande;
@@ -36,8 +42,12 @@ public class MaFactureManagedBean implements Serializable{
 	//private Client client;
 	private Client clientConnecte;
 	
-	//@ManagedProperty(value="#{mbPanier.commande}")
+	//@ManagedProperty(value="#{mbMonCompte.selectedCommandePerso}")
+	@ManagedProperty(value="#{mbPanier.commande}")
 	private Commande commande; 
+	
+	//private List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
+	
 	
 	@EJB 
 	private EntrepotIBusiness proxyEntrepot;
@@ -45,12 +55,15 @@ public class MaFactureManagedBean implements Serializable{
 	private Facture facture;
 
 	@PostConstruct
-	public void init() {
+	public void init() throws ParseException {
 		
-		PanierManagedBean mbPanier = (PanierManagedBean) 
-				FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get("mbPanier");
-		this.commande = mbPanier.getCommande();
+//		PanierManagedBean mbPanier = (PanierManagedBean) FacesContext.getCurrentInstance().getExternalContext()
+//		.getSessionMap().get("mbPanier");
+//		FacesContext context = FacesContext.getCurrentInstance();
+//		Application application = context.getApplication();
+//		PanierManagedBean mbPanier = application.evaluateExpressionGet(context, "#{mbPanier}", PanierManagedBean.class);
+//		this.commande = mbPanier.getCommande();
+		
 		
 		ConnectionUtilisateurManagedBean mbConnectionUtilisateur = (ConnectionUtilisateurManagedBean)
 				FacesContext.getCurrentInstance()
@@ -63,10 +76,14 @@ public class MaFactureManagedBean implements Serializable{
 		
 		// Choose time zone in which you want to interpret your Date
 		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+		System.out.println("MaFactureManagedBean.init -> ");
+		System.out.println(clientConnecte.getNom().toString());
+		System.out.println(commande.getDateCreation());
 		cal.setTime(commande.getDateCreation());
 		String year = String.valueOf(cal.get(Calendar.YEAR));
 		String month = String.valueOf(cal.get(Calendar.MONTH));
 		String day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+		String myCommandeDate = day + "/"+ month + "/"+year; 
 		
 		String adresseEntrepot = proxyEntrepot.searchById(1).getAdresse();
 		String adresseClient = clientConnecte.getAdresseLivraison();
@@ -79,7 +96,8 @@ public class MaFactureManagedBean implements Serializable{
 		infoLivraison.setId_facture(idFacture);
 		infoLivraison.setAddress_a(adresseEntrepot);
 		infoLivraison.setAddress_b(adresseClient);
-		infoLivraison.setDate_commande(commande.getDateCreation());
+		//infoLivraison.setDate_commande(commande.getDateCreation());
+		infoLivraison.setDate_commande(new SimpleDateFormat("dd/MM/yyyy").parse(myCommandeDate));
 		
 		
 		

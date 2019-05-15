@@ -135,6 +135,8 @@ public class PanierManagedBean implements Serializable{
 		  if (toutEstDispo== true) {
 		  
 			  proxyArticleCommande.add(cde, articlesCommandes);
+			 // session.setAttribute("commande", cde);
+			  this.commande=cde;
 			  
 			  for (ArticleCommande articleCommande : articlesCommandes) {
 				
