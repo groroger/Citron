@@ -43,12 +43,12 @@
 	
 									<div id="DivPrixPanier">
 										<label id="labelPanierSaison">Prix du Panier : </label>
-										<p:spinner id="prixPanier" value="#{prixPanier} €" min="5" max="999" />
+										<p:spinner id="prixPanier" value="#{mbPanierSaison.prixPanier}" min="5" max="999" />
 										<label id="labelPrixPanierSaison">€</label>
 									</div>
 									<b:selectOneMenu id="categoriePanier" required="true"
 										requiredMessage="Catégorie obligatoire"
-										value="#{mbUpdateCompteClient.client.villeLivraison}">
+										value="#{mbPanierSaison.categoriePanier}">
 										<f:selectItem itemLabel="Toutes" itemValue="Toutes"
 											noSelectionOption="true" />
 										<f:selectItems value="#{mbCatalogueClient.categories}"
