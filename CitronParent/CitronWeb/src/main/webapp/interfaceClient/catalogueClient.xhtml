@@ -32,6 +32,7 @@
 					<h3>Catalogue de produits</h3>
 
 				</b:row>
+			
 			<b:container>
 					 
 					 	<b:modal styleClass="formPanierSaison" closable="false"
@@ -74,11 +75,12 @@
 							</h:form>
 						</b:modal>
 					 </b:container>
+					
 			<b:container>
 
 				<h:form id="formCatalogueClient">
 				
-					 
+		<div id="btnsDuHaut">				 
 					 <b:container layout="fluid">
 					
 
@@ -116,7 +118,7 @@
 						</b:formGroup>
 
 					</b:container> 
-
+ </div>
 					<b:dataTable 
 						id="datatableArticles"
 						value="#{mbCatalogueClient.articles}" 
