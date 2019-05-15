@@ -23,32 +23,32 @@
 			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
 			
 			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
-			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheArticle.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheRecette.css" />
 			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
 		</h:head>
 
 		<h:body>
 
-			<b:container class="container1">
+				<b:row id="banner">
+				<h3>Fiche recette</h3>
+				</b:row>
+
+			<b:container>
  
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
-   <h:graphicImage value="/pics/articlesImages/#{mbFicheRecette.recette.imageMini}" />
-  </div>
- 
- 
-  <!-- Right Column -->
-  <div class="right-column">
- 
-    <!-- Recette Description -->
-    <div class="recette-description">
-    	<b:row id="nomRecette">
-      		<h:outputText class="h1" value="#{mbFicheRecette.recette.nom}"/>
+  
+  
+  
+
+    	<b:row >
+    	<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+      		<h:outputText id="h32" value="#{mbFicheRecette.recette.nom}"/>
+      		</b:column>
        	</b:row>
-       	
-    </div>
-    
-     <!-- Liste des ingrédients -->
+   <br /><br />
+  
+   <b:row>
  	<b:dataTable 
 						id="datatableIngredientSelectionnees"
 						value="#{mbFicheRecette.ingredientSelectionnees}" 
@@ -77,9 +77,21 @@
 							<h:outputLabel value="#{iSel.unite}" />
 						</b:dataTableColumn>
 	</b:dataTable>
-	
+	 </b:row>
 	 
+  </div>
+ 
+ 
+  <!-- Right Column -->
+
+ 
+    <!-- Recette Description -->
+    
+     <!-- Liste des ingrédients -->
+     
+    
      <!-- Liste des étapes -->
+     <b:row>
  	<b:dataTable 
 						id="datatableEtapeRecetteSelectionnees"
 						value="#{mbFicheRecette.etapeRecetteSelectionnees}" 
@@ -95,18 +107,18 @@
 						paginated="false"
 						searching="false">
 
-						<b:dataTableColumn custom-options="'width':'150px'">
+						<b:dataTableColumn custom-options="'width':'50px'">
 							<f:facet name="header">Etape</f:facet>
 							<h:outputLabel value="#{eRec.id}" />
 						</b:dataTableColumn>
-						<b:dataTableColumn custom-options="'width':'150px'">
+						<b:dataTableColumn custom-options="'width':'450px'">
 							<f:facet name="header">Descriptif</f:facet>
 							<h:outputLabel value="#{eRec.etape}" />
 						</b:dataTableColumn>
 						
 	</b:dataTable>
-	
-  </div>
+	</b:row>
+
 </b:container>
 		</h:body>
 	</ui:define>
