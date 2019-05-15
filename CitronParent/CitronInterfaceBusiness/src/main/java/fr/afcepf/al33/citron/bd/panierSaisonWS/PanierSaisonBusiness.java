@@ -11,7 +11,7 @@ import fr.afcepf.al33.citron.bd.panierSaisonWS.data.ArticlePanier;
 import fr.afcepf.al33.citron.bd.panierSaisonWS.data.RefPanier;
 
 public class PanierSaisonBusiness implements PanierSaison {
-	public static String URL_PANIER_SAISON = "http://localhost:7979/panierSaisonWS/PanierSaisonImpl?wsdl";
+	public static String URL_PANIER_SAISON = "http://localhost:7676/panierSaisonWS/PanierSaisonImpl?wsdl";
 	
 
 

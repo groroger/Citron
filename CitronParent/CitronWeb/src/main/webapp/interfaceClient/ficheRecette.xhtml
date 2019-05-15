@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+
+	<ui:define name="title">Fiche recette</ui:define>
+
+	<ui:define name="content">
+
+	<h:head>
+	
+	<f:metadata>
+				<f:event listener="#{mbFicheRecette.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+
+			<title>Fiche recette</title>
+
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheArticle.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
+		</h:head>
+
+		<h:body>
+
+			<b:container class="container1">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+   <h:graphicImage value="/pics/articlesImages/#{mbFicheRecette.recette.imageMini}" />
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Recette Description -->
+    <div class="recette-description">
+    	<b:row id="nomRecette">
+      		<h:outputText class="h1" value="#{mbFicheRecette.recette.nom}"/>
+       	</b:row>
+       	
+    </div>
+    
+     <!-- Liste des ingrédients -->
+ 	<b:dataTable 
+						id="datatableIngredientSelectionnees"
+						value="#{mbFicheRecette.ingredientSelectionnees}" 
+						var="iSel" 
+						pdf="false"
+						print="false" 
+						excel="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						select="false"
+						responsive="true"
+						paginated="false"
+						searching="false">
+
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Ingrédient</f:facet>
+							<h:outputLabel value="#{iSel.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Quantité</f:facet>
+							<h:outputLabel value="#{iSel.quantite}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Unité de mesure</f:facet>
+							<h:outputLabel value="#{iSel.unite}" />
+						</b:dataTableColumn>
+	</b:dataTable>
+	
+	 
+     <!-- Liste des étapes -->
+ 	<b:dataTable 
+						id="datatableEtapeRecetteSelectionnees"
+						value="#{mbFicheRecette.etapeRecetteSelectionnees}" 
+						var="eRec" 
+						pdf="false"
+						print="false" 
+						excel="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						select="false"
+						responsive="true"
+						paginated="false"
+						searching="false">
+
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Etape</f:facet>
+							<h:outputLabel value="#{eRec.id}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Descriptif</f:facet>
+							<h:outputLabel value="#{eRec.etape}" />
+						</b:dataTableColumn>
+						
+	</b:dataTable>
+	
+  </div>
+</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+
+</html>

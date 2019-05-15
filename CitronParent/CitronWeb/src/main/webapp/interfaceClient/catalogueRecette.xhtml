@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="content">
+
+		<h:head>
+			<title>Catalogue</title>
+
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleClient.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+			
+			
+		</h:head>
+
+		<f:metadata>
+			<f:event listener="#{mbCatalogueRecette.init()}"
+				type="preRenderView"></f:event>
+		</f:metadata>
+
+		<h:body>
+		
+				<b:row id="banner">
+					<h3>Catalogue des recettes</h3>
+
+				</b:row>
+
+			<b:container>
+
+				<h:form id="formCatalogueRecette">
+				
+			
+					<b:container layout="fluid">
+											
+					</b:container>
+
+					<b:dataTable 
+						id="datatableRecettes"
+						value="#{mbCatalogueRecette.recettes}" 
+						var="recette" 
+						pdf="false"
+						print="false" 
+						excel="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						select="false"
+						responsive="true"
+						paginated="false"
+						searching="false">
+
+						<b:dataTableColumn custom-options="'width':'105px'">
+							<f:facet name="header">Visuel</f:facet>
+							<h:graphicImage value="/pics/articlesImages/#{recette.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Fiche recette</f:facet>
+							<b:commandButton value=""
+								look="warning"
+								action="#{mbCatalogueRecette.afficherFicheRecette(recette)}">
+								<b:image value="../pics/icones/searchWhite32.png"/>	
+							</b:commandButton>
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Nom</f:facet>
+							<h:outputLabel value="#{recette.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn custom-options="'width':'150px'">
+							<f:facet name="header">Ingrédients</f:facet>
+							<h:outputLabel value="#{mbCatalogueRecette.listeIngredient(recette)}" />
+						</b:dataTableColumn>
+						
+						
+					</b:dataTable>
+					
+					<div id="boutonBas">
+            			<b:button value="Retour au Catalogue" look="warning" outcome="catalogueClient"/>
+		            </div>
+		            
+				</h:form>
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>
