@@ -53,6 +53,13 @@
 	
 }
 
+.btn-default:hover
+{
+	color: white !important;
+	background-color: #9dcb01!important;
+}
+
+
 .btn-warning 
 {
 	font-size: 18px;
@@ -66,7 +73,3 @@ h4
 	margin-left: 17px;
 }
 
-#formCatalogueClient:j_idt40
-{
-	background-color: red;
-}
