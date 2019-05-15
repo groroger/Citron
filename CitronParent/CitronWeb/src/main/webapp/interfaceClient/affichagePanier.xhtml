@@ -56,11 +56,19 @@
 
 				<b:container layout="fluid">
 
-					<b:dataTable id="datatablePanier"
-						value="#{mbPanier.articlesCommandes}" var="articleCommande"
-						pdf="false" print="false" excel="false" border="true" info="false"
-						page-length="20" select="false" responsive="true"
-						paginated="false">
+					<b:dataTable 	id="datatablePanier"
+									value="#{mbPanier.articlesCommandes}" 
+									var="articleCommande"
+									pdf="false" 
+									print="false" 
+									excel="false" 
+									border="true" 
+									info="false"
+									searching="false"
+									page-length="20" 
+									select="false" 
+									responsive="true"
+									paginated="false">
 
 
 						<b:dataTableColumn label="">
