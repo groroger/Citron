@@ -80,7 +80,9 @@ public class UpdateInfoLivraisonManagedBean implements Serializable{
 			
 			//System.out.println(FacesContext.getCurrentInstance());
 			// redirection depuis un managedBean
-			FacesContext.getCurrentInstance().getExternalContext().redirect("../interfaceClient/affichageMaFacture.xhtml");
+			//FacesContext.getCurrentInstance().getExternalContext().redirect("../interfaceClient/affichageMaFacture.xhtml");
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml");
 		}
 		catch (Exception e) {
 			// création d'un message
