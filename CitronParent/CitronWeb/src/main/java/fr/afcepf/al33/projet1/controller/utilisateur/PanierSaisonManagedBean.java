@@ -41,11 +41,11 @@ public class PanierSaisonManagedBean implements Serializable {
 		this.categoriePanier = categoriePanier;
 	}
 
-	public double getPrixPanier() {
+	public Double getPrixPanier() {
 		return prixPanier;
 	}
 
-	public void setPrixPanier(double prixPanier) {
+	public void setPrixPanier(Double prixPanier) {
 		this.prixPanier = prixPanier;
 	}
 
