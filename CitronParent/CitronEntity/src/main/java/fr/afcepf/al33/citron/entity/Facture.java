@@ -53,10 +53,11 @@ public class Facture implements Serializable {
 		}
 		
 		//Constructeur chargé
-	
-		public Facture(Date date_creation, Double co2_footprint, Double delivery_price, Client client,
+
+		public Facture(String id, Date date_creation, Double co2_footprint, Double delivery_price, Client client,
 				Commande commande) {
 			super();
+			this.id = id;
 			this.date_creation = date_creation;
 			this.co2_footprint = co2_footprint;
 			this.delivery_price = delivery_price;
