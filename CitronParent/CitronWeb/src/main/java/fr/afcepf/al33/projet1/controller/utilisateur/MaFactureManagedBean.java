@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
@@ -31,10 +32,11 @@ public class MaFactureManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@ManagedProperty(value="#{mbConnectionUtilisateur.clientConnecte}")
-	private Client client;
+	//@ManagedProperty(value="#{mbConnectionUtilisateur.clientConnecte}")
+	//private Client client;
+	private Client clientConnecte;
 	
-	@ManagedProperty(value="#{mbPanier.commande}")
+	//@ManagedProperty(value="#{mbPanier.commande}")
 	private Commande commande; 
 	
 	@EJB 
@@ -44,6 +46,16 @@ public class MaFactureManagedBean implements Serializable{
 
 	@PostConstruct
 	public void init() {
+		
+		PanierManagedBean mbPanier = (PanierManagedBean) 
+				FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap().get("mbPanier");
+		this.commande = mbPanier.getCommande();
+		
+		ConnectionUtilisateurManagedBean mbConnectionUtilisateur = (ConnectionUtilisateurManagedBean)
+				FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap().get("mbConnectionUtilisateur");
+		this.clientConnecte = mbConnectionUtilisateur.getClientConnecte();
 		
 		// here  we should call our web-service :
 		Facture facture = new Facture();
@@ -57,9 +69,9 @@ public class MaFactureManagedBean implements Serializable{
 		String day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
 		
 		String adresseEntrepot = proxyEntrepot.searchById(1).getAdresse();
-		String adresseClient = client.getAdresseLivraison();
-		String idFacture = client.getPrenom().substring(0, 1)
-				         + client.getNom().substring(0, 1)
+		String adresseClient = clientConnecte.getAdresseLivraison();
+		String idFacture = clientConnecte.getPrenom().substring(0, 1)
+				         + clientConnecte.getNom().substring(0, 1)
 				         + year + month + day;
 		
 		CallWsLivraison infoLivraison = new CallWsLivraison();
@@ -91,8 +103,8 @@ public class MaFactureManagedBean implements Serializable{
 	
 	public void valider() {
 		System.out.println("=================================================================");
-		System.out.println(client.getAdresseLivraison());
-		System.out.println(client.toString());
+		System.out.println(clientConnecte.getAdresseLivraison());
+		System.out.println(clientConnecte.toString());
 		
 		System.out.println("=================================================================");
 	}
@@ -100,11 +112,11 @@ public class MaFactureManagedBean implements Serializable{
 	
 	
 	public Client getClient() {
-		return client;
+		return clientConnecte;
 	}
 
 	public void setClient(Client client) {
-		this.client = client;
+		this.clientConnecte = client;
 	}
 
 	public Commande getCommande() {
