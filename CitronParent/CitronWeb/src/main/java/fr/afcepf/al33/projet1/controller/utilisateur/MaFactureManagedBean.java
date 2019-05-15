@@ -1,8 +1,11 @@
 package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
+
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,6 +19,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import fr.afcepf.al33.citron.IBusiness.CommandeIBusiness;
 import fr.afcepf.al33.citron.IBusiness.EntrepotIBusiness;
 import fr.afcepf.al33.citron.entity.CallWsLivraison;
 import fr.afcepf.al33.citron.entity.Client;
@@ -36,8 +40,11 @@ public class MaFactureManagedBean implements Serializable{
 	//private Client client;
 	private Client clientConnecte;
 	
-	//@ManagedProperty(value="#{mbPanier.commande}")
-	private Commande commande; 
+	@ManagedProperty(value="#{mbPanier.commande}")
+	private Commande commande;
+	
+//	@EJB
+//	private CommandeIBusiness proxyCommande; 
 	
 	@EJB 
 	private EntrepotIBusiness proxyEntrepot;
@@ -45,16 +52,22 @@ public class MaFactureManagedBean implements Serializable{
 	private Facture facture;
 
 	@PostConstruct
-	public void init() {
+	public void init() throws ParseException {
 		
-		PanierManagedBean mbPanier = (PanierManagedBean) 
-				FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get("mbPanier");
-		this.commande = mbPanier.getCommande();
+//		PanierManagedBean mbPanier = (PanierManagedBean) 
+//				FacesContext.getCurrentInstance()
+//				.getExternalContext().getSessionMap().get("mbPanier");
+//		this.commande = mbPanier.getCommande();
+//		
+//		System.out.println("========= you are here =========");
+//		System.out.println(proxyCommande.searchById(77));
+//		System.out.println("========= you are here =========");
 		
 		ConnectionUtilisateurManagedBean mbConnectionUtilisateur = (ConnectionUtilisateurManagedBean)
 				FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("mbConnectionUtilisateur");
+		if(mbConnectionUtilisateur==null)
+			System.out.println("********** mbConnectionUtilisateur==null");
 		this.clientConnecte = mbConnectionUtilisateur.getClientConnecte();
 		
 		// here  we should call our web-service :
@@ -62,7 +75,7 @@ public class MaFactureManagedBean implements Serializable{
 		//Long pk = null;
 		
 		// Choose time zone in which you want to interpret your Date
-		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+		/*Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
 		cal.setTime(commande.getDateCreation());
 		String year = String.valueOf(cal.get(Calendar.YEAR));
 		String month = String.valueOf(cal.get(Calendar.MONTH));
@@ -73,18 +86,18 @@ public class MaFactureManagedBean implements Serializable{
 		String idFacture = clientConnecte.getPrenom().substring(0, 1)
 				         + clientConnecte.getNom().substring(0, 1)
 				         + year + month + day;
-		
+		*/
 		CallWsLivraison infoLivraison = new CallWsLivraison();
 		infoLivraison.setCompany("Citron");
-		infoLivraison.setId_facture(idFacture);
-		infoLivraison.setAddress_a(adresseEntrepot);
-		infoLivraison.setAddress_b(adresseClient);
-		infoLivraison.setDate_commande(commande.getDateCreation());
+		infoLivraison.setId_facture("ASI67456454749");
+		infoLivraison.setAddress_a(" 9 Boulevard du Général de Gaulle 92120 Montrouge");
+		infoLivraison.setAddress_b("1 rue de bicêtre 94240 l'hay-les-roses");
+		//infoLivraison.setDate_commande(new SimpleDateFormat("dd/MM/yyyy").parse("24/01/2019"));
 		
 		
 		
 		javax.ws.rs.client.Client jaxrs2client = ClientBuilder.newClient();
-		WebTarget productsTarget = jaxrs2client.target("http://localhost:7575/livraison/svccall");
+		WebTarget productsTarget = jaxrs2client.target("http://192.168.102.88:7575/livraison/svccall");
 		Response responseCallWsLivraison = productsTarget.request(MediaType.APPLICATION_JSON_TYPE)
 									.post(Entity.entity(infoLivraison, MediaType.APPLICATION_JSON_TYPE) );
 		if(responseCallWsLivraison.getStatus() == 200 /*OK*/){
