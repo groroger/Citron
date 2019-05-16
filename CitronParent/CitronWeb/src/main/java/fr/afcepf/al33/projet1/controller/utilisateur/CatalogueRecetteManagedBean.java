@@ -85,7 +85,11 @@ public class CatalogueRecetteManagedBean implements Serializable{
 		{
 			listeIngredient = listeIngredient+ingSel.getNom()+", ";
 		} 
+		
 		System.out.println("listeIngredient = "+listeIngredient);
+		listeIngredient = listeIngredient.substring(0, listeIngredient.length()-1);
+		listeIngredient = listeIngredient.substring(0, listeIngredient.length()-1);
+		listeIngredient = listeIngredient+".";
 		
 		return listeIngredient;
 	}

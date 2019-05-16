@@ -33,27 +33,15 @@ public class FicheRecetteManagedBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	private int quantiteSaisie;
-
-
-	private ArticleCommande articleCommande=new ArticleCommande();
-	private Article article = new Article();
-	
-	List<ArticleCommande> articlesCommandes = new ArrayList<ArticleCommande>();
-	
-	// à garder
 	private List<IngredientSelectionnee> ingredientSelectionnees; 
 	private List<EtapeRecetteSelectionnee> etapeRecetteSelectionnees;
 	
-	@EJB
-	private ArticleIBusiness proxyArticle;
 	
 	@ManagedProperty(value="#{mbCatalogueRecette.selectedRecette}")
 	private RecetteSelectionnee recette;
 	
 	
 
-	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void init() {
 
@@ -65,119 +53,9 @@ public class FicheRecetteManagedBean implements Serializable{
 		ingredientSelectionnees = recette.getIngredientSelectionnees();
 		etapeRecetteSelectionnees = recette.getEtapeRecetteSelectionnees();
 		
-		if ((List<ArticleCommande>)session.getAttribute("listeArticlesCommandes")!=null) {
-			articlesCommandes= (List<ArticleCommande>)session.getAttribute("listeArticlesCommandes");
-		}
-	}
-
-public void ajouterArticle() {
 		
-		articleCommande = new ArticleCommande();
-		articleCommande.setArticle(getArticle());
-		articleCommande.setQuantite(quantiteSaisie);
-		
-		
-		Double calculPrixLigneArticleCommande = article.getPrix()*quantiteSaisie;
-		DecimalFormat twoDForm =new DecimalFormat("##.##");
-		DecimalFormatSymbols dfs = new DecimalFormatSymbols();
-		dfs.setDecimalSeparator('.');
-		twoDForm.setDecimalFormatSymbols(dfs);
-		calculPrixLigneArticleCommande=Double.parseDouble(twoDForm.format(calculPrixLigneArticleCommande));
-		articleCommande.setPrixTotal(calculPrixLigneArticleCommande);
-		
-		System.out.println(articleCommande.getArticle().getNom());
-		System.out.println(articleCommande.getQuantite());
-		
-		boolean isPresent = false;
-
-
-		if (articlesCommandes.isEmpty()){
-			articlesCommandes.add(articleCommande);
-			System.out.println("ajout premier article");
-		} else {
-
-			Iterator<ArticleCommande> ite = articlesCommandes.iterator();
-
-
-			while(ite.hasNext()) {
-				ArticleCommande ac = ite.next();
-				if (ac.getArticle().getId()==articleCommande.getArticle().getId()) {
-					ac.setQuantite(ac.getQuantite()+ quantiteSaisie);
-					System.out.println("nombre ajouté à la ligne existante");
-					isPresent = true;
-				}
-			} 
-			
-			if (isPresent == false) {
-				articlesCommandes.add(articleCommande);
-				System.out.println("nouvel article en plus");
-			}
-
-		}
-
-	quantiteSaisie=0;
-	System.out.println("Art Quantite "+articleCommande.getQuantite());
-	
-	
-	FacesContext facesContext = FacesContext.getCurrentInstance();
-	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-	session.setAttribute("listeArticlesCommandes", articlesCommandes);
-	facesContext.getApplication()
-				.getNavigationHandler()
-				.handleNavigation(facesContext,null,"/interfaceClient/affichagePanier.xhtml?faces-redirect=true");
-
-}
-
-public void plusQuantiteSaisie(){	
-	article.setQuantiteSaisie(article.getQuantiteSaisie()+1);
-
-}
-
-public void minusQuantiteSaisie(){
-	if (article.getQuantiteSaisie()>0) {
-		article.setQuantiteSaisie(article.getQuantiteSaisie()-1);
-	}		
-}
-
-	public int getQuantiteSaisie() {
-		return quantiteSaisie;
 	}
 
-	public void setQuantiteSaisie(int quantiteSaisie) {
-		this.quantiteSaisie = quantiteSaisie;
-	}
-
-	public ArticleCommande getArticleCommande() {
-		return articleCommande;
-	}
-
-	public void setArticleCommande(ArticleCommande articleCommande) {
-		this.articleCommande = articleCommande;
-	}
-
-	public List<ArticleCommande> getArticlesCommandes() {
-		return articlesCommandes;
-	}
-
-	public void setArticlesCommandes(List<ArticleCommande> articlesCommandes) {
-		this.articlesCommandes = articlesCommandes;
-	}
-
-	public ArticleIBusiness getProxyArticle() {
-		return proxyArticle;
-	}
-
-	public void setProxyArticle(ArticleIBusiness proxyArticle) {
-		this.proxyArticle = proxyArticle;
-	}
-
-	public Article getArticle() {
-		return article;
-	}
-
-	public void setArticle(Article article) {
-		this.article = article;
-	}
 
 	public List<IngredientSelectionnee> getIngredientSelectionnees() {
 		return ingredientSelectionnees;
