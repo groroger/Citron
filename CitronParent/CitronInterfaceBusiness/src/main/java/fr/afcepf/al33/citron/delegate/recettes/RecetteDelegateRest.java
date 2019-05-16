@@ -36,13 +36,15 @@ public class RecetteDelegateRest implements RecetteDelegate {
 			recettesTarget = recettesTarget.queryParam("listeArticle",a);
 		}
 		
-		RecetteSelectionnee[] tabRecettes;
+		
+		RecetteSelectionnee[] tabRecettes = null;
 		try 
 		{
 			tabRecettes= 
 					recettesTarget.request(MediaType.APPLICATION_JSON_TYPE)
 	                .get().readEntity(RecetteSelectionnee[].class);
-		} catch (Exception e) 
+		} 
+		catch (Exception e) 
 		{
 			tabRecettes= null;
 		}
