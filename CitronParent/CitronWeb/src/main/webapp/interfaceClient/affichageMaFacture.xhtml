@@ -62,10 +62,10 @@
 								</h2>
 							</b:column>
 						</b:row>
-						
-						
-						
-						
+
+
+
+
 
 						<br />
 						<br />
@@ -91,7 +91,7 @@
 								<h:outputLabel value="#{articleCommande.article.nom}" />
 							</b:dataTableColumn>
 							<b:dataTableColumn label="Quantité">
-							
+
 
 								<br />
 								<br />
@@ -102,8 +102,8 @@
 
 						<br />
 						<br />
-						
-						
+
+
 
 
 						<b:row>
@@ -114,7 +114,8 @@
 							</b:column>
 							<b:column medium-screen="6">
 								<h2>
-									<b:inputText placeholder="#{mbMaFacture.facture.delivery_price} €" />
+									<b:inputText
+										placeholder="#{mbMaFacture.facture.delivery_price} €" />
 								</h2>
 							</b:column>
 						</b:row>
@@ -138,7 +139,8 @@
 							</b:column>
 							<b:column medium-screen="6">
 								<h2>
-									<b:inputText placeholder="#{mbMaFacture.facture.co2_footprint} kg CO2" />
+									<b:inputText
+										placeholder="#{mbMaFacture.facture.co2_footprint} kg CO2" />
 								</h2>
 							</b:column>
 						</b:row>
@@ -151,8 +153,12 @@
 							<b:button
 								href="/CitronWeb/interfaceClient/updateInfoLivraison.xhtml"
 								value="Modifier adresse livraison" look="secondary" />
-							<b:commandButton value="Payer" look="secondary"
-								action="#{mbPanier.payer()}" />
+
+							<b:button
+								href="/CitronWeb/interfaceClient/monCompte.xhtml"
+								value="Payer" look="secondary" />
+<!-- 							<b:commandButton value="Payer" look="secondary" -->
+<!-- 								action="#{mbPanier.payer()}" /> -->
 						</b:row>
 
 					</b:jumbotron>
