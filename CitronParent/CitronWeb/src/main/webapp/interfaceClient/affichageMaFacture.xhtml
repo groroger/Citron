@@ -35,107 +35,130 @@
 
 
 			<h:form id="formAfficherMaCommande">
-					<b:container layout="fluid">
-						<b:jumbotron>
+				<b:container layout="fluid">
+					<b:jumbotron>
 
-  <b:row>
-  <b:column medium-screen="6">
-  	<h2><h:outputText value="Facture:"/></h2>
-  </b:column>
-  <b:column medium-screen="6">
-  	<h2><b:inputText placeholder="# numéro de facture" /></h2>
-  </b:column>
-  </b:row>
-  <b:row>
-  <b:column medium-screen="6">
-  	<h2><h:outputText value="Nombre d'article(s): "/></h2>
-  </b:column>
-  <b:column medium-screen="6">
-  	<h2><b:inputText placeholder="..." /></h2>
-  </b:column>
-  </b:row>
-  
-  <br />
-							<br />
-  					<b:dataTable 	id="datatablePanier"
-									value="#{mbPanier.articlesCommandes}" 
-									var="articleCommande"
-									pdf="false" 
-									print="false" 
-									excel="false" 
-									border="true" 
-									info="false"
-									searching="false"
-									page-length="20" 
-									select="false" 
-									responsive="true"
-									paginated="false">
-
-
-						<b:dataTableColumn label="">
-
-							<b:commandButton id="btn_supprimer" value="" look="danger"
-								action="#{mbPanier.supprimerArticle(articleCommande)}">
-								<b:image value="../pics/icones/deleteWhite21.png" />
-
-							</b:commandButton>
-							<h:graphicImage
-								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn label="Articles">
-
-							<h:outputLabel value="#{articleCommande.article.nom}" />
-						</b:dataTableColumn>
-						<b:dataTableColumn label="Quantité">
-
-							<br />
-							<br />
-							<h:outputLabel value="Total: #{articleCommande.prixTotal} €" />
-						</b:dataTableColumn>
-
-					</b:dataTable>
-  
- 	<br />
-	<br />
+						<b:row>
+							<b:column medium-screen="6">
+								<h2>
+									<h:outputText value="Facture:" />
+								</h2>
+							</b:column>
+							<b:column medium-screen="6">
+								<h2>
+									<b:inputText placeholder="#{mbMaFacture.facture.id}" />
+								</h2>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column medium-screen="6">
+								<h2>
+									<h:outputText value="Nombre d'article(s): " />
+								</h2>
+							</b:column>
+							<b:column medium-screen="6">
+								<h2>
+									<b:inputText placeholder="#{mbPanier.articlesCommandes.size()}" />
+								</h2>
+							</b:column>
+						</b:row>
 						
 						
-	<b:row>
-  <b:column medium-screen="6">
-  	<h2><h:outputText value="Frais de livraison"/></h2>
-  </b:column>
-  <b:column medium-screen="6">
-  	<h2><b:inputText placeholder="... €" /></h2>
-  </b:column>
-  </b:row>
-  <b:row>
-  <b:column medium-screen="6">
-  	<h2><h:outputText value="Prix total:  "/></h2>
-  </b:column>
-  <b:column medium-screen="6">
-  	<h2><b:inputText placeholder="... €" /></h2>
-  </b:column>
-  </b:row>
-  <b:row>
-  <b:column medium-screen="6">
-  	<h2><h:outputText value="Empreinte carbone (CO2): "/></h2>
-  </b:column>
-  <b:column medium-screen="6">
-  	<h2><b:inputText placeholder="... kg CO2" /></h2>
-  </b:column>
-  </b:row>
+						
+						
+
+						<br />
+						<br />
+						<b:dataTable id="datatablePanier"
+							value="#{mbPanier.articlesCommandes}" var="articleCommande"
+							pdf="false" print="false" excel="false" border="true"
+							info="false" searching="false" page-length="20" select="false"
+							responsive="true" paginated="false">
+
+
+							<b:dataTableColumn label="">
+
+								<b:commandButton id="btn_supprimer" value="" look="danger"
+									action="#{mbPanier.supprimerArticle(articleCommande)}">
+									<b:image value="../pics/icones/deleteWhite21.png" />
+
+								</b:commandButton>
+								<h:graphicImage
+									value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
+							</b:dataTableColumn>
+							<b:dataTableColumn label="Articles">
+
+								<h:outputLabel value="#{articleCommande.article.nom}" />
+							</b:dataTableColumn>
+							<b:dataTableColumn label="Quantité">
 							
-  <br />
-	<br />
-  <b:row>
- 	<b:button value="Continuer mes achats" look="secondary" outcome="catalogueClient" />
-	<b:button href="/CitronWeb/interfaceClient/updateInfoLivraison.xhtml" value="Modifier adresse livraison" look="secondary" />
-	<b:commandButton value="Payer" look="secondary" action="#{mbPanier.payer()}" />
-  </b:row>
-  
+
+								<br />
+								<br />
+								<h:outputLabel value="Total: #{articleCommande.prixTotal} €" />
+							</b:dataTableColumn>
+
+						</b:dataTable>
+
+						<br />
+						<br />
+						
+						
+
+
+						<b:row>
+							<b:column medium-screen="6">
+								<h2>
+									<h:outputText value="Frais de livraison" />
+								</h2>
+							</b:column>
+							<b:column medium-screen="6">
+								<h2>
+									<b:inputText placeholder="#{mbMaFacture.facture.delivery_price} €" />
+								</h2>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column medium-screen="6">
+								<h2>
+									<h:outputText value="Prix total:  " />
+								</h2>
+							</b:column>
+							<b:column medium-screen="6">
+								<h2>
+									<b:inputText placeholder="#{mbMaFacture.prixTotal} €" />
+								</h2>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column medium-screen="6">
+								<h2>
+									<h:outputText value="Empreinte carbone (CO2): " />
+								</h2>
+							</b:column>
+							<b:column medium-screen="6">
+								<h2>
+									<b:inputText placeholder="#{mbMaFacture.facture.co2_footprint} kg CO2" />
+								</h2>
+							</b:column>
+						</b:row>
+
+						<br />
+						<br />
+						<b:row>
+							<b:button value="Continuer mes achats" look="secondary"
+								outcome="catalogueClient" />
+							<b:button
+								href="/CitronWeb/interfaceClient/updateInfoLivraison.xhtml"
+								value="Modifier adresse livraison" look="secondary" />
+							<b:commandButton value="Payer" look="secondary"
+								action="#{mbPanier.payer()}" />
+						</b:row>
+
 					</b:jumbotron>
 				</b:container>
 			</h:form>
-			
+
 		</h:body>
 	</ui:define>
 </ui:composition>

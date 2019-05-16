@@ -2,6 +2,7 @@ package fr.afcepf.al33.projet1.controller.utilisateur;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import fr.afcepf.al33.citron.IBusiness.EntrepotIBusiness;
+import fr.afcepf.al33.citron.entity.ArticleCommande;
 import fr.afcepf.al33.citron.entity.CallWsLivraison;
 import fr.afcepf.al33.citron.entity.Client;
 import fr.afcepf.al33.citron.entity.Commande;
@@ -40,6 +42,10 @@ public class MaFactureManagedBean implements Serializable {
     @ManagedProperty(value = "#{mbPanier.commande}")
     private Commande commande;
 
+    @ManagedProperty(value="#{mbPanier.articlesCommandes}")
+    private List<ArticleCommande> articlesCommandes;
+    
+    private Double prixTotal;
 
     @EJB
     private EntrepotIBusiness proxyEntrepot;
@@ -53,7 +59,7 @@ public class MaFactureManagedBean implements Serializable {
                 .getCurrentInstance().getExternalContext().getSessionMap().get("mbConnectionUtilisateur");
         this.clientConnecte = mbConnectionUtilisateur.getClientConnecte();
 
-        Facture facture = new Facture();
+        Facture fact = new Facture();
 
         // Choose time zone in which you want to interpret your Date
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
@@ -63,13 +69,14 @@ public class MaFactureManagedBean implements Serializable {
         String day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
         String myCommandeDate = day + "/" + month + "/" + year;
 
-        String adresseEntrepot = proxyEntrepot.searchById(1).getAdresse();
-        String adresseClient = clientConnecte.getAdresseLivraison();
+        String adresseEntrepot = proxyEntrepot.searchById(1).getAdresse() + " " + proxyEntrepot.searchById(1).getVille();
+        String adresseClient = clientConnecte.getAdresseLivraison() + " " + clientConnecte.getVilleLivraison();        
         // String idFacture = clientConnecte.getPrenom().substring(0, 1)+
         // clientConnecte.getNom().substring(0, 2)+"-"+year + month + day;
         String idFacture = clientConnecte.getPrenom().substring(0, 1) + clientConnecte.getNom().substring(0, 2) + "-"
                 + commande.getDateCreation().toString();
-
+        System.out.println(adresseEntrepot);
+        
         CallWsLivraison infoLivraison = new CallWsLivraison();
         infoLivraison.setCompany("Citron");
         infoLivraison.setId_facture(idFacture);
@@ -82,7 +89,9 @@ public class MaFactureManagedBean implements Serializable {
         // Call the post methode of the livraison web service to create a new call with
         // CO2 and delivry cost
         javax.ws.rs.client.Client jaxrs2client = ClientBuilder.newClient();
-        WebTarget productsTarget = jaxrs2client.target("http://localhost:7575/livraison/svccall");
+        //String urlWsLivraison = "http://localhost:7575/livraison/svccall";
+        String urlWsLivraison = "http://192.168.102.88:7575/livraison/svccall";
+        WebTarget productsTarget = jaxrs2client.target(urlWsLivraison);
         Response responseCallWsLivraison = productsTarget.request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.entity(infoLivraison, MediaType.APPLICATION_JSON_TYPE));
         if (responseCallWsLivraison.getStatus() == 200 /* OK */) {
@@ -94,7 +103,7 @@ public class MaFactureManagedBean implements Serializable {
             // delivery cost
             javax.ws.rs.client.Client jaxrs2client2 = ClientBuilder.newClient();
             String[] parts = returnme.split("/");
-            String livraisonGetRestUrl = "http://localhost:7575/livraison/svccall/"+parts[4];// returnme;
+            String livraisonGetRestUrl = urlWsLivraison+"/"+parts[4];// returnme;
             System.out.println("responseCallWsLivraison.getLocation().toString() livraisonGetRestUrl -> " + livraisonGetRestUrl);
             WebTarget livraisonTarget = jaxrs2client2.target(livraisonGetRestUrl);
             CallWsLivraison infoLivraison2 = livraisonTarget.request(MediaType.APPLICATION_JSON)
@@ -103,6 +112,19 @@ public class MaFactureManagedBean implements Serializable {
             System.out.println(
                     "responseCallWsLivraison.getLocation().toString() GET CO2 -> " + infoLivraison2.getCo2_footprint()+" & shipping price -> " + infoLivraison2.getDelivery_price());
 
+            fact.setId(idFacture);
+            fact.setClient(clientConnecte);
+            fact.setCommande(commande);
+            fact.setDate_creation(commande.getDateCreation());
+            fact.setDelivery_price(infoLivraison2.getDelivery_price());
+            fact.setCo2_footprint(infoLivraison2.getCo2_footprint());
+            fact.setClient(clientConnecte);
+            fact.setCommande(commande);
+            this.facture = fact;
+            prixTotal = commande.getPrixTotal()+infoLivraison2.getDelivery_price();
+            
+           System.out.println(articlesCommandes.size());
+           
         } else {
             System.out.println("MaFactureManagedBean.init -> Trouble to get the Post OK for the livraison WS");
         }
@@ -140,5 +162,31 @@ public class MaFactureManagedBean implements Serializable {
     public void setFacture(Facture facture) {
         this.facture = facture;
     }
+
+	public Client getClientConnecte() {
+		return clientConnecte;
+	}
+
+	public void setClientConnecte(Client clientConnecte) {
+		this.clientConnecte = clientConnecte;
+	}
+
+	public Double getPrixTotal() {
+		return prixTotal;
+	}
+
+	public void setPrixTotal(Double prixTotal) {
+		this.prixTotal = prixTotal;
+	}
+
+	public List<ArticleCommande> getArticlesCommandes() {
+		return articlesCommandes;
+	}
+
+	public void setArticlesCommandes(List<ArticleCommande> articlesCommandes) {
+		this.articlesCommandes = articlesCommandes;
+	}
+	
+    
 
 }
