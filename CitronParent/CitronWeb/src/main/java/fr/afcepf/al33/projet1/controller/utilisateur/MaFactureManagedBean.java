@@ -68,13 +68,19 @@ public class MaFactureManagedBean implements Serializable {
         String month = String.valueOf(cal.get(Calendar.MONTH));
         String day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
         String myCommandeDate = day + "/" + month + "/" + year;
-
-        String adresseEntrepot = proxyEntrepot.searchById(1).getAdresse() + " " + proxyEntrepot.searchById(1).getVille();
-        String adresseClient = clientConnecte.getAdresseLivraison() + " " + clientConnecte.getVilleLivraison();        
+        
+        System.out.println("======= Here ville Entrepot ======="+ proxyEntrepot.searchById(1).getVille());
+        String adresseEntrepot = proxyEntrepot.searchById(1).getAdresse() + " " 
+        						+ proxyEntrepot.searchById(1).getVille().getCodePostal() + " " 
+                				+ proxyEntrepot.searchById(1).getVille().getNom();
+        String adresseClient = clientConnecte.getAdresseLivraison() + " " 
+                				+ clientConnecte.getVilleLivraison().getCodePostal()+ " " 
+                        		+ clientConnecte.getVilleLivraison().getNom();        
         // String idFacture = clientConnecte.getPrenom().substring(0, 1)+
         // clientConnecte.getNom().substring(0, 2)+"-"+year + month + day;
         String idFacture = clientConnecte.getPrenom().substring(0, 1) + clientConnecte.getNom().substring(0, 2) + "-"
                 + commande.getDateCreation().toString();
+        
         System.out.println(adresseEntrepot);
         
         CallWsLivraison infoLivraison = new CallWsLivraison();

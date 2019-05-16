@@ -155,7 +155,7 @@ public class PanierManagedBean implements Serializable{
 				//	                  "/interfaceClient/updateInfoLivraison.xhtml#test?faces-redirect=true");
 				facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/interfaceClient/affichageMaFacture.xhtml");
 				 
-				 articlesCommandes= new ArrayList<ArticleCommande>();
+				 //articlesCommandes= new ArrayList<ArticleCommande>();
 				 session.setAttribute("listeArticlesCommandes", articlesCommandes);
 		  }
 	  } else {
