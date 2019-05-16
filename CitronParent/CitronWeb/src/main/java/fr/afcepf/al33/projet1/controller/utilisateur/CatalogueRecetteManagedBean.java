@@ -3,6 +3,7 @@ package fr.afcepf.al33.projet1.controller.utilisateur;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -89,6 +90,14 @@ public class CatalogueRecetteManagedBean implements Serializable{
 		return listeIngredient;
 	}
 
+	public String afficherImage(RecetteSelectionnee recette) {
+		// l'URL où se trouve les images dans le Web service est une variable à récupérer dans le fichier application.properties
+		ResourceBundle ressources = ResourceBundle.getBundle("param") ; // accès à application.properties 
+		String urlImages = ressources.getString("urlImages");
+		urlImages = urlImages+recette.getImageMini();
+				
+		return urlImages;
+	}
 
 public List<ArticleCommande> getArticlesCommandes() {
 	return articlesCommandes;

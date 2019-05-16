@@ -59,7 +59,9 @@
 
 						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Visuel</f:facet>
-							<h:graphicImage value="http://localhost:9393/springBootWebService/images/#{recette.imageMini}" />
+<!-- 						<h:outputLabel value="#{mbCatalogueRecette.afficherImage(recette)}" /> -->
+<!-- 						<h:graphicImage value="http://localhost:9393/springBootWebService/images/#{recette.imageMini}" /> -->
+							<h:graphicImage value="#{mbCatalogueRecette.afficherImage(recette)}" /> 
 						</b:dataTableColumn>
 						<b:dataTableColumn custom-options="'width':'150px'">
 							<f:facet name="header">Nom</f:facet>
