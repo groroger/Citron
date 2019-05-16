@@ -29,16 +29,24 @@ public class RecetteDelegateRest implements RecetteDelegate {
 	@Override
 	
 	public List<RecetteSelectionnee> recettesSelectionnees(List<String> listeArticle) {
-			
+		
 		WebTarget recettesTarget = jaxrs2client.target(debutUrlRecettePublic)
 										.path("selectionner");
 		for(String a : listeArticle) {
 			recettesTarget = recettesTarget.queryParam("listeArticle",a);
 		}
-						               
-		RecetteSelectionnee[] tabRecettes= 
-				recettesTarget.request(MediaType.APPLICATION_JSON_TYPE)
-                .get().readEntity(RecetteSelectionnee[].class);
+		
+		RecetteSelectionnee[] tabRecettes;
+		try 
+		{
+			tabRecettes= 
+					recettesTarget.request(MediaType.APPLICATION_JSON_TYPE)
+	                .get().readEntity(RecetteSelectionnee[].class);
+		} catch (Exception e) 
+		{
+			tabRecettes= null;
+		}
+		
 		return Arrays.asList(tabRecettes);
 		
 	}
