@@ -5,10 +5,13 @@ import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -188,7 +191,7 @@ private List<String> listeLibellesArticlesSaison(List<fr.afcepf.al33.citron.ws.s
 	// liste des libellés des articles de saison pour recherche rapide
 	List<String> libellesArticlesSaison = new ArrayList<>();
 	for (fr.afcepf.al33.citron.ws.saison.ws.entity.Article articleDeSaison : articlesSaison) {
-		libellesArticlesSaison.add(articleDeSaison.getNom().toUpperCase());
+		libellesArticlesSaison.add(formatRechercheArticle(articleDeSaison.getNom()));
 	}
 	return libellesArticlesSaison;
 }
@@ -206,12 +209,25 @@ private List<Article> filtreSaisonFort(List<Article> articles, List<String> libe
 	for (Article article : articles) {
 		// rechercher sa présence dans les articles de saison
 		// s'il est présent alors l'ajouter à la liste des articles de saison
-		// recherche sur le premier mot en cas de nom composé ramené au singulier
-		if(libellesArticlesSaison.indexOf(pluralCut(article.getNom().split(" ")[0]).toUpperCase()) >= 0) {
+		// recherche sur les mots en majuscule ramenés au singulier
+		if(libellesArticlesSaison.indexOf(formatRechercheArticle(article.getNom())) >= 0) {
 			articlesFiltres.add(article);
 		}		
 	}
 	return articlesFiltres;
+}
+
+private String formatRechercheArticle(String libelleArticle) {
+	// les éléments des noms composés qui peuvent être séparés par des blancs ou des tirets
+	List<String> mots = Arrays.asList(libelleArticle.split("[ -]"));
+	// sont mis en majuscule
+	mots = mots.stream().map(String::toUpperCase).collect(Collectors.toList());
+	// sont mis au singulier
+	mots = mots.stream().map(mot -> pluralCut(mot)).collect(Collectors.toList());
+	// et séparés par un espace
+	String libelleArticleFormate = String.join(" ", mots);
+	System.out.println("libellé article : " + libelleArticle + " -> " + libelleArticleFormate);
+	return libelleArticleFormate;
 }
 
 public List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> listeArticlesSaison() {
