@@ -82,6 +82,16 @@ public class CatalogueClientManagedBean implements Serializable{
 		articlesSaison = listeArticlesSaison();
 		// liste des libellés des articles disponibles pour le mois courant
 		libellesArticlesSaison = listeLibellesArticlesSaison(articlesSaison);
+		
+		// liste de tous les articles connus du web service saison
+		List <fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articlesTouteSaison = listeArticlesTouteSaison();
+		// liste des libellés de tous les articles connus du web service saison
+		List<String> libellesArticlesTouteSaison = listeLibellesArticlesSaison(articlesTouteSaison);
+		List<Article> articlesInconnusWebServiceSaison = listeArticlesInconnusWebServiceSaison(articles, libellesArticlesTouteSaison);
+		System.out.println("\n*** Articles du catalogue Citron inconnus du web service articles saison ***");
+		for (Article article : articlesInconnusWebServiceSaison) {
+			System.out.println(article.getNom());
+		}
 	}
 
 	public void afficherFicheProduit(Article article) {
@@ -226,7 +236,6 @@ private String formatRechercheArticle(String libelleArticle) {
 	mots = mots.stream().map(mot -> pluralCut(mot)).collect(Collectors.toList());
 	// et séparés par un espace
 	String libelleArticleFormate = String.join(" ", mots);
-	System.out.println("libellé article : " + libelleArticle + " -> " + libelleArticleFormate);
 	return libelleArticleFormate;
 }
 
@@ -255,6 +264,46 @@ public List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> listeArticlesSais
 	}
 
 	return articlesMois;
+}
+
+
+public List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> listeArticlesTouteSaison() {
+		
+	DateFormatSymbols dfsFR = new DateFormatSymbols(Locale.FRENCH);
+	String[] moisFR = dfsFR.getMonths();
+
+	DateTime dateTime = new DateTime(new Date());
+	int mois = dateTime.getMonthOfYear();
+
+	List<fr.afcepf.al33.citron.ws.saison.ws.entity.Article> articles = new ArrayList<>();
+	// test disponibilité du web service Soap par ClientArticleDelegate
+	ClientArticleDelegate clientArticleDelegate = (ClientArticleDelegate)(ClientArticleDelegateSoap.getInstance());
+	try {
+		articles = clientArticleDelegate.ListeArticles();
+	} catch (Exception e) {
+		e.printStackTrace();
+		System.out.println("web service articles de saison indisponible");
+	}
+	return articles;
+}
+
+private List<Article> listeArticlesInconnusWebServiceSaison(List<Article> articles, List<String> libellesArticlesTouteSaison) {
+	// si le web service est indisponible alors pas de filtre
+	if (libellesArticlesSaison.isEmpty())
+		return articles;
+	
+	// liste des articles filtrés
+	List<Article> articlesFiltres = new ArrayList<>();
+	// pour chaque article
+	for (Article article : articles) {
+		// rechercher sa présence dans les articles de saison
+		// s'il est absent alors l'ajouter à la liste des articles inconnus du web service saison
+		// recherche sur les mots en majuscule ramenés au singulier
+		if (libellesArticlesTouteSaison.indexOf(formatRechercheArticle(article.getNom())) < 0) {
+			articlesFiltres.add(article);
+		}		
+	}
+	return articlesFiltres;
 }
 
 private String pluralCut(String name) {
